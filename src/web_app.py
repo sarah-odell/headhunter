@@ -26,6 +26,7 @@ DEFAULT_BRIEF = ROOT / "role_briefs" / "hash_full_stack_engineer.json"
 DEFAULT_OUTPUT = ROOT / "data" / "candidates.json"
 DEFAULT_CSV = ROOT / "data" / "candidates.csv"
 DEFAULT_SEED = ROOT / "data" / "sample_search_results.json"
+DEFAULT_MAX_RESULTS = 5
 STATUS_OPTIONS = ("shortlist", "hold", "reject")
 
 
@@ -1302,7 +1303,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         csv_path = self.resolve_path(query.get("csv", [str(DEFAULT_CSV.relative_to(ROOT))])[-1], DEFAULT_CSV)
         seed_value = query.get("seed", [""])[-1]
         seed_path = self.resolve_path(seed_value, DEFAULT_SEED) if seed_value else None
-        max_results = int(query.get("max_results", ["20"])[-1])
+        max_results = int(query.get("max_results", [str(DEFAULT_MAX_RESULTS)])[-1])
         view_mode = query.get("view", ["cards"])[-1]
         status_filter = normalize_status_filter(query.get("status", ["all"])[-1])
         cards = load_cards(output_path) if output_path.exists() else []
@@ -1329,7 +1330,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         brief_path = self.resolve_path(form.get("brief", ""), DEFAULT_BRIEF)
         output_path = DEFAULT_OUTPUT
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("use_seed") else None
-        max_results = int(form.get("max_results", "20"))
+        max_results = int(form.get("max_results", str(DEFAULT_MAX_RESULTS)))
         view_mode = form.get("view", "cards")
         status_filter = normalize_status_filter(form.get("status_filter", "all"))
 
@@ -1363,7 +1364,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
     def handle_review(self, form: dict[str, str]) -> None:
         brief_path = self.resolve_path(form.get("brief", ""), DEFAULT_BRIEF)
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("seed") else None
-        max_results = form.get("max_results", "20")
+        max_results = form.get("max_results", str(DEFAULT_MAX_RESULTS))
         view_mode = form.get("view", "cards")
         status_filter = normalize_status_filter(form.get("status_filter", "all"))
         try:

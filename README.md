@@ -1,207 +1,97 @@
-# HASH Recruiting Shortlist Tool (Founder’s Associate Challenge)
+# HASH Recruiting Shortlist Tool
 
-A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, weighted fit scoring, confidence, London/Berlin eligibility checks, outreach drafts, workflow status, and exportable output.
+Local GitHub-first recruiting tool for the HASH Full-Stack Engineer role. It searches public GitHub profiles, scores candidates against the role requirements, applies a London/Berlin eligibility gate, generates outreach drafts, supports `shortlist` / `hold` / `reject`, and exports the pipeline to CSV.
 
-## Open the web app
+Web app: [http://localhost:8000](http://localhost:8000)
 
-Create the local virtual environment and install dependencies:
+## Open the app
 
 ```bash
 python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
-```
-
-Start the app:
-
-```bash
 ./.venv/bin/python src/web_app.py
 ```
 
-Then open:
+Open [http://localhost:8000](http://localhost:8000).
 
-```text
-http://localhost:8000
-```
-
-If port `8000` is already in use, run:
+If port `8000` is busy:
 
 ```bash
 ./.venv/bin/python src/web_app.py --port 8001
 ```
 
-Then open:
+Then open [http://localhost:8001](http://localhost:8001).
 
-```text
-http://localhost:8001
-```
+## What it does
 
-## How to test it
+- Sources engineering candidates from public GitHub user search and public GitHub profile pages.
+- Enriches candidates with profile evidence, pinned repos, repository listings, linked websites, and public email when available.
+- Builds structured candidate cards with evidence links, match signals, ranked fit scores, outreach drafts, and workflow status.
+- Shows candidates in both card and table views for quick comparison.
+- Exports the current pipeline to CSV.
 
-- For a stable UI walkthrough with 50+ candidates, use demo mode by checking the seed-data option in the app.
-- For the real product path, leave seed mode unchecked so the tool runs live GitHub user search and profile enrichment.
-- When testing live mode, start with `5` results per query, then increase to `10` or `20` once a run succeeds.
+## Live mode vs demo mode
 
-## What this tool does
+- Live mode: real public GitHub sourcing and profile enrichment.
+- Demo mode: deterministic local seed data from [data/sample_search_results.json](/Users/sarahodell/Projects/headhunter/data/sample_search_results.json) for UI walkthroughs.
 
-- Searches public GitHub user results directly for engineering candidates in Berlin and London.
-- Builds structured candidate cards with:
-  - source/evidence link(s)
-  - pinned repository and repository-list evidence where available
-  - must-have and nice-to-have matches with source labels
-  - location eligibility evidence and confidence
-  - weighted fit score
-  - rationale string
-  - personalized outreach draft
-- Applies a pipeline status automatically:
-  - `shortlist` if score >= 0.55
-  - `hold` if score >= 0.25
-  - `reject` otherwise
-- Rejects candidates without public evidence of being based in London or Berlin for this role brief.
-- Supports human review updates for `shortlist/hold/reject`.
-- Exports the full pipeline to CSV for analysis.
-- Supports an offline/air-gapped path with local seed results JSON.
-- Provides a local browser UI for running sourcing, reviewing candidates, updating workflow status, and downloading CSV exports.
-- Supports both card and table views so 50+ candidates can be reviewed quickly.
+Demo mode contains 50+ seeded candidates so the full workflow can be reviewed offline. Live mode is the real product path.
 
-## Demo mode
+## Sourcing methodology
 
-- `data/sample_search_results.json` contains a deterministic GitHub-style seed dataset with 59 candidate leads.
-- Running the app in seed mode populates both the cards view and table view with a 50+ candidate pipeline for fast demoing.
-- This makes it possible to review the full shortlist workflow without relying on live network search.
+The tool runs multiple GitHub searches for the role to improve recall across:
 
-## Live mode
+- Berlin and London
+- TypeScript / React-heavy profiles
+- broader full-stack / backend profiles
 
-- Live mode uses direct GitHub user search plus public profile enrichment.
-- Candidate names, usernames, bios, locations, and profile evidence come from real public GitHub pages.
-- The scorer pulls from multiple public evidence sources when available:
-  - GitHub search snippet
-  - GitHub profile text
-  - pinned repositories
-  - repositories list page
-  - linked personal website
-- GitHub may temporarily rate-limit repeated unauthenticated searches. If that happens, wait a few minutes and rerun with a smaller per-query result count.
+For each candidate, it gathers public evidence from:
 
-## Sourcing approach
+- GitHub user search results
+- GitHub profile text
+- pinned repositories
+- public repositories tab listings
+- linked personal website, if present
+- public email exposed on GitHub or a linked site, if present
 
-- Primary source: public GitHub user search results and public GitHub profile pages.
-- Supporting sources: pinned repositories, repositories tab listings, and linked personal websites when present.
-- Search mechanism: direct GitHub user search pages plus public profile enrichment, used to keep the tool lightweight and runnable locally without third-party API keys.
-- Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
+`GitHub profiles per search` controls depth per search, not final candidate count. Starting with `5` usually yields about `25` raw results before deduplication.
 
-### Why the tool runs multiple searches
+## Scoring methodology
 
-- A single GitHub query is too narrow for this role and will miss good candidates.
-- The tool runs several targeted searches to improve coverage across:
-  - Berlin and London
-  - React-heavy frontend profiles
-  - Node/full-stack profiles
-  - broader TypeScript engineering profiles
-- After fetching those overlapping result sets, it deduplicates candidates and scores them against the full role brief.
-- This means the `GitHub profiles per search` setting controls breadth per search, not the final total candidate count directly.
+Scoring is heuristic and evidence-weighted.
 
-### How candidate evidence is gathered
+- Each requirement in [role_briefs/hash_full_stack_engineer.json](/Users/sarahodell/Projects/headhunter/role_briefs/hash_full_stack_engineer.json) is checked against the candidate’s public evidence.
+- Stronger evidence sources carry more weight:
+  - `repo` is strongest
+  - `profile` is medium
+  - `linked site` is medium
+  - `search` is weakest
+- The tool computes:
+  - `must_have_score`
+  - `nice_to_have_score`
+  - `fit_score`
+  - `confidence_score`
+- Candidates are ranked by fit score.
 
-For each live candidate, the tool attempts to collect public evidence from:
+For this role, London or Berlin is a hard eligibility gate. Candidates without public location evidence for either city are automatically rejected.
 
-- GitHub user search result text
-- GitHub profile name, bio, location, and other visible profile metadata
-- pinned repositories on the profile
-- repositories listed on the public repositories tab
-- linked personal website, when available
+Automatic workflow thresholds:
 
-This produces structured candidate cards with:
+- `shortlist` if `fit_score >= 0.55` and location eligible
+- `hold` if `fit_score >= 0.25` and location eligible
+- `reject` otherwise
 
-- core profile information
-- evidence links
-- must-have and nice-to-have matches
-- location eligibility
-- confidence
-- outreach draft
+The UI displays these scores as percentages and also allows manual status changes.
 
-## Scoring approach
+## Current role brief
 
-- The scorer separates `eligibility`, `fit`, and `confidence`.
-- Eligibility is currently a hard London/Berlin gate based on public evidence.
-- Fit is weighted by requirement importance from the role brief, not simple equal-weight keyword counting.
-- Each requirement gets a stronger score when it is backed by stronger evidence:
-  - `repo` evidence is strongest
-  - `profile` evidence is medium
-  - `linked site` evidence is medium
-  - `search` evidence is weakest
-- For the HASH Full-Stack role, `TypeScript`, `React`, and true frontend/backend evidence are weighted more heavily than bonus skills.
-- Nice-to-haves add upside, but they cannot compensate for weak core evidence.
-- Confidence increases when the candidate has multiple corroborating public sources, especially repository-level evidence.
+This repo is configured for the HASH Full-Stack Engineer role in:
 
-### How the final decision is made
+- [role_briefs/hash_full_stack_engineer.json](/Users/sarahodell/Projects/headhunter/role_briefs/hash_full_stack_engineer.json)
 
-For each candidate, the tool computes:
+## CLI
 
-- `must_have_score`
-- `nice_to_have_score`
-- `fit_score`
-- `confidence_score`
-
-Then it applies workflow logic:
-
-- if there is no public London/Berlin evidence, the candidate is automatically `reject`
-- otherwise:
-  - `shortlist` if `fit_score >= 0.55`
-  - `hold` if `fit_score >= 0.25`
-  - `reject` otherwise
-
-In practice, the status is a combination of:
-
-- hard eligibility
-- weighted technical fit
-- evidence confidence for human interpretation
-
-The status itself is automatic, but can be manually changed in the UI for review workflow.
-
-## Selected role for this submission
-
-This repo includes a role brief for **HASH Full-Stack Engineer** in:
-
-- `role_briefs/hash_full_stack_engineer.json`
-
-The brief is based on HASH's Gem job post for the in-person London/Berlin role.
-
-You can edit this file or add additional role briefs.
-
-## Setup
-
-Create the local virtual environment and install the runtime dependency used for HTTPS certificate verification in live search mode:
-
-```bash
-python3 -m venv .venv
-./.venv/bin/python -m pip install -r requirements.txt
-```
-
-Then confirm Python is available:
-
-```bash
-python3 --version
-```
-
-## Run
-
-### 1) Local web app (recommended)
-
-The web app lets you:
-
-- choose a role brief
-- run GitHub-first live sourcing or deterministic seed data
-- review candidate cards
-- switch between card and table views for quick comparison
-- change `shortlist` / `hold` / `reject`
-- download CSV output
-
-Demo mode already includes 59 candidates. For live testing, start with `5` results per query, then increase to `10` or `20` once GitHub search is responding normally.
-
-### 2) CLI engine
-
-Live GitHub sourcing uses direct GitHub search and profile fetches, so on macOS you should install `requirements.txt` first to avoid SSL certificate issues.
-
-#### Live web sourcing mode
+Run sourcing:
 
 ```bash
 ./.venv/bin/python src/recruiting_tool.py run \
@@ -210,7 +100,7 @@ Live GitHub sourcing uses direct GitHub search and profile fetches, so on macOS 
   --max-results-per-query 20
 ```
 
-#### Offline seed mode (recommended in restricted environments)
+Run deterministic demo data:
 
 ```bash
 ./.venv/bin/python src/recruiting_tool.py run \
@@ -219,7 +109,7 @@ Live GitHub sourcing uses direct GitHub search and profile fetches, so on macOS 
   --seed-results data/sample_search_results.json
 ```
 
-Update a candidate workflow status:
+Update workflow status:
 
 ```bash
 ./.venv/bin/python src/recruiting_tool.py review \
@@ -238,33 +128,13 @@ Export CSV:
 
 ## Project structure
 
-- `src/recruiting_tool.py` contains the core sourcing, scoring, workflow, and export logic.
-- `src/web_app.py` provides the lightweight local web interface.
-- `role_briefs/hash_full_stack_engineer.json` contains the HASH Full-Stack Engineer brief.
-- `data/sample_search_results.json` contains deterministic seed results for demo and testing.
-
-## Output schema
-
-Each candidate card includes:
-
-- `id`
-- `name`
-- `headline`
-- `source_url`
-- `evidence_links`
-- `must_have_hits`
-- `nice_to_have_hits`
-- `must_have_score`
-- `nice_to_have_score`
-- `confidence_score`
-- `fit_score`
-- `rationale`
-- `status`
-- `eligibility_reason`
-- `outreach_draft`
+- [src/recruiting_tool.py](/Users/sarahodell/Projects/headhunter/src/recruiting_tool.py): sourcing, scoring, workflow, export
+- [src/web_app.py](/Users/sarahodell/Projects/headhunter/src/web_app.py): local web app
+- [role_briefs/hash_full_stack_engineer.json](/Users/sarahodell/Projects/headhunter/role_briefs/hash_full_stack_engineer.json): role requirements and weights
+- [data/sample_search_results.json](/Users/sarahodell/Projects/headhunter/data/sample_search_results.json): demo seed data
 
 ## Notes
 
-- This tool uses public search results and public links.
-- The scoring system is intentionally auditable and evidence-backed, but still heuristic rather than model-based.
-- The web app is intentionally local-only and assumes single-user usage on one machine.
+- This is a local-only tool intended to run on one machine.
+- It uses only public data.
+- GitHub may temporarily rate-limit repeated live runs; if so, wait a few minutes and rerun with a smaller per-search count.

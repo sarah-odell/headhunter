@@ -283,7 +283,7 @@ def enrich_github_result(item: dict) -> dict:
     github_username = username or urlparse(item["url"]).path.strip("/")
     api_profile = _fetch_github_user_profile(github_username) if github_username else {}
     api_email = _normalize_email(api_profile.get("email", "")) if isinstance(api_profile, dict) else ""
-    api_blog = api_profile.get("blog", "").strip() if isinstance(api_profile, dict) else ""
+    api_blog = _normalize_optional_text(api_profile.get("blog", "")) if isinstance(api_profile, dict) else ""
     if not website and api_blog:
         website = api_blog
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
@@ -349,10 +349,14 @@ def _extract_public_email(html: str) -> str:
 
 
 def _normalize_email(value: str) -> str:
-    value = value.strip().strip(".,;:()[]{}<>")
+    value = _normalize_optional_text(value)
     if value.startswith("mailto:"):
         value = value[7:]
     return value if EMAIL_RE.fullmatch(value) else ""
+
+
+def _normalize_optional_text(value: object) -> str:
+    return value.strip() if isinstance(value, str) else ""
 
 
 def _is_noreply_email(value: str) -> bool:
