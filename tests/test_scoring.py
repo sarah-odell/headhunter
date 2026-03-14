@@ -1,6 +1,7 @@
 import unittest
 
 from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_location, to_status, update_card_status
+from src.recruiting_tool import _extract_github_search_payload, is_github_profile_url
 
 
 class ScoreCandidateTests(unittest.TestCase):
@@ -26,12 +27,40 @@ class ScoreCandidateTests(unittest.TestCase):
         self.assertEqual(nice_hits, [])
         self.assertEqual(score, 0.375)
 
+    def test_score_candidate_uses_aliases_for_frontend_backend(self):
+        must_haves = ["frontend", "backend"]
+        nice = ["performance"]
+        text = "Engineer building React and Node.js products with API and Postgres experience."
+
+        must_hits, nice_hits, score = score_candidate(text, must_haves, nice)
+
+        self.assertEqual(must_hits, ["frontend", "backend"])
+        self.assertEqual(nice_hits, [])
+        self.assertEqual(score, 0.75)
+
     def test_score_location_requires_matching_target(self):
         hits = score_location("Berlin-based engineer shipping React systems.", ["Berlin", "London"])
         self.assertEqual(hits, ["Berlin"])
 
     def test_to_status_rejects_without_location_eligibility(self):
         self.assertEqual(to_status(0.9, location_eligible=False), "reject")
+        self.assertEqual(to_status(0.56, location_eligible=True), "shortlist")
+        self.assertEqual(to_status(0.3, location_eligible=True), "hold")
+
+    def test_is_github_profile_url_accepts_profile_and_rejects_repo(self):
+        self.assertTrue(is_github_profile_url("https://github.com/yyx990803"))
+        self.assertFalse(is_github_profile_url("https://github.com/vuejs/vue"))
+        self.assertFalse(is_github_profile_url("https://github.com/topics/typescript"))
+        self.assertFalse(is_github_profile_url("https://github.com/orgs/supabase/discussions/40821"))
+
+    def test_extract_github_search_payload_reads_embedded_json(self):
+        html = (
+            '<script type="application/json" data-target="react-app.embeddedData">'
+            '{"payload":{"results":[{"login":"yyx990803","name":"Evan You"}]}}'
+            "</script>"
+        )
+        payload = _extract_github_search_payload(html)
+        self.assertEqual(payload["results"][0]["login"], "yyx990803")
 
     def test_update_card_status_changes_matching_candidate(self):
         cards = [

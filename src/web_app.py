@@ -47,6 +47,7 @@ def render_page(
     seed_path: Path | None,
     max_results: int,
     cards: list,
+    view_mode: str = "cards",
     message: str = "",
     error: str = "",
 ) -> str:
@@ -72,6 +73,7 @@ def render_page(
     )
 
     candidate_cards = []
+    candidate_rows = []
     for card in cards:
         must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
         nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
@@ -141,9 +143,25 @@ def render_page(
                 <input type="hidden" name="brief" value="{escape(str(brief_path.relative_to(ROOT)))}">
                 <input type="hidden" name="seed" value="{escape(str(seed_path.relative_to(ROOT))) if seed_path else ''}">
                 <input type="hidden" name="max_results" value="{max_results}">
+                <input type="hidden" name="view" value="{escape(view_mode)}">
                 {status_form}
               </form>
             </article>
+            """
+        )
+        candidate_rows.append(
+            f"""
+            <tr>
+              <td>
+                <div class="table-name">{escape(card.name)}</div>
+                <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
+              </td>
+              <td>{escape(card.status.title())}</td>
+              <td>{card.fit_score:.3f}</td>
+              <td>{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
+              <td>{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
+              <td>{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
+            </tr>
             """
         )
 
@@ -154,6 +172,52 @@ def render_page(
     must_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["must_haves"])
     nice_to_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["nice_to_haves"])
     location_label = " / ".join(location_targets) if location_targets else "No location gate"
+    cards_tab_class = "active" if view_mode == "cards" else ""
+    table_tab_class = "active" if view_mode == "table" else ""
+    view_query = urlencode(
+        {
+            "brief": str(brief_path.relative_to(ROOT)),
+            "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
+            "max_results": str(max_results),
+        }
+    )
+    cards_view_html = (
+        ''.join(candidate_cards)
+        if candidate_cards
+        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidate cards yet. Run sourcing to generate a shortlist.</p></div>'
+    )
+    table_view_html = (
+        f"""
+        <section class="table-shell spotlight-card reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Candidate table</p>
+              <h3>All candidates</h3>
+            </div>
+            <span class="pill">{len(cards)} rows</span>
+          </div>
+          <div class="table-wrap">
+            <table class="candidate-table">
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Status</th>
+                  <th>Score</th>
+                  <th>Location</th>
+                  <th>Must-haves</th>
+                  <th>Nice-to-haves</th>
+                </tr>
+              </thead>
+              <tbody>
+                {''.join(candidate_rows)}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        """
+        if candidate_rows
+        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates available for table view yet.</p></div>'
+    )
 
     return f"""<!doctype html>
 <html lang="en">
@@ -550,6 +614,33 @@ def render_page(
       gap: 24px;
       align-items: start;
     }}
+    .view-switcher {{
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-default);
+      width: fit-content;
+    }}
+    .view-tab {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: var(--foreground-muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+    }}
+    .view-tab.active {{
+      background: rgba(94,106,210,0.18);
+      color: var(--foreground);
+      box-shadow: inset 0 0 0 1px rgba(94,106,210,0.25);
+    }}
     .candidate-list {{
       display: grid;
       gap: 18px;
@@ -614,6 +705,51 @@ def render_page(
       gap: 20px;
       position: sticky;
       top: 24px;
+    }}
+    .table-shell {{
+      padding: 20px;
+    }}
+    .table-wrap {{
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border-default);
+      background: rgba(8, 8, 12, 0.72);
+    }}
+    .candidate-table {{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px;
+    }}
+    .candidate-table th,
+    .candidate-table td {{
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+      line-height: 1.5;
+    }}
+    .candidate-table th {{
+      font-family: "SFMono-Regular", Menlo, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--foreground-subtle);
+      background: rgba(255,255,255,0.03);
+      position: sticky;
+      top: 0;
+    }}
+    .candidate-table tbody tr:hover {{
+      background: rgba(255,255,255,0.03);
+    }}
+    .table-name {{
+      color: var(--foreground);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }}
+    .table-link {{
+      color: var(--accent-bright);
+      font-size: 13px;
     }}
     ul {{
       margin: 0;
@@ -808,6 +944,7 @@ def render_page(
           <span class="pill">Local-only</span>
         </div>
         <div class="form-grid">
+          <input type="hidden" name="view" value="{escape(view_mode)}">
           <label>
             Role brief
             <select name="brief">{''.join(role_options)}</select>
@@ -847,6 +984,10 @@ def render_page(
             <span class="pill">{len(cards)} cards</span>
             <span class="pill">{escape(location_label)}</span>
           </div>
+          <nav class="view-switcher" aria-label="Candidate views">
+            <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
+            <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
+          </nav>
           <p>Weighted scoring favors must-haves over nice-to-haves, while missing London/Berlin evidence forces a reject state.</p>
         </div>
       </section>
@@ -862,7 +1003,7 @@ def render_page(
 
       <section class="workspace-grid">
         <section class="candidate-list">
-          {''.join(candidate_cards) if candidate_cards else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidate cards yet. Run sourcing to generate a shortlist.</p></div>'}
+          {cards_view_html if view_mode == "cards" else table_view_html}
         </section>
 
         <aside class="brief-card spotlight-card">
@@ -950,7 +1091,8 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         csv_path = self.resolve_path(query.get("csv", [str(DEFAULT_CSV.relative_to(ROOT))])[-1], DEFAULT_CSV)
         seed_value = query.get("seed", [""])[-1]
         seed_path = self.resolve_path(seed_value, DEFAULT_SEED) if seed_value else None
-        max_results = int(query.get("max_results", ["10"])[-1])
+        max_results = int(query.get("max_results", ["20"])[-1])
+        view_mode = query.get("view", ["cards"])[-1]
         cards = load_cards(output_path) if output_path.exists() else []
         page = render_page(
             brief_path=brief_path,
@@ -959,6 +1101,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
             seed_path=seed_path,
             max_results=max_results,
             cards=cards,
+            view_mode=view_mode if view_mode in {"cards", "table"} else "cards",
             message=query.get("message", [""])[-1],
             error=query.get("error", [""])[-1],
         )
@@ -973,7 +1116,8 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         brief_path = self.resolve_path(form.get("brief", ""), DEFAULT_BRIEF)
         output_path = DEFAULT_OUTPUT
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("use_seed") else None
-        max_results = int(form.get("max_results", "10"))
+        max_results = int(form.get("max_results", "20"))
+        view_mode = form.get("view", "cards")
 
         try:
             brief = load_role_brief(brief_path)
@@ -984,6 +1128,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                 "brief": str(brief_path.relative_to(ROOT)),
                 "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                 "max_results": str(max_results),
+                "view": view_mode,
                 "message": f"Generated {len(cards)} candidate cards.",
             }
             self.redirect("/", params)
@@ -994,6 +1139,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": str(max_results),
+                    "view": view_mode,
                     "error": str(exc),
                 },
             )
@@ -1001,7 +1147,8 @@ class RecruitingHandler(BaseHTTPRequestHandler):
     def handle_review(self, form: dict[str, str]) -> None:
         brief_path = self.resolve_path(form.get("brief", ""), DEFAULT_BRIEF)
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("seed") else None
-        max_results = form.get("max_results", "10")
+        max_results = form.get("max_results", "20")
+        view_mode = form.get("view", "cards")
         try:
             cards = load_cards(DEFAULT_OUTPUT)
             update_card_status(cards, form["candidate_id"], form["status"])
@@ -1013,6 +1160,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
+                    "view": view_mode,
                     "message": f"Updated {form['candidate_id']} to {form['status']}.",
                 },
             )
@@ -1023,6 +1171,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
+                    "view": view_mode,
                     "error": str(exc),
                 },
             )

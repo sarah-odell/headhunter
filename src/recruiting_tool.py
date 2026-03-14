@@ -8,12 +8,14 @@ import csv
 import hashlib
 import json
 import re
+import ssl
 from io import StringIO
 from dataclasses import asdict, dataclass
 from html import unescape
 from pathlib import Path
 from typing import Iterable
-from urllib.parse import quote_plus
+from urllib.parse import parse_qs, quote_plus, unquote, urlparse
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 NEGATION_PREFIXES = (
@@ -25,6 +27,61 @@ NEGATION_PREFIXES = (
     "lacks",
     "lack of",
 )
+SKILL_ALIASES = {
+    "typescript": ["typescript", "ts"],
+    "react": ["react", "reactjs", "react.js"],
+    "frontend": ["frontend", "front-end", "ui", "react", "nextjs", "next.js", "tailwind", "html canvas"],
+    "backend": ["backend", "back-end", "node", "nodejs", "node.js", "api", "server", "postgres", "postgresql"],
+    "performance": ["performance", "performant", "optimization", "optimiz", "scalability", "scale"],
+    "data structures": ["data structures", "algorithms"],
+    "storage systems": ["storage systems", "databases", "database", "postgres", "postgresql", "redis"],
+    "rust": ["rust"],
+    "effect": ["effect"],
+    "html canvas": ["html canvas", "canvas"],
+    "graphics": ["graphics", "rendering", "visualization"],
+    "animation": ["animation", "motion"],
+    "material ui": ["material ui", "mui"],
+    "base ui": ["base ui"],
+    "ariakit": ["ariakit"],
+    "panda": ["panda", "panda css", "pandacss"],
+    "open source": ["open source", "oss"],
+}
+GITHUB_PROFILE_RE = re.compile(r"^https?://github\.com/([^/?#]+?)/?$", flags=re.I)
+GITHUB_RESERVED_PATHS = {
+    "about",
+    "account",
+    "apps",
+    "collections",
+    "contact",
+    "customer-stories",
+    "enterprise",
+    "events",
+    "explore",
+    "features",
+    "gist",
+    "git-guides",
+    "images",
+    "issues",
+    "login",
+    "marketplace",
+    "notifications",
+    "orgs",
+    "organizations",
+    "pricing",
+    "pulls",
+    "readme",
+    "search",
+    "security",
+    "sessions",
+    "settings",
+    "site",
+    "sponsors",
+    "team",
+    "teams",
+    "topics",
+    "trending",
+    "users",
+}
 
 
 @dataclass
@@ -57,27 +114,149 @@ def _strip_tags(value: str) -> str:
     return re.sub(r"<[^>]+>", "", value)
 
 
-def ddg_search(query: str, max_results: int = 10) -> list[dict]:
-    """DuckDuckGo HTML scraping without third-party dependencies."""
-    url = f"https://duckduckgo.com/html/?q={quote_plus(query)}"
+def _build_ssl_context() -> ssl.SSLContext:
+    try:
+        import certifi
+    except ImportError:
+        return ssl.create_default_context()
+    return ssl.create_default_context(cafile=certifi.where())
+
+
+def _fetch_html(url: str) -> str:
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(req, timeout=20) as response:  # nosec B310
-        html = response.read().decode("utf-8", errors="ignore")
+    ssl_context = _build_ssl_context()
+    try:
+        with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
+            return response.read().decode("utf-8", errors="ignore")
+    except HTTPError as exc:
+        if exc.code == 429:
+            raise RuntimeError(
+                "GitHub is rate-limiting the live search right now. Wait a minute and rerun, "
+                "or use the seed dataset for the UI demo."
+            ) from exc
+        raise
+    except URLError as exc:
+        if isinstance(exc.reason, ssl.SSLCertVerificationError):
+            raise RuntimeError(
+                "HTTPS certificate verification failed while requesting a public page. "
+                "Install the project dependencies with `python3 -m pip install -r requirements.txt` "
+                "to use the bundled CA certificates, then rerun the search."
+            ) from exc
+        raise
 
-    links = re.findall(r'<a[^>]*class="result__a"[^>]*href="([^"]+)"[^>]*>(.*?)</a>', html, flags=re.S)
-    snippets = re.findall(r'<a[^>]*class="result__snippet"[^>]*>(.*?)</a>', html, flags=re.S)
 
+def github_user_search(query: str, max_results: int = 20) -> list[dict]:
+    """GitHub user search scraping from embedded JSON results."""
     results: list[dict] = []
-    for idx, (href, title_html) in enumerate(links[:max_results]):
-        title = unescape(_strip_tags(title_html)).strip()
-        snippet_raw = snippets[idx] if idx < len(snippets) else ""
-        snippet = unescape(_strip_tags(snippet_raw)).strip()
-        results.append({"title": title, "url": href, "snippet": snippet})
+    page = 1
+
+    while len(results) < max_results:
+        search_url = f"https://github.com/search?q={quote_plus(query)}&type=users&p={page}"
+        html = _fetch_html(search_url)
+        payload = _extract_github_search_payload(html)
+        page_results = payload.get("results", [])
+        if not page_results:
+            break
+
+        for row in page_results:
+            login = row.get("login")
+            if not login:
+                continue
+            profile_url = f"https://github.com/{login}"
+            name = row.get("name") or login
+            bio = row.get("profile_bio") or ""
+            location = row.get("location") or ""
+            repos = row.get("repos")
+            followers = row.get("followers")
+            snippet_parts = [bio, location]
+            if repos is not None:
+                snippet_parts.append(f"{repos} public repos")
+            if followers is not None:
+                snippet_parts.append(f"{followers} followers")
+            results.append(
+                {
+                    "title": f"{name} ({login}) · GitHub",
+                    "url": profile_url,
+                    "snippet": " | ".join(part for part in snippet_parts if part),
+                    "profile_name": name,
+                    "profile_location": location,
+                    "headline_override": bio or f"{location} GitHub profile" if location else "GitHub profile",
+                    "evidence_links": [profile_url, search_url],
+                }
+            )
+            if len(results) >= max_results:
+                break
+
+        if len(page_results) < 10:
+            break
+        page += 1
+
     return results
+
+
+def _extract_github_search_payload(html: str) -> dict:
+    match = re.search(
+        r'<script type="application/json" data-target="react-app\.embeddedData">(\{.*?\})</script>',
+        html,
+        flags=re.S,
+    )
+    if not match:
+        return {}
+    data = json.loads(unescape(match.group(1)))
+    return data.get("payload", {})
 
 
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", value.lower()).strip()
+
+
+def _first_match(pattern: str, text: str) -> str:
+    match = re.search(pattern, text, flags=re.S)
+    return match.group(1).strip() if match else ""
+
+
+def is_github_profile_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.netloc.lower() != "github.com":
+        return False
+    path_parts = [part for part in parsed.path.split("/") if part]
+    if len(path_parts) != 1:
+        return False
+    username = path_parts[0].lower()
+    if username in GITHUB_RESERVED_PATHS:
+        return False
+    return True
+
+
+def enrich_github_result(item: dict) -> dict:
+    if not is_github_profile_url(item["url"]):
+        return item
+
+    html = _fetch_html(item["url"])
+    full_name = _strip_tags(_first_match(r'<span class="p-name[^"]*"[^>]*>(.*?)</span>', html))
+    username = _strip_tags(_first_match(r'<span class="p-nickname[^"]*"[^>]*>(.*?)</span>', html))
+    bio = _strip_tags(_first_match(r'<div class="p-note[^"]*"[^>]*>(.*?)</div>', html))
+    company = _strip_tags(_first_match(r'itemprop="worksFor"[^>]*aria-label="Organization:\s*([^"]+)"', html))
+    location = _strip_tags(_first_match(r'itemprop="homeLocation"[^>]*aria-label="Home location:\s*([^"]+)"', html))
+    website = _first_match(r'itemprop="url"[^>]*href="([^"]+)"', html)
+    profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
+
+    display_name = full_name or username or item["title"]
+    headline_parts = [part for part in (bio, company, location) if part]
+    headline = " | ".join(headline_parts) if headline_parts else item["title"]
+
+    text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, profile_meta]
+    enriched_item = dict(item)
+    enriched_item["title"] = f"{display_name} ({username}) · GitHub" if full_name and username else item["title"]
+    enriched_item["snippet"] = " ".join(part for part in text_parts if part)
+    enriched_item["headline_override"] = headline
+    evidence_links = [item["url"]]
+    if website and website not in evidence_links:
+        evidence_links.append(website)
+    enriched_item["evidence_links"] = evidence_links
+    enriched_item["profile_name"] = display_name
+    enriched_item["profile_location"] = location
+    return enriched_item
 
 
 def extract_name(title: str) -> str:
@@ -108,16 +287,17 @@ def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterabl
 
 
 def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
-    normalized_keyword = normalize_text(keyword)
-    if normalized_keyword not in normalized_text:
-        return False
-
-    for match in re.finditer(re.escape(normalized_keyword), normalized_text):
-        prefix = normalized_text[max(0, match.start() - 24):match.start()].strip()
-        if any(prefix.endswith(negation) for negation in NEGATION_PREFIXES):
+    alias_terms = SKILL_ALIASES.get(normalize_text(keyword), [keyword])
+    for term in alias_terms:
+        normalized_keyword = normalize_text(term)
+        if normalized_keyword not in normalized_text:
             continue
-        return True
 
+        for match in re.finditer(re.escape(normalized_keyword), normalized_text):
+            prefix = normalized_text[max(0, match.start() - 24):match.start()].strip()
+            if any(prefix.endswith(negation) for negation in NEGATION_PREFIXES):
+                continue
+            return True
     return False
 
 
@@ -141,23 +321,24 @@ def score_location(text: str, location_targets: Iterable[str]) -> list[str]:
 def to_status(score: float, location_eligible: bool = True) -> str:
     if not location_eligible:
         return "reject"
-    if score >= 0.65:
+    if score >= 0.55:
         return "shortlist"
-    if score >= 0.40:
+    if score >= 0.25:
         return "hold"
     return "reject"
 
 
-def _cards_from_results(role_brief: dict, results: list[dict]) -> list[CandidateCard]:
+def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: bool = True) -> list[CandidateCard]:
     dedup: dict[str, CandidateCard] = {}
     location_targets = role_brief.get("location_targets", [])
     for item in results:
-        text_blob = f"{item['title']} {item.get('snippet', '')}"
+        enriched_item = enrich_github_result(item) if enrich_profiles else dict(item)
+        text_blob = f"{enriched_item['title']} {enriched_item.get('snippet', '')}"
         must_hits, nice_hits, score = score_candidate(text_blob, role_brief["must_haves"], role_brief["nice_to_haves"])
         location_hits = score_location(text_blob, location_targets)
         location_eligible = bool(location_hits) if location_targets else True
-        name = extract_name(item["title"])
-        identity = hashlib.sha1(f"{name}|{item['url']}".encode()).hexdigest()[:8]
+        name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
+        identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
         rationale = (
             f"Matched must-haves: {must_hits if must_hits else 'none'}; "
             f"nice-to-haves: {nice_hits if nice_hits else 'none'}; "
@@ -166,9 +347,9 @@ def _cards_from_results(role_brief: dict, results: list[dict]) -> list[Candidate
         candidate = CandidateCard(
             id=identity,
             name=name,
-            headline=item["title"],
-            source_url=item["url"],
-            evidence_links=[item["url"]],
+            headline=enriched_item.get("headline_override") or enriched_item["title"],
+            source_url=enriched_item["url"],
+            evidence_links=enriched_item.get("evidence_links", [enriched_item["url"]]),
             must_have_hits=must_hits,
             nice_to_have_hits=nice_hits,
             fit_score=score,
@@ -176,22 +357,22 @@ def _cards_from_results(role_brief: dict, results: list[dict]) -> list[Candidate
             status=to_status(score, location_eligible=location_eligible),
             location_hits=location_hits,
             location_eligible=location_eligible,
-            outreach_draft=generate_outreach(name, role_brief, must_hits, nice_hits, item["url"]),
+            outreach_draft=generate_outreach(name, role_brief, must_hits, nice_hits, enriched_item["url"]),
         )
         if identity not in dedup or dedup[identity].fit_score < candidate.fit_score:
             dedup[identity] = candidate
     return sorted(dedup.values(), key=lambda c: c.fit_score, reverse=True)
 
 
-def build_candidates(role_brief: dict, max_results_per_query: int = 10, seed_results_path: Path | None = None) -> list[CandidateCard]:
+def build_candidates(role_brief: dict, max_results_per_query: int = 20, seed_results_path: Path | None = None) -> list[CandidateCard]:
     if seed_results_path:
         raw = json.loads(seed_results_path.read_text())
-        return _cards_from_results(role_brief, raw)
+        return _cards_from_results(role_brief, raw, enrich_profiles=False)
 
     merged_results: list[dict] = []
     for query in role_brief["queries"]:
-        merged_results.extend(ddg_search(query, max_results=max_results_per_query))
-    return _cards_from_results(role_brief, merged_results)
+        merged_results.extend(github_user_search(query, max_results=max_results_per_query))
+    return _cards_from_results(role_brief, merged_results, enrich_profiles=True)
 
 
 def save_cards(cards: list[CandidateCard], output: Path) -> None:
@@ -285,7 +466,7 @@ def build_parser() -> argparse.ArgumentParser:
     run = sub.add_parser("run", help="Search and score candidate leads")
     run.add_argument("--brief", required=True, help="Path to role brief JSON")
     run.add_argument("--output", default="data/candidates.json", help="Output JSON path")
-    run.add_argument("--max-results-per-query", type=int, default=10)
+    run.add_argument("--max-results-per-query", type=int, default=20)
     run.add_argument("--seed-results", help="Optional path to local JSON search results")
     run.set_defaults(func=run_cmd)
 

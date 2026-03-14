@@ -4,10 +4,17 @@ A lightweight local web app, backed by a simple Python recruiting engine, that c
 
 ## Open the web app
 
+Create the local virtual environment and install dependencies:
+
+```bash
+python3 -m venv .venv
+./.venv/bin/python -m pip install -r requirements.txt
+```
+
 Start the app:
 
 ```bash
-python3 src/web_app.py
+./.venv/bin/python src/web_app.py
 ```
 
 Then open:
@@ -19,7 +26,7 @@ http://localhost:8000
 If port `8000` is already in use, run:
 
 ```bash
-python3 src/web_app.py --port 8001
+./.venv/bin/python src/web_app.py --port 8001
 ```
 
 Then open:
@@ -30,7 +37,7 @@ http://localhost:8001
 
 ## What this tool does
 
-- Searches public web results with a GitHub-first sourcing strategy for engineering roles, using DuckDuckGo's HTML endpoint as the search mechanism.
+- Searches public GitHub user results directly for engineering candidates in Berlin and London.
 - Builds structured candidate cards with:
   - source/evidence link(s)
   - must-have and nice-to-have matches
@@ -47,12 +54,19 @@ http://localhost:8001
 - Exports the full pipeline to CSV for analysis.
 - Supports an offline/air-gapped path with local seed results JSON.
 - Provides a local browser UI for running sourcing, reviewing candidates, updating workflow status, and downloading CSV exports.
+- Supports both card and table views so 50+ candidates can be reviewed quickly.
+
+## Demo mode
+
+- `data/sample_search_results.json` contains a deterministic GitHub-style seed dataset with 59 candidate leads.
+- Running the app in seed mode populates both the cards view and table view with a 50+ candidate pipeline for fast demoing.
+- This makes it possible to review the full shortlist workflow without relying on live network search.
 
 ## Sourcing approach
 
 - Primary source: public GitHub profiles and repository pages surfaced through role-specific search queries.
 - Supporting public sources: personal sites, engineering blogs, or other evidence-rich pages that appear in search results.
-- Search mechanism: DuckDuckGo HTML results, used to keep the tool lightweight and runnable locally without third-party API keys.
+- Search mechanism: direct GitHub user search pages plus public profile enrichment, used to keep the tool lightweight and runnable locally without third-party API keys.
 - Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
 
 ## Selected role for this submission
@@ -67,7 +81,14 @@ You can edit this file or add additional role briefs.
 
 ## Setup
 
-No third-party packages required:
+Create the local virtual environment and install the runtime dependency used for HTTPS certificate verification in live search mode:
+
+```bash
+python3 -m venv .venv
+./.venv/bin/python -m pip install -r requirements.txt
+```
+
+Then confirm Python is available:
 
 ```bash
 python3 --version
@@ -80,26 +101,31 @@ python3 --version
 The web app lets you:
 
 - choose a role brief
-- run sourcing with live web search or deterministic seed data
+- run GitHub-first live sourcing or deterministic seed data
 - review candidate cards
+- switch between card and table views for quick comparison
 - change `shortlist` / `hold` / `reject`
 - download CSV output
 
+Demo mode already includes 59 candidates. For larger live runs, use `20` to `25` results per query in the UI. With the current query set, that is designed to surface 50+ candidates before de-duplication.
+
 ### 2) CLI engine
+
+Live GitHub sourcing uses direct GitHub search and profile fetches, so on macOS you should install `requirements.txt` first to avoid SSL certificate issues.
 
 #### Live web sourcing mode
 
 ```bash
-python3 src/recruiting_tool.py run \
+./.venv/bin/python src/recruiting_tool.py run \
   --brief role_briefs/hash_full_stack_engineer.json \
   --output data/candidates.json \
-  --max-results-per-query 10
+  --max-results-per-query 20
 ```
 
 #### Offline seed mode (recommended in restricted environments)
 
 ```bash
-python3 src/recruiting_tool.py run \
+./.venv/bin/python src/recruiting_tool.py run \
   --brief role_briefs/hash_full_stack_engineer.json \
   --output data/candidates.json \
   --seed-results data/sample_search_results.json
@@ -108,7 +134,7 @@ python3 src/recruiting_tool.py run \
 Update a candidate workflow status:
 
 ```bash
-python3 src/recruiting_tool.py review \
+./.venv/bin/python src/recruiting_tool.py review \
   --output data/candidates.json \
   --id <candidate_id> \
   --status shortlist
@@ -117,7 +143,7 @@ python3 src/recruiting_tool.py review \
 Export CSV:
 
 ```bash
-python3 src/recruiting_tool.py export \
+./.venv/bin/python src/recruiting_tool.py export \
   --output data/candidates.json \
   --csv data/candidates.csv
 ```

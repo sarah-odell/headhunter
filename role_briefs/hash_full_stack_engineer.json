@@ -9,12 +9,12 @@
     "TypeScript",
     "React",
     "frontend",
-    "backend",
-    "performance",
-    "data structures",
-    "storage systems"
+    "backend"
   ],
   "nice_to_haves": [
+    "performance",
+    "data structures",
+    "storage systems",
     "Rust",
     "Effect",
     "HTML Canvas",
@@ -27,11 +27,12 @@
     "open source"
   ],
   "queries": [
-    "site:github.com TypeScript React full-stack engineer Berlin London",
-    "site:github.com TypeScript React performance data structures storage systems engineer",
-    "site:github.com TypeScript React Material UI Base UI Ariakit Panda full-stack",
-    "site:github.com TypeScript Rust performance engineer Berlin London",
-    "site:github.com Effect TypeScript React HTML Canvas graphics animation open source engineer"
+    "location:Berlin language:TypeScript react",
+    "location:London language:TypeScript react",
+    "location:Berlin language:TypeScript node",
+    "location:London language:TypeScript node",
+    "location:Berlin react typescript",
+    "location:London react typescript"
   ],
   "outreach_context": "Founder's Associate Challenge sourcing for engineering talent"
 }
