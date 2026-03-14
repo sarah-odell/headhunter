@@ -371,15 +371,18 @@ def render_page(
       color: var(--foreground-muted);
       font-size: 14px;
     }}
+    .page-header {{
+      display: grid;
+      gap: 10px;
+      margin: 8px 0 20px;
+    }}
     .hero {{
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(360px, 0.7fr);
+      grid-template-columns: 1fr;
       gap: 24px;
-      align-items: stretch;
       margin-bottom: 28px;
     }}
-    .hero-copy,
     .control-panel,
     .summary-card,
     .brief-card,
@@ -414,20 +417,13 @@ def render_page(
     .spotlight-card:hover::before {{
       opacity: 1;
     }}
-    .hero-copy {{
-      padding: 26px;
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }}
-    .hero-copy h1 {{
-      margin: 0 0 12px;
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      line-height: 0.98;
+    .page-header h1 {{
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      line-height: 1.02;
       letter-spacing: -0.04em;
       font-weight: 600;
-      max-width: 10ch;
+      max-width: none;
       background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0.72));
       -webkit-background-clip: text;
       background-clip: text;
@@ -452,36 +448,17 @@ def render_page(
       font-weight: 600;
     }}
     .lede {{
-      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.5;
       color: var(--foreground-muted);
-      max-width: 48ch;
-      margin: 0 0 20px;
-    }}
-    .hero-stack {{
-      display: grid;
-      gap: 10px;
+      max-width: 52ch;
+      margin: 0;
     }}
     .hero-stats {{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }}
-    .hero-stat {{
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border-default);
-    }}
-    .hero-stat strong {{
-      display: block;
-      margin-top: 6px;
-      font-size: 1.15rem;
-      font-weight: 600;
-    }}
-    .hero-stat span {{
-      color: var(--foreground-muted);
-      font-size: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }}
     .control-panel {{
       padding: 24px;
@@ -1069,14 +1046,13 @@ def render_page(
       .shell {{
         padding: 16px 14px 72px;
       }}
-      .hero-copy,
       .control-panel,
       .toolbar,
       .brief-card,
       .candidate-card {{
         padding: 20px;
       }}
-      .hero-copy h1 {{
+      .page-header h1 {{
         font-size: clamp(2.6rem, 16vw, 4.2rem);
       }}
       .hero-stats,
@@ -1121,26 +1097,18 @@ def render_page(
       <a class="secondary" href="/export?{urlencode({'output': str(output_path.relative_to(ROOT)), 'csv': str(csv_path.relative_to(ROOT))})}">Download CSV</a>
     </header>
 
-    <section class="hero" id="hero">
-      <div class="hero-copy spotlight-card">
-        <p class="eyebrow">Founder’s Associate Challenge</p>
-        <div class="hero-stack">
-          <h1>Recruiting <span class="hero-gradient">Shortlist</span></h1>
-          <p class="lede">
-            GitHub-first sourcing for HASH engineering candidates, with weighted fit scoring and a London/Berlin gate.
-          </p>
-        </div>
-        <div class="hero-stats">
-          <article class="hero-stat">
-            <span>Source</span>
-            <strong>GitHub</strong>
-          </article>
-          <article class="hero-stat">
-            <span>Location gate</span>
-            <strong>{escape(location_label)}</strong>
-          </article>
-        </div>
+    <section class="page-header" id="hero">
+      <h1>Recruiting <span class="hero-gradient">Shortlist</span></h1>
+      <p class="lede">
+        GitHub-first sourcing with weighted scoring and a London/Berlin gate.
+      </p>
+      <div class="hero-stats">
+        <span class="pill">Source: GitHub</span>
+        <span class="pill">Location: {escape(location_label)}</span>
       </div>
+    </section>
+
+    <section class="hero">
       <form class="control-panel spotlight-card" method="post" action="/run">
         <div class="section-head">
           <div>

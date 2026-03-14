@@ -88,6 +88,36 @@ http://localhost:8001
 - Search mechanism: direct GitHub user search pages plus public profile enrichment, used to keep the tool lightweight and runnable locally without third-party API keys.
 - Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
 
+### Why the tool runs multiple searches
+
+- A single GitHub query is too narrow for this role and will miss good candidates.
+- The tool runs several targeted searches to improve coverage across:
+  - Berlin and London
+  - React-heavy frontend profiles
+  - Node/full-stack profiles
+  - broader TypeScript engineering profiles
+- After fetching those overlapping result sets, it deduplicates candidates and scores them against the full role brief.
+- This means the `GitHub profiles per search` setting controls breadth per search, not the final total candidate count directly.
+
+### How candidate evidence is gathered
+
+For each live candidate, the tool attempts to collect public evidence from:
+
+- GitHub user search result text
+- GitHub profile name, bio, location, and other visible profile metadata
+- pinned repositories on the profile
+- repositories listed on the public repositories tab
+- linked personal website, when available
+
+This produces structured candidate cards with:
+
+- core profile information
+- evidence links
+- must-have and nice-to-have matches
+- location eligibility
+- confidence
+- outreach draft
+
 ## Scoring approach
 
 - The scorer separates `eligibility`, `fit`, and `confidence`.
@@ -101,6 +131,31 @@ http://localhost:8001
 - For the HASH Full-Stack role, `TypeScript`, `React`, and true frontend/backend evidence are weighted more heavily than bonus skills.
 - Nice-to-haves add upside, but they cannot compensate for weak core evidence.
 - Confidence increases when the candidate has multiple corroborating public sources, especially repository-level evidence.
+
+### How the final decision is made
+
+For each candidate, the tool computes:
+
+- `must_have_score`
+- `nice_to_have_score`
+- `fit_score`
+- `confidence_score`
+
+Then it applies workflow logic:
+
+- if there is no public London/Berlin evidence, the candidate is automatically `reject`
+- otherwise:
+  - `shortlist` if `fit_score >= 0.55`
+  - `hold` if `fit_score >= 0.25`
+  - `reject` otherwise
+
+In practice, the status is a combination of:
+
+- hard eligibility
+- weighted technical fit
+- evidence confidence for human interpretation
+
+The status itself is automatic, but can be manually changed in the UI for review workflow.
 
 ## Selected role for this submission
 
