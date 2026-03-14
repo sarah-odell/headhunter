@@ -1,207 +1,207 @@
-id,name,headline,source_url,must_have_hits,nice_to_have_hits,must_have_score,nice_to_have_score,location_hits,location_eligible,fit_score,status,rationale,outreach_draft
+id,name,headline,source_url,email,must_have_hits,nice_to_have_hits,must_have_score,nice_to_have_score,location_hits,location_eligible,fit_score,status,rationale,outreach_draft
 b962006a,Igor Matias,"Full-stack engineer and tech enthusiast.
 
-Typescript / React / React Native / NodeJS / Postgres | Berlin, Germany",https://github.com/matyas-igor,TypeScript; React; frontend; backend,storage systems,1.0,0.077,Berlin,True,0.769,hold,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['Berlin'].","Hi Igor Matias,
+Typescript / React / React Native / NodeJS / Postgres | Berlin, Germany",https://github.com/matyas-igor,,TypeScript; React; frontend; backend,storage systems,1.0,0.077,Berlin,True,0.769,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['Berlin'].","Hi Igor Matias,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/matyas-igor.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-343cb4a7,Mohd Javed,Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London,https://github.com/devjavedmohd,TypeScript; React; frontend; backend,storage systems,1.0,0.077,London,True,0.769,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['London'].","Hi Mohd Javed,
+HASH Recruiting Team"
+343cb4a7,Mohd Javed,Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London,https://github.com/devjavedmohd,dev.javedmohd@gmail.com,TypeScript; React; frontend; backend,storage systems,1.0,0.077,London,True,0.769,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['London'].","Hi Mohd Javed,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/devjavedmohd.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-7c473ab1,inker,"JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",https://github.com/inker,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi inker,
+HASH Recruiting Team"
+7c473ab1,inker,"JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",https://github.com/inker,,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi inker,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/inker.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-12efe01b,José Quinto,"Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",https://github.com/jquintozamora,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi José Quinto,
+HASH Recruiting Team"
+12efe01b,José Quinto,"Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",https://github.com/jquintozamora,,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi José Quinto,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jquintozamora.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-f1a0eca3,Francesco Albanese,"Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",https://github.com/francesco-albanese,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi Francesco Albanese,
+HASH Recruiting Team"
+f1a0eca3,Francesco Albanese,"Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",https://github.com/francesco-albanese,,TypeScript; React; frontend; backend,,1.0,0.0,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].","Hi Francesco Albanese,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/francesco-albanese.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-0bd61d98,Piotr Kuczynski,"Passionate about React, TypeScript and Node.js | freelancer | Berlin, Germany",https://github.com/pkuczynski,TypeScript; React; frontend; backend,,1.0,0.0,Berlin,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].","Hi Piotr Kuczynski,
+HASH Recruiting Team"
+0bd61d98,Piotr Kuczynski,"Passionate about React, TypeScript and Node.js | freelancer | Berlin, Germany",https://github.com/pkuczynski,,TypeScript; React; frontend; backend,,1.0,0.0,Berlin,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].","Hi Piotr Kuczynski,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/pkuczynski.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-85f05305,Stefan Wille,"TypeScript  / React.js / Node.js / GraphQL | Contractor, available from 1 January 2026 | Berlin / Germany",https://github.com/stefanwille,TypeScript; React; frontend; backend,,1.0,0.0,Berlin,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].","Hi Stefan Wille,
+HASH Recruiting Team"
+85f05305,Stefan Wille,"TypeScript  / React.js / Node.js / GraphQL | Contractor, available from 1 January 2026 | Berlin / Germany",https://github.com/stefanwille,,TypeScript; React; frontend; backend,,1.0,0.0,Berlin,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].","Hi Stefan Wille,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/stefanwille.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
+HASH Recruiting Team"
 27b28d4d,Harshit Tripathi,"Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
-PHP | MySQL | Laravel | Docker | @tasko-io | Berlin",https://github.com/htthecool,React; frontend; backend,storage systems,0.75,0.077,Berlin,True,0.582,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 0.750; nice-to-have score: 0.077; location: ['Berlin'].","Hi Harshit Tripathi,
+PHP | MySQL | Laravel | Docker | @tasko-io | Berlin",https://github.com/htthecool,,React; frontend; backend,storage systems,0.75,0.077,Berlin,True,0.582,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 0.750; nice-to-have score: 0.077; location: ['Berlin'].","Hi Harshit Tripathi,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend, storage systems looked highly relevant, especially based on what I saw here: https://github.com/htthecool.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-c0f43ab6,Daniel Ross,"Front-end JavaScript/TypeScript/React Developer | London, UK",https://github.com/notalexross,TypeScript; React; frontend,open source,0.75,0.077,London,True,0.582,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: ['open source']; must-have score: 0.750; nice-to-have score: 0.077; location: ['London'].","Hi Daniel Ross,
+HASH Recruiting Team"
+c0f43ab6,Daniel Ross,"Front-end JavaScript/TypeScript/React Developer | London, UK",https://github.com/notalexross,,TypeScript; React; frontend,open source,0.75,0.077,London,True,0.582,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: ['open source']; must-have score: 0.750; nice-to-have score: 0.077; location: ['London'].","Hi Daniel Ross,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, open source looked highly relevant, especially based on what I saw here: https://github.com/notalexross.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
+HASH Recruiting Team"
 1a9bbd60,Christian Götze,"full stack web dev
 
-svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany",https://github.com/OG84,React; frontend; backend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Christian Götze,
+svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany",https://github.com/OG84,,React; frontend; backend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Christian Götze,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/OG84.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-79bf7db8,fmacherey,"Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",https://github.com/fmacherey,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi fmacherey,
+HASH Recruiting Team"
+79bf7db8,fmacherey,"Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",https://github.com/fmacherey,,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi fmacherey,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/fmacherey.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
+HASH Recruiting Team"
 22826465,Asad Ali Baloch,"Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...
-because why not?? | Flaconi GmbH | Berlin, Germany",https://github.com/asadlib11,React; frontend; backend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Asad Ali Baloch,
+because why not?? | Flaconi GmbH | Berlin, Germany",https://github.com/asadlib11,,React; frontend; backend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Asad Ali Baloch,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/asadlib11.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-6833d5b6,Aleksandra Sezer,"Front-end developer | React | Typescript | London, UK",https://github.com/aleksandrasezer,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Aleksandra Sezer,
+HASH Recruiting Team"
+6833d5b6,Aleksandra Sezer,"Front-end developer | React | Typescript | London, UK",https://github.com/aleksandrasezer,,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Aleksandra Sezer,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/aleksandrasezer.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-a97647c9,James Rees,"React, Angular, Node and Python Engineer | London",https://github.com/jamesrees77,React; frontend; backend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi James Rees,
+HASH Recruiting Team"
+a97647c9,James Rees,"React, Angular, Node and Python Engineer | London",https://github.com/jamesrees77,,React; frontend; backend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi James Rees,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/jamesrees77.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-a420f943,Felix Leupold,"TypeScript &amp; React Developer | Berlin, Germany",https://github.com/xiel,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Felix Leupold,
+HASH Recruiting Team"
+a420f943,Felix Leupold,"TypeScript &amp; React Developer | Berlin, Germany",https://github.com/xiel,,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Felix Leupold,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/xiel.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-9f5cb6e8,José Copeti,"Immersing in TypeScript, React, Next.js and React Native. | Berlin",https://github.com/jrcopeti,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi José Copeti,
+HASH Recruiting Team"
+9f5cb6e8,José Copeti,"Immersing in TypeScript, React, Next.js and React Native. | Berlin",https://github.com/jrcopeti,jose@lofft.app,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi José Copeti,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jrcopeti.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-a6936eb2,Robin Wieruch,"React &amp; Next.js • JavaScript &amp; TypeScript • Freelancer &amp; Consultant • Full-Stack Software Engineer • Product Engineer • AI • Technical Co-Founder • GitHub Star | Consultant &amp; Freelancer | Berlin, Germany, Remote",https://github.com/rwieruch,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Robin Wieruch,
+HASH Recruiting Team"
+a6936eb2,Robin Wieruch,"React &amp; Next.js • JavaScript &amp; TypeScript • Freelancer &amp; Consultant • Full-Stack Software Engineer • Product Engineer • AI • Technical Co-Founder • GitHub Star | Consultant &amp; Freelancer | Berlin, Germany, Remote",https://github.com/rwieruch,hello@rwieruch.com,TypeScript; React; frontend,,0.75,0.0,Berlin,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].","Hi Robin Wieruch,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/rwieruch.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-4beaf995,Jessica Leach,"JavaScript, React, Ruby, TypeScript | London",https://github.com/JessicaML,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Jessica Leach,
+HASH Recruiting Team"
+4beaf995,Jessica Leach,"JavaScript, React, Ruby, TypeScript | London",https://github.com/JessicaML,,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Jessica Leach,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/JessicaML.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-7b3a6477,Julija Stepanova (VilŠkerste),TypeScript - React - React Native  Developer | Software developer @ Aviva | London,https://github.com/julija777,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Julija Stepanova (VilŠkerste),
+HASH Recruiting Team"
+7b3a6477,Julija Stepanova (VilŠkerste),TypeScript - React - React Native  Developer | Software developer @ Aviva | London,https://github.com/julija777,,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Julija Stepanova (VilŠkerste),
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/julija777.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-a2e2306b,Seb Sowter,TypeScript / React / WebGL / Phaser | London,https://github.com/sebsowter,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Seb Sowter,
+HASH Recruiting Team"
+a2e2306b,Seb Sowter,TypeScript / React / WebGL / Phaser | London,https://github.com/sebsowter,,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Seb Sowter,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/sebsowter.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-736d864d,Filipe A Moreira,Full Stack Developer (Ruby/Rails/JavaScript/Typescript/React) | Coderelax | London - UK,https://github.com/filipeamoreira,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Filipe A Moreira,
+HASH Recruiting Team"
+736d864d,Filipe A Moreira,Full Stack Developer (Ruby/Rails/JavaScript/Typescript/React) | Coderelax | London - UK,https://github.com/filipeamoreira,,TypeScript; React; frontend,,0.75,0.0,London,True,0.562,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].","Hi Filipe A Moreira,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/filipeamoreira.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-35901b6f,Matheus Viana,"👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",https://github.com/moviandev,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Matheus Viana,
+HASH Recruiting Team"
+35901b6f,Matheus Viana,"👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",https://github.com/moviandev,matheus_o_viana@hotmail.com,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Matheus Viana,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/moviandev.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-7fde2b7b,Jemail Omer,"Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",https://github.com/jemxz,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Jemail Omer,
+HASH Recruiting Team"
+7fde2b7b,Jemail Omer,"Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",https://github.com/jemxz,jemxz.omer@gmail.com,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Jemail Omer,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/jemxz.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-ea8d0807,Carlos Meyer,Apprentice Software Developer (FIAE) · Backend / Data / AI Systems · JS · Node · Homelab (Proxmox/Linux) | Berlin,https://github.com/fabrikler,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Carlos Meyer,
+HASH Recruiting Team"
+ea8d0807,Carlos Meyer,Apprentice Software Developer (FIAE) · Backend / Data / AI Systems · JS · Node · Homelab (Proxmox/Linux) | Berlin,https://github.com/fabrikler,,backend,,0.25,0.0,Berlin,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].,"Hi Carlos Meyer,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/fabrikler.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
-78449567,Polygonjs,node-based WebGL design tool | Polygonjs | London,https://github.com/polygonjs,backend,,0.25,0.0,London,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['London'].,"Hi Polygonjs,
+HASH Recruiting Team"
+78449567,Polygonjs,node-based WebGL design tool | Polygonjs | London,https://github.com/polygonjs,,backend,,0.25,0.0,London,True,0.188,reject,Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['London'].,"Hi Polygonjs,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/polygonjs.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
-Recruiting Team"
+HASH Recruiting Team"

@@ -4,6 +4,7 @@
     "name": "Igor Matias",
     "headline": "Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany",
     "source_url": "https://github.com/matyas-igor",
+    "email": "",
     "evidence_links": [
       "https://github.com/matyas-igor"
     ],
@@ -20,18 +21,19 @@
     "must_have_score": 1.0,
     "nice_to_have_score": 0.077,
     "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['Berlin'].",
-    "status": "hold",
+    "status": "shortlist",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/matyas-igor.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/matyas-igor.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "343cb4a7",
     "name": "Mohd Javed",
     "headline": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
     "source_url": "https://github.com/devjavedmohd",
+    "email": "dev.javedmohd@gmail.com",
     "evidence_links": [
       "https://github.com/devjavedmohd"
     ],
@@ -53,13 +55,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Mohd Javed,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/devjavedmohd.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Mohd Javed,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/devjavedmohd.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "7c473ab1",
     "name": "inker",
     "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
     "source_url": "https://github.com/inker",
+    "email": "",
     "evidence_links": [
       "https://github.com/inker"
     ],
@@ -79,13 +82,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/inker.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/inker.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "12efe01b",
     "name": "Jos\u00e9 Quinto",
     "headline": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",
     "source_url": "https://github.com/jquintozamora",
+    "email": "",
     "evidence_links": [
       "https://github.com/jquintozamora"
     ],
@@ -105,13 +109,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jquintozamora.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jquintozamora.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "f1a0eca3",
     "name": "Francesco Albanese",
     "headline": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
     "source_url": "https://github.com/francesco-albanese",
+    "email": "",
     "evidence_links": [
       "https://github.com/francesco-albanese"
     ],
@@ -131,13 +136,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/francesco-albanese.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/francesco-albanese.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "0bd61d98",
     "name": "Piotr Kuczynski",
     "headline": "Passionate about React, TypeScript and Node.js | freelancer | Berlin, Germany",
     "source_url": "https://github.com/pkuczynski",
+    "email": "",
     "evidence_links": [
       "https://github.com/pkuczynski"
     ],
@@ -157,13 +163,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Piotr Kuczynski,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/pkuczynski.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Piotr Kuczynski,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/pkuczynski.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "85f05305",
     "name": "Stefan Wille",
     "headline": "TypeScript  / React.js / Node.js / GraphQL | Contractor, available from 1 January 2026 | Berlin / Germany",
     "source_url": "https://github.com/stefanwille",
+    "email": "",
     "evidence_links": [
       "https://github.com/stefanwille"
     ],
@@ -183,13 +190,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Stefan Wille,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/stefanwille.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Stefan Wille,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/stefanwille.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "27b28d4d",
     "name": "Harshit Tripathi",
     "headline": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin",
     "source_url": "https://github.com/htthecool",
+    "email": "",
     "evidence_links": [
       "https://github.com/htthecool"
     ],
@@ -210,13 +218,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Harshit Tripathi,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend, storage systems looked highly relevant, especially based on what I saw here: https://github.com/htthecool.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Harshit Tripathi,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend, storage systems looked highly relevant, especially based on what I saw here: https://github.com/htthecool.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "c0f43ab6",
     "name": "Daniel Ross",
     "headline": "Front-end JavaScript/TypeScript/React Developer | London, UK",
     "source_url": "https://github.com/notalexross",
+    "email": "",
     "evidence_links": [
       "https://github.com/notalexross"
     ],
@@ -237,13 +246,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Daniel Ross,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, open source looked highly relevant, especially based on what I saw here: https://github.com/notalexross.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Daniel Ross,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, open source looked highly relevant, especially based on what I saw here: https://github.com/notalexross.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "1a9bbd60",
     "name": "Christian G\u00f6tze",
     "headline": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
     "source_url": "https://github.com/OG84",
+    "email": "",
     "evidence_links": [
       "https://github.com/OG84"
     ],
@@ -262,13 +272,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Christian G\u00f6tze,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/OG84.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Christian G\u00f6tze,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/OG84.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "79bf7db8",
     "name": "fmacherey",
     "headline": "Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",
     "source_url": "https://github.com/fmacherey",
+    "email": "",
     "evidence_links": [
       "https://github.com/fmacherey"
     ],
@@ -287,13 +298,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi fmacherey,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/fmacherey.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi fmacherey,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/fmacherey.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "22826465",
     "name": "Asad Ali Baloch",
     "headline": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
     "source_url": "https://github.com/asadlib11",
+    "email": "",
     "evidence_links": [
       "https://github.com/asadlib11"
     ],
@@ -312,13 +324,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Asad Ali Baloch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/asadlib11.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Asad Ali Baloch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/asadlib11.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "6833d5b6",
     "name": "Aleksandra Sezer",
     "headline": "Front-end developer | React | Typescript | London, UK",
     "source_url": "https://github.com/aleksandrasezer",
+    "email": "",
     "evidence_links": [
       "https://github.com/aleksandrasezer"
     ],
@@ -337,13 +350,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Aleksandra Sezer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/aleksandrasezer.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Aleksandra Sezer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/aleksandrasezer.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "a97647c9",
     "name": "James Rees",
     "headline": "React, Angular, Node and Python Engineer | London",
     "source_url": "https://github.com/jamesrees77",
+    "email": "",
     "evidence_links": [
       "https://github.com/jamesrees77"
     ],
@@ -362,13 +376,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi James Rees,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/jamesrees77.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi James Rees,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/jamesrees77.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "a420f943",
     "name": "Felix Leupold",
     "headline": "TypeScript &amp; React Developer | Berlin, Germany",
     "source_url": "https://github.com/xiel",
+    "email": "",
     "evidence_links": [
       "https://github.com/xiel"
     ],
@@ -387,13 +402,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Felix Leupold,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/xiel.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Felix Leupold,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/xiel.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "9f5cb6e8",
     "name": "Jos\u00e9 Copeti",
     "headline": "Immersing in TypeScript, React, Next.js and React Native. | Berlin",
     "source_url": "https://github.com/jrcopeti",
+    "email": "jose@lofft.app",
     "evidence_links": [
       "https://github.com/jrcopeti"
     ],
@@ -412,13 +428,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Jos\u00e9 Copeti,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jrcopeti.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Jos\u00e9 Copeti,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jrcopeti.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "a6936eb2",
     "name": "Robin Wieruch",
     "headline": "React &amp; Next.js \u2022 JavaScript &amp; TypeScript \u2022 Freelancer &amp; Consultant \u2022 Full-Stack Software Engineer \u2022 Product Engineer \u2022 AI \u2022 Technical Co-Founder \u2022 GitHub Star | Consultant &amp; Freelancer | Berlin, Germany, Remote",
     "source_url": "https://github.com/rwieruch",
+    "email": "hello@rwieruch.com",
     "evidence_links": [
       "https://github.com/rwieruch"
     ],
@@ -437,13 +454,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Robin Wieruch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/rwieruch.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Robin Wieruch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/rwieruch.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "4beaf995",
     "name": "Jessica Leach",
     "headline": "JavaScript, React, Ruby, TypeScript | London",
     "source_url": "https://github.com/JessicaML",
+    "email": "",
     "evidence_links": [
       "https://github.com/JessicaML"
     ],
@@ -462,13 +480,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Jessica Leach,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/JessicaML.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Jessica Leach,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/JessicaML.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "7b3a6477",
     "name": "Julija Stepanova (Vil\u0160kerste)",
     "headline": "TypeScript - React - React Native  Developer | Software developer @ Aviva | London",
     "source_url": "https://github.com/julija777",
+    "email": "",
     "evidence_links": [
       "https://github.com/julija777"
     ],
@@ -487,13 +506,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Julija Stepanova (Vil\u0160kerste),\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/julija777.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Julija Stepanova (Vil\u0160kerste),\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/julija777.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "a2e2306b",
     "name": "Seb Sowter",
     "headline": "TypeScript / React / WebGL / Phaser | London",
     "source_url": "https://github.com/sebsowter",
+    "email": "",
     "evidence_links": [
       "https://github.com/sebsowter"
     ],
@@ -512,13 +532,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Seb Sowter,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/sebsowter.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Seb Sowter,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/sebsowter.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "736d864d",
     "name": "Filipe A Moreira",
     "headline": "Full Stack Developer (Ruby/Rails/JavaScript/Typescript/React) | Coderelax | London - UK",
     "source_url": "https://github.com/filipeamoreira",
+    "email": "",
     "evidence_links": [
       "https://github.com/filipeamoreira"
     ],
@@ -537,13 +558,14 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Filipe A Moreira,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/filipeamoreira.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Filipe A Moreira,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/filipeamoreira.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "35901b6f",
     "name": "Matheus Viana",
     "headline": "\ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",
     "source_url": "https://github.com/moviandev",
+    "email": "matheus_o_viana@hotmail.com",
     "evidence_links": [
       "https://github.com/moviandev"
     ],
@@ -560,13 +582,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Matheus Viana,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/moviandev.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Matheus Viana,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/moviandev.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "7fde2b7b",
     "name": "Jemail Omer",
     "headline": "Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",
     "source_url": "https://github.com/jemxz",
+    "email": "jemxz.omer@gmail.com",
     "evidence_links": [
       "https://github.com/jemxz"
     ],
@@ -583,13 +606,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Jemail Omer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/jemxz.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Jemail Omer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/jemxz.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "ea8d0807",
     "name": "Carlos Meyer",
     "headline": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
     "source_url": "https://github.com/fabrikler",
+    "email": "",
     "evidence_links": [
       "https://github.com/fabrikler"
     ],
@@ -606,13 +630,14 @@
       "Berlin"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Carlos Meyer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/fabrikler.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Carlos Meyer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/fabrikler.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "78449567",
     "name": "Polygonjs",
     "headline": "node-based WebGL design tool | Polygonjs | London",
     "source_url": "https://github.com/polygonjs",
+    "email": "",
     "evidence_links": [
       "https://github.com/polygonjs"
     ],
@@ -629,6 +654,6 @@
       "London"
     ],
     "location_eligible": true,
-    "outreach_draft": "Hi Polygonjs,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/polygonjs.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Polygonjs,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/polygonjs.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nHASH Recruiting Team"
   }
 ]

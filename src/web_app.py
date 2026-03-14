@@ -89,6 +89,11 @@ def render_page(
         must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
         nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
         location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
+        email_html = (
+            f'<a class="ghost-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
+            if card.email
+            else '<span class="candidate-location-note">No public email on GitHub</span>'
+        )
         evidence_links = "".join(
             f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>'
             for link in card.evidence_links
@@ -124,7 +129,10 @@ def render_page(
               </div>
               <div class="candidate-topline">
                 <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
-                <span class="candidate-location-note">{escape(location_text)}</span>
+                <div class="candidate-inline-meta">
+                  {email_html}
+                  <span class="candidate-location-note">{escape(location_text)}</span>
+                </div>
               </div>
               <div class="score-breakdown">
                 <div class="breakdown-item">
@@ -177,17 +185,17 @@ def render_page(
         candidate_rows.append(
             f"""
             <tr>
-              <td>
+              <td class="col-candidate">
                 <div class="table-name">{escape(card.name)}</div>
                 <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
               </td>
-              <td>{escape(card.status.title())}</td>
-              <td>{card.fit_score:.3f}</td>
-              <td>{card.must_have_score:.3f}</td>
-              <td>{card.nice_to_have_score:.3f}</td>
-              <td>{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
-              <td>{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
-              <td>{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
+              <td class="col-status">{escape(card.status.title())}</td>
+              <td class="col-score">{card.fit_score:.3f}</td>
+              <td class="col-score">{card.must_have_score:.3f}</td>
+              <td class="col-score">{card.nice_to_have_score:.3f}</td>
+              <td class="col-location">{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
+              <td class="col-skills">{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
+              <td class="col-skills">{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
             </tr>
             """
         )
@@ -222,14 +230,14 @@ def render_page(
             <table class="candidate-table">
               <thead>
                 <tr>
-                  <th>Candidate</th>
-                  <th>Status</th>
-                  <th>Score</th>
-                  <th>Must</th>
-                  <th>Nice</th>
-                  <th>Location</th>
-                  <th>Must-haves</th>
-                  <th>Nice-to-haves</th>
+                  <th class="col-candidate">Candidate</th>
+                  <th class="col-status">Status</th>
+                  <th class="col-score">Score</th>
+                  <th class="col-score">Must</th>
+                  <th class="col-score">Nice</th>
+                  <th class="col-location">Location</th>
+                  <th class="col-skills">Must-haves</th>
+                  <th class="col-skills">Nice-to-haves</th>
                 </tr>
               </thead>
               <tbody>
@@ -476,6 +484,12 @@ def render_page(
       color: var(--foreground-muted);
       font-weight: 500;
     }}
+    .field-note {{
+      margin: -2px 0 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--foreground-subtle);
+    }}
     select, input[type="number"], input[type="text"] {{
       width: 100%;
       padding: 13px 14px;
@@ -680,6 +694,7 @@ def render_page(
     .candidate-list {{
       display: grid;
       gap: 18px;
+      min-width: 0;
     }}
     .candidate-card {{
       padding: 24px;
@@ -719,6 +734,13 @@ def render_page(
       gap: 12px;
       margin-bottom: 14px;
       flex-wrap: wrap;
+    }}
+    .candidate-inline-meta {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }}
     .candidate-location-note {{
       color: var(--foreground-muted);
@@ -807,11 +829,17 @@ def render_page(
       gap: 20px;
       position: sticky;
       top: 24px;
+      align-self: start;
+      max-height: calc(100vh - 48px);
+      overflow: auto;
     }}
     .table-shell {{
       padding: 20px;
+      min-width: 0;
     }}
     .table-wrap {{
+      width: 100%;
+      max-width: 100%;
       overflow-x: auto;
       border-radius: 14px;
       border: 1px solid var(--border-default);
@@ -820,7 +848,8 @@ def render_page(
     .candidate-table {{
       width: 100%;
       border-collapse: collapse;
-      min-width: 920px;
+      min-width: 760px;
+      table-layout: fixed;
     }}
     .candidate-table th,
     .candidate-table td {{
@@ -852,6 +881,25 @@ def render_page(
     .table-link {{
       color: var(--accent-bright);
       font-size: 13px;
+    }}
+    .col-candidate {{
+      width: 18%;
+    }}
+    .col-status {{
+      width: 9%;
+    }}
+    .col-score {{
+      width: 7%;
+      white-space: nowrap;
+    }}
+    .col-location {{
+      width: 14%;
+    }}
+    .col-skills {{
+      width: 19%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }}
     ul {{
       margin: 0;
@@ -1064,9 +1112,10 @@ def render_page(
             <select name="brief">{''.join(role_options)}</select>
           </label>
           <label>
-            Max results per query
+            GitHub profiles per search
             <input type="number" name="max_results" min="1" max="25" value="{max_results}">
           </label>
+          <p class="field-note">The tool runs multiple searches for the role, so total raw results will be higher than this number. Start with 5 for about 25 raw results.</p>
           <label class="checkbox">
             <input type="checkbox" name="use_seed"{seed_checked}>
             Use local seed results for deterministic demo data

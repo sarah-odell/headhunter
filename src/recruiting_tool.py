@@ -82,6 +82,7 @@ GITHUB_RESERVED_PATHS = {
     "trending",
     "users",
 }
+EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", flags=re.I)
 
 
 @dataclass
@@ -90,6 +91,7 @@ class CandidateCard:
     name: str
     headline: str
     source_url: str
+    email: str
     evidence_links: list[str]
     must_have_hits: list[str]
     nice_to_have_hits: list[str]
@@ -241,6 +243,7 @@ def enrich_github_result(item: dict) -> dict:
     company = _strip_tags(_first_match(r'itemprop="worksFor"[^>]*aria-label="Organization:\s*([^"]+)"', html))
     location = _strip_tags(_first_match(r'itemprop="homeLocation"[^>]*aria-label="Home location:\s*([^"]+)"', html))
     website = _first_match(r'itemprop="url"[^>]*href="([^"]+)"', html)
+    email = _extract_public_email(html)
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     pinned_repos = _extract_pinned_repos(html, item["url"])
 
@@ -248,7 +251,7 @@ def enrich_github_result(item: dict) -> dict:
     headline_parts = [part for part in (bio, company, location) if part]
     headline = " | ".join(headline_parts) if headline_parts else item["title"]
 
-    text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, profile_meta]
+    text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, email, profile_meta]
     text_parts.extend(repo["text"] for repo in pinned_repos)
     enriched_item = dict(item)
     enriched_item["title"] = f"{display_name} ({username}) · GitHub" if full_name and username else item["title"]
@@ -257,14 +260,36 @@ def enrich_github_result(item: dict) -> dict:
     evidence_links = [item["url"]]
     if website and website not in evidence_links:
         evidence_links.append(website)
+    if not email and website:
+        email = _extract_email_from_url(website)
     for repo in pinned_repos[:3]:
         if repo["url"] not in evidence_links:
             evidence_links.append(repo["url"])
     enriched_item["evidence_links"] = evidence_links
     enriched_item["profile_name"] = display_name
     enriched_item["profile_location"] = location
+    enriched_item["public_email"] = email
     enriched_item["pinned_repos"] = pinned_repos
     return enriched_item
+
+
+def _extract_public_email(html: str) -> str:
+    mailto = _first_match(r'href="mailto:([^"]+)"', html)
+    if mailto:
+        return unquote(mailto)
+    text_match = _first_match(r'aria-label="Email:\s*([^"]+)"', html)
+    if text_match:
+        return unquote(text_match)
+    visible_match = EMAIL_RE.search(_strip_tags(html))
+    return visible_match.group(0) if visible_match else ""
+
+
+def _extract_email_from_url(url: str) -> str:
+    try:
+        html = _fetch_html(url)
+    except Exception:
+        return ""
+    return _extract_public_email(html)
 
 
 def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
@@ -339,7 +364,7 @@ def generate_outreach(candidate_name: str, role_brief: dict, must_hits: list[str
         f"I came across your profile while sourcing for {role_brief['company']}'s {role_brief['role_name']} role. "
         f"Your experience with {proof} looked highly relevant, especially based on what I saw here: {source_url}.\n\n"
         "If you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\n"
-        "Best,\nRecruiting Team"
+        "Best,\nHASH Recruiting Team"
     )
 
 
@@ -385,6 +410,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             name=name,
             headline=enriched_item.get("headline_override") or enriched_item["title"],
             source_url=enriched_item["url"],
+            email=enriched_item.get("public_email", ""),
             evidence_links=enriched_item.get("evidence_links", [enriched_item["url"]]),
             must_have_hits=must_hits,
             nice_to_have_hits=nice_hits,
@@ -424,6 +450,7 @@ def load_cards(path: Path) -> list[CandidateCard]:
     for row in raw:
         normalized = dict(row)
         normalized.setdefault("evidence_links", [normalized.get("source_url", "")] if normalized.get("source_url") else [])
+        normalized.setdefault("email", "")
         normalized.setdefault("must_have_hits", [])
         normalized.setdefault("nice_to_have_hits", [])
         normalized.setdefault("must_have_score", 0.0)
@@ -443,6 +470,7 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "name",
             "headline",
             "source_url",
+            "email",
             "must_have_hits",
             "nice_to_have_hits",
             "must_have_score",

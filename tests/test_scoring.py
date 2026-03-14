@@ -1,7 +1,7 @@
 import unittest
 
 from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_location, to_status, update_card_status
-from src.recruiting_tool import _extract_github_search_payload, is_github_profile_url
+from src.recruiting_tool import _extract_github_search_payload, _extract_public_email, generate_outreach, is_github_profile_url
 
 
 class ScoreCandidateTests(unittest.TestCase):
@@ -75,6 +75,7 @@ class ScoreCandidateTests(unittest.TestCase):
                 name="Ada Lovelace",
                 headline="Ada Lovelace - Engineer",
                 source_url="https://example.com/ada",
+                email="ada@example.com",
                 evidence_links=["https://example.com/ada"],
                 must_have_hits=["TypeScript"],
                 nice_to_have_hits=["React"],
@@ -100,6 +101,7 @@ class ScoreCandidateTests(unittest.TestCase):
                 name="Ada Lovelace",
                 headline="Ada Lovelace - Engineer",
                 source_url="https://example.com/ada",
+                email="ada@example.com",
                 evidence_links=["https://example.com/ada"],
                 must_have_hits=["TypeScript", "React"],
                 nice_to_have_hits=["Rust"],
@@ -117,9 +119,23 @@ class ScoreCandidateTests(unittest.TestCase):
         csv_text = cards_to_csv_text(cards)
 
         self.assertIn("TypeScript; React", csv_text)
+        self.assertIn("ada@example.com", csv_text)
         self.assertIn("Rust", csv_text)
         self.assertIn("shortlist", csv_text)
         self.assertIn("0.8", csv_text)
+
+    def test_extract_public_email_prefers_mailto(self):
+        html = '<a href="mailto:ada%40example.com">ada@example.com</a>'
+        self.assertEqual(_extract_public_email(html), "ada@example.com")
+
+    def test_extract_public_email_falls_back_to_visible_text(self):
+        html = "<div>Contact: ada@example.com</div>"
+        self.assertEqual(_extract_public_email(html), "ada@example.com")
+
+    def test_generate_outreach_uses_hash_signature(self):
+        role_brief = {"company": "HASH", "role_name": "Full-Stack Engineer"}
+        draft = generate_outreach("Ada", role_brief, ["TypeScript"], ["React"], "https://github.com/ada")
+        self.assertTrue(draft.endswith("Best,\nHASH Recruiting Team"))
 
 
 if __name__ == "__main__":
