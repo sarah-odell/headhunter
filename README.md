@@ -1,6 +1,6 @@
 # HASH Recruiting Shortlist Tool (Founder’s Associate Challenge)
 
-A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, fit scoring, outreach drafts, workflow status, and exportable output.
+A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, fit scoring, London/Berlin eligibility checks, outreach drafts, workflow status, and exportable output.
 
 ## Open the web app
 
@@ -13,7 +13,19 @@ python3 src/web_app.py
 Then open:
 
 ```text
-http://127.0.0.1:8000
+http://localhost:8000
+```
+
+If port `8000` is already in use, run:
+
+```bash
+python3 src/web_app.py --port 8001
+```
+
+Then open:
+
+```text
+http://localhost:8001
 ```
 
 ## What this tool does
@@ -22,6 +34,7 @@ http://127.0.0.1:8000
 - Builds structured candidate cards with:
   - source/evidence link(s)
   - must-have and nice-to-have matches
+  - location eligibility evidence
   - weighted fit score
   - rationale string
   - personalized outreach draft
@@ -29,6 +42,7 @@ http://127.0.0.1:8000
   - `shortlist` if score >= 0.65
   - `hold` if score >= 0.40
   - `reject` otherwise
+- Rejects candidates without public evidence of being based in London or Berlin for this role brief.
 - Supports human review updates for `shortlist/hold/reject`.
 - Exports the full pipeline to CSV for analysis.
 - Supports an offline/air-gapped path with local seed results JSON.
@@ -39,6 +53,7 @@ http://127.0.0.1:8000
 - Primary source: public GitHub profiles and repository pages surfaced through role-specific search queries.
 - Supporting public sources: personal sites, engineering blogs, or other evidence-rich pages that appear in search results.
 - Search mechanism: DuckDuckGo HTML results, used to keep the tool lightweight and runnable locally without third-party API keys.
+- Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
 
 ## Selected role for this submission
 

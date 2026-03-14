@@ -1,30 +1,7 @@
 [
   {
-    "id": "3aa77813",
-    "name": "Linus Torvalds (linus) \u00b7 GitHub",
-    "headline": "Linus Torvalds (linus) \u00b7 GitHub",
-    "source_url": "https://github.com/linus",
-    "evidence_links": [
-      "https://github.com/linus"
-    ],
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend",
-      "performance"
-    ],
-    "nice_to_have_hits": [
-      "Rust"
-    ],
-    "fit_score": 0.781,
-    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance']; nice-to-haves: ['Rust'].",
-    "status": "shortlist",
-    "outreach_draft": "Hi Linus Torvalds (linus) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://github.com/linus.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
-  },
-  {
-    "id": "0c89741c",
-    "name": "Ada Lovelace (ada-lovelace) \u00b7 GitHub",
+    "id": "682bfd17",
+    "name": "Ada Lovelace",
     "headline": "Ada Lovelace (ada-lovelace) \u00b7 GitHub",
     "source_url": "https://github.com/ada-lovelace",
     "evidence_links": [
@@ -34,19 +11,52 @@
       "TypeScript",
       "React",
       "frontend",
-      "backend"
+      "backend",
+      "performance",
+      "data structures",
+      "storage systems"
     ],
-    "nice_to_have_hits": [
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance', 'data structures', 'storage systems']; nice-to-haves: none; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
       "London"
     ],
-    "fit_score": 0.631,
-    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['London'].",
-    "status": "hold",
-    "outreach_draft": "Hi Ada Lovelace (ada-lovelace) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, London looked highly relevant, especially based on what I saw here: https://github.com/ada-lovelace.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "location_eligible": true,
+    "outreach_draft": "Hi Ada Lovelace,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/ada-lovelace.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
   },
   {
-    "id": "2e7748e5",
-    "name": "Grace Hopper (gracehopper) \u00b7 GitHub",
+    "id": "6a0e8aa1",
+    "name": "Linus Torvalds",
+    "headline": "Linus Torvalds (linus) \u00b7 GitHub",
+    "source_url": "https://github.com/linus",
+    "evidence_links": [
+      "https://github.com/linus"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "frontend",
+      "backend",
+      "performance",
+      "data structures",
+      "storage systems"
+    ],
+    "nice_to_have_hits": [
+      "Rust"
+    ],
+    "fit_score": 0.668,
+    "rationale": "Matched must-haves: ['TypeScript', 'frontend', 'backend', 'performance', 'data structures', 'storage systems']; nice-to-haves: ['Rust']; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Linus Torvalds,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, frontend, Rust looked highly relevant, especially based on what I saw here: https://github.com/linus.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "0feb2c0b",
+    "name": "Grace Hopper",
     "headline": "Grace Hopper (gracehopper) \u00b7 GitHub",
     "source_url": "https://github.com/gracehopper",
     "evidence_links": [
@@ -57,12 +67,16 @@
     ],
     "nice_to_have_hits": [
       "Effect",
+      "HTML Canvas",
       "Material UI",
+      "Ariakit",
       "open source"
     ],
-    "fit_score": 0.244,
-    "rationale": "Matched must-haves: ['React']; nice-to-haves: ['Effect', 'Material UI', 'open source'].",
+    "fit_score": 0.232,
+    "rationale": "Matched must-haves: ['React']; nice-to-haves: ['Effect', 'HTML Canvas', 'Material UI', 'Ariakit', 'open source']; location: no London/Berlin evidence.",
     "status": "reject",
-    "outreach_draft": "Hi Grace Hopper (gracehopper) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://github.com/gracehopper.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "location_hits": [],
+    "location_eligible": false,
+    "outreach_draft": "Hi Grace Hopper,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://github.com/gracehopper.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
   }
 ]

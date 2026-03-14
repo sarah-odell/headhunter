@@ -1,21 +1,21 @@
-id,name,headline,source_url,must_have_hits,nice_to_have_hits,fit_score,status,rationale,outreach_draft
-3aa77813,Linus Torvalds (linus) · GitHub,Linus Torvalds (linus) · GitHub,https://github.com/linus,TypeScript; React; frontend; backend; performance,Rust,0.781,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance']; nice-to-haves: ['Rust'].","Hi Linus Torvalds (linus) · GitHub,
+id,name,headline,source_url,must_have_hits,nice_to_have_hits,location_hits,location_eligible,fit_score,status,rationale,outreach_draft
+682bfd17,Ada Lovelace,Ada Lovelace (ada-lovelace) · GitHub,https://github.com/ada-lovelace,TypeScript; React; frontend; backend; performance; data structures; storage systems,,London,True,0.75,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance', 'data structures', 'storage systems']; nice-to-haves: none; location: ['London'].","Hi Ada Lovelace,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://github.com/linus.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
-
-Best,
-Recruiting Team"
-0c89741c,Ada Lovelace (ada-lovelace) · GitHub,Ada Lovelace (ada-lovelace) · GitHub,https://github.com/ada-lovelace,TypeScript; React; frontend; backend,London,0.631,hold,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['London'].","Hi Ada Lovelace (ada-lovelace) · GitHub,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, London looked highly relevant, especially based on what I saw here: https://github.com/ada-lovelace.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/ada-lovelace.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 Recruiting Team"
-2e7748e5,Grace Hopper (gracehopper) · GitHub,Grace Hopper (gracehopper) · GitHub,https://github.com/gracehopper,React,Effect; Material UI; open source,0.244,reject,"Matched must-haves: ['React']; nice-to-haves: ['Effect', 'Material UI', 'open source'].","Hi Grace Hopper (gracehopper) · GitHub,
+6a0e8aa1,Linus Torvalds,Linus Torvalds (linus) · GitHub,https://github.com/linus,TypeScript; frontend; backend; performance; data structures; storage systems,Rust,Berlin,True,0.668,shortlist,"Matched must-haves: ['TypeScript', 'frontend', 'backend', 'performance', 'data structures', 'storage systems']; nice-to-haves: ['Rust']; location: ['Berlin'].","Hi Linus Torvalds,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, frontend, Rust looked highly relevant, especially based on what I saw here: https://github.com/linus.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+Recruiting Team"
+0feb2c0b,Grace Hopper,Grace Hopper (gracehopper) · GitHub,https://github.com/gracehopper,React,Effect; HTML Canvas; Material UI; Ariakit; open source,,False,0.232,reject,"Matched must-haves: ['React']; nice-to-haves: ['Effect', 'HTML Canvas', 'Material UI', 'Ariakit', 'open source']; location: no London/Berlin evidence.","Hi Grace Hopper,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://github.com/gracehopper.
 

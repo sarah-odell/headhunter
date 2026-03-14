@@ -52,6 +52,7 @@ def render_page(
 ) -> str:
     brief = load_role_brief(brief_path)
     counts = status_counts(cards)
+    location_targets = brief.get("location_targets", [])
     role_options = []
     for option in available_briefs():
         selected = " selected" if option == brief_path else ""
@@ -61,10 +62,11 @@ def render_page(
 
     summary_cards = "".join(
         f"""
-        <div class="metric">
-          <span class="metric-label">{status.title()}</span>
+        <article class="summary-card spotlight-card">
+          <span class="eyebrow-label">Workflow</span>
           <strong>{counts.get(status, 0)}</strong>
-        </div>
+          <span class="summary-caption">{status.title()} candidates</span>
+        </article>
         """
         for status in STATUS_OPTIONS
     )
@@ -73,6 +75,7 @@ def render_page(
     for card in cards:
         must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
         nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
+        location_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.location_hits) or "<li>No London/Berlin evidence</li>"
         evidence_links = "".join(
             f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>'
             for link in card.evidence_links
@@ -85,37 +88,52 @@ def render_page(
             """
             for status in STATUS_OPTIONS
         )
+        location_state = "Eligible" if card.location_eligible else "Outside target locations"
+        location_class = "eligible" if card.location_eligible else "ineligible"
         candidate_cards.append(
             f"""
-            <article class="candidate">
-              <div class="candidate-header">
+            <article class="candidate-card spotlight-card reveal">
+              <div class="candidate-head">
                 <div>
+                  <div class="candidate-meta">
+                    <span class="pill pill-status">{escape(card.status.title())}</span>
+                    <span class="pill pill-location {location_class}">{escape(location_state)}</span>
+                  </div>
                   <h3>{escape(card.name)}</h3>
                   <p class="headline">{escape(card.headline)}</p>
                 </div>
-                <div class="score-pill">{card.fit_score:.3f}</div>
+                <div class="score-stack">
+                  <span class="eyebrow-label">Fit score</span>
+                  <div class="score-pill">{card.fit_score:.3f}</div>
+                </div>
               </div>
-              <div class="meta-row">
-                <span class="badge">{escape(card.status.title())}</span>
-                <a href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Source</a>
+              <div class="candidate-links">
+                <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
               </div>
               <p class="rationale">{escape(card.rationale)}</p>
-              <div class="grid">
-                <section>
-                  <h4>Must-have hits</h4>
+              <div class="candidate-grid">
+                <section class="info-panel">
+                  <h4>Core matches</h4>
                   <ul>{must_hits}</ul>
                 </section>
-                <section>
-                  <h4>Nice-to-have hits</h4>
+                <section class="info-panel">
+                  <h4>Supporting signals</h4>
                   <ul>{nice_hits}</ul>
                 </section>
-                <section>
-                  <h4>Evidence</h4>
+                <section class="info-panel">
+                  <h4>Location check</h4>
+                  <ul>{location_hits}</ul>
+                </section>
+                <section class="info-panel info-panel-wide">
+                  <h4>Evidence links</h4>
                   <ul>{evidence_links}</ul>
                 </section>
               </div>
-              <section>
-                <h4>Outreach draft</h4>
+              <section class="outreach-panel">
+                <div class="section-head">
+                  <h4>Outreach draft</h4>
+                  <span class="eyebrow-label">AI-assisted</span>
+                </div>
                 <pre>{escape(card.outreach_draft)}</pre>
               </section>
               <form method="post" action="/review" class="review-form">
@@ -133,6 +151,9 @@ def render_page(
     error_html = f'<div class="banner error">{escape(error)}</div>' if error else ""
     seed_value = escape(str(seed_path.relative_to(ROOT))) if seed_path else ""
     seed_checked = " checked" if seed_path else ""
+    must_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["must_haves"])
+    nice_to_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["nice_to_haves"])
+    location_label = " / ".join(location_targets) if location_targets else "No location gate"
 
     return f"""<!doctype html>
 <html lang="en">
@@ -142,168 +163,479 @@ def render_page(
   <title>HASH Recruiting Tool</title>
   <style>
     :root {{
-      --paper: #f7f2e8;
-      --ink: #182028;
-      --accent: #b64d2e;
-      --accent-2: #1f6b5d;
-      --card: #fffdf8;
-      --border: #d7c8ae;
-      --muted: #675f54;
-      --shadow: 0 16px 40px rgba(24, 32, 40, 0.08);
+      --background-deep: #020203;
+      --background-base: #050506;
+      --background-elevated: #0a0a0c;
+      --surface: rgba(255, 255, 255, 0.05);
+      --surface-hover: rgba(255, 255, 255, 0.08);
+      --foreground: #EDEDEF;
+      --foreground-muted: #8A8F98;
+      --foreground-subtle: rgba(255, 255, 255, 0.6);
+      --accent: #5E6AD2;
+      --accent-bright: #6872D9;
+      --accent-glow: rgba(94, 106, 210, 0.3);
+      --border-default: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 255, 255, 0.1);
+      --border-accent: rgba(94, 106, 210, 0.3);
+      --shadow-card: 0 0 0 1px rgba(255,255,255,0.06), 0 2px 20px rgba(0,0,0,0.4), 0 0 40px rgba(0,0,0,0.2);
+      --shadow-card-hover: 0 0 0 1px rgba(255,255,255,0.1), 0 10px 44px rgba(0,0,0,0.55), 0 0 80px rgba(94,106,210,0.14);
+      --shadow-accent: 0 0 0 1px rgba(94,106,210,0.5), 0 4px 12px rgba(94,106,210,0.3), inset 0 1px 0 0 rgba(255,255,255,0.18);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }}
     * {{ box-sizing: border-box; }}
+    html {{ color-scheme: dark; }}
     body {{
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
+      font-family: "Inter", "Geist Sans", system-ui, sans-serif;
+      color: var(--foreground);
       background:
-        radial-gradient(circle at top left, rgba(182, 77, 46, 0.15), transparent 30%),
-        linear-gradient(180deg, #efe4cf 0%, var(--paper) 36%, #fdfaf4 100%);
+        radial-gradient(ellipse at top, #0a0a0f 0%, #050506 50%, #020203 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }}
-    a {{ color: var(--accent-2); }}
+    body::before,
+    body::after {{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }}
+    body::before {{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(94,106,210,0.22), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(122,92,255,0.14), transparent 24%),
+        radial-gradient(circle at 50% 88%, rgba(94,106,210,0.12), transparent 30%);
+      filter: blur(20px);
+      animation: float 10s ease-in-out infinite;
+    }}
+    body::after {{
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.28;
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent 88%);
+      z-index: -1;
+    }}
+    a {{
+      color: var(--foreground);
+      text-decoration: none;
+      transition: color 200ms var(--ease-out-expo);
+    }}
+    a:hover {{ color: var(--accent-bright); }}
     .shell {{
-      max-width: 1160px;
+      position: relative;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 32px 20px 56px;
+      padding: 28px 20px 96px;
+    }}
+    .topbar {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-card);
+    }}
+    .brand {{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }}
+    .brand strong {{
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--foreground-subtle);
+    }}
+    .brand span {{
+      color: var(--foreground-muted);
+      font-size: 14px;
     }}
     .hero {{
+      position: relative;
       display: grid;
-      gap: 20px;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: minmax(0, 1.3fr) minmax(360px, 0.7fr);
+      gap: 24px;
       align-items: start;
       margin-bottom: 28px;
     }}
-    .panel, .candidate {{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
+    .hero-copy,
+    .control-panel,
+    .summary-card,
+    .brief-card,
+    .candidate-card,
+    .info-panel,
+    .outreach-panel,
+    .toolbar {{
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(16px);
+      transition: transform 240ms var(--ease-out-expo), box-shadow 240ms var(--ease-out-expo), border-color 240ms var(--ease-out-expo), background 240ms var(--ease-out-expo);
+    }}
+    .spotlight-card::before {{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(94,106,210,0.16), transparent 60%);
+      opacity: 0;
+      transition: opacity 240ms var(--ease-out-expo);
+      pointer-events: none;
+    }}
+    .spotlight-card:hover {{
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-card-hover);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+    }}
+    .spotlight-card:hover::before {{
+      opacity: 1;
     }}
     .hero-copy {{
-      padding: 26px;
+      padding: 36px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }}
+    .hero-copy h1 {{
+      margin: 0 0 18px;
+      font-size: clamp(3.4rem, 8vw, 7rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+      max-width: 11ch;
+      background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0.72));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }}
+    .eyebrow,
+    .eyebrow-label {{
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-family: "SFMono-Regular", Menlo, monospace;
+      color: var(--foreground-subtle);
     }}
     .eyebrow {{
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 12px;
-      color: var(--accent);
-      margin: 0 0 10px;
+      margin: 0 0 14px;
+      color: rgba(104,114,217,0.9);
     }}
-    h1, h2, h3, h4 {{
-      margin: 0 0 10px;
+    h2, h3, h4 {{
+      margin: 0;
       line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 600;
     }}
-    h1 {{ font-size: clamp(2.2rem, 4vw, 4.4rem); max-width: 10ch; }}
-    .lede, .headline, .rationale, li, p, label {{
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      line-height: 1.5;
+    .lede {{
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      line-height: 1.75;
+      color: var(--foreground-muted);
+      max-width: 58ch;
+      margin: 0 0 32px;
     }}
-    .lede {{ color: var(--muted); max-width: 62ch; }}
+    .hero-stack {{
+      display: grid;
+      gap: 18px;
+    }}
+    .hero-stats {{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }}
+    .hero-stat {{
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-default);
+    }}
+    .hero-stat strong {{
+      display: block;
+      margin-top: 8px;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }}
+    .hero-stat span {{
+      color: var(--foreground-muted);
+      font-size: 14px;
+    }}
     .control-panel {{
-      padding: 22px;
+      padding: 24px;
     }}
     .form-grid {{
       display: grid;
-      gap: 14px;
+      gap: 16px;
     }}
-    label {{ display: grid; gap: 6px; font-size: 14px; color: var(--muted); }}
+    label {{
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--foreground-muted);
+      font-weight: 500;
+    }}
     select, input[type="number"], input[type="text"] {{
       width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #fff;
+      padding: 13px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #0f0f12;
+      color: var(--foreground);
       font-size: 15px;
+      transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo), background 200ms var(--ease-out-expo);
+    }}
+    select:focus, input:focus, button:focus, a:focus {{
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(94,106,210,0.35);
     }}
     .checkbox {{
       display: flex;
       gap: 10px;
       align-items: center;
+      color: var(--foreground-muted);
     }}
-    .checkbox input {{ width: auto; }}
+    .checkbox input {{
+      width: auto;
+      accent-color: var(--accent);
+    }}
+    .button-row {{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }}
     button {{
       cursor: pointer;
       border: 0;
-      border-radius: 999px;
+      border-radius: 10px;
       padding: 12px 16px;
       font-weight: 600;
+      color: var(--foreground);
+      transition: transform 200ms var(--ease-out-expo), background 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo);
     }}
     .primary {{
-      background: var(--ink);
-      color: #fff;
+      background: var(--accent);
+      box-shadow: var(--shadow-accent);
     }}
-    .secondary {{
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--ink);
+    .primary:hover {{
+      background: var(--accent-bright);
+      transform: translateY(-1px);
     }}
-    .summary {{
+    .secondary,
+    .ghost-link {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      color: var(--foreground);
+      border: 1px solid var(--border-default);
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.08);
+    }}
+    .secondary:hover,
+    .ghost-link:hover {{
+      background: rgba(255,255,255,0.08);
+    }}
+    .hero-gradient {{
+      background: linear-gradient(90deg, #5E6AD2, #8e98ff, #5E6AD2);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 8s linear infinite;
+    }}
+    .workspace {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }}
+    .toolbar {{
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
+      gap: 18px;
+      padding: 22px;
+    }}
+    .toolbar-copy {{
+      display: grid;
+      gap: 10px;
+    }}
+    .toolbar-copy h2 {{
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+    }}
+    .toolbar-copy p,
+    .summary-caption,
+    .headline,
+    .rationale,
+    li,
+    pre,
+    .toolbar-meta,
+    .toolbar-side p {{
+      color: var(--foreground-muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }}
+    .toolbar-side {{
+      display: grid;
       gap: 14px;
-      margin: 18px 0 28px;
+      align-content: start;
     }}
-    .metric {{
-      padding: 18px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      text-align: center;
+    .toolbar-pills,
+    .candidate-meta {{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }}
-    .metric-label {{
-      display: block;
-      margin-bottom: 8px;
-      color: var(--muted);
-      font: 600 12px/1.3 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .pill {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      color: var(--foreground-subtle);
+      font-weight: 600;
+    }}
+    .pill-status {{
+      border-color: var(--border-accent);
+      color: rgba(237,237,239,0.9);
+    }}
+    .pill-location.eligible {{
+      color: #d2e8ff;
+      border-color: rgba(105, 161, 255, 0.25);
+    }}
+    .pill-location.ineligible {{
+      color: #f1b3b3;
+      border-color: rgba(255, 92, 92, 0.25);
+    }}
+    .summary-grid {{
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }}
+    .summary-card {{
+      padding: 20px;
+      min-height: 128px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }}
+    .summary-card strong {{
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }}
+    .workspace-grid {{
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+      gap: 24px;
+      align-items: start;
     }}
     .candidate-list {{
       display: grid;
       gap: 18px;
     }}
-    .candidate {{
-      padding: 22px;
+    .candidate-card {{
+      padding: 24px;
     }}
-    .candidate-header, .meta-row {{
+    .candidate-head {{
       display: flex;
       justify-content: space-between;
-      gap: 16px;
-      align-items: flex-start;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 14px;
     }}
-    .score-pill, .badge {{
-      border-radius: 999px;
-      padding: 8px 12px;
-      font: 700 13px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .candidate-head h3 {{
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      margin-top: 12px;
+      margin-bottom: 10px;
+    }}
+    .score-stack {{
+      display: grid;
+      justify-items: end;
+      gap: 8px;
     }}
     .score-pill {{
-      background: #1f6b5d;
-      color: #fff;
-      min-width: 72px;
+      min-width: 84px;
+      padding: 14px 16px;
+      border-radius: 14px;
       text-align: center;
+      background: linear-gradient(to bottom, rgba(94,106,210,0.9), rgba(94,106,210,0.7));
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-accent);
     }}
-    .badge {{
-      background: #efe4cf;
-      color: var(--ink);
+    .candidate-links {{
+      margin-bottom: 16px;
     }}
-    .grid {{
+    .candidate-grid {{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
       margin: 18px 0;
+    }}
+    .info-panel,
+    .outreach-panel,
+    .brief-card {{
+      padding: 18px;
+    }}
+    .info-panel-wide {{
+      grid-column: span 3;
+    }}
+    .section-head {{
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }}
+    .brief-card {{
+      display: grid;
+      gap: 20px;
+      position: sticky;
+      top: 24px;
     }}
     ul {{
       margin: 0;
       padding-left: 18px;
     }}
+    .brief-columns {{
+      display: grid;
+      gap: 18px;
+    }}
+    .brief-columns section {{
+      display: grid;
+      gap: 12px;
+    }}
     pre {{
       white-space: pre-wrap;
-      background: #f8f4ea;
+      background: rgba(8, 8, 12, 0.92);
       padding: 14px;
       border-radius: 14px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-default);
       font: 14px/1.55 "SFMono-Regular", Menlo, monospace;
       margin: 0;
+      color: rgba(237,237,239,0.85);
     }}
     .review-form {{
       display: flex;
@@ -312,34 +644,120 @@ def render_page(
       margin-top: 18px;
     }}
     .status-button {{
-      background: #f1ecdf;
-      color: var(--ink);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-default);
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.08);
     }}
     .status-button.active {{
       background: var(--accent);
       color: #fff;
-    }}
-    .toolbar {{
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
+      box-shadow: var(--shadow-accent);
     }}
     .banner {{
       margin-bottom: 16px;
       padding: 12px 14px;
       border-radius: 12px;
-      font: 600 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font: 600 14px/1.4 "Inter", system-ui, sans-serif;
+      border: 1px solid transparent;
     }}
-    .success {{ background: #deefe8; color: #134d41; }}
-    .error {{ background: #fbe2dc; color: #7a2410; }}
-    @media (max-width: 920px) {{
-      .hero, .grid, .summary {{
+    .success {{
+      background: rgba(31, 107, 93, 0.18);
+      color: #baf3df;
+      border-color: rgba(31, 107, 93, 0.32);
+    }}
+    .error {{
+      background: rgba(153, 47, 47, 0.18);
+      color: #ffd1d1;
+      border-color: rgba(153, 47, 47, 0.34);
+    }}
+    .empty-state {{
+      padding: 28px;
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }}
+    .reveal {{
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      animation: reveal 600ms var(--ease-out-expo) forwards;
+    }}
+    .candidate-card:nth-child(2) {{ animation-delay: 80ms; }}
+    .candidate-card:nth-child(3) {{ animation-delay: 160ms; }}
+    @keyframes float {{
+      0%, 100% {{ transform: translateY(0) rotate(0deg); }}
+      50% {{ transform: translateY(-20px) rotate(1deg); }}
+    }}
+    @keyframes shimmer {{
+      0% {{ background-position: 0% 50%; }}
+      100% {{ background-position: 200% 50%; }}
+    }}
+    @keyframes reveal {{
+      to {{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }}
+    }}
+    @media (max-width: 1120px) {{
+      .hero,
+      .toolbar,
+      .workspace-grid {{
         grid-template-columns: 1fr;
       }}
-      .candidate-header, .meta-row {{
+      .summary-grid {{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }}
+      .candidate-grid {{
+        grid-template-columns: 1fr 1fr;
+      }}
+      .info-panel-wide {{
+        grid-column: span 2;
+      }}
+      .brief-card {{
+        position: static;
+      }}
+    }}
+    @media (max-width: 760px) {{
+      .shell {{
+        padding: 16px 14px 72px;
+      }}
+      .hero-copy,
+      .control-panel,
+      .toolbar,
+      .brief-card,
+      .candidate-card {{
+        padding: 20px;
+      }}
+      .hero-copy h1 {{
+        font-size: clamp(2.6rem, 16vw, 4.2rem);
+      }}
+      .hero-stats,
+      .summary-grid,
+      .candidate-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .info-panel-wide {{
+        grid-column: span 1;
+      }}
+      .candidate-head,
+      .section-head,
+      .topbar {{
         flex-direction: column;
+        align-items: flex-start;
+      }}
+      .score-stack {{
+        justify-items: start;
+      }}
+    }}
+    @media (prefers-reduced-motion: reduce) {{
+      *, *::before, *::after {{
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }}
+      .reveal {{
+        opacity: 1;
+        transform: none;
       }}
     }}
   </style>
@@ -348,17 +766,47 @@ def render_page(
   <main class="shell">
     {message_html}
     {error_html}
-    <section class="hero">
-      <div class="panel hero-copy">
-        <p class="eyebrow">Founder’s Associate Challenge</p>
-        <h1>Recruiting Shortlist Workbench</h1>
-        <p class="lede">
-          Turn a HASH role brief into structured candidate cards with evidence, fit scoring,
-          outreach drafts, and a review workflow. This local app runs on one machine and keeps
-          the sourcing logic transparent enough to audit.
-        </p>
+    <header class="topbar spotlight-card">
+      <div class="brand">
+        <strong>HASH Recruiting Tool</strong>
+        <span>Local GitHub-first sourcing for engineering candidates</span>
       </div>
-      <form class="panel control-panel" method="post" action="/run">
+      <a class="secondary" href="/export?{urlencode({'output': str(output_path.relative_to(ROOT)), 'csv': str(csv_path.relative_to(ROOT))})}">Download CSV</a>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-copy spotlight-card">
+        <p class="eyebrow">Founder’s Associate Challenge</p>
+        <div class="hero-stack">
+          <h1>Recruiting <span class="hero-gradient">Shortlist</span> Workbench</h1>
+          <p class="lede">
+            Search public GitHub profiles, score technical fit against the real HASH role requirements,
+            enforce London or Berlin eligibility, and turn the strongest evidence into a shortlist with outreach drafts.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <article class="hero-stat">
+            <span>Primary source</span>
+            <strong>GitHub</strong>
+          </article>
+          <article class="hero-stat">
+            <span>Location gate</span>
+            <strong>{escape(location_label)}</strong>
+          </article>
+          <article class="hero-stat">
+            <span>Current cards</span>
+            <strong>{len(cards)}</strong>
+          </article>
+        </div>
+      </div>
+      <form class="control-panel spotlight-card" method="post" action="/run">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Run sourcing</p>
+            <h2>Pipeline controls</h2>
+          </div>
+          <span class="pill">Local-only</span>
+        </div>
         <div class="form-grid">
           <label>
             Role brief
@@ -376,29 +824,97 @@ def render_page(
             Seed results path
             <input type="text" name="seed" value="{seed_value}" placeholder="data/sample_search_results.json">
           </label>
-          <button class="primary" type="submit">Run sourcing</button>
+          <div class="button-row">
+            <button class="primary" type="submit">Run GitHub sourcing</button>
+            <a class="secondary" href="/export?{urlencode({'output': str(output_path.relative_to(ROOT)), 'csv': str(csv_path.relative_to(ROOT))})}">Export current CSV</a>
+          </div>
         </div>
       </form>
     </section>
 
-    <section class="toolbar">
-      <div><strong>{escape(brief['company'])}</strong> / {escape(brief['role_name'])}</div>
-      <div>{len(cards)} candidates</div>
-      <a class="secondary" href="/export?{urlencode({'output': str(output_path.relative_to(ROOT)), 'csv': str(csv_path.relative_to(ROOT))})}">Download CSV</a>
-    </section>
+    <section class="workspace">
+      <section class="toolbar spotlight-card">
+        <div class="toolbar-copy">
+          <p class="eyebrow">Role scope</p>
+          <h2>{escape(brief['company'])} / {escape(brief['role_name'])}</h2>
+          <p>
+            The scoring model prioritizes technical evidence from public GitHub profiles and repositories,
+            then gates candidates by the target in-office locations from the posting.
+          </p>
+        </div>
+        <div class="toolbar-side">
+          <div class="toolbar-pills">
+            <span class="pill">{len(cards)} cards</span>
+            <span class="pill">{escape(location_label)}</span>
+          </div>
+          <p>Weighted scoring favors must-haves over nice-to-haves, while missing London/Berlin evidence forces a reject state.</p>
+        </div>
+      </section>
 
-    <section class="summary">
-      {summary_cards}
-      <div class="metric">
-        <span class="metric-label">Top Score</span>
-        <strong>{max((card.fit_score for card in cards), default=0):.3f}</strong>
-      </div>
-    </section>
+      <section class="summary-grid">
+        {summary_cards}
+        <article class="summary-card spotlight-card">
+          <span class="eyebrow-label">Top score</span>
+          <strong>{max((card.fit_score for card in cards), default=0):.3f}</strong>
+          <span class="summary-caption">Highest weighted match</span>
+        </article>
+      </section>
 
-    <section class="candidate-list">
-      {''.join(candidate_cards) if candidate_cards else '<div class="panel hero-copy"><p class="lede">No candidate cards yet. Run sourcing to populate the shortlist.</p></div>'}
+      <section class="workspace-grid">
+        <section class="candidate-list">
+          {''.join(candidate_cards) if candidate_cards else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidate cards yet. Run sourcing to generate a shortlist.</p></div>'}
+        </section>
+
+        <aside class="brief-card spotlight-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Role brief</p>
+              <h3>Scoring inputs</h3>
+            </div>
+            <span class="pill">Explicit criteria</span>
+          </div>
+          <div class="brief-columns">
+            <section>
+              <h4>Must-haves</h4>
+              <ul>{must_have_list}</ul>
+            </section>
+            <section>
+              <h4>Nice-to-haves</h4>
+              <ul>{nice_to_have_list}</ul>
+            </section>
+            <section>
+              <h4>Location gate</h4>
+              <ul>{"".join(f"<li>{escape(item)}</li>" for item in location_targets) or "<li>No location targets set</li>"}</ul>
+            </section>
+          </div>
+        </aside>
+      </section>
     </section>
   </main>
+  <script>
+    const cards = document.querySelectorAll('.spotlight-card');
+    for (const card of cards) {{
+      card.addEventListener('pointermove', (event) => {{
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${{x}}%`);
+        card.style.setProperty('--mouse-y', `${{y}}%`);
+      }});
+    }}
+
+    const hero = document.getElementById('hero');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (hero && !prefersReducedMotion) {{
+      const updateHero = () => {{
+        const offset = Math.min(window.scrollY / 600, 1);
+        hero.style.opacity = String(1 - offset * 0.2);
+        hero.style.transform = `translateY(${{offset * 20}}px) scale(${{1 - offset * 0.03}})`;
+      }};
+      updateHero();
+      window.addEventListener('scroll', updateHero, {{ passive: true }});
+    }}
+  </script>
 </body>
 </html>"""
 

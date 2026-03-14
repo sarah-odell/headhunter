@@ -1,28 +1,37 @@
 {
   "role_name": "Full-Stack Engineer",
   "company": "HASH",
+  "location_targets": [
+    "Berlin",
+    "London"
+  ],
   "must_haves": [
     "TypeScript",
     "React",
     "frontend",
     "backend",
-    "performance"
+    "performance",
+    "data structures",
+    "storage systems"
   ],
   "nice_to_haves": [
     "Rust",
     "Effect",
     "HTML Canvas",
+    "graphics",
+    "animation",
     "Material UI",
+    "Base UI",
+    "Ariakit",
     "Panda",
-    "open source",
-    "Berlin",
-    "London"
+    "open source"
   ],
   "queries": [
     "site:github.com TypeScript React full-stack engineer Berlin London",
-    "site:github.com TypeScript React Material UI Panda full-stack",
+    "site:github.com TypeScript React performance data structures storage systems engineer",
+    "site:github.com TypeScript React Material UI Base UI Ariakit Panda full-stack",
     "site:github.com TypeScript Rust performance engineer Berlin London",
-    "site:github.com Effect TypeScript React open source engineer"
+    "site:github.com Effect TypeScript React HTML Canvas graphics animation open source engineer"
   ],
   "outreach_context": "Founder's Associate Challenge sourcing for engineering talent"
 }

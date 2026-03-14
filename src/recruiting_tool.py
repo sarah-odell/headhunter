@@ -16,6 +16,16 @@ from typing import Iterable
 from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 
+NEGATION_PREFIXES = (
+    "limited",
+    "limited recent",
+    "no",
+    "not",
+    "without",
+    "lacks",
+    "lack of",
+)
+
 
 @dataclass
 class CandidateCard:
@@ -29,6 +39,8 @@ class CandidateCard:
     fit_score: float
     rationale: str
     status: str
+    location_hits: list[str]
+    location_eligible: bool
     outreach_draft: str
 
 
@@ -69,6 +81,9 @@ def normalize_text(value: str) -> str:
 
 
 def extract_name(title: str) -> str:
+    github_match = re.match(r"^(.*?)\s*(?:\([^)]*\))?\s*·\s*GitHub$", title)
+    if github_match:
+        return github_match.group(1).strip()
     for separator in (" - ", " | ", " — "):
         if separator in title:
             first, second = title.split(separator, 1)
@@ -83,13 +98,27 @@ def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterabl
     must_haves = list(must_haves)
     nice_to_haves = list(nice_to_haves)
     normalized = normalize_text(text)
-    must_hits = [item for item in must_haves if normalize_text(item) in normalized]
-    nice_hits = [item for item in nice_to_haves if normalize_text(item) in normalized]
+    must_hits = [item for item in must_haves if _has_positive_signal(normalized, item)]
+    nice_hits = [item for item in nice_to_haves if _has_positive_signal(normalized, item)]
 
     must_score = len(must_hits) / max(1, len(must_haves))
     nice_score = len(nice_hits) / max(1, len(nice_to_haves))
     fit_score = (0.75 * must_score) + (0.25 * nice_score)
     return must_hits, nice_hits, round(fit_score, 3)
+
+
+def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
+    normalized_keyword = normalize_text(keyword)
+    if normalized_keyword not in normalized_text:
+        return False
+
+    for match in re.finditer(re.escape(normalized_keyword), normalized_text):
+        prefix = normalized_text[max(0, match.start() - 24):match.start()].strip()
+        if any(prefix.endswith(negation) for negation in NEGATION_PREFIXES):
+            continue
+        return True
+
+    return False
 
 
 def generate_outreach(candidate_name: str, role_brief: dict, must_hits: list[str], nice_hits: list[str], source_url: str) -> str:
@@ -104,7 +133,14 @@ def generate_outreach(candidate_name: str, role_brief: dict, must_hits: list[str
     )
 
 
-def to_status(score: float) -> str:
+def score_location(text: str, location_targets: Iterable[str]) -> list[str]:
+    normalized = normalize_text(text)
+    return [target for target in location_targets if _has_positive_signal(normalized, target)]
+
+
+def to_status(score: float, location_eligible: bool = True) -> str:
+    if not location_eligible:
+        return "reject"
     if score >= 0.65:
         return "shortlist"
     if score >= 0.40:
@@ -114,14 +150,18 @@ def to_status(score: float) -> str:
 
 def _cards_from_results(role_brief: dict, results: list[dict]) -> list[CandidateCard]:
     dedup: dict[str, CandidateCard] = {}
+    location_targets = role_brief.get("location_targets", [])
     for item in results:
         text_blob = f"{item['title']} {item.get('snippet', '')}"
         must_hits, nice_hits, score = score_candidate(text_blob, role_brief["must_haves"], role_brief["nice_to_haves"])
+        location_hits = score_location(text_blob, location_targets)
+        location_eligible = bool(location_hits) if location_targets else True
         name = extract_name(item["title"])
         identity = hashlib.sha1(f"{name}|{item['url']}".encode()).hexdigest()[:8]
         rationale = (
             f"Matched must-haves: {must_hits if must_hits else 'none'}; "
-            f"nice-to-haves: {nice_hits if nice_hits else 'none'}."
+            f"nice-to-haves: {nice_hits if nice_hits else 'none'}; "
+            f"location: {location_hits if location_hits else 'no London/Berlin evidence'}."
         )
         candidate = CandidateCard(
             id=identity,
@@ -133,7 +173,9 @@ def _cards_from_results(role_brief: dict, results: list[dict]) -> list[Candidate
             nice_to_have_hits=nice_hits,
             fit_score=score,
             rationale=rationale,
-            status=to_status(score),
+            status=to_status(score, location_eligible=location_eligible),
+            location_hits=location_hits,
+            location_eligible=location_eligible,
             outreach_draft=generate_outreach(name, role_brief, must_hits, nice_hits, item["url"]),
         )
         if identity not in dedup or dedup[identity].fit_score < candidate.fit_score:
@@ -173,6 +215,8 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "source_url",
             "must_have_hits",
             "nice_to_have_hits",
+            "location_hits",
+            "location_eligible",
             "fit_score",
             "status",
             "rationale",
@@ -184,6 +228,7 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
         row = asdict(card)
         row["must_have_hits"] = "; ".join(card.must_have_hits)
         row["nice_to_have_hits"] = "; ".join(card.nice_to_have_hits)
+        row["location_hits"] = "; ".join(card.location_hits)
         row.pop("evidence_links", None)
         writer.writerow(row)
     return buffer.getvalue()
