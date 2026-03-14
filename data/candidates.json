@@ -1,1 +1,634 @@
-[]
+[
+  {
+    "id": "b962006a",
+    "name": "Igor Matias",
+    "headline": "Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany",
+    "source_url": "https://github.com/matyas-igor",
+    "evidence_links": [
+      "https://github.com/matyas-igor"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [
+      "storage systems"
+    ],
+    "fit_score": 0.769,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.077,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['Berlin'].",
+    "status": "hold",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/matyas-igor.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "343cb4a7",
+    "name": "Mohd Javed",
+    "headline": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
+    "source_url": "https://github.com/devjavedmohd",
+    "evidence_links": [
+      "https://github.com/devjavedmohd"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [
+      "storage systems"
+    ],
+    "fit_score": 0.769,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.077,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 1.000; nice-to-have score: 0.077; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Mohd Javed,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/devjavedmohd.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "7c473ab1",
+    "name": "inker",
+    "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+    "source_url": "https://github.com/inker",
+    "evidence_links": [
+      "https://github.com/inker"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/inker.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "12efe01b",
+    "name": "Jos\u00e9 Quinto",
+    "headline": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",
+    "source_url": "https://github.com/jquintozamora",
+    "evidence_links": [
+      "https://github.com/jquintozamora"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jquintozamora.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "f1a0eca3",
+    "name": "Francesco Albanese",
+    "headline": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
+    "source_url": "https://github.com/francesco-albanese",
+    "evidence_links": [
+      "https://github.com/francesco-albanese"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/francesco-albanese.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "0bd61d98",
+    "name": "Piotr Kuczynski",
+    "headline": "Passionate about React, TypeScript and Node.js | freelancer | Berlin, Germany",
+    "source_url": "https://github.com/pkuczynski",
+    "evidence_links": [
+      "https://github.com/pkuczynski"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Piotr Kuczynski,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/pkuczynski.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "85f05305",
+    "name": "Stefan Wille",
+    "headline": "TypeScript  / React.js / Node.js / GraphQL | Contractor, available from 1 January 2026 | Berlin / Germany",
+    "source_url": "https://github.com/stefanwille",
+    "evidence_links": [
+      "https://github.com/stefanwille"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.75,
+    "must_have_score": 1.0,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 1.000; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Stefan Wille,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/stefanwille.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "27b28d4d",
+    "name": "Harshit Tripathi",
+    "headline": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin",
+    "source_url": "https://github.com/htthecool",
+    "evidence_links": [
+      "https://github.com/htthecool"
+    ],
+    "must_have_hits": [
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [
+      "storage systems"
+    ],
+    "fit_score": 0.582,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.077,
+    "rationale": "Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: ['storage systems']; must-have score: 0.750; nice-to-have score: 0.077; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Harshit Tripathi,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend, storage systems looked highly relevant, especially based on what I saw here: https://github.com/htthecool.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "c0f43ab6",
+    "name": "Daniel Ross",
+    "headline": "Front-end JavaScript/TypeScript/React Developer | London, UK",
+    "source_url": "https://github.com/notalexross",
+    "evidence_links": [
+      "https://github.com/notalexross"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [
+      "open source"
+    ],
+    "fit_score": 0.582,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.077,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: ['open source']; must-have score: 0.750; nice-to-have score: 0.077; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Daniel Ross,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, open source looked highly relevant, especially based on what I saw here: https://github.com/notalexross.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "1a9bbd60",
+    "name": "Christian G\u00f6tze",
+    "headline": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
+    "source_url": "https://github.com/OG84",
+    "evidence_links": [
+      "https://github.com/OG84"
+    ],
+    "must_have_hits": [
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Christian G\u00f6tze,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/OG84.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "79bf7db8",
+    "name": "fmacherey",
+    "headline": "Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",
+    "source_url": "https://github.com/fmacherey",
+    "evidence_links": [
+      "https://github.com/fmacherey"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi fmacherey,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/fmacherey.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "22826465",
+    "name": "Asad Ali Baloch",
+    "headline": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
+    "source_url": "https://github.com/asadlib11",
+    "evidence_links": [
+      "https://github.com/asadlib11"
+    ],
+    "must_have_hits": [
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Asad Ali Baloch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/asadlib11.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "6833d5b6",
+    "name": "Aleksandra Sezer",
+    "headline": "Front-end developer | React | Typescript | London, UK",
+    "source_url": "https://github.com/aleksandrasezer",
+    "evidence_links": [
+      "https://github.com/aleksandrasezer"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Aleksandra Sezer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/aleksandrasezer.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "a97647c9",
+    "name": "James Rees",
+    "headline": "React, Angular, Node and Python Engineer | London",
+    "source_url": "https://github.com/jamesrees77",
+    "evidence_links": [
+      "https://github.com/jamesrees77"
+    ],
+    "must_have_hits": [
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['React', 'frontend', 'backend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi James Rees,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend looked highly relevant, especially based on what I saw here: https://github.com/jamesrees77.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "a420f943",
+    "name": "Felix Leupold",
+    "headline": "TypeScript &amp; React Developer | Berlin, Germany",
+    "source_url": "https://github.com/xiel",
+    "evidence_links": [
+      "https://github.com/xiel"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Felix Leupold,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/xiel.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "9f5cb6e8",
+    "name": "Jos\u00e9 Copeti",
+    "headline": "Immersing in TypeScript, React, Next.js and React Native. | Berlin",
+    "source_url": "https://github.com/jrcopeti",
+    "evidence_links": [
+      "https://github.com/jrcopeti"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Jos\u00e9 Copeti,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jrcopeti.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "a6936eb2",
+    "name": "Robin Wieruch",
+    "headline": "React &amp; Next.js \u2022 JavaScript &amp; TypeScript \u2022 Freelancer &amp; Consultant \u2022 Full-Stack Software Engineer \u2022 Product Engineer \u2022 AI \u2022 Technical Co-Founder \u2022 GitHub Star | Consultant &amp; Freelancer | Berlin, Germany, Remote",
+    "source_url": "https://github.com/rwieruch",
+    "evidence_links": [
+      "https://github.com/rwieruch"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Robin Wieruch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/rwieruch.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "4beaf995",
+    "name": "Jessica Leach",
+    "headline": "JavaScript, React, Ruby, TypeScript | London",
+    "source_url": "https://github.com/JessicaML",
+    "evidence_links": [
+      "https://github.com/JessicaML"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Jessica Leach,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/JessicaML.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "7b3a6477",
+    "name": "Julija Stepanova (Vil\u0160kerste)",
+    "headline": "TypeScript - React - React Native  Developer | Software developer @ Aviva | London",
+    "source_url": "https://github.com/julija777",
+    "evidence_links": [
+      "https://github.com/julija777"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Julija Stepanova (Vil\u0160kerste),\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/julija777.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "a2e2306b",
+    "name": "Seb Sowter",
+    "headline": "TypeScript / React / WebGL / Phaser | London",
+    "source_url": "https://github.com/sebsowter",
+    "evidence_links": [
+      "https://github.com/sebsowter"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Seb Sowter,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/sebsowter.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "736d864d",
+    "name": "Filipe A Moreira",
+    "headline": "Full Stack Developer (Ruby/Rails/JavaScript/Typescript/React) | Coderelax | London - UK",
+    "source_url": "https://github.com/filipeamoreira",
+    "evidence_links": [
+      "https://github.com/filipeamoreira"
+    ],
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.562,
+    "must_have_score": 0.75,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend']; nice-to-haves: none; must-have score: 0.750; nice-to-have score: 0.000; location: ['London'].",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Filipe A Moreira,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/filipeamoreira.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "35901b6f",
+    "name": "Matheus Viana",
+    "headline": "\ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",
+    "source_url": "https://github.com/moviandev",
+    "evidence_links": [
+      "https://github.com/moviandev"
+    ],
+    "must_have_hits": [
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.188,
+    "must_have_score": 0.25,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "reject",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Matheus Viana,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/moviandev.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "7fde2b7b",
+    "name": "Jemail Omer",
+    "headline": "Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",
+    "source_url": "https://github.com/jemxz",
+    "evidence_links": [
+      "https://github.com/jemxz"
+    ],
+    "must_have_hits": [
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.188,
+    "must_have_score": 0.25,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "reject",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Jemail Omer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/jemxz.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "ea8d0807",
+    "name": "Carlos Meyer",
+    "headline": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
+    "source_url": "https://github.com/fabrikler",
+    "evidence_links": [
+      "https://github.com/fabrikler"
+    ],
+    "must_have_hits": [
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.188,
+    "must_have_score": 0.25,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['Berlin'].",
+    "status": "reject",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Carlos Meyer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/fabrikler.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  },
+  {
+    "id": "78449567",
+    "name": "Polygonjs",
+    "headline": "node-based WebGL design tool | Polygonjs | London",
+    "source_url": "https://github.com/polygonjs",
+    "evidence_links": [
+      "https://github.com/polygonjs"
+    ],
+    "must_have_hits": [
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.188,
+    "must_have_score": 0.25,
+    "nice_to_have_score": 0.0,
+    "rationale": "Matched must-haves: ['backend']; nice-to-haves: none; must-have score: 0.250; nice-to-have score: 0.000; location: ['London'].",
+    "status": "reject",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "outreach_draft": "Hi Polygonjs,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/polygonjs.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+  }
+]

@@ -94,6 +94,8 @@ class CandidateCard:
     must_have_hits: list[str]
     nice_to_have_hits: list[str]
     fit_score: float
+    must_have_score: float
+    nice_to_have_score: float
     rationale: str
     status: str
     location_hits: list[str]
@@ -240,12 +242,14 @@ def enrich_github_result(item: dict) -> dict:
     location = _strip_tags(_first_match(r'itemprop="homeLocation"[^>]*aria-label="Home location:\s*([^"]+)"', html))
     website = _first_match(r'itemprop="url"[^>]*href="([^"]+)"', html)
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
+    pinned_repos = _extract_pinned_repos(html, item["url"])
 
     display_name = full_name or username or item["title"]
     headline_parts = [part for part in (bio, company, location) if part]
     headline = " | ".join(headline_parts) if headline_parts else item["title"]
 
     text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, profile_meta]
+    text_parts.extend(repo["text"] for repo in pinned_repos)
     enriched_item = dict(item)
     enriched_item["title"] = f"{display_name} ({username}) · GitHub" if full_name and username else item["title"]
     enriched_item["snippet"] = " ".join(part for part in text_parts if part)
@@ -253,10 +257,36 @@ def enrich_github_result(item: dict) -> dict:
     evidence_links = [item["url"]]
     if website and website not in evidence_links:
         evidence_links.append(website)
+    for repo in pinned_repos[:3]:
+        if repo["url"] not in evidence_links:
+            evidence_links.append(repo["url"])
     enriched_item["evidence_links"] = evidence_links
     enriched_item["profile_name"] = display_name
     enriched_item["profile_location"] = location
+    enriched_item["pinned_repos"] = pinned_repos
     return enriched_item
+
+
+def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
+    results: list[dict] = []
+    owner = urlparse(profile_url).path.strip("/")
+    for href, name, body in re.findall(
+        r'class="Link mr-1 text-bold wb-break-word"[^>]*href="(/[^"]+)"[^>]*><span class="repo">(.*?)</span></a>(.*?)</article>',
+        html,
+        flags=re.S,
+    ):
+        repo_url = f"https://github.com{href}"
+        description = _strip_tags(_first_match(r'<p class="pinned-item-desc[^"]*"[^>]*>(.*?)</p>', body))
+        language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
+        repo_text_parts = [name, description, language, owner]
+        results.append(
+            {
+                "url": repo_url,
+                "name": name,
+                "text": " ".join(part for part in repo_text_parts if part),
+            }
+        )
+    return results
 
 
 def extract_name(title: str) -> str:
@@ -273,7 +303,7 @@ def extract_name(title: str) -> str:
     return title[:80]
 
 
-def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterable[str]) -> tuple[list[str], list[str], float]:
+def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterable[str]) -> tuple[list[str], list[str], float, float, float]:
     must_haves = list(must_haves)
     nice_to_haves = list(nice_to_haves)
     normalized = normalize_text(text)
@@ -283,7 +313,7 @@ def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterabl
     must_score = len(must_hits) / max(1, len(must_haves))
     nice_score = len(nice_hits) / max(1, len(nice_to_haves))
     fit_score = (0.75 * must_score) + (0.25 * nice_score)
-    return must_hits, nice_hits, round(fit_score, 3)
+    return must_hits, nice_hits, round(fit_score, 3), round(must_score, 3), round(nice_score, 3)
 
 
 def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
@@ -334,7 +364,11 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
     for item in results:
         enriched_item = enrich_github_result(item) if enrich_profiles else dict(item)
         text_blob = f"{enriched_item['title']} {enriched_item.get('snippet', '')}"
-        must_hits, nice_hits, score = score_candidate(text_blob, role_brief["must_haves"], role_brief["nice_to_haves"])
+        must_hits, nice_hits, score, must_score, nice_score = score_candidate(
+            text_blob,
+            role_brief["must_haves"],
+            role_brief["nice_to_haves"],
+        )
         location_hits = score_location(text_blob, location_targets)
         location_eligible = bool(location_hits) if location_targets else True
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
@@ -342,6 +376,8 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
         rationale = (
             f"Matched must-haves: {must_hits if must_hits else 'none'}; "
             f"nice-to-haves: {nice_hits if nice_hits else 'none'}; "
+            f"must-have score: {must_score:.3f}; "
+            f"nice-to-have score: {nice_score:.3f}; "
             f"location: {location_hits if location_hits else 'no London/Berlin evidence'}."
         )
         candidate = CandidateCard(
@@ -353,6 +389,8 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             must_have_hits=must_hits,
             nice_to_have_hits=nice_hits,
             fit_score=score,
+            must_have_score=must_score,
+            nice_to_have_score=nice_score,
             rationale=rationale,
             status=to_status(score, location_eligible=location_eligible),
             location_hits=location_hits,
@@ -382,7 +420,18 @@ def save_cards(cards: list[CandidateCard], output: Path) -> None:
 
 def load_cards(path: Path) -> list[CandidateCard]:
     raw = json.loads(path.read_text())
-    return [CandidateCard(**row) for row in raw]
+    cards: list[CandidateCard] = []
+    for row in raw:
+        normalized = dict(row)
+        normalized.setdefault("evidence_links", [normalized.get("source_url", "")] if normalized.get("source_url") else [])
+        normalized.setdefault("must_have_hits", [])
+        normalized.setdefault("nice_to_have_hits", [])
+        normalized.setdefault("must_have_score", 0.0)
+        normalized.setdefault("nice_to_have_score", 0.0)
+        normalized.setdefault("location_hits", [])
+        normalized.setdefault("location_eligible", True)
+        cards.append(CandidateCard(**normalized))
+    return cards
 
 
 def cards_to_csv_text(cards: list[CandidateCard]) -> str:
@@ -396,6 +445,8 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "source_url",
             "must_have_hits",
             "nice_to_have_hits",
+            "must_have_score",
+            "nice_to_have_score",
             "location_hits",
             "location_eligible",
             "fit_score",

@@ -40,6 +40,10 @@ def status_counts(cards: list) -> dict[str, int]:
     return counts
 
 
+def normalize_status_filter(raw_value: str) -> str:
+    return raw_value if raw_value in {"all", *STATUS_OPTIONS} else "all"
+
+
 def render_page(
     brief_path: Path,
     output_path: Path,
@@ -48,12 +52,19 @@ def render_page(
     max_results: int,
     cards: list,
     view_mode: str = "cards",
+    status_filter: str = "all",
     message: str = "",
     error: str = "",
 ) -> str:
     brief = load_role_brief(brief_path)
     counts = status_counts(cards)
+    filtered_cards = [card for card in cards if status_filter == "all" or card.status == status_filter]
     location_targets = brief.get("location_targets", [])
+    base_query = {
+        "brief": str(brief_path.relative_to(ROOT)),
+        "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
+        "max_results": str(max_results),
+    }
     role_options = []
     for option in available_briefs():
         selected = " selected" if option == brief_path else ""
@@ -63,18 +74,18 @@ def render_page(
 
     summary_cards = "".join(
         f"""
-        <article class="summary-card spotlight-card">
+        <a class="summary-card spotlight-card workflow-filter {'active' if status_filter == status else ''}" href="/?{urlencode(base_query | {'view': view_mode, 'status': status})}">
           <span class="eyebrow-label">Workflow</span>
           <strong>{counts.get(status, 0)}</strong>
           <span class="summary-caption">{status.title()} candidates</span>
-        </article>
+        </a>
         """
         for status in STATUS_OPTIONS
     )
 
     candidate_cards = []
     candidate_rows = []
-    for card in cards:
+    for card in filtered_cards:
         must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
         nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
         location_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.location_hits) or "<li>No London/Berlin evidence</li>"
@@ -113,6 +124,20 @@ def render_page(
                 <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
               </div>
               <p class="rationale">{escape(card.rationale)}</p>
+              <div class="score-breakdown">
+                <div class="breakdown-item">
+                  <span class="eyebrow-label">Must-haves</span>
+                  <strong>{card.must_have_score:.3f}</strong>
+                </div>
+                <div class="breakdown-item">
+                  <span class="eyebrow-label">Nice-to-haves</span>
+                  <strong>{card.nice_to_have_score:.3f}</strong>
+                </div>
+                <div class="breakdown-item">
+                  <span class="eyebrow-label">Weighted total</span>
+                  <strong>{card.fit_score:.3f}</strong>
+                </div>
+              </div>
               <div class="candidate-grid">
                 <section class="info-panel">
                   <h4>Core matches</h4>
@@ -144,6 +169,7 @@ def render_page(
                 <input type="hidden" name="seed" value="{escape(str(seed_path.relative_to(ROOT))) if seed_path else ''}">
                 <input type="hidden" name="max_results" value="{max_results}">
                 <input type="hidden" name="view" value="{escape(view_mode)}">
+                <input type="hidden" name="status_filter" value="{escape(status_filter)}">
                 {status_form}
               </form>
             </article>
@@ -158,6 +184,8 @@ def render_page(
               </td>
               <td>{escape(card.status.title())}</td>
               <td>{card.fit_score:.3f}</td>
+              <td>{card.must_have_score:.3f}</td>
+              <td>{card.nice_to_have_score:.3f}</td>
               <td>{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
               <td>{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
               <td>{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
@@ -174,17 +202,12 @@ def render_page(
     location_label = " / ".join(location_targets) if location_targets else "No location gate"
     cards_tab_class = "active" if view_mode == "cards" else ""
     table_tab_class = "active" if view_mode == "table" else ""
-    view_query = urlencode(
-        {
-            "brief": str(brief_path.relative_to(ROOT)),
-            "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
-            "max_results": str(max_results),
-        }
-    )
+    filter_label = "All candidates" if status_filter == "all" else f"{status_filter.title()} only"
+    view_query = urlencode(base_query | {"status": status_filter})
     cards_view_html = (
         ''.join(candidate_cards)
         if candidate_cards
-        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidate cards yet. Run sourcing to generate a shortlist.</p></div>'
+        else f'<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates in the {escape(filter_label.lower())} view yet.</p></div>'
     )
     table_view_html = (
         f"""
@@ -194,7 +217,7 @@ def render_page(
               <p class="eyebrow">Candidate table</p>
               <h3>All candidates</h3>
             </div>
-            <span class="pill">{len(cards)} rows</span>
+            <span class="pill">{len(filtered_cards)} rows</span>
           </div>
           <div class="table-wrap">
             <table class="candidate-table">
@@ -203,6 +226,8 @@ def render_page(
                   <th>Candidate</th>
                   <th>Status</th>
                   <th>Score</th>
+                  <th>Must</th>
+                  <th>Nice</th>
                   <th>Location</th>
                   <th>Must-haves</th>
                   <th>Nice-to-haves</th>
@@ -216,7 +241,7 @@ def render_page(
         </section>
         """
         if candidate_rows
-        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates available for table view yet.</p></div>'
+        else f'<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates available for the {escape(filter_label.lower())} table view yet.</p></div>'
     )
 
     return f"""<!doctype html>
@@ -608,6 +633,11 @@ def render_page(
       line-height: 1;
       letter-spacing: -0.03em;
     }}
+    .workflow-filter.active {{
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-card-hover);
+      background: linear-gradient(to bottom, rgba(94,106,210,0.16), rgba(255,255,255,0.04));
+    }}
     .workspace-grid {{
       display: grid;
       grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
@@ -684,6 +714,25 @@ def render_page(
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin: 18px 0;
+    }}
+    .score-breakdown {{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }}
+    .breakdown-item {{
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-default);
+      display: grid;
+      gap: 8px;
+    }}
+    .breakdown-item strong {{
+      font-size: 1.05rem;
+      color: var(--foreground);
+      letter-spacing: -0.02em;
     }}
     .info-panel,
     .outreach-panel,
@@ -869,6 +918,7 @@ def render_page(
       }}
       .hero-stats,
       .summary-grid,
+      .score-breakdown,
       .candidate-grid {{
         grid-template-columns: 1fr;
       }}
@@ -923,7 +973,7 @@ def render_page(
         <div class="hero-stats">
           <article class="hero-stat">
             <span>Primary source</span>
-            <strong>GitHub</strong>
+            <strong>GitHub profiles</strong>
           </article>
           <article class="hero-stat">
             <span>Location gate</span>
@@ -945,6 +995,7 @@ def render_page(
         </div>
         <div class="form-grid">
           <input type="hidden" name="view" value="{escape(view_mode)}">
+          <input type="hidden" name="status_filter" value="{escape(status_filter)}">
           <label>
             Role brief
             <select name="brief">{''.join(role_options)}</select>
@@ -981,8 +1032,10 @@ def render_page(
         </div>
         <div class="toolbar-side">
           <div class="toolbar-pills">
-            <span class="pill">{len(cards)} cards</span>
+            <span class="pill">{len(filtered_cards)} visible / {len(cards)} total</span>
             <span class="pill">{escape(location_label)}</span>
+            <span class="pill">Sources: GitHub user search + profiles + pinned repos</span>
+            <span class="pill">{escape(filter_label)}</span>
           </div>
           <nav class="view-switcher" aria-label="Candidate views">
             <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
@@ -994,11 +1047,11 @@ def render_page(
 
       <section class="summary-grid">
         {summary_cards}
-        <article class="summary-card spotlight-card">
+        <a class="summary-card spotlight-card workflow-filter {'active' if status_filter == 'all' else ''}" href="/?{urlencode(base_query | {'view': view_mode, 'status': 'all'})}">
           <span class="eyebrow-label">Top score</span>
-          <strong>{max((card.fit_score for card in cards), default=0):.3f}</strong>
-          <span class="summary-caption">Highest weighted match</span>
-        </article>
+          <strong>{max((card.fit_score for card in filtered_cards), default=0):.3f}</strong>
+          <span class="summary-caption">Showing {escape(filter_label.lower())}</span>
+        </a>
       </section>
 
       <section class="workspace-grid">
@@ -1093,6 +1146,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         seed_path = self.resolve_path(seed_value, DEFAULT_SEED) if seed_value else None
         max_results = int(query.get("max_results", ["20"])[-1])
         view_mode = query.get("view", ["cards"])[-1]
+        status_filter = normalize_status_filter(query.get("status", ["all"])[-1])
         cards = load_cards(output_path) if output_path.exists() else []
         page = render_page(
             brief_path=brief_path,
@@ -1102,6 +1156,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
             max_results=max_results,
             cards=cards,
             view_mode=view_mode if view_mode in {"cards", "table"} else "cards",
+            status_filter=status_filter,
             message=query.get("message", [""])[-1],
             error=query.get("error", [""])[-1],
         )
@@ -1118,6 +1173,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("use_seed") else None
         max_results = int(form.get("max_results", "20"))
         view_mode = form.get("view", "cards")
+        status_filter = normalize_status_filter(form.get("status_filter", "all"))
 
         try:
             brief = load_role_brief(brief_path)
@@ -1129,6 +1185,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                 "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                 "max_results": str(max_results),
                 "view": view_mode,
+                "status": status_filter,
                 "message": f"Generated {len(cards)} candidate cards.",
             }
             self.redirect("/", params)
@@ -1140,6 +1197,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": str(max_results),
                     "view": view_mode,
+                    "status": status_filter,
                     "error": str(exc),
                 },
             )
@@ -1149,6 +1207,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         seed_path = self.resolve_path(form.get("seed", ""), DEFAULT_SEED) if form.get("seed") else None
         max_results = form.get("max_results", "20")
         view_mode = form.get("view", "cards")
+        status_filter = normalize_status_filter(form.get("status_filter", "all"))
         try:
             cards = load_cards(DEFAULT_OUTPUT)
             update_card_status(cards, form["candidate_id"], form["status"])
@@ -1161,6 +1220,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
                     "view": view_mode,
+                    "status": status_filter,
                     "message": f"Updated {form['candidate_id']} to {form['status']}.",
                 },
             )
@@ -1172,6 +1232,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
                     "view": view_mode,
+                    "status": status_filter,
                     "error": str(exc),
                 },
             )

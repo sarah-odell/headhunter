@@ -35,11 +35,18 @@ Then open:
 http://localhost:8001
 ```
 
+## How to test it
+
+- For a stable UI walkthrough with 50+ candidates, use demo mode by checking the seed-data option in the app.
+- For the real product path, leave seed mode unchecked so the tool runs live GitHub user search and profile enrichment.
+- When testing live mode, start with `5` results per query, then increase to `10` or `20` once a run succeeds.
+
 ## What this tool does
 
 - Searches public GitHub user results directly for engineering candidates in Berlin and London.
 - Builds structured candidate cards with:
   - source/evidence link(s)
+  - pinned repository evidence where available
   - must-have and nice-to-have matches
   - location eligibility evidence
   - weighted fit score
@@ -62,9 +69,15 @@ http://localhost:8001
 - Running the app in seed mode populates both the cards view and table view with a 50+ candidate pipeline for fast demoing.
 - This makes it possible to review the full shortlist workflow without relying on live network search.
 
+## Live mode
+
+- Live mode uses direct GitHub user search plus public profile enrichment.
+- Candidate names, usernames, bios, locations, and profile evidence come from real public GitHub pages.
+- GitHub may temporarily rate-limit repeated unauthenticated searches. If that happens, wait a few minutes and rerun with a smaller per-query result count.
+
 ## Sourcing approach
 
-- Primary source: public GitHub profiles and repository pages surfaced through role-specific search queries.
+- Primary source: public GitHub user search results, profile pages, and pinned repositories surfaced through role-specific search queries.
 - Supporting public sources: personal sites, engineering blogs, or other evidence-rich pages that appear in search results.
 - Search mechanism: direct GitHub user search pages plus public profile enrichment, used to keep the tool lightweight and runnable locally without third-party API keys.
 - Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
@@ -107,7 +120,7 @@ The web app lets you:
 - change `shortlist` / `hold` / `reject`
 - download CSV output
 
-Demo mode already includes 59 candidates. For larger live runs, use `20` to `25` results per query in the UI. With the current query set, that is designed to surface 50+ candidates before de-duplication.
+Demo mode already includes 59 candidates. For live testing, start with `5` results per query, then increase to `10` or `20` once GitHub search is responding normally.
 
 ### 2) CLI engine
 
