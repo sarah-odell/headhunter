@@ -88,11 +88,13 @@ def render_page(
     for card in filtered_cards:
         must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
         nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
-        location_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.location_hits) or "<li>No London/Berlin evidence</li>"
+        location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
         evidence_links = "".join(
             f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>'
             for link in card.evidence_links
         )
+        must_badges = "".join(f'<span class="match-badge">{escape(hit)}</span>' for hit in card.must_have_hits) or '<span class="match-empty">No must-have evidence</span>'
+        nice_badges = "".join(f'<span class="match-badge subdued">{escape(hit)}</span>' for hit in card.nice_to_have_hits) or '<span class="match-empty">No supporting evidence</span>'
         status_form = "".join(
             f"""
             <button type="submit" name="status" value="{status}" class="status-button {'active' if card.status == status else ''}">
@@ -120,10 +122,10 @@ def render_page(
                   <div class="score-pill">{card.fit_score:.3f}</div>
                 </div>
               </div>
-              <div class="candidate-links">
+              <div class="candidate-topline">
                 <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
+                <span class="candidate-location-note">{escape(location_text)}</span>
               </div>
-              <p class="rationale">{escape(card.rationale)}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
@@ -138,31 +140,28 @@ def render_page(
                   <strong>{card.fit_score:.3f}</strong>
                 </div>
               </div>
-              <div class="candidate-grid">
-                <section class="info-panel">
-                  <h4>Core matches</h4>
-                  <ul>{must_hits}</ul>
+              <div class="match-grid">
+                <section class="match-panel">
+                  <h4>Must-have matches</h4>
+                  <div class="match-list">{must_badges}</div>
                 </section>
-                <section class="info-panel">
-                  <h4>Supporting signals</h4>
-                  <ul>{nice_hits}</ul>
-                </section>
-                <section class="info-panel">
-                  <h4>Location check</h4>
-                  <ul>{location_hits}</ul>
-                </section>
-                <section class="info-panel info-panel-wide">
-                  <h4>Evidence links</h4>
-                  <ul>{evidence_links}</ul>
+                <section class="match-panel">
+                  <h4>Nice-to-have signals</h4>
+                  <div class="match-list">{nice_badges}</div>
                 </section>
               </div>
-              <section class="outreach-panel">
-                <div class="section-head">
-                  <h4>Outreach draft</h4>
-                  <span class="eyebrow-label">AI-assisted</span>
+              <details class="detail-panel">
+                <summary>Evidence links</summary>
+                <div class="detail-body">
+                  <ul>{evidence_links}</ul>
                 </div>
-                <pre>{escape(card.outreach_draft)}</pre>
-              </section>
+              </details>
+              <details class="detail-panel">
+                <summary>Outreach draft</summary>
+                <div class="detail-body">
+                  <pre>{escape(card.outreach_draft)}</pre>
+                </div>
+              </details>
               <form method="post" action="/review" class="review-form">
                 <input type="hidden" name="candidate_id" value="{escape(card.id)}">
                 <input type="hidden" name="brief" value="{escape(str(brief_path.relative_to(ROOT)))}">
@@ -355,7 +354,7 @@ def render_page(
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(360px, 0.7fr);
       gap: 24px;
-      align-items: start;
+      align-items: stretch;
       margin-bottom: 28px;
     }}
     .hero-copy,
@@ -394,19 +393,19 @@ def render_page(
       opacity: 1;
     }}
     .hero-copy {{
-      padding: 36px;
-      min-height: 520px;
+      padding: 26px;
+      min-height: 300px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }}
     .hero-copy h1 {{
-      margin: 0 0 18px;
-      font-size: clamp(3.4rem, 8vw, 7rem);
-      line-height: 0.96;
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 0.98;
       letter-spacing: -0.04em;
       font-weight: 600;
-      max-width: 11ch;
+      max-width: 10ch;
       background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0.72));
       -webkit-background-clip: text;
       background-clip: text;
@@ -431,39 +430,40 @@ def render_page(
       font-weight: 600;
     }}
     .lede {{
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
-      line-height: 1.75;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      line-height: 1.6;
       color: var(--foreground-muted);
-      max-width: 58ch;
-      margin: 0 0 32px;
+      max-width: 48ch;
+      margin: 0 0 20px;
     }}
     .hero-stack {{
       display: grid;
-      gap: 18px;
+      gap: 10px;
     }}
     .hero-stats {{
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }}
     .hero-stat {{
-      padding: 18px;
+      padding: 12px 14px;
       border-radius: var(--radius-md);
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border-default);
     }}
     .hero-stat strong {{
       display: block;
-      margin-top: 8px;
-      font-size: 1.6rem;
+      margin-top: 6px;
+      font-size: 1.15rem;
       font-weight: 600;
     }}
     .hero-stat span {{
       color: var(--foreground-muted);
-      font-size: 14px;
+      font-size: 12px;
     }}
     .control-panel {{
       padding: 24px;
+      height: 100%;
     }}
     .form-grid {{
       display: grid;
@@ -555,21 +555,21 @@ def render_page(
     }}
     .toolbar {{
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
-      gap: 18px;
-      padding: 22px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      padding: 16px 18px;
+      align-items: center;
     }}
     .toolbar-copy {{
       display: grid;
-      gap: 10px;
+      gap: 6px;
     }}
     .toolbar-copy h2 {{
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
     }}
     .toolbar-copy p,
     .summary-caption,
     .headline,
-    .rationale,
     li,
     pre,
     .toolbar-meta,
@@ -580,8 +580,9 @@ def render_page(
     }}
     .toolbar-side {{
       display: grid;
-      gap: 14px;
+      gap: 10px;
       align-content: start;
+      justify-items: end;
     }}
     .toolbar-pills,
     .candidate-meta {{
@@ -647,7 +648,7 @@ def render_page(
     .view-switcher {{
       display: inline-flex;
       gap: 8px;
-      padding: 6px;
+      padding: 4px;
       border-radius: 999px;
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--border-default);
@@ -657,14 +658,19 @@ def render_page(
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 38px;
-      padding: 0 16px;
+      min-height: 34px;
+      padding: 0 14px;
       border-radius: 999px;
       color: var(--foreground-muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.02em;
       transition: background 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+    }}
+    .toolbar-note {{
+      margin: 0;
+      font-size: 13px;
+      color: var(--foreground-subtle);
     }}
     .view-tab.active {{
       background: rgba(94,106,210,0.18);
@@ -706,14 +712,17 @@ def render_page(
       font-weight: 700;
       box-shadow: var(--shadow-accent);
     }}
-    .candidate-links {{
-      margin-bottom: 16px;
+    .candidate-topline {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }}
-    .candidate-grid {{
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin: 18px 0;
+    .candidate-location-note {{
+      color: var(--foreground-muted);
+      font-size: 14px;
     }}
     .score-breakdown {{
       display: grid;
@@ -733,6 +742,50 @@ def render_page(
       font-size: 1.05rem;
       color: var(--foreground);
       letter-spacing: -0.02em;
+    }}
+    .match-grid {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }}
+    .match-panel {{
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-default);
+      display: grid;
+      gap: 12px;
+    }}
+    .match-panel h4 {{
+      font-size: 0.95rem;
+    }}
+    .match-list {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .match-badge,
+    .match-empty {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(94,106,210,0.12);
+      border: 1px solid rgba(94,106,210,0.22);
+      color: var(--foreground);
+      font-size: 13px;
+    }}
+    .match-badge.subdued {{
+      background: rgba(255,255,255,0.05);
+      border-color: var(--border-default);
+      color: var(--foreground-muted);
+    }}
+    .match-empty {{
+      background: rgba(255,255,255,0.03);
+      border-color: var(--border-default);
+      color: var(--foreground-muted);
     }}
     .info-panel,
     .outreach-panel,
@@ -822,6 +875,30 @@ def render_page(
       margin: 0;
       color: rgba(237,237,239,0.85);
     }}
+    .detail-panel {{
+      border: 1px solid var(--border-default);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.025);
+      margin-top: 12px;
+      overflow: hidden;
+    }}
+    .detail-panel summary {{
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--foreground);
+    }}
+    .detail-panel summary::-webkit-details-marker {{
+      display: none;
+    }}
+    .detail-panel[open] summary {{
+      border-bottom: 1px solid var(--border-default);
+      background: rgba(255,255,255,0.03);
+    }}
+    .detail-body {{
+      padding: 14px 16px 16px;
+    }}
     .review-form {{
       display: flex;
       gap: 10px;
@@ -892,12 +969,6 @@ def render_page(
       .summary-grid {{
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }}
-      .candidate-grid {{
-        grid-template-columns: 1fr 1fr;
-      }}
-      .info-panel-wide {{
-        grid-column: span 2;
-      }}
       .brief-card {{
         position: static;
       }}
@@ -919,11 +990,8 @@ def render_page(
       .hero-stats,
       .summary-grid,
       .score-breakdown,
-      .candidate-grid {{
+      .match-grid {{
         grid-template-columns: 1fr;
-      }}
-      .info-panel-wide {{
-        grid-column: span 1;
       }}
       .candidate-head,
       .section-head,
@@ -964,24 +1032,19 @@ def render_page(
       <div class="hero-copy spotlight-card">
         <p class="eyebrow">Founder’s Associate Challenge</p>
         <div class="hero-stack">
-          <h1>Recruiting <span class="hero-gradient">Shortlist</span> Workbench</h1>
+          <h1>Recruiting <span class="hero-gradient">Shortlist</span></h1>
           <p class="lede">
-            Search public GitHub profiles, score technical fit against the real HASH role requirements,
-            enforce London or Berlin eligibility, and turn the strongest evidence into a shortlist with outreach drafts.
+            GitHub-first sourcing for HASH engineering candidates, with weighted fit scoring and a London/Berlin gate.
           </p>
         </div>
         <div class="hero-stats">
           <article class="hero-stat">
-            <span>Primary source</span>
-            <strong>GitHub profiles</strong>
+            <span>Source</span>
+            <strong>GitHub</strong>
           </article>
           <article class="hero-stat">
             <span>Location gate</span>
             <strong>{escape(location_label)}</strong>
-          </article>
-          <article class="hero-stat">
-            <span>Current cards</span>
-            <strong>{len(cards)}</strong>
           </article>
         </div>
       </div>
@@ -1025,23 +1088,19 @@ def render_page(
         <div class="toolbar-copy">
           <p class="eyebrow">Role scope</p>
           <h2>{escape(brief['company'])} / {escape(brief['role_name'])}</h2>
-          <p>
-            The scoring model prioritizes technical evidence from public GitHub profiles and repositories,
-            then gates candidates by the target in-office locations from the posting.
-          </p>
+          <p>GitHub-first sourcing with weighted scoring and a hard London/Berlin screen.</p>
         </div>
         <div class="toolbar-side">
           <div class="toolbar-pills">
             <span class="pill">{len(filtered_cards)} visible / {len(cards)} total</span>
             <span class="pill">{escape(location_label)}</span>
-            <span class="pill">Sources: GitHub user search + profiles + pinned repos</span>
             <span class="pill">{escape(filter_label)}</span>
           </div>
           <nav class="view-switcher" aria-label="Candidate views">
             <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
             <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
           </nav>
-          <p>Weighted scoring favors must-haves over nice-to-haves, while missing London/Berlin evidence forces a reject state.</p>
+          <p class="toolbar-note">Must-haves drive score. Missing London/Berlin evidence rejects.</p>
         </div>
       </section>
 
