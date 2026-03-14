@@ -379,8 +379,9 @@ def render_page(
     .hero {{
       position: relative;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
+      align-items: stretch;
       margin-bottom: 28px;
     }}
     .control-panel,
@@ -634,6 +635,10 @@ def render_page(
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 16px;
+      align-items: stretch;
+    }}
+    .workflow-group {{
+      display: contents;
     }}
     .summary-card {{
       padding: 20px;
@@ -641,6 +646,7 @@ def render_page(
       display: grid;
       gap: 8px;
       align-content: start;
+      height: 100%;
     }}
     .summary-card strong {{
       font-size: 2rem;
@@ -651,6 +657,13 @@ def render_page(
       border-color: var(--border-accent);
       box-shadow: var(--shadow-card-hover);
       background: linear-gradient(to bottom, rgba(94,106,210,0.16), rgba(255,255,255,0.04));
+    }}
+    .candidate-toolbar {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }}
     .workspace-grid {{
       display: grid;
@@ -684,6 +697,14 @@ def render_page(
       margin: 0;
       font-size: 13px;
       color: var(--foreground-subtle);
+    }}
+    .hero .toolbar {{
+      height: 100%;
+      align-content: start;
+      grid-template-columns: 1fr;
+    }}
+    .hero .toolbar-side {{
+      justify-items: start;
     }}
     .view-tab.active {{
       background: rgba(94,106,210,0.18);
@@ -1124,6 +1145,7 @@ def render_page(
             Role brief
             <select name="brief">{''.join(role_options)}</select>
           </label>
+          <p class="field-note">GitHub-first sourcing with weighted scoring and a hard London/Berlin screen.</p>
           <label>
             GitHub profiles per search
             <input type="number" name="max_results" min="1" max="25" value="{max_results}">
@@ -1143,33 +1165,20 @@ def render_page(
           </div>
         </div>
       </form>
+
     </section>
 
     <section class="workspace">
-      <section class="toolbar spotlight-card">
-        <div class="toolbar-copy">
-          <p class="eyebrow">Role scope</p>
-          <h2>{escape(brief['company'])} / {escape(brief['role_name'])}</h2>
-          <p>GitHub-first sourcing with weighted scoring and a hard London/Berlin screen.</p>
-        </div>
-        <div class="toolbar-side">
-          <div class="toolbar-pills">
-            <span class="pill {'pill-demo' if is_demo_mode else 'pill-live'}">{escape(mode_label)}</span>
-            <span class="pill">{len(filtered_cards)} visible / {len(cards)} total</span>
-            <span class="pill">{escape(location_label)}</span>
-            <span class="pill">{escape(filter_label)}</span>
-          </div>
-          <nav class="view-switcher" aria-label="Candidate views">
-            <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
-            <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
-          </nav>
-          <p class="toolbar-note">Must-haves drive score. Missing London/Berlin evidence rejects.</p>
-        </div>
-      </section>
-
       <section class="summary-grid">
-        {summary_cards}
-        <a class="summary-card spotlight-card workflow-filter {'active' if status_filter == 'all' else ''}" href="/?{urlencode(base_query | {'view': view_mode, 'status': 'all'})}">
+        <div class="workflow-group">
+          {summary_cards}
+          <a class="summary-card spotlight-card workflow-filter {'active' if status_filter == 'all' else ''}" href="/?{urlencode(base_query | {'view': view_mode, 'status': 'all'})}">
+            <span class="eyebrow-label">Workflow</span>
+            <strong>{len(cards)}</strong>
+            <span class="summary-caption">All candidates</span>
+          </a>
+        </div>
+        <a class="summary-card spotlight-card" href="/?{urlencode(base_query | {'view': view_mode, 'status': status_filter})}">
           <span class="eyebrow-label">Top score</span>
           <strong>{max((card.fit_score for card in filtered_cards), default=0):.3f}</strong>
           <span class="summary-caption">Showing {escape(filter_label.lower())}</span>
@@ -1178,6 +1187,13 @@ def render_page(
 
       <section class="workspace-grid">
         <section class="candidate-list">
+          <div class="candidate-toolbar">
+            <p class="toolbar-note">Current view: {escape(filter_label)}</p>
+            <nav class="view-switcher" aria-label="Candidate views">
+              <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
+              <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
+            </nav>
+          </div>
           {cards_view_html if view_mode == "cards" else table_view_html}
         </section>
 
