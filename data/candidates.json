@@ -1,11 +1,11 @@
 [
   {
-    "id": "0384a240",
-    "name": "Linus Torvalds",
-    "headline": "Linus Torvalds - Platform Engineer",
-    "source_url": "https://example.com/linus",
+    "id": "3aa77813",
+    "name": "Linus Torvalds (linus) \u00b7 GitHub",
+    "headline": "Linus Torvalds (linus) \u00b7 GitHub",
+    "source_url": "https://github.com/linus",
     "evidence_links": [
-      "https://example.com/linus"
+      "https://github.com/linus"
     ],
     "must_have_hits": [
       "TypeScript",
@@ -20,15 +20,15 @@
     "fit_score": 0.781,
     "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance']; nice-to-haves: ['Rust'].",
     "status": "shortlist",
-    "outreach_draft": "Hi Linus Torvalds,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://example.com/linus.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Linus Torvalds (linus) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://github.com/linus.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
   },
   {
-    "id": "ebed999e",
-    "name": "Ada Lovelace",
-    "headline": "Ada Lovelace - Senior Full-Stack Engineer",
-    "source_url": "https://example.com/ada-lovelace",
+    "id": "0c89741c",
+    "name": "Ada Lovelace (ada-lovelace) \u00b7 GitHub",
+    "headline": "Ada Lovelace (ada-lovelace) \u00b7 GitHub",
+    "source_url": "https://github.com/ada-lovelace",
     "evidence_links": [
-      "https://example.com/ada-lovelace"
+      "https://github.com/ada-lovelace"
     ],
     "must_have_hits": [
       "TypeScript",
@@ -41,16 +41,16 @@
     ],
     "fit_score": 0.631,
     "rationale": "Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['London'].",
-    "status": "shortlist",
-    "outreach_draft": "Hi Ada Lovelace,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, London looked highly relevant, especially based on what I saw here: https://example.com/ada-lovelace.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "status": "hold",
+    "outreach_draft": "Hi Ada Lovelace (ada-lovelace) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, London looked highly relevant, especially based on what I saw here: https://github.com/ada-lovelace.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
   },
   {
-    "id": "416693e8",
-    "name": "Grace Hopper",
-    "headline": "Grace Hopper | Product Engineer",
-    "source_url": "https://example.com/grace-hopper",
+    "id": "2e7748e5",
+    "name": "Grace Hopper (gracehopper) \u00b7 GitHub",
+    "headline": "Grace Hopper (gracehopper) \u00b7 GitHub",
+    "source_url": "https://github.com/gracehopper",
     "evidence_links": [
-      "https://example.com/grace-hopper"
+      "https://github.com/gracehopper"
     ],
     "must_have_hits": [
       "React"
@@ -63,6 +63,6 @@
     "fit_score": 0.244,
     "rationale": "Matched must-haves: ['React']; nice-to-haves: ['Effect', 'Material UI', 'open source'].",
     "status": "reject",
-    "outreach_draft": "Hi Grace Hopper,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://example.com/grace-hopper.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
+    "outreach_draft": "Hi Grace Hopper (gracehopper) \u00b7 GitHub,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://github.com/gracehopper.\n\nIf you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\nBest,\nRecruiting Team"
   }
 ]

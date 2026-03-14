@@ -2,9 +2,23 @@
 
 A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, fit scoring, outreach drafts, workflow status, and exportable output.
 
+## Open the web app
+
+Start the app:
+
+```bash
+python3 src/web_app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
+
 ## What this tool does
 
-- Searches public web results (DuckDuckGo HTML endpoint) for role-specific sourcing queries.
+- Searches public web results with a GitHub-first sourcing strategy for engineering roles, using DuckDuckGo's HTML endpoint as the search mechanism.
 - Builds structured candidate cards with:
   - source/evidence link(s)
   - must-have and nice-to-have matches
@@ -19,6 +33,12 @@ A lightweight local web app, backed by a simple Python recruiting engine, that c
 - Exports the full pipeline to CSV for analysis.
 - Supports an offline/air-gapped path with local seed results JSON.
 - Provides a local browser UI for running sourcing, reviewing candidates, updating workflow status, and downloading CSV exports.
+
+## Sourcing approach
+
+- Primary source: public GitHub profiles and repository pages surfaced through role-specific search queries.
+- Supporting public sources: personal sites, engineering blogs, or other evidence-rich pages that appear in search results.
+- Search mechanism: DuckDuckGo HTML results, used to keep the tool lightweight and runnable locally without third-party API keys.
 
 ## Selected role for this submission
 
@@ -41,16 +61,6 @@ python3 --version
 ## Run
 
 ### 1) Local web app (recommended)
-
-```bash
-python3 src/web_app.py
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8000
-```
 
 The web app lets you:
 

@@ -20,9 +20,9 @@
   ],
   "queries": [
     "site:github.com TypeScript React full-stack engineer Berlin London",
-    "\"full-stack engineer\" React TypeScript open source",
-    "\"frontend\" React TypeScript Material UI Panda \"full-stack\"",
-    "\"backend\" TypeScript Rust performance engineer Berlin London"
+    "site:github.com TypeScript React Material UI Panda full-stack",
+    "site:github.com TypeScript Rust performance engineer Berlin London",
+    "site:github.com Effect TypeScript React open source engineer"
   ],
   "outreach_context": "Founder's Associate Challenge sourcing for engineering talent"
 }
