@@ -63,6 +63,11 @@ def render_page(
     brief = load_role_brief(brief_path)
     counts = status_counts(cards)
     filtered_cards = [card for card in cards if status_filter == "all" or card.status == status_filter]
+    ranked_cards = sorted(
+        filtered_cards,
+        key=lambda card: (card.fit_score, card.must_have_score, card.nice_to_have_score, card.confidence_score),
+        reverse=True,
+    )
     location_targets = brief.get("location_targets", [])
     is_demo_mode = seed_path is not None
     mode_label = "Demo data" if is_demo_mode else "Live GitHub results"
@@ -96,7 +101,7 @@ def render_page(
 
     candidate_cards = []
     candidate_rows = []
-    for card in filtered_cards:
+    for rank, card in enumerate(ranked_cards, start=1):
         location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
         email_html = (
             f'<a class="ghost-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
@@ -131,6 +136,7 @@ def render_page(
               <div class="candidate-head">
                 <div>
                   <div class="candidate-meta">
+                    <span class="pill">#{rank}</span>
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill pill-location {location_class}">{escape(location_state)}</span>
                     <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
@@ -202,6 +208,7 @@ def render_page(
         candidate_rows.append(
             f"""
             <tr>
+              <td class="col-rank">#{rank}</td>
               <td class="col-candidate">
                 <div class="table-name">{escape(card.name)}</div>
                 <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
@@ -242,12 +249,13 @@ def render_page(
               <p class="eyebrow">Candidate table</p>
               <h3>All candidates</h3>
             </div>
-            <span class="pill">{len(filtered_cards)} rows</span>
+            <span class="pill">{len(ranked_cards)} rows</span>
           </div>
           <div class="table-wrap">
             <table class="candidate-table">
               <thead>
                 <tr>
+                  <th class="col-rank">Rank</th>
                   <th class="col-candidate">Candidate</th>
                   <th class="col-status">Status</th>
                   <th class="col-score">Score</th>
@@ -917,8 +925,12 @@ def render_page(
       color: var(--accent-bright);
       font-size: 13px;
     }}
+    .col-rank {{
+      width: 6%;
+      white-space: nowrap;
+    }}
     .col-candidate {{
-      width: 18%;
+      width: 16%;
     }}
     .col-status {{
       width: 9%;
@@ -928,7 +940,7 @@ def render_page(
       white-space: nowrap;
     }}
     .col-location {{
-      width: 14%;
+      width: 13%;
     }}
     .col-skills {{
       width: 19%;
