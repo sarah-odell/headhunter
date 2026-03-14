@@ -227,7 +227,6 @@ def render_page(
 
     message_html = f'<div class="banner success">{escape(message)}</div>' if message else ""
     error_html = f'<div class="banner error">{escape(error)}</div>' if error else ""
-    mode_html = f'<div class="banner mode-banner {"demo" if is_demo_mode else "live"}"><strong>{escape(mode_label)}.</strong> {escape(mode_note)}</div>'
     seed_value = escape(str(seed_path.relative_to(ROOT))) if seed_path else ""
     seed_checked = " checked" if seed_path else ""
     must_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["must_haves"])
@@ -1130,7 +1129,6 @@ def render_page(
   <main class="shell">
     {message_html}
     {error_html}
-    {mode_html}
     <header class="topbar spotlight-card">
       <div class="brand">
         <strong>HASH Recruiting Tool</strong>
