@@ -167,6 +167,23 @@ def _fetch_html(url: str) -> str:
         raise
 
 
+def _fetch_json(url: str) -> dict | list:
+    req = Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+    )
+    ssl_context = _build_ssl_context()
+    try:
+        with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
+            return json.loads(response.read().decode("utf-8", errors="ignore"))
+    except Exception:
+        return {}
+
+
 def github_user_search(query: str, max_results: int = 20) -> list[dict]:
     """GitHub user search scraping from embedded JSON results."""
     results: list[dict] = []
@@ -263,6 +280,12 @@ def enrich_github_result(item: dict) -> dict:
     location = _strip_tags(_first_match(r'itemprop="homeLocation"[^>]*aria-label="Home location:\s*([^"]+)"', html))
     website = _first_match(r'itemprop="url"[^>]*href="([^"]+)"', html)
     email = _extract_public_email(html)
+    github_username = username or urlparse(item["url"]).path.strip("/")
+    api_profile = _fetch_github_user_profile(github_username) if github_username else {}
+    api_email = _normalize_email(api_profile.get("email", "")) if isinstance(api_profile, dict) else ""
+    api_blog = api_profile.get("blog", "").strip() if isinstance(api_profile, dict) else ""
+    if not website and api_blog:
+        website = api_blog
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     pinned_repos = _extract_pinned_repos(html, item["url"])
     listed_repos = _extract_repository_list(item["url"], limit=8)
@@ -282,8 +305,15 @@ def enrich_github_result(item: dict) -> dict:
     evidence_links = [item["url"]]
     if website and website not in evidence_links:
         evidence_links.append(website)
-    if not email and website:
-        email = _extract_email_from_url(website)
+    if not email:
+        email = _choose_preferred_email(
+            [
+                email,
+                api_email,
+                _extract_email_from_github_repo_pages([repo["url"] for repo in [*pinned_repos, *listed_repos]]),
+                _extract_email_from_url(website) if website else "",
+            ]
+        )
     if website:
         website_text = _extract_website_text(website)
     for repo in pinned_repos[:3]:
@@ -310,12 +340,35 @@ def enrich_github_result(item: dict) -> dict:
 def _extract_public_email(html: str) -> str:
     mailto = _first_match(r'href="mailto:([^"]+)"', html)
     if mailto:
-        return unquote(mailto)
+        return _normalize_email(unquote(mailto))
     text_match = _first_match(r'aria-label="Email:\s*([^"]+)"', html)
     if text_match:
-        return unquote(text_match)
+        return _normalize_email(unquote(text_match))
     visible_match = EMAIL_RE.search(_strip_tags(html))
-    return visible_match.group(0) if visible_match else ""
+    return _normalize_email(visible_match.group(0) if visible_match else "")
+
+
+def _normalize_email(value: str) -> str:
+    value = value.strip().strip(".,;:()[]{}<>")
+    if value.startswith("mailto:"):
+        value = value[7:]
+    return value if EMAIL_RE.fullmatch(value) else ""
+
+
+def _is_noreply_email(value: str) -> bool:
+    email = value.lower()
+    return email.endswith("@users.noreply.github.com") or "noreply" in email
+
+
+def _choose_preferred_email(candidates: Iterable[str]) -> str:
+    normalized = [_normalize_email(candidate) for candidate in candidates if candidate]
+    preferred = next((email for email in normalized if email and not _is_noreply_email(email)), "")
+    return preferred or next((email for email in normalized if email), "")
+
+
+def _fetch_github_user_profile(username: str) -> dict:
+    response = _fetch_json(f"https://api.github.com/users/{quote_plus(username)}")
+    return response if isinstance(response, dict) else {}
 
 
 def _extract_email_from_url(url: str) -> str:
@@ -335,6 +388,25 @@ def _extract_website_text(url: str) -> str:
     meta_description = unescape(_first_match(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html))
     body_text = re.sub(r"\s+", " ", _strip_tags(html)).strip()
     return " ".join(part for part in (title, meta_description, body_text[:2500]) if part)
+
+
+def _extract_email_from_github_repo_pages(repo_urls: Iterable[str], limit: int = 2) -> str:
+    emails: list[str] = []
+    seen: set[str] = set()
+    for repo_url in repo_urls:
+        if repo_url in seen:
+            continue
+        seen.add(repo_url)
+        try:
+            html = _fetch_html(repo_url)
+        except Exception:
+            continue
+        email = _extract_public_email(html)
+        if email:
+            emails.append(email)
+        if len(seen) >= limit:
+            break
+    return _choose_preferred_email(emails)
 
 
 def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:

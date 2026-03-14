@@ -1,7 +1,7 @@
 import unittest
 
 from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_candidate_with_evidence, score_location, to_status, update_card_status
-from src.recruiting_tool import _extract_github_search_payload, _extract_public_email, generate_outreach, is_github_profile_url
+from src.recruiting_tool import _choose_preferred_email, _extract_github_search_payload, _extract_public_email, generate_outreach, is_github_profile_url
 
 
 class ScoreCandidateTests(unittest.TestCase):
@@ -164,6 +164,20 @@ class ScoreCandidateTests(unittest.TestCase):
     def test_extract_public_email_falls_back_to_visible_text(self):
         html = "<div>Contact: ada@example.com</div>"
         self.assertEqual(_extract_public_email(html), "ada@example.com")
+
+    def test_choose_preferred_email_avoids_noreply_when_possible(self):
+        chosen = _choose_preferred_email([
+            "12345+ada@users.noreply.github.com",
+            "ada@example.com",
+        ])
+        self.assertEqual(chosen, "ada@example.com")
+
+    def test_choose_preferred_email_keeps_noreply_as_last_resort(self):
+        chosen = _choose_preferred_email([
+            "12345+ada@users.noreply.github.com",
+            "",
+        ])
+        self.assertEqual(chosen, "12345+ada@users.noreply.github.com")
 
     def test_generate_outreach_uses_hash_signature(self):
         role_brief = {"company": "HASH", "role_name": "Full-Stack Engineer"}

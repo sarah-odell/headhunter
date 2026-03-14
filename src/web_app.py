@@ -44,6 +44,10 @@ def normalize_status_filter(raw_value: str) -> str:
     return raw_value if raw_value in {"all", *STATUS_OPTIONS} else "all"
 
 
+def percent_label(value: float) -> str:
+    return f"{round(value * 100):d}%"
+
+
 def render_page(
     brief_path: Path,
     output_path: Path,
@@ -129,14 +133,14 @@ def render_page(
                   <div class="candidate-meta">
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill pill-location {location_class}">{escape(location_state)}</span>
-                    <span class="pill">Confidence {card.confidence_score:.2f}</span>
+                    <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
                   </div>
                   <h3>{escape(card.name)}</h3>
                   <p class="headline">{escape(card.headline)}</p>
                 </div>
                 <div class="score-stack">
                   <span class="eyebrow-label">Fit score</span>
-                  <div class="score-pill">{card.fit_score:.3f}</div>
+                  <div class="score-pill">{percent_label(card.fit_score)}</div>
                 </div>
               </div>
               <div class="candidate-topline">
@@ -150,15 +154,15 @@ def render_page(
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
-                  <strong>{card.must_have_score:.3f}</strong>
+                  <strong>{percent_label(card.must_have_score)}</strong>
                 </div>
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Nice-to-haves</span>
-                  <strong>{card.nice_to_have_score:.3f}</strong>
+                  <strong>{percent_label(card.nice_to_have_score)}</strong>
                 </div>
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Weighted total</span>
-                  <strong>{card.fit_score:.3f}</strong>
+                  <strong>{percent_label(card.fit_score)}</strong>
                 </div>
               </div>
               <div class="match-grid">
@@ -203,9 +207,9 @@ def render_page(
                 <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
               </td>
               <td class="col-status">{escape(card.status.title())}</td>
-              <td class="col-score">{card.fit_score:.3f}</td>
-              <td class="col-score">{card.must_have_score:.3f}</td>
-              <td class="col-score">{card.nice_to_have_score:.3f}</td>
+              <td class="col-score">{percent_label(card.fit_score)}</td>
+              <td class="col-score">{percent_label(card.must_have_score)}</td>
+              <td class="col-score">{percent_label(card.nice_to_have_score)}</td>
               <td class="col-location">{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
               <td class="col-skills">{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
               <td class="col-skills">{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
@@ -541,6 +545,10 @@ def render_page(
       color: var(--foreground);
       border: 1px solid var(--border-default);
       box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.08);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-decoration: none;
     }}
     .secondary:hover,
     .ghost-link:hover {{
@@ -1180,7 +1188,7 @@ def render_page(
         </div>
         <a class="summary-card spotlight-card" href="/?{urlencode(base_query | {'view': view_mode, 'status': status_filter})}">
           <span class="eyebrow-label">Top score</span>
-          <strong>{max((card.fit_score for card in filtered_cards), default=0):.3f}</strong>
+          <strong>{percent_label(max((card.fit_score for card in filtered_cards), default=0))}</strong>
           <span class="summary-caption">Showing {escape(filter_label.lower())}</span>
         </a>
       </section>
