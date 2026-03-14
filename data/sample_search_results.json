@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Ada Lovelace - Senior Full-Stack Engineer",
+    "url": "https://example.com/ada-lovelace",
+    "snippet": "Built fast user-facing products with TypeScript and React across frontend and backend systems, plus design system ownership in London."
+  },
+  {
+    "title": "Grace Hopper | Product Engineer",
+    "url": "https://example.com/grace-hopper",
+    "snippet": "Product-focused engineer shipping React interfaces, Effect-based workflows, and open source UI tooling with Material UI experience."
+  },
+  {
+    "title": "Linus Torvalds - Platform Engineer",
+    "url": "https://example.com/linus",
+    "snippet": "Strong backend and performance engineering background with Rust and TypeScript, but limited recent React frontend delivery."
+  }
+]

@@ -1,0 +1,25 @@
+id,name,headline,source_url,must_have_hits,nice_to_have_hits,fit_score,status,rationale,outreach_draft
+0384a240,Linus Torvalds,Linus Torvalds - Platform Engineer,https://example.com/linus,TypeScript; React; frontend; backend; performance,Rust,0.781,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend', 'performance']; nice-to-haves: ['Rust'].","Hi Linus Torvalds,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://example.com/linus.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+Recruiting Team"
+ebed999e,Ada Lovelace,Ada Lovelace - Senior Full-Stack Engineer,https://example.com/ada-lovelace,TypeScript; React; frontend; backend,London,0.631,shortlist,"Matched must-haves: ['TypeScript', 'React', 'frontend', 'backend']; nice-to-haves: ['London'].","Hi Ada Lovelace,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, London looked highly relevant, especially based on what I saw here: https://example.com/ada-lovelace.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+Recruiting Team"
+416693e8,Grace Hopper,Grace Hopper | Product Engineer,https://example.com/grace-hopper,React,Effect; Material UI; open source,0.244,reject,"Matched must-haves: ['React']; nice-to-haves: ['Effect', 'Material UI', 'open source'].","Hi Grace Hopper,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, Effect looked highly relevant, especially based on what I saw here: https://example.com/grace-hopper.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+Recruiting Team"

@@ -1,0 +1,28 @@
+{
+  "role_name": "Full-Stack Engineer",
+  "company": "HASH",
+  "must_haves": [
+    "TypeScript",
+    "React",
+    "frontend",
+    "backend",
+    "performance"
+  ],
+  "nice_to_haves": [
+    "Rust",
+    "Effect",
+    "HTML Canvas",
+    "Material UI",
+    "Panda",
+    "open source",
+    "Berlin",
+    "London"
+  ],
+  "queries": [
+    "site:github.com TypeScript React full-stack engineer Berlin London",
+    "\"full-stack engineer\" React TypeScript open source",
+    "\"frontend\" React TypeScript Material UI Panda \"full-stack\"",
+    "\"backend\" TypeScript Rust performance engineer Berlin London"
+  ],
+  "outreach_context": "Founder's Associate Challenge sourcing for engineering talent"
+}
