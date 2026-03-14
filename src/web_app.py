@@ -60,6 +60,13 @@ def render_page(
     counts = status_counts(cards)
     filtered_cards = [card for card in cards if status_filter == "all" or card.status == status_filter]
     location_targets = brief.get("location_targets", [])
+    is_demo_mode = seed_path is not None
+    mode_label = "Demo data" if is_demo_mode else "Live GitHub results"
+    mode_note = (
+        "Synthetic seed candidates for UI walkthroughs. These are not real sourced profiles."
+        if is_demo_mode
+        else "Fresh public GitHub search and profile enrichment. These are real sourced profiles."
+    )
     base_query = {
         "brief": str(brief_path.relative_to(ROOT)),
         "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
@@ -86,8 +93,6 @@ def render_page(
     candidate_cards = []
     candidate_rows = []
     for card in filtered_cards:
-        must_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.must_have_hits) or "<li>None</li>"
-        nice_hits = "".join(f'<li>{escape(hit)}</li>' for hit in card.nice_to_have_hits) or "<li>None</li>"
         location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
         email_html = (
             f'<a class="ghost-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
@@ -98,8 +103,14 @@ def render_page(
             f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>'
             for link in card.evidence_links
         )
-        must_badges = "".join(f'<span class="match-badge">{escape(hit)}</span>' for hit in card.must_have_hits) or '<span class="match-empty">No must-have evidence</span>'
-        nice_badges = "".join(f'<span class="match-badge subdued">{escape(hit)}</span>' for hit in card.nice_to_have_hits) or '<span class="match-empty">No supporting evidence</span>'
+        must_badges = "".join(
+            f'<span class="match-badge">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
+            for hit in card.must_have_hits
+        ) or '<span class="match-empty">No must-have evidence</span>'
+        nice_badges = "".join(
+            f'<span class="match-badge subdued">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
+            for hit in card.nice_to_have_hits
+        ) or '<span class="match-empty">No supporting evidence</span>'
         status_form = "".join(
             f"""
             <button type="submit" name="status" value="{status}" class="status-button {'active' if card.status == status else ''}">
@@ -118,6 +129,7 @@ def render_page(
                   <div class="candidate-meta">
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill pill-location {location_class}">{escape(location_state)}</span>
+                    <span class="pill">Confidence {card.confidence_score:.2f}</span>
                   </div>
                   <h3>{escape(card.name)}</h3>
                   <p class="headline">{escape(card.headline)}</p>
@@ -134,6 +146,7 @@ def render_page(
                   <span class="candidate-location-note">{escape(location_text)}</span>
                 </div>
               </div>
+              <p class="candidate-location-note">{escape(card.eligibility_reason)}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
@@ -202,6 +215,7 @@ def render_page(
 
     message_html = f'<div class="banner success">{escape(message)}</div>' if message else ""
     error_html = f'<div class="banner error">{escape(error)}</div>' if error else ""
+    mode_html = f'<div class="banner mode-banner {"demo" if is_demo_mode else "live"}"><strong>{escape(mode_label)}.</strong> {escape(mode_note)}</div>'
     seed_value = escape(str(seed_path.relative_to(ROOT))) if seed_path else ""
     seed_checked = " checked" if seed_path else ""
     must_have_list = "".join(f"<li>{escape(item)}</li>" for item in brief["must_haves"])
@@ -623,6 +637,14 @@ def render_page(
       border-color: var(--border-accent);
       color: rgba(237,237,239,0.9);
     }}
+    .pill-demo {{
+      color: #f6ddb0;
+      border-color: rgba(173, 124, 36, 0.3);
+    }}
+    .pill-live {{
+      color: #c2f0e3;
+      border-color: rgba(31, 107, 93, 0.3);
+    }}
     .pill-location.eligible {{
       color: #d2e8ff;
       border-color: rgba(105, 161, 255, 0.25);
@@ -791,6 +813,7 @@ def render_page(
     .match-empty {{
       display: inline-flex;
       align-items: center;
+      gap: 6px;
       min-height: 30px;
       padding: 0 10px;
       border-radius: 999px;
@@ -803,6 +826,12 @@ def render_page(
       background: rgba(255,255,255,0.05);
       border-color: var(--border-default);
       color: var(--foreground-muted);
+    }}
+    .match-badge small {{
+      font-size: 11px;
+      color: var(--foreground-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }}
     .match-empty {{
       background: rgba(255,255,255,0.03);
@@ -970,6 +999,21 @@ def render_page(
       font: 600 14px/1.4 "Inter", system-ui, sans-serif;
       border: 1px solid transparent;
     }}
+    .mode-banner {{
+      background: rgba(255,255,255,0.05);
+      color: var(--foreground);
+      border-color: var(--border-default);
+    }}
+    .mode-banner.demo {{
+      background: rgba(173, 124, 36, 0.16);
+      border-color: rgba(173, 124, 36, 0.3);
+      color: #f6ddb0;
+    }}
+    .mode-banner.live {{
+      background: rgba(31, 107, 93, 0.16);
+      border-color: rgba(31, 107, 93, 0.3);
+      color: #c2f0e3;
+    }}
     .success {{
       background: rgba(31, 107, 93, 0.18);
       color: #baf3df;
@@ -1068,6 +1112,7 @@ def render_page(
   <main class="shell">
     {message_html}
     {error_html}
+    {mode_html}
     <header class="topbar spotlight-card">
       <div class="brand">
         <strong>HASH Recruiting Tool</strong>
@@ -1141,6 +1186,7 @@ def render_page(
         </div>
         <div class="toolbar-side">
           <div class="toolbar-pills">
+            <span class="pill {'pill-demo' if is_demo_mode else 'pill-live'}">{escape(mode_label)}</span>
             <span class="pill">{len(filtered_cards)} visible / {len(cards)} total</span>
             <span class="pill">{escape(location_label)}</span>
             <span class="pill">{escape(filter_label)}</span>

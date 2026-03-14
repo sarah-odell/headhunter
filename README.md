@@ -1,6 +1,6 @@
 # HASH Recruiting Shortlist Tool (Founder’s Associate Challenge)
 
-A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, fit scoring, London/Berlin eligibility checks, outreach drafts, workflow status, and exportable output.
+A lightweight local web app, backed by a simple Python recruiting engine, that converts a role brief into a candidate pipeline with evidence, weighted fit scoring, confidence, London/Berlin eligibility checks, outreach drafts, workflow status, and exportable output.
 
 ## Open the web app
 
@@ -46,15 +46,15 @@ http://localhost:8001
 - Searches public GitHub user results directly for engineering candidates in Berlin and London.
 - Builds structured candidate cards with:
   - source/evidence link(s)
-  - pinned repository evidence where available
-  - must-have and nice-to-have matches
-  - location eligibility evidence
+  - pinned repository and repository-list evidence where available
+  - must-have and nice-to-have matches with source labels
+  - location eligibility evidence and confidence
   - weighted fit score
   - rationale string
   - personalized outreach draft
 - Applies a pipeline status automatically:
-  - `shortlist` if score >= 0.65
-  - `hold` if score >= 0.40
+  - `shortlist` if score >= 0.55
+  - `hold` if score >= 0.25
   - `reject` otherwise
 - Rejects candidates without public evidence of being based in London or Berlin for this role brief.
 - Supports human review updates for `shortlist/hold/reject`.
@@ -73,14 +73,34 @@ http://localhost:8001
 
 - Live mode uses direct GitHub user search plus public profile enrichment.
 - Candidate names, usernames, bios, locations, and profile evidence come from real public GitHub pages.
+- The scorer pulls from multiple public evidence sources when available:
+  - GitHub search snippet
+  - GitHub profile text
+  - pinned repositories
+  - repositories list page
+  - linked personal website
 - GitHub may temporarily rate-limit repeated unauthenticated searches. If that happens, wait a few minutes and rerun with a smaller per-query result count.
 
 ## Sourcing approach
 
-- Primary source: public GitHub user search results, profile pages, and pinned repositories surfaced through role-specific search queries.
-- Supporting public sources: personal sites, engineering blogs, or other evidence-rich pages that appear in search results.
+- Primary source: public GitHub user search results and public GitHub profile pages.
+- Supporting sources: pinned repositories, repositories tab listings, and linked personal websites when present.
 - Search mechanism: direct GitHub user search pages plus public profile enrichment, used to keep the tool lightweight and runnable locally without third-party API keys.
 - Location gate: this HASH role requires London or Berlin, so the tool explicitly checks for public evidence of either location before allowing a candidate to remain shortlisted.
+
+## Scoring approach
+
+- The scorer separates `eligibility`, `fit`, and `confidence`.
+- Eligibility is currently a hard London/Berlin gate based on public evidence.
+- Fit is weighted by requirement importance from the role brief, not simple equal-weight keyword counting.
+- Each requirement gets a stronger score when it is backed by stronger evidence:
+  - `repo` evidence is strongest
+  - `profile` evidence is medium
+  - `linked site` evidence is medium
+  - `search` evidence is weakest
+- For the HASH Full-Stack role, `TypeScript`, `React`, and true frontend/backend evidence are weighted more heavily than bonus skills.
+- Nice-to-haves add upside, but they cannot compensate for weak core evidence.
+- Confidence increases when the candidate has multiple corroborating public sources, especially repository-level evidence.
 
 ## Selected role for this submission
 
@@ -179,14 +199,17 @@ Each candidate card includes:
 - `evidence_links`
 - `must_have_hits`
 - `nice_to_have_hits`
+- `must_have_score`
+- `nice_to_have_score`
+- `confidence_score`
 - `fit_score`
 - `rationale`
 - `status`
+- `eligibility_reason`
 - `outreach_draft`
 
 ## Notes
 
 - This tool uses public search results and public links.
-- The scoring system is intentionally simple and auditable (keyword-evidence weighted scoring).
-- If DuckDuckGo response format changes, regex parsing in `ddg_search()` may need adjustment.
+- The scoring system is intentionally auditable and evidence-backed, but still heuristic rather than model-based.
 - The web app is intentionally local-only and assumes single-user usage on one machine.

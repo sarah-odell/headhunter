@@ -83,6 +83,20 @@ GITHUB_RESERVED_PATHS = {
     "users",
 }
 EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", flags=re.I)
+SOURCE_STRENGTHS = {
+    "search": 0.3,
+    "profile": 0.6,
+    "repo": 1.0,
+    "website": 0.55,
+}
+SOURCE_LABELS = {
+    "search": "search",
+    "profile": "profile",
+    "repo": "repo",
+    "website": "linked site",
+}
+DEFAULT_MUST_CATEGORY_WEIGHT = 0.85
+DEFAULT_NICE_CATEGORY_WEIGHT = 0.15
 
 
 @dataclass
@@ -98,10 +112,14 @@ class CandidateCard:
     fit_score: float
     must_have_score: float
     nice_to_have_score: float
+    confidence_score: float
     rationale: str
     status: str
     location_hits: list[str]
     location_eligible: bool
+    eligibility_reason: str
+    requirement_scores: dict[str, float]
+    requirement_sources: dict[str, str]
     outreach_draft: str
 
 
@@ -186,6 +204,7 @@ def github_user_search(query: str, max_results: int = 20) -> list[dict]:
                     "profile_location": location,
                     "headline_override": bio or f"{location} GitHub profile" if location else "GitHub profile",
                     "evidence_links": [profile_url, search_url],
+                    "search_text": " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
                 }
             )
             if len(results) >= max_results:
@@ -246,6 +265,8 @@ def enrich_github_result(item: dict) -> dict:
     email = _extract_public_email(html)
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     pinned_repos = _extract_pinned_repos(html, item["url"])
+    listed_repos = _extract_repository_list(item["url"], limit=8)
+    website_text = ""
 
     display_name = full_name or username or item["title"]
     headline_parts = [part for part in (bio, company, location) if part]
@@ -253,6 +274,7 @@ def enrich_github_result(item: dict) -> dict:
 
     text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, email, profile_meta]
     text_parts.extend(repo["text"] for repo in pinned_repos)
+    text_parts.extend(repo["text"] for repo in listed_repos)
     enriched_item = dict(item)
     enriched_item["title"] = f"{display_name} ({username}) · GitHub" if full_name and username else item["title"]
     enriched_item["snippet"] = " ".join(part for part in text_parts if part)
@@ -262,7 +284,12 @@ def enrich_github_result(item: dict) -> dict:
         evidence_links.append(website)
     if not email and website:
         email = _extract_email_from_url(website)
+    if website:
+        website_text = _extract_website_text(website)
     for repo in pinned_repos[:3]:
+        if repo["url"] not in evidence_links:
+            evidence_links.append(repo["url"])
+    for repo in listed_repos[:3]:
         if repo["url"] not in evidence_links:
             evidence_links.append(repo["url"])
     enriched_item["evidence_links"] = evidence_links
@@ -270,6 +297,13 @@ def enrich_github_result(item: dict) -> dict:
     enriched_item["profile_location"] = location
     enriched_item["public_email"] = email
     enriched_item["pinned_repos"] = pinned_repos
+    enriched_item["listed_repos"] = listed_repos
+    enriched_item["source_texts"] = {
+        "search": item.get("search_text", item.get("snippet", "")),
+        "profile": " ".join(part for part in (full_name, username, bio, company, location, profile_meta) if part),
+        "repo": " ".join(repo["text"] for repo in [*pinned_repos, *listed_repos]),
+        "website": website_text,
+    }
     return enriched_item
 
 
@@ -292,6 +326,17 @@ def _extract_email_from_url(url: str) -> str:
     return _extract_public_email(html)
 
 
+def _extract_website_text(url: str) -> str:
+    try:
+        html = _fetch_html(url)
+    except Exception:
+        return ""
+    title = _strip_tags(_first_match(r"<title>(.*?)</title>", html))
+    meta_description = unescape(_first_match(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html))
+    body_text = re.sub(r"\s+", " ", _strip_tags(html)).strip()
+    return " ".join(part for part in (title, meta_description, body_text[:2500]) if part)
+
+
 def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
     results: list[dict] = []
     owner = urlparse(profile_url).path.strip("/")
@@ -304,6 +349,47 @@ def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
         description = _strip_tags(_first_match(r'<p class="pinned-item-desc[^"]*"[^>]*>(.*?)</p>', body))
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
         repo_text_parts = [name, description, language, owner]
+        results.append(
+            {
+                "url": repo_url,
+                "name": name,
+                "text": " ".join(part for part in repo_text_parts if part),
+            }
+        )
+    return results
+
+
+def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
+    try:
+        html = _fetch_html(f"{profile_url}?tab=repositories")
+    except Exception:
+        return []
+
+    results: list[dict] = []
+    owner = urlparse(profile_url).path.strip("/")
+    entries = re.findall(
+        r'<li class="[^"]*?public[^"]*?" itemprop="owns"[^>]*>(.*?)</li>\s*</li>?',
+        html,
+        flags=re.S,
+    )
+    if not entries:
+        entries = re.findall(
+            r'<li class="[^"]*?public[^"]*?" itemprop="owns"[^>]*>(.*?)</li>',
+            html,
+            flags=re.S,
+        )
+
+    for body in entries[:limit]:
+        href = _first_match(r'<a href="(/[^"]+)" itemprop="name codeRepository"', body)
+        name = _strip_tags(_first_match(r'itemprop="name codeRepository"[^>]*>\s*(.*?)</a>', body))
+        if not href or not name:
+            continue
+        repo_url = f"https://github.com{href}"
+        description = _strip_tags(_first_match(r'itemprop="description">\s*(.*?)\s*</p>', body))
+        language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
+        topics = re.findall(r'class="topic-tag[^"]*"[^>]*>\s*(.*?)\s*</a>', body, flags=re.S)
+        topic_text = " ".join(_strip_tags(topic) for topic in topics)
+        repo_text_parts = [name, description, language, topic_text, owner]
         results.append(
             {
                 "url": repo_url,
@@ -341,6 +427,67 @@ def score_candidate(text: str, must_haves: Iterable[str], nice_to_haves: Iterabl
     return must_hits, nice_hits, round(fit_score, 3), round(must_score, 3), round(nice_score, 3)
 
 
+def _match_source_strength(source_texts: dict[str, str], keyword: str) -> tuple[float, str]:
+    best_score = 0.0
+    best_source = ""
+    for source_name, text in source_texts.items():
+        if not text:
+            continue
+        normalized_text = normalize_text(text)
+        if not _has_positive_signal(normalized_text, keyword):
+            continue
+        strength = SOURCE_STRENGTHS[source_name]
+        if strength > best_score:
+            best_score = strength
+            best_source = SOURCE_LABELS[source_name]
+    return best_score, best_source
+
+
+def _weighted_score(
+    requirements: Iterable[str],
+    weights: dict[str, float],
+    source_texts: dict[str, str],
+) -> tuple[list[str], float, dict[str, float], dict[str, str]]:
+    hits: list[str] = []
+    scores: dict[str, float] = {}
+    sources: dict[str, str] = {}
+    requirements = list(requirements)
+    total_weight = sum(weights.get(item, 1.0) for item in requirements) or 1.0
+    weighted_sum = 0.0
+
+    for requirement in requirements:
+        score, source = _match_source_strength(source_texts, requirement)
+        scores[requirement] = round(score, 3)
+        sources[requirement] = source
+        weighted_sum += weights.get(requirement, 1.0) * score
+        if score > 0:
+            hits.append(requirement)
+
+    return hits, round(weighted_sum / total_weight, 3), scores, sources
+
+
+def score_candidate_with_evidence(role_brief: dict, source_texts: dict[str, str]) -> tuple[list[str], list[str], float, float, float, float, dict[str, float], dict[str, str]]:
+    must_weights = role_brief.get("must_have_weights", {})
+    nice_weights = role_brief.get("nice_to_have_weights", {})
+    must_hits, must_score, must_requirement_scores, must_sources = _weighted_score(
+        role_brief["must_haves"],
+        must_weights,
+        source_texts,
+    )
+    nice_hits, nice_score, nice_requirement_scores, nice_sources = _weighted_score(
+        role_brief["nice_to_haves"],
+        nice_weights,
+        source_texts,
+    )
+    fit_weight_must = float(role_brief.get("must_have_category_weight", DEFAULT_MUST_CATEGORY_WEIGHT))
+    fit_weight_nice = float(role_brief.get("nice_to_have_category_weight", DEFAULT_NICE_CATEGORY_WEIGHT))
+    fit_score = round((fit_weight_must * must_score) + (fit_weight_nice * nice_score), 3)
+    requirement_scores = {**must_requirement_scores, **nice_requirement_scores}
+    requirement_sources = {**must_sources, **nice_sources}
+    confidence = compute_confidence(source_texts, requirement_scores)
+    return must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources
+
+
 def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
     alias_terms = SKILL_ALIASES.get(normalize_text(keyword), [keyword])
     for term in alias_terms:
@@ -354,6 +501,23 @@ def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
                 continue
             return True
     return False
+
+
+def compute_confidence(source_texts: dict[str, str], requirement_scores: dict[str, float]) -> float:
+    confidence = 0.0
+    if source_texts.get("profile"):
+        confidence += 0.25
+    if source_texts.get("repo"):
+        confidence += 0.45
+    if source_texts.get("website"):
+        confidence += 0.15
+    if source_texts.get("search"):
+        confidence += 0.05
+    strong_matches = sum(1 for score in requirement_scores.values() if score >= 1.0)
+    medium_matches = sum(1 for score in requirement_scores.values() if 0.55 <= score < 1.0)
+    confidence += min(0.1, strong_matches * 0.03)
+    confidence += min(0.1, medium_matches * 0.02)
+    return round(min(confidence, 1.0), 3)
 
 
 def generate_outreach(candidate_name: str, role_brief: dict, must_hits: list[str], nice_hits: list[str], source_url: str) -> str:
@@ -388,21 +552,42 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
     location_targets = role_brief.get("location_targets", [])
     for item in results:
         enriched_item = enrich_github_result(item) if enrich_profiles else dict(item)
-        text_blob = f"{enriched_item['title']} {enriched_item.get('snippet', '')}"
-        must_hits, nice_hits, score, must_score, nice_score = score_candidate(
-            text_blob,
-            role_brief["must_haves"],
-            role_brief["nice_to_haves"],
+        source_texts = enriched_item.get("source_texts") or {
+            "search": enriched_item.get("search_text", enriched_item.get("snippet", "")),
+            "profile": f"{enriched_item['title']} {enriched_item.get('snippet', '')}",
+            "repo": "",
+            "website": "",
+        }
+        must_hits, nice_hits, score, must_score, nice_score, confidence, requirement_scores, requirement_sources = score_candidate_with_evidence(
+            role_brief,
+            source_texts,
         )
+        text_blob = " ".join(part for part in source_texts.values() if part)
         location_hits = score_location(text_blob, location_targets)
         location_eligible = bool(location_hits) if location_targets else True
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
         identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
+        must_breakdown = ", ".join(
+            f"{item} {requirement_scores.get(item, 0):.2f} via {requirement_sources.get(item, 'none')}"
+            for item in role_brief["must_haves"]
+            if requirement_scores.get(item, 0) > 0
+        ) or "none"
+        nice_breakdown = ", ".join(
+            f"{item} {requirement_scores.get(item, 0):.2f} via {requirement_sources.get(item, 'none')}"
+            for item in role_brief["nice_to_haves"]
+            if requirement_scores.get(item, 0) > 0
+        ) or "none"
+        eligibility_reason = (
+            f"Eligible: public evidence aligns with {', '.join(location_hits)}."
+            if location_eligible
+            else "Ineligible: no public London/Berlin evidence found."
+        )
         rationale = (
-            f"Matched must-haves: {must_hits if must_hits else 'none'}; "
-            f"nice-to-haves: {nice_hits if nice_hits else 'none'}; "
+            f"Must-have evidence: {must_breakdown}; "
+            f"nice-to-have evidence: {nice_breakdown}; "
             f"must-have score: {must_score:.3f}; "
             f"nice-to-have score: {nice_score:.3f}; "
+            f"confidence: {confidence:.3f}; "
             f"location: {location_hits if location_hits else 'no London/Berlin evidence'}."
         )
         candidate = CandidateCard(
@@ -417,10 +602,14 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             fit_score=score,
             must_have_score=must_score,
             nice_to_have_score=nice_score,
+            confidence_score=confidence,
             rationale=rationale,
             status=to_status(score, location_eligible=location_eligible),
             location_hits=location_hits,
             location_eligible=location_eligible,
+            eligibility_reason=eligibility_reason,
+            requirement_scores=requirement_scores,
+            requirement_sources=requirement_sources,
             outreach_draft=generate_outreach(name, role_brief, must_hits, nice_hits, enriched_item["url"]),
         )
         if identity not in dedup or dedup[identity].fit_score < candidate.fit_score:
@@ -455,8 +644,12 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized.setdefault("nice_to_have_hits", [])
         normalized.setdefault("must_have_score", 0.0)
         normalized.setdefault("nice_to_have_score", 0.0)
+        normalized.setdefault("confidence_score", 0.0)
         normalized.setdefault("location_hits", [])
         normalized.setdefault("location_eligible", True)
+        normalized.setdefault("eligibility_reason", "")
+        normalized.setdefault("requirement_scores", {})
+        normalized.setdefault("requirement_sources", {})
         cards.append(CandidateCard(**normalized))
     return cards
 
@@ -475,8 +668,10 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "nice_to_have_hits",
             "must_have_score",
             "nice_to_have_score",
+            "confidence_score",
             "location_hits",
             "location_eligible",
+            "eligibility_reason",
             "fit_score",
             "status",
             "rationale",
@@ -490,6 +685,8 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
         row["nice_to_have_hits"] = "; ".join(card.nice_to_have_hits)
         row["location_hits"] = "; ".join(card.location_hits)
         row.pop("evidence_links", None)
+        row.pop("requirement_scores", None)
+        row.pop("requirement_sources", None)
         writer.writerow(row)
     return buffer.getvalue()
 

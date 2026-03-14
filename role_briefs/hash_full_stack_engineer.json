@@ -11,6 +11,12 @@
     "frontend",
     "backend"
   ],
+  "must_have_weights": {
+    "TypeScript": 0.35,
+    "React": 0.25,
+    "backend": 0.2,
+    "frontend": 0.1
+  },
   "nice_to_haves": [
     "performance",
     "data structures",
@@ -26,6 +32,23 @@
     "Panda",
     "open source"
   ],
+  "nice_to_have_weights": {
+    "performance": 0.35,
+    "data structures": 0.15,
+    "storage systems": 0.15,
+    "Rust": 0.07,
+    "Effect": 0.05,
+    "HTML Canvas": 0.05,
+    "graphics": 0.04,
+    "animation": 0.04,
+    "Material UI": 0.03,
+    "Base UI": 0.02,
+    "Ariakit": 0.02,
+    "Panda": 0.02,
+    "open source": 0.01
+  },
+  "must_have_category_weight": 0.85,
+  "nice_to_have_category_weight": 0.15,
   "queries": [
     "location:Berlin language:TypeScript react",
     "location:London language:TypeScript react",

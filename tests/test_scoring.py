@@ -1,6 +1,6 @@
 import unittest
 
-from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_location, to_status, update_card_status
+from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_candidate_with_evidence, score_location, to_status, update_card_status
 from src.recruiting_tool import _extract_github_search_payload, _extract_public_email, generate_outreach, is_github_profile_url
 
 
@@ -48,6 +48,31 @@ class ScoreCandidateTests(unittest.TestCase):
         hits = score_location("Berlin-based engineer shipping React systems.", ["Berlin", "London"])
         self.assertEqual(hits, ["Berlin"])
 
+    def test_score_candidate_with_evidence_prefers_repo_over_profile(self):
+        brief = {
+            "must_haves": ["TypeScript", "React"],
+            "nice_to_haves": ["Rust"],
+            "must_have_weights": {"TypeScript": 0.7, "React": 0.3},
+            "nice_to_have_weights": {"Rust": 1.0},
+            "must_have_category_weight": 0.85,
+            "nice_to_have_category_weight": 0.15,
+        }
+        source_texts = {
+            "search": "",
+            "profile": "Frontend engineer with React experience.",
+            "repo": "typescript react node postgres project",
+            "website": "",
+        }
+
+        must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources = score_candidate_with_evidence(brief, source_texts)
+
+        self.assertEqual(must_hits, ["TypeScript", "React"])
+        self.assertEqual(nice_hits, [])
+        self.assertEqual(requirement_scores["TypeScript"], 1.0)
+        self.assertEqual(requirement_sources["TypeScript"], "repo")
+        self.assertGreater(confidence, 0.6)
+        self.assertGreater(fit_score, 0.8)
+
     def test_to_status_rejects_without_location_eligibility(self):
         self.assertEqual(to_status(0.9, location_eligible=False), "reject")
         self.assertEqual(to_status(0.56, location_eligible=True), "shortlist")
@@ -82,10 +107,14 @@ class ScoreCandidateTests(unittest.TestCase):
                 fit_score=0.7,
                 must_have_score=0.5,
                 nice_to_have_score=0.2,
+                confidence_score=0.7,
                 rationale="Matched core requirements.",
                 status="hold",
                 location_hits=["London"],
                 location_eligible=True,
+                eligibility_reason="Eligible",
+                requirement_scores={"TypeScript": 1.0},
+                requirement_sources={"TypeScript": "repo"},
                 outreach_draft="Hi Ada",
             )
         ]
@@ -108,10 +137,14 @@ class ScoreCandidateTests(unittest.TestCase):
                 fit_score=0.7,
                 must_have_score=0.8,
                 nice_to_have_score=0.2,
+                confidence_score=0.8,
                 rationale="Matched core requirements.",
                 status="shortlist",
                 location_hits=["London"],
                 location_eligible=True,
+                eligibility_reason="Eligible",
+                requirement_scores={"TypeScript": 1.0, "React": 1.0},
+                requirement_sources={"TypeScript": "repo", "React": "profile"},
                 outreach_draft="Hi Ada",
             )
         ]
