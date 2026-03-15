@@ -536,6 +536,9 @@ def render_page(
       border: 0;
       border-radius: 10px;
       padding: 12px 16px;
+      min-height: 46px;
+      font-size: 15px;
+      line-height: 1.2;
       font-weight: 600;
       color: var(--foreground);
       transition: transform 200ms var(--ease-out-expo), background 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo);
@@ -559,6 +562,7 @@ def render_page(
       color: var(--foreground);
       border: 1px solid var(--border-default);
       box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.08);
+      min-height: 46px;
       font-size: 15px;
       font-weight: 600;
       line-height: 1.2;
