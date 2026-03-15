@@ -55,11 +55,11 @@ def display_text(value: str) -> str:
 
 def evidence_level(value: float) -> str:
     if value >= 0.85:
-        return "High"
+        return "High confidence"
     if value >= 0.55:
-        return "Medium"
+        return "Moderate confidence"
     if value > 0:
-        return "Low"
+        return "Low confidence"
     return "No evidence"
 
 

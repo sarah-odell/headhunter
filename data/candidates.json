@@ -287,6 +287,147 @@
     "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
+    "id": "7c473ab1",
+    "name": "inker",
+    "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+    "source_url": "https://github.com/inker",
+    "email": "",
+    "found_via": [
+      "GitHub user search"
+    ],
+    "evidence_links": [
+      "https://github.com/inker",
+      "https://github.com/inker/metro",
+      "https://github.com/inker/draw",
+      "https://github.com/inker/snake.ts"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+react&type=users&p=1",
+        "label": "GitHub user search",
+        "snippet": "JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers",
+        "text": "inker inker JavaScript, TypeScript, React, Node.js London JavaScript, TypeScript, React, Node.js London 40 public repos 80 followers",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/inker",
+        "label": "GitHub profile",
+        "snippet": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+        "text": "inker JavaScript, TypeScript, React, Node.js @Mimica-Automation London JavaScript, TypeScript, React, Node.js. inker has 40 repositories available. Follow their code on GitHub.",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/inker/metro",
+        "label": "Repo: metro",
+        "snippet": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
+        "text": "metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/inker/draw",
+        "label": "Repo: draw",
+        "snippet": "\u26bd Champions League draw simulator | TypeScript",
+        "text": "draw \u26bd Champions League draw simulator TypeScript typescript tournament soccer draw seeding football champions-league inker TypeScript",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/inker/snake.ts",
+        "label": "Repo: snake.ts",
+        "snippet": "\ud83d\udc0d Yet another snake implementation | TypeScript",
+        "text": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 5,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.774,
+    "must_have_score": 0.911,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.86,
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London']; top evidence: JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers | JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London | \ud83d\ude87 a proposal for the St Petersburg underground | TypeScript.",
+    "status": "shortlist",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "requirement_scores": {
+      "TypeScript": 1.0,
+      "React": 1.0,
+      "frontend": 1.0,
+      "backend": 0.6,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_sources": {
+      "TypeScript": "repo",
+      "React": "repo",
+      "frontend": "repo",
+      "backend": "profile",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
+      "React": "\ud83d\udc0d Yet another snake implementation | TypeScript",
+      "frontend": "\ud83d\udc0d Yet another snake implementation | TypeScript",
+      "backend": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
     "id": "12efe01b",
     "name": "Jos\u00e9 Quinto",
     "headline": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",
@@ -437,147 +578,6 @@
       "open source": ""
     },
     "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "7c473ab1",
-    "name": "inker",
-    "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-    "source_url": "https://github.com/inker",
-    "email": "",
-    "found_via": [
-      "GitHub user search"
-    ],
-    "evidence_links": [
-      "https://github.com/inker",
-      "https://github.com/inker/metro",
-      "https://github.com/inker/draw",
-      "https://github.com/inker/snake.ts"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+react&type=users&p=1",
-        "label": "GitHub user search",
-        "snippet": "JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers",
-        "text": "inker inker JavaScript, TypeScript, React, Node.js London JavaScript, TypeScript, React, Node.js London 40 public repos 80 followers",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/inker",
-        "label": "GitHub profile",
-        "snippet": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-        "text": "inker JavaScript, TypeScript, React, Node.js @Mimica-Automation London JavaScript, TypeScript, React, Node.js. inker has 40 repositories available. Follow their code on GitHub.",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/metro",
-        "label": "Repo: metro",
-        "snippet": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
-        "text": "metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/draw",
-        "label": "Repo: draw",
-        "snippet": "\u26bd Champions League draw simulator | TypeScript",
-        "text": "draw \u26bd Champions League draw simulator TypeScript typescript tournament soccer draw seeding football champions-league inker TypeScript",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/snake.ts",
-        "label": "Repo: snake.ts",
-        "snippet": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-        "text": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 5,
-    "evidence_density": "medium",
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.774,
-    "must_have_score": 0.911,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.86,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London']; top evidence: JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers | JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London | \ud83d\ude87 a proposal for the St Petersburg underground | TypeScript.",
-    "status": "shortlist",
-    "location_hits": [
-      "London"
-    ],
-    "location_eligible": true,
-    "eligibility_reason": "Eligible: public evidence aligns with London.",
-    "requirement_scores": {
-      "TypeScript": 1.0,
-      "React": 1.0,
-      "frontend": 1.0,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "profile",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
-      "React": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-      "frontend": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-      "backend": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "343cb4a7",
