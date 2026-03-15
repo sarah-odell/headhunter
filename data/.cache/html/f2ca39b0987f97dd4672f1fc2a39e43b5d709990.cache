@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="/polygonjs.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Polygonjs: WebGL Design & Animation Tool</title>
+		<script type="module" crossorigin src="/assets/index-4913fcfd.js"></script>
+		<link rel="stylesheet" href="/assets/index-8e07a8ed.css">
+		<!-- Default Statcounter code for Polygonjs https://www.polygonjs.com -->
+<script type="text/javascript">
+var sc_project=12032089; 
+var sc_invisible=1; 
+var sc_security="8b0bc8e1"; 
+var sc_https=1; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12032089/0/8b0bc8e1/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
+		</head>
+	<body class="dark mx-0 lg:mx-auto">
+		<div id="app"></div>
+		<div
+	id="landing-page-data"
+	
+	data-route-login="/users/login"
+	data-route-signup="/users/signup/sign_up"
+	data-route-pricing="/pricing"
+	data-route-dashboard="/dashboard"
+></div>
+
+
+		<!-- <div id="landing-page-data" data-username="bla" data-route-login="/a" data-route-dashboard="/b"></div> -->
+		
+	</body>
+</html>

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import csv
 import hashlib
 import json
@@ -19,6 +20,8 @@ from urllib.parse import parse_qs, quote_plus, unquote, urlparse
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+ROOT = Path(__file__).resolve().parent.parent
+CACHE_DIR = ROOT / "data" / ".cache"
 NEGATION_PREFIXES = (
     "limited",
     "limited recent",
@@ -143,7 +146,7 @@ def load_role_brief(path: Path) -> dict:
 
 
 def _strip_tags(value: str) -> str:
-    return re.sub(r"<[^>]+>", "", value)
+    return unescape(re.sub(r"<[^>]+>", "", value))
 
 
 def _build_ssl_context() -> ssl.SSLContext:
@@ -154,15 +157,44 @@ def _build_ssl_context() -> ssl.SSLContext:
     return ssl.create_default_context(cafile=certifi.where())
 
 
+def _cache_path(namespace: str, key: str) -> Path:
+    digest = hashlib.sha1(key.encode()).hexdigest()
+    return CACHE_DIR / namespace / f"{digest}.cache"
+
+
+def _read_cache_text(namespace: str, key: str) -> str:
+    path = _cache_path(namespace, key)
+    if not path.exists():
+        return ""
+    try:
+        return path.read_text()
+    except Exception:
+        return ""
+
+
+def _write_cache_text(namespace: str, key: str, value: str) -> None:
+    path = _cache_path(namespace, key)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        path.write_text(value)
+    except Exception:
+        return
+
+
 def _fetch_html(url: str) -> str:
     if url in HTML_CACHE:
         return HTML_CACHE[url]
+    cached = _read_cache_text("html", url)
+    if cached:
+        HTML_CACHE[url] = cached
+        return cached
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
     ssl_context = _build_ssl_context()
     try:
         with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
             html = response.read().decode("utf-8", errors="ignore")
             HTML_CACHE[url] = html
+            _write_cache_text("html", url, html)
             return html
     except HTTPError as exc:
         if exc.code == 429:
@@ -184,6 +216,14 @@ def _fetch_html(url: str) -> str:
 def _fetch_json(url: str) -> dict | list:
     if url in JSON_CACHE:
         return JSON_CACHE[url]
+    cached = _read_cache_text("json", url)
+    if cached:
+        try:
+            payload = json.loads(cached)
+            JSON_CACHE[url] = payload
+            return payload
+        except Exception:
+            pass
     req = Request(
         url,
         headers={
@@ -197,6 +237,7 @@ def _fetch_json(url: str) -> dict | list:
         with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
             payload = json.loads(response.read().decode("utf-8", errors="ignore"))
             JSON_CACHE[url] = payload
+            _write_cache_text("json", url, json.dumps(payload))
             return payload
     except Exception:
         return {}
@@ -345,7 +386,7 @@ def _extract_github_search_payload(html: str) -> dict:
 
 
 def normalize_text(value: str) -> str:
-    return re.sub(r"\s+", " ", value.lower()).strip()
+    return re.sub(r"\s+", " ", unescape(value).lower()).strip()
 
 
 def _first_match(pattern: str, text: str) -> str:
@@ -489,7 +530,7 @@ def _normalize_email(value: str) -> str:
 
 
 def _normalize_optional_text(value: object) -> str:
-    return value.strip() if isinstance(value, str) else ""
+    return unescape(value).strip() if isinstance(value, str) else ""
 
 
 def _is_noreply_email(value: str) -> bool:
@@ -506,6 +547,104 @@ def _choose_preferred_email(candidates: Iterable[str]) -> str:
 def _fetch_github_user_profile(username: str) -> dict:
     response = _fetch_json(f"https://api.github.com/users/{quote_plus(username)}")
     return response if isinstance(response, dict) else {}
+
+
+def _github_repo_slug(repo_url: str) -> tuple[str, str] | None:
+    parsed = urlparse(repo_url)
+    if parsed.netloc.lower() != "github.com":
+        return None
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        return None
+    return parts[0], parts[1]
+
+
+def _fetch_github_repo_api(repo_url: str) -> dict:
+    slug = _github_repo_slug(repo_url)
+    if not slug:
+        return {}
+    owner, repo = slug
+    response = _fetch_json(f"https://api.github.com/repos/{quote_plus(owner)}/{quote_plus(repo)}")
+    return response if isinstance(response, dict) else {}
+
+
+def _fetch_github_repo_file(repo_url: str, path: str) -> str:
+    slug = _github_repo_slug(repo_url)
+    if not slug:
+        return ""
+    owner, repo = slug
+    response = _fetch_json(f"https://api.github.com/repos/{quote_plus(owner)}/{quote_plus(repo)}/contents/{path}")
+    if not isinstance(response, dict):
+        return ""
+    encoded = response.get("content", "")
+    if not encoded:
+        return ""
+    try:
+        return base64.b64decode(encoded).decode("utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+
+def _repo_artifact_signals(repo_url: str) -> dict[str, str]:
+    cached = _read_cache_text("repo-signals", repo_url)
+    if cached:
+        try:
+            return json.loads(cached)
+        except Exception:
+            pass
+
+    repo_meta = _fetch_github_repo_api(repo_url)
+    languages = _fetch_json(repo_meta.get("languages_url", "")) if repo_meta.get("languages_url") else {}
+    package_text = _fetch_github_repo_file(repo_url, "package.json")
+    tsconfig_text = _fetch_github_repo_file(repo_url, "tsconfig.json")
+    package_data = {}
+    if package_text:
+        try:
+            package_data = json.loads(package_text)
+        except Exception:
+            package_data = {}
+
+    dependencies = {
+        **(package_data.get("dependencies") or {}),
+        **(package_data.get("devDependencies") or {}),
+    }
+    dep_names = " ".join(dependencies.keys())
+    language_names = " ".join((languages or {}).keys()) if isinstance(languages, dict) else ""
+    artifact_markers: list[str] = []
+    depth_score = 0.0
+
+    if "typescript" in normalize_text(language_names) or "typescript" in normalize_text(dep_names) or tsconfig_text:
+        artifact_markers.append("TypeScript project with typed build configuration")
+        depth_score += 0.2
+    if any(dep in dependencies for dep in ("react", "react-dom", "next", "nextjs", "vite")):
+        artifact_markers.append("React/frontend application dependencies")
+        depth_score += 0.2
+    if any(dep in dependencies for dep in ("express", "fastify", "@nestjs/core", "koa", "hono", "prisma", "pg", "postgres", "trpc")):
+        artifact_markers.append("Backend/server-side stack dependencies")
+        depth_score += 0.2
+    if any(dep in dependencies for dep in ("framer-motion", "gsap", "three", "@react-three/fiber")):
+        artifact_markers.append("Animation/graphics libraries")
+        depth_score += 0.1
+    if any(dep in dependencies for dep in ("@mui/material", "@material-ui/core", "ariakit", "@ariakit/react", "@base-ui-components/react", "@pandacss/dev")):
+        artifact_markers.append("Component system and styling libraries")
+        depth_score += 0.1
+    scripts = package_data.get("scripts") or {}
+    if any(key in scripts for key in ("test", "test:unit", "test:e2e", "lint", "build")):
+        artifact_markers.append("Build/test scripts present")
+        depth_score += 0.1
+    if tsconfig_text and package_text:
+        depth_score += 0.1
+    if repo_meta.get("stargazers_count", 0) >= 5:
+        depth_score += 0.1
+
+    result = {
+        "languages": language_names,
+        "dependency_names": dep_names,
+        "artifact_markers": " | ".join(artifact_markers),
+        "depth_score": str(round(min(depth_score, 1.0), 3)),
+    }
+    _write_cache_text("repo-signals", repo_url, json.dumps(result))
+    return result
 
 
 def _extract_email_from_url(url: str) -> str:
@@ -593,7 +732,8 @@ def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
         description = _strip_tags(_first_match(r'<p class="pinned-item-desc[^"]*"[^>]*>(.*?)</p>', body))
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
         readme_summary = _extract_repo_page_summary(repo_url) if index == 0 else ""
-        repo_text_parts = [name, description, language, owner, readme_summary]
+        artifact_signals = _repo_artifact_signals(repo_url) if index == 0 else {"languages": language, "dependency_names": "", "artifact_markers": ""}
+        repo_text_parts = [name, description, language, owner, readme_summary, artifact_signals.get("languages", ""), artifact_signals.get("dependency_names", ""), artifact_signals.get("artifact_markers", "")]
         results.append(
             {
                 "url": repo_url,
@@ -603,7 +743,7 @@ def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
                     "repo",
                     repo_url,
                     f"Repo: {name}",
-                    " | ".join(part for part in (description, language, readme_summary[:140]) if part),
+                    " | ".join(part for part in (description, language, artifact_signals.get("artifact_markers", ""), readme_summary[:140]) if part),
                     " ".join(part for part in repo_text_parts if part),
                 ),
             }
@@ -642,7 +782,8 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
         topics = re.findall(r'class="topic-tag[^"]*"[^>]*>\s*(.*?)\s*</a>', body, flags=re.S)
         topic_text = " ".join(_strip_tags(topic) for topic in topics)
         readme_summary = ""
-        repo_text_parts = [name, description, language, topic_text, owner, readme_summary]
+        artifact_signals = _repo_artifact_signals(repo_url) if index == 0 else {"languages": language, "dependency_names": "", "artifact_markers": ""}
+        repo_text_parts = [name, description, language, topic_text, owner, readme_summary, artifact_signals.get("languages", ""), artifact_signals.get("dependency_names", ""), artifact_signals.get("artifact_markers", "")]
         results.append(
             {
                 "url": repo_url,
@@ -652,7 +793,7 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
                     "repo",
                     repo_url,
                     f"Repo: {name}",
-                    " | ".join(part for part in (description, language, readme_summary[:140]) if part),
+                    " | ".join(part for part in (description, language, artifact_signals.get("artifact_markers", ""), readme_summary[:140]) if part),
                     " ".join(part for part in repo_text_parts if part),
                 ),
             }
@@ -667,7 +808,18 @@ def _extract_repo_page_summary(repo_url: str) -> str:
         return ""
     meta_description = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     readme = _strip_tags(_first_match(r'<article class="markdown-body[^"]*"[^>]*>(.*?)</article>', html))
-    return " ".join(part for part in (meta_description, readme[:800]) if part)
+    repo_markers: list[str] = []
+    marker_patterns = {
+        "typescript": r"tsconfig\.json|TypeScript",
+        "react": r"React|react-dom|next\.config|Next\.js|vite",
+        "backend": r"express|fastify|nestjs|api|server|postgres|prisma",
+        "performance": r"performance|optimization|benchmark|latency|scalability",
+        "open source": r"MIT License|Apache License|Contributing|pull request|issues",
+    }
+    for label, pattern in marker_patterns.items():
+        if re.search(pattern, html, flags=re.I):
+            repo_markers.append(label)
+    return " ".join(part for part in (meta_description, readme[:800], " ".join(repo_markers)) if part)
 
 
 def extract_name(title: str) -> str:
@@ -877,15 +1029,20 @@ def generate_outreach(
     strongest = must_hits[:2]
     supporting = nice_hits[:1]
     proof = ", ".join(strongest + supporting) if (strongest or supporting) else "your background"
-    evidence_line = next((requirement_evidence.get(item, "") for item in strongest + supporting if requirement_evidence.get(item)), "")
     location_line = f" and your {', '.join(location_hits)} location" if location_hits else ""
+    role_summary = (
+        "At HASH, full-stack engineers build most user-facing features across both frontend and backend, "
+        "ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around "
+        "knowledge graphs, simulation, and automation."
+    )
     return (
         f"Hi {candidate_name},\n\n"
         f"I came across your profile while sourcing for {role_brief['company']}'s {role_brief['role_name']} role. "
         f"Your public work suggests a strong match on {proof}{location_line}.\n\n"
-        f"What stood out was the evidence around {proof}: {evidence_line or source_url}.\n\n"
-        f"If you're open to it, I'd be glad to share why this role could be a particularly strong fit at {role_brief['company']}.\n\n"
-        "If you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\n"
+        f"The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, "
+        f"move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, "
+        f"and automation. {role_summary}\n\n"
+        f"If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at {role_brief['company']}.\n\n"
         "Best,\nHASH Recruiting Team"
     )
 

@@ -1,13 +1,11 @@
 id,name,headline,source_url,email,found_via,evidence_count,evidence_density,must_have_hits,nice_to_have_hits,must_have_score,nice_to_have_score,confidence_score,location_hits,location_eligible,eligibility_reason,fit_score,status,rationale,outreach_draft
-35901b6f,Matheus Viana,"👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",https://github.com/moviandev,matheus_o_viana@hotmail.com,GitHub user search,5,medium,TypeScript; React; frontend; backend,,1.0,0.0,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.85,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin']; top evidence: 👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | 152 public repos | 37 followers | 👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany | C#.","Hi Matheus Viana,
+35901b6f,Matheus Viana,"👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany",https://github.com/moviandev,matheus_o_viana@hotmail.com,GitHub user search; Linked website,5,medium,TypeScript; React; frontend; backend,,1.0,0.0,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.85,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin']; top evidence: 👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | 152 public repos | 37 followers | 👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | C#.","Hi Matheus Viana,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.
 
-What stood out was the evidence around TypeScript, React: C#.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -21,11 +19,19 @@ Typescript / React / React Native / NodeJS / Postgres | Berlin, Germany | Repla
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your Berlin location.
 
-What stood out was the evidence around TypeScript, React, storage systems: MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+Best,
+HASH Recruiting Team"
+12efe01b,José Quinto,"Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",https://github.com/jquintozamora,,GitHub user search; Linked website,6,medium,TypeScript; React; frontend; backend,,0.911,0.0,1.0,London,True,Eligible: public evidence aligns with London.,0.774,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 1.000; location: ['London']; top evidence: Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | 26 public repos | 166 followers | Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | Software Engineer | José Quinto I am a software engineer focused on web development and open-source contributor. Software Engineer | José Quintovar GLOBAL = { root: '/', algolia: {""appId"":""C7MOFESP3V"",""apiKey"":""cdc4a9b7a.","Hi José Quinto,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
+
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
+
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -33,77 +39,55 @@ HASH Recruiting Team"
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
 
-What stood out was the evidence around TypeScript, React: 🚇 a proposal for the St Petersburg underground | TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-12efe01b,José Quinto,"Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",https://github.com/jquintozamora,,GitHub user search,5,medium,TypeScript; React; frontend; backend,,0.911,0.0,0.86,London,True,Eligible: public evidence aligns with London.,0.774,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London']; top evidence: Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | 26 public repos | 166 followers | Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | Treemap based on d3.treemap built using React | TypeScript.","Hi José Quinto,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
-
-What stood out was the evidence around TypeScript, React: Treemap based on d3.treemap built using React | TypeScript.
-
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
-
-Best,
-HASH Recruiting Team"
-343cb4a7,Mohd Javed,Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London,https://github.com/devjavedmohd,dev.javedmohd@gmail.com,GitHub user search,5,medium,TypeScript; React; frontend; backend,storage systems; open source,0.8,0.1,0.9,London,True,Eligible: public evidence aligns with London.,0.695,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile, open source 1.00 via repo; must-have score: 0.800; nice-to-have score: 0.100; confidence: 0.900; location: ['London']; top evidence: Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers | Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London | This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook.","Hi Mohd Javed,
+343cb4a7,Mohd Javed,Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London,https://github.com/devjavedmohd,dev.javedmohd@gmail.com,GitHub user search; Linked website,5,medium,TypeScript; React; frontend; backend,storage systems; open source,0.8,0.1,0.9,London,True,Eligible: public evidence aligns with London.,0.695,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile, open source 1.00 via repo; must-have score: 0.800; nice-to-have score: 0.100; confidence: 0.900; location: ['London']; top evidence: Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers | Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London | This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook.","Hi Mohd Javed,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your London location.
 
-What stood out was the evidence around TypeScript, React, storage systems: Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here 👇🏼 | Jupyter Notebook.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-c0f43ab6,Daniel Ross,"Front-end JavaScript/TypeScript/React Developer | London, UK",https://github.com/notalexross,,GitHub user search,5,medium,TypeScript; React; frontend,storage systems; open source,0.778,0.16,0.85,London,True,Eligible: public evidence aligns with London.,0.685,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: storage systems 1.00 via repo, open source 1.00 via repo; must-have score: 0.778; nice-to-have score: 0.160; confidence: 0.850; location: ['London']; top evidence: Front-end JavaScript/TypeScript/React Developer | London, UK | 8 public repos | 10 followers | Front-end JavaScript/TypeScript/React Developer | London, UK | Shell.","Hi Daniel Ross,
+c0f43ab6,Daniel Ross,"Front-end JavaScript/TypeScript/React Developer | London, UK",https://github.com/notalexross,,GitHub user search; Linked website,6,medium,TypeScript; React; frontend,storage systems; open source,0.778,0.16,1.0,London,True,Eligible: public evidence aligns with London.,0.685,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: storage systems 1.00 via repo, open source 1.00 via repo; must-have score: 0.778; nice-to-have score: 0.160; confidence: 1.000; location: ['London']; top evidence: Front-end JavaScript/TypeScript/React Developer | London, UK | 8 public repos | 10 followers | Front-end JavaScript/TypeScript/React Developer | London, UK | HTML5 icon Daniel Ross is a London (UK) based web developer, problem solver, and jack-of-all-trades. /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adj.","Hi Daniel Ross,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your London location.
 
-What stood out was the evidence around TypeScript, React, storage systems: A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. | JavaScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
 1a9bbd60,Christian Götze,"full stack web dev
 
-svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany",https://github.com/OG84,,GitHub user search,5,medium,TypeScript; React; frontend; backend,,0.8,0.0,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.68,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.800; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin']; top evidence: full stack web dev
+svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany",https://github.com/OG84,,GitHub user search; Linked website,6,medium,TypeScript; React; frontend; backend,open source,0.8,0.006,1.0,Berlin,True,Eligible: public evidence aligns with Berlin.,0.681,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: open source 0.55 via linked site; must-have score: 0.800; nice-to-have score: 0.006; confidence: 1.000; location: ['Berlin']; top evidence: full stack web dev
 
 svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany | 17 public repos | 9 followers | full stack web dev
 
-svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany | Cybernetically enhanced web apps | TypeScript.","Hi Christian Götze,
+svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany | Christian Götze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian Götze - Fullstack Web.","Hi Christian Götze,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, open source and your Berlin location.
 
-What stood out was the evidence around TypeScript, React: Cybernetically enhanced web apps | TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-79bf7db8,fmacherey,"Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",https://github.com/fmacherey,,GitHub user search,5,medium,TypeScript; React; frontend,,0.778,0.0,0.84,Berlin,True,Eligible: public evidence aligns with Berlin.,0.661,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Frontend-Dev with React, NextJS, TypeScript, Jest. | Berlin | 12 public repos | 2 followers | Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin | The React Framework | JavaScript.","Hi fmacherey,
+79bf7db8,fmacherey,"Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",https://github.com/fmacherey,,GitHub user search; Linked website,5,medium,TypeScript; React; frontend,,0.778,0.0,0.84,Berlin,True,Eligible: public evidence aligns with Berlin.,0.661,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Frontend-Dev with React, NextJS, TypeScript, Jest. | Berlin | 12 public repos | 2 followers | Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin | The React Framework | JavaScript.","Hi fmacherey,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.
 
-What stood out was the evidence around TypeScript, React: The repository for high quality TypeScript type definitions. | TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -114,11 +98,9 @@ because why not?? | Flaconi GmbH | Berlin, Germany | TypeScript.","Hi Asad Ali B
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.
 
-What stood out was the evidence around TypeScript, React: TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -126,23 +108,19 @@ a97647c9,James Rees,"React, Angular, Node and Python Engineer | London",https://
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
 
-What stood out was the evidence around TypeScript, React: TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-f1a0eca3,Francesco Albanese,"Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",https://github.com/francesco-albanese,,GitHub user search,5,medium,TypeScript; React; frontend; backend,,0.756,0.0,0.84,London,True,Eligible: public evidence aligns with London.,0.643,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['London']; top evidence: Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers | Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom | Python JWT and JWK generator | Python.","Hi Francesco Albanese,
+f1a0eca3,Francesco Albanese,"Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",https://github.com/francesco-albanese,,GitHub user search; Linked website,5,medium,TypeScript; React; frontend; backend,,0.756,0.0,0.84,London,True,Eligible: public evidence aligns with London.,0.643,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['London']; top evidence: Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers | Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom | Python JWT and JWK generator | Python.","Hi Francesco Albanese,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
 
-What stood out was the evidence around TypeScript, React: Claude Code configuration: rules, agents, commands, skills | Python.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -150,11 +128,9 @@ HASH Recruiting Team"
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.
 
-What stood out was the evidence around TypeScript, React: Description is in README | TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
@@ -162,50 +138,42 @@ ea8d0807,Carlos Meyer,Apprentice Software Developer (FIAE) · Backend / Data / A
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend and your Berlin location.
 
-What stood out was the evidence around TypeScript, frontend: A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-78449567,Polygonjs,node-based WebGL design tool | Polygonjs | London,https://github.com/polygonjs,,GitHub user search,5,medium,TypeScript; backend,graphics; animation,0.611,0.08,0.85,London,True,Eligible: public evidence aligns with London.,0.531,hold,"Must-have evidence: TypeScript 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: graphics 1.00 via repo, animation 1.00 via repo; must-have score: 0.611; nice-to-have score: 0.080; confidence: 0.850; location: ['London']; top evidence: node-based WebGL design tool | London | 45 public repos | 107 followers | node-based WebGL design tool | Polygonjs | London | Jai.","Hi Polygonjs,
+78449567,Polygonjs,node-based WebGL design tool | Polygonjs | London,https://github.com/polygonjs,,GitHub user search; Linked website,6,medium,TypeScript; backend,graphics; animation,0.611,0.08,1.0,London,True,Eligible: public evidence aligns with London.,0.531,hold,"Must-have evidence: TypeScript 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: graphics 1.00 via repo, animation 1.00 via repo; must-have score: 0.611; nice-to-have score: 0.080; confidence: 1.000; location: ['London']; top evidence: node-based WebGL design tool | London | 45 public repos | 107 followers | node-based WebGL design tool | Polygonjs | London | Polygonjs: WebGL Design & Animation Tool Polygonjs: WebGL Design & Animation Tool var sc_project=12032089; var sc_invisible=1; var sc_security=""8b0bc8e1""; var sc_https=1; -->.","Hi Polygonjs,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, backend, graphics and your London location.
 
-What stood out was the evidence around TypeScript, backend, graphics: node-based WebGL design tool | TypeScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
 27b28d4d,Harshit Tripathi,"Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
-PHP | MySQL | Laravel | Docker | @tasko-io | Berlin",https://github.com/htthecool,,GitHub user search,5,medium,React; frontend; backend,storage systems,0.522,0.09,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.457,hold,"Must-have evidence: React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.522; nice-to-have score: 0.090; confidence: 0.850; location: ['Berlin']; top evidence: Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
+PHP | MySQL | Laravel | Docker | @tasko-io | Berlin",https://github.com/htthecool,,GitHub user search; Linked website,5,medium,React; frontend; backend,storage systems,0.522,0.09,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.457,hold,"Must-have evidence: React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.522; nice-to-have score: 0.090; confidence: 0.850; location: ['Berlin']; top evidence: Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
 PHP | MySQL | Laravel | Docker | Berlin | 19 public repos | 3 followers | Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
 PHP | MySQL | Laravel | Docker | @tasko-io | Berlin | React Native App with Web3 to recover ETH account from mnemonic | JavaScript.","Hi Harshit Tripathi,
 
 I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on React, frontend, storage systems and your Berlin location.
 
-What stood out was the evidence around React, frontend, storage systems: React Native App with Web3 to recover ETH account from mnemonic | JavaScript.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"
-7fde2b7b,Jemail Omer,"Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",https://github.com/jemxz,jemxz.omer@gmail.com,GitHub user search,5,medium,backend,,0.133,0.0,0.77,Berlin,True,Eligible: public evidence aligns with Berlin.,0.113,reject,"Must-have evidence: backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.133; nice-to-have score: 0.000; confidence: 0.770; location: ['Berlin']; top evidence: Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | Berlin | 48 public repos | 9 followers | Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin | JavaScript.","Hi Jemail Omer,
+7fde2b7b,Jemail Omer,"Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",https://github.com/jemxz,jemxz.omer@gmail.com,GitHub user search; Linked website,6,medium,React; frontend; backend,,0.347,0.0,0.96,Berlin,True,Eligible: public evidence aligns with Berlin.,0.295,hold,"Must-have evidence: React 0.55 via linked site, frontend 0.55 via linked site, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.347; nice-to-have score: 0.000; confidence: 0.960; location: ['Berlin']; top evidence: Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | Berlin | 48 public repos | 9 followers | Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin | Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1].","Hi Jemail Omer,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on backend and your Berlin location.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on React, frontend and your Berlin location.
 
-What stood out was the evidence around backend: Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin.
+The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.
 
-If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
-
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.
 
 Best,
 HASH Recruiting Team"

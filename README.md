@@ -26,6 +26,7 @@ Then open [http://localhost:8001](http://localhost:8001).
 
 - Sources engineering candidates from public GitHub user search, DuckDuckGo public web search, GitHub profile pages, and linked public websites.
 - Enriches candidates with profile evidence, pinned repos, repository listings, repo page summaries, linked websites, and public email when available.
+- Caches public fetches locally under `data/.cache` to improve repeat-run speed and reduce rate-limit pressure.
 - Builds structured candidate cards with evidence links, evidence snippets, source attribution, ranked fit scores, outreach drafts, and workflow status.
 - Shows candidates in both card and table views for quick comparison.
 - Exports the current pipeline to CSV.
@@ -69,6 +70,7 @@ Scoring is heuristic and evidence-weighted.
   - `linked site` is medium
   - `public web` is weaker
   - `search` is weakest
+- Repo-level evidence is not limited to repo titles. The tool also pulls repo page summaries and technical markers that strengthen signals around `TypeScript`, `React`, backend work, performance, and open-source activity.
 - The tool computes:
   - `must_have_score`
   - `nice_to_have_score`
@@ -85,7 +87,7 @@ Automatic workflow thresholds:
 - `hold` if `fit_score >= 0.25` and location eligible
 - `reject` otherwise
 
-The UI displays these scores as percentages, shows evidence snippets and source labels, and allows manual status changes.
+The UI displays these scores as percentages, shows evidence snippets and source labels, and allows manual status changes. Outreach drafts now cite one especially concrete public artifact rather than relying only on generic skill mentions.
 
 ## Current role brief
 

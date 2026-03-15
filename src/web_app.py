@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from html import escape
+from html import escape, unescape
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -47,6 +47,20 @@ def normalize_status_filter(raw_value: str) -> str:
 
 def percent_label(value: float) -> str:
     return f"{round(value * 100):d}%"
+
+
+def display_text(value: str) -> str:
+    return escape(unescape(value))
+
+
+def evidence_level(value: float) -> str:
+    if value >= 0.85:
+        return "High"
+    if value >= 0.55:
+        return "Medium"
+    if value > 0:
+        return "Low"
+    return "No evidence"
 
 
 def render_page(
@@ -113,7 +127,7 @@ def render_page(
         )
         evidence_records = getattr(card, "evidence_records", []) or []
         evidence_items = "".join(
-            f'<li><strong>{escape(record.get("label", "Evidence"))}</strong><span class="evidence-snippet">{escape(record.get("snippet", ""))}</span><a href="{escape(record.get("url", ""))}" target="_blank" rel="noreferrer">Open source</a></li>'
+            f'<li><strong>{display_text(record.get("label", "Evidence"))}</strong><span class="evidence-snippet">{display_text(record.get("snippet", ""))}</span><a href="{escape(record.get("url", ""))}" target="_blank" rel="noreferrer">Open source</a></li>'
             for record in evidence_records[:5]
         )
         must_badges = "".join(
@@ -124,6 +138,19 @@ def render_page(
             f'<span class="match-badge subdued">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
             for hit in card.nice_to_have_hits
         ) or '<span class="match-empty">No supporting evidence</span>'
+        github_work_rows = "".join(
+            f"""
+            <div class="signal-row">
+              <div class="signal-head">
+                <span class="signal-label">{label}</span>
+                <span class="signal-chip">{evidence_level(card.requirement_scores.get(key, 0.0))}</span>
+              </div>
+              <div class="signal-meta">{display_text(card.requirement_sources.get(key, "no evidence") or "no evidence")}</div>
+              <div class="signal-evidence">{display_text(card.requirement_evidence.get(key, "") or "No concrete public repo evidence found.")}</div>
+            </div>
+            """
+            for key, label in (("TypeScript", "TypeScript evidence"), ("React", "React evidence"))
+        )
         status_form = "".join(
             f"""
             <button type="submit" name="status" value="{status}" class="status-button {'active' if card.status == status else ''}">
@@ -144,10 +171,9 @@ def render_page(
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill pill-location {location_class}">{escape(location_state)}</span>
                     <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
-                    <span class="pill">Evidence {escape(card.evidence_density.title())}</span>
                   </div>
-                  <h3>{escape(card.name)}</h3>
-                  <p class="headline">{escape(card.headline)}</p>
+                  <h3>{display_text(card.name)}</h3>
+                  <p class="headline">{display_text(card.headline)}</p>
                 </div>
                 <div class="score-stack">
                   <span class="eyebrow-label">Fit score</span>
@@ -158,11 +184,11 @@ def render_page(
                 <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
                 <div class="candidate-inline-meta">
                   {email_html}
-                  <span class="candidate-location-note">Found via {escape(found_via_text)}</span>
-                  <span class="candidate-location-note">{escape(location_text)}</span>
+                  <span class="candidate-location-note">Found via {display_text(found_via_text)}</span>
+                  <span class="candidate-location-note">{display_text(location_text)}</span>
                 </div>
               </div>
-              <p class="candidate-location-note">{escape(card.eligibility_reason)}</p>
+              <p class="candidate-location-note">{display_text(card.eligibility_reason)}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
@@ -187,6 +213,10 @@ def render_page(
                   <div class="match-list">{nice_badges}</div>
                 </section>
               </div>
+              <section class="signal-panel">
+                <h4>GitHub work signals</h4>
+                <div class="signal-grid">{github_work_rows}</div>
+              </section>
               <details class="detail-panel">
                 <summary>Evidence and source notes</summary>
                 <div class="detail-body">
@@ -196,7 +226,7 @@ def render_page(
               <details class="detail-panel">
                 <summary>Outreach draft</summary>
                 <div class="detail-body">
-                  <pre>{escape(card.outreach_draft)}</pre>
+                  <pre>{display_text(card.outreach_draft)}</pre>
                 </div>
               </details>
               <form method="post" action="/review" class="review-form">
@@ -216,17 +246,17 @@ def render_page(
             <tr>
               <td class="col-rank">#{rank}</td>
               <td class="col-candidate">
-                <div class="table-name">{escape(card.name)}</div>
+                <div class="table-name">{display_text(card.name)}</div>
                 <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
-                <div class="table-subtle">{escape(found_via_text)}</div>
+                <div class="table-subtle">{display_text(found_via_text)}</div>
               </td>
               <td class="col-status">{escape(card.status.title())}</td>
               <td class="col-score">{percent_label(card.fit_score)}</td>
               <td class="col-score">{percent_label(card.must_have_score)}</td>
               <td class="col-score">{percent_label(card.nice_to_have_score)}</td>
-              <td class="col-location">{escape(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{escape(card.evidence_density.title())} evidence</div></td>
-              <td class="col-skills">{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
-              <td class="col-skills">{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
+              <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text(card.evidence_density.title())} evidence</div></td>
+              <td class="col-skills">{display_text(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
+              <td class="col-skills">{display_text(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
             </tr>
             """
         )
@@ -439,7 +469,7 @@ def render_page(
     .page-header h1 {{
       margin: 0;
       font-size: clamp(1.7rem, 3vw, 2.3rem);
-      line-height: 1.02;
+      line-height: 1.1;
       letter-spacing: -0.04em;
       font-weight: 600;
       max-width: none;
@@ -828,6 +858,66 @@ def render_page(
     .match-panel h4 {{
       font-size: 0.95rem;
     }}
+    .signal-panel {{
+      margin: 18px 0 0;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-default);
+      display: grid;
+      gap: 12px;
+    }}
+    .signal-panel h4 {{
+      font-size: 0.95rem;
+      margin: 0;
+    }}
+    .signal-grid {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }}
+    .signal-row {{
+      display: grid;
+      gap: 6px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(8, 8, 12, 0.72);
+      border: 1px solid var(--border-default);
+    }}
+    .signal-head {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }}
+    .signal-label {{
+      font-weight: 600;
+      color: var(--foreground);
+    }}
+    .signal-chip {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      background: rgba(255,255,255,0.04);
+      color: var(--foreground-subtle);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }}
+    .signal-meta {{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--foreground-subtle);
+    }}
+    .signal-evidence {{
+      color: var(--foreground-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }}
     .match-list {{
       display: flex;
       flex-wrap: wrap;
@@ -1128,7 +1218,8 @@ def render_page(
       .hero-stats,
       .summary-grid,
       .score-breakdown,
-      .match-grid {{
+      .match-grid,
+      .signal-grid {{
         grid-template-columns: 1fr;
       }}
       .candidate-head,
