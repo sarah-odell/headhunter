@@ -104,14 +104,16 @@ def render_page(
     candidate_rows = []
     for rank, card in enumerate(ranked_cards, start=1):
         location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
+        found_via_text = ", ".join(card.found_via) if getattr(card, "found_via", None) else "GitHub user search"
         email_html = (
             f'<a class="ghost-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
             if card.email
             else '<span class="candidate-location-note">No public email on GitHub</span>'
         )
-        evidence_links = "".join(
-            f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>'
-            for link in card.evidence_links
+        evidence_records = getattr(card, "evidence_records", []) or []
+        evidence_items = "".join(
+            f'<li><strong>{escape(record.get("label", "Evidence"))}</strong><span class="evidence-snippet">{escape(record.get("snippet", ""))}</span><a href="{escape(record.get("url", ""))}" target="_blank" rel="noreferrer">Open source</a></li>'
+            for record in evidence_records[:5]
         )
         must_badges = "".join(
             f'<span class="match-badge">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
@@ -141,6 +143,7 @@ def render_page(
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill pill-location {location_class}">{escape(location_state)}</span>
                     <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
+                    <span class="pill">Evidence {escape(card.evidence_density.title())}</span>
                   </div>
                   <h3>{escape(card.name)}</h3>
                   <p class="headline">{escape(card.headline)}</p>
@@ -154,6 +157,7 @@ def render_page(
                 <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
                 <div class="candidate-inline-meta">
                   {email_html}
+                  <span class="candidate-location-note">Found via {escape(found_via_text)}</span>
                   <span class="candidate-location-note">{escape(location_text)}</span>
                 </div>
               </div>
@@ -183,9 +187,9 @@ def render_page(
                 </section>
               </div>
               <details class="detail-panel">
-                <summary>Evidence links</summary>
+                <summary>Evidence and source notes</summary>
                 <div class="detail-body">
-                  <ul>{evidence_links}</ul>
+                  <ul class="evidence-list">{evidence_items or "".join(f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>' for link in card.evidence_links)}</ul>
                 </div>
               </details>
               <details class="detail-panel">
@@ -213,12 +217,13 @@ def render_page(
               <td class="col-candidate">
                 <div class="table-name">{escape(card.name)}</div>
                 <a class="table-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">GitHub</a>
+                <div class="table-subtle">{escape(found_via_text)}</div>
               </td>
               <td class="col-status">{escape(card.status.title())}</td>
               <td class="col-score">{percent_label(card.fit_score)}</td>
               <td class="col-score">{percent_label(card.must_have_score)}</td>
               <td class="col-score">{percent_label(card.nice_to_have_score)}</td>
-              <td class="col-location">{escape(", ".join(card.location_hits) if card.location_hits else "No match")}</td>
+              <td class="col-location">{escape(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{escape(card.evidence_density.title())} evidence</div></td>
               <td class="col-skills">{escape(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
               <td class="col-skills">{escape(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
             </tr>
@@ -925,6 +930,11 @@ def render_page(
       color: var(--accent-bright);
       font-size: 13px;
     }}
+    .table-subtle {{
+      margin-top: 4px;
+      color: var(--foreground-subtle);
+      font-size: 12px;
+    }}
     .col-rank {{
       width: 6%;
       white-space: nowrap;
@@ -951,6 +961,20 @@ def render_page(
     ul {{
       margin: 0;
       padding-left: 18px;
+    }}
+    .evidence-list {{
+      display: grid;
+      gap: 12px;
+      padding-left: 18px;
+    }}
+    .evidence-list li {{
+      display: grid;
+      gap: 6px;
+    }}
+    .evidence-snippet {{
+      color: var(--foreground-muted);
+      font-size: 14px;
+      line-height: 1.5;
     }}
     .brief-columns {{
       display: grid;

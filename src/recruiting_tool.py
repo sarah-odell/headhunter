@@ -13,7 +13,7 @@ from io import StringIO
 from dataclasses import asdict, dataclass
 from html import unescape
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 from urllib.parse import parse_qs, quote_plus, unquote, urlparse
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -85,18 +85,22 @@ GITHUB_RESERVED_PATHS = {
 EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", flags=re.I)
 SOURCE_STRENGTHS = {
     "search": 0.3,
+    "web": 0.45,
     "profile": 0.6,
     "repo": 1.0,
     "website": 0.55,
 }
 SOURCE_LABELS = {
     "search": "search",
+    "web": "public web",
     "profile": "profile",
     "repo": "repo",
     "website": "linked site",
 }
 DEFAULT_MUST_CATEGORY_WEIGHT = 0.85
 DEFAULT_NICE_CATEGORY_WEIGHT = 0.15
+HTML_CACHE: dict[str, str] = {}
+JSON_CACHE: dict[str, dict | list] = {}
 
 
 @dataclass
@@ -106,7 +110,11 @@ class CandidateCard:
     headline: str
     source_url: str
     email: str
+    found_via: list[str]
     evidence_links: list[str]
+    evidence_records: list[dict[str, Any]]
+    evidence_count: int
+    evidence_density: str
     must_have_hits: list[str]
     nice_to_have_hits: list[str]
     fit_score: float
@@ -120,6 +128,7 @@ class CandidateCard:
     eligibility_reason: str
     requirement_scores: dict[str, float]
     requirement_sources: dict[str, str]
+    requirement_evidence: dict[str, str]
     outreach_draft: str
 
 
@@ -145,11 +154,15 @@ def _build_ssl_context() -> ssl.SSLContext:
 
 
 def _fetch_html(url: str) -> str:
+    if url in HTML_CACHE:
+        return HTML_CACHE[url]
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
     ssl_context = _build_ssl_context()
     try:
         with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
-            return response.read().decode("utf-8", errors="ignore")
+            html = response.read().decode("utf-8", errors="ignore")
+            HTML_CACHE[url] = html
+            return html
     except HTTPError as exc:
         if exc.code == 429:
             raise RuntimeError(
@@ -168,6 +181,8 @@ def _fetch_html(url: str) -> str:
 
 
 def _fetch_json(url: str) -> dict | list:
+    if url in JSON_CACHE:
+        return JSON_CACHE[url]
     req = Request(
         url,
         headers={
@@ -179,9 +194,30 @@ def _fetch_json(url: str) -> dict | list:
     ssl_context = _build_ssl_context()
     try:
         with urlopen(req, timeout=20, context=ssl_context) as response:  # nosec B310
-            return json.loads(response.read().decode("utf-8", errors="ignore"))
+            payload = json.loads(response.read().decode("utf-8", errors="ignore"))
+            JSON_CACHE[url] = payload
+            return payload
     except Exception:
         return {}
+
+
+def _make_evidence_record(
+    source_type: str,
+    url: str,
+    label: str,
+    snippet: str,
+    text: str,
+    matched_requirements: list[str] | None = None,
+) -> dict[str, Any]:
+    return {
+        "source_type": source_type,
+        "url": url,
+        "label": label,
+        "snippet": snippet.strip(),
+        "text": text.strip(),
+        "matched_requirements": matched_requirements or [],
+        "strength": SOURCE_STRENGTHS.get(source_type, 0.0),
+    }
 
 
 def github_user_search(query: str, max_results: int = 20) -> list[dict]:
@@ -221,6 +257,16 @@ def github_user_search(query: str, max_results: int = 20) -> list[dict]:
                     "profile_location": location,
                     "headline_override": bio or f"{location} GitHub profile" if location else "GitHub profile",
                     "evidence_links": [profile_url, search_url],
+                    "found_via": ["GitHub user search"],
+                    "evidence_records": [
+                        _make_evidence_record(
+                            "search",
+                            search_url,
+                            "GitHub user search",
+                            " | ".join(part for part in snippet_parts if part),
+                            " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
+                        )
+                    ],
                     "search_text": " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
                 }
             )
@@ -232,6 +278,54 @@ def github_user_search(query: str, max_results: int = 20) -> list[dict]:
         page += 1
 
     return results
+
+
+def duckduckgo_profile_search(query: str, max_results: int = 10) -> list[dict]:
+    html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    results: list[dict] = []
+    for href, title, snippet in re.findall(
+        r'<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>.*?<a[^>]+class="result__url"[^>]*>.*?</a>.*?<a[^>]+class="result__snippet"[^>]*>(.*?)</a>',
+        html,
+        flags=re.S,
+    ):
+        target = _unwrap_duckduckgo_url(unescape(href))
+        if not is_github_profile_url(target):
+            continue
+        clean_title = _strip_tags(unescape(title))
+        clean_snippet = _strip_tags(unescape(snippet))
+        results.append(
+            {
+                "title": clean_title or f"{target} · GitHub",
+                "url": target,
+                "snippet": clean_snippet,
+                "profile_name": extract_name(clean_title) if clean_title else urlparse(target).path.strip("/"),
+                "profile_location": "",
+                "headline_override": clean_snippet or "GitHub profile",
+                "evidence_links": [target],
+                "found_via": ["DuckDuckGo"],
+                "evidence_records": [
+                    _make_evidence_record(
+                        "web",
+                        "https://html.duckduckgo.com/html/",
+                        "DuckDuckGo public web search",
+                        clean_snippet,
+                        " ".join(part for part in (clean_title, clean_snippet) if part),
+                    )
+                ],
+                "search_text": " ".join(part for part in (clean_title, clean_snippet) if part),
+            }
+        )
+        if len(results) >= max_results:
+            break
+    return results
+
+
+def _unwrap_duckduckgo_url(url: str) -> str:
+    parsed = urlparse(url)
+    if parsed.netloc.endswith("duckduckgo.com") and parsed.path == "/l/":
+        target = parse_qs(parsed.query).get("uddg", [""])[0]
+        return unquote(target) if target else url
+    return url
 
 
 def _extract_github_search_payload(html: str) -> dict:
@@ -289,6 +383,7 @@ def enrich_github_result(item: dict) -> dict:
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     pinned_repos = _extract_pinned_repos(html, item["url"])
     listed_repos = _extract_repository_list(item["url"], limit=8)
+    public_web_results = _search_public_web_context(full_name or username or item.get("profile_name", ""), github_username)
     website_text = ""
 
     display_name = full_name or username or item["title"]
@@ -298,6 +393,7 @@ def enrich_github_result(item: dict) -> dict:
     text_parts = [item["title"], item.get("snippet", ""), full_name, username, bio, company, location, email, profile_meta]
     text_parts.extend(repo["text"] for repo in pinned_repos)
     text_parts.extend(repo["text"] for repo in listed_repos)
+    text_parts.extend(result["text"] for result in public_web_results)
     enriched_item = dict(item)
     enriched_item["title"] = f"{display_name} ({username}) · GitHub" if full_name and username else item["title"]
     enriched_item["snippet"] = " ".join(part for part in text_parts if part)
@@ -322,7 +418,39 @@ def enrich_github_result(item: dict) -> dict:
     for repo in listed_repos[:3]:
         if repo["url"] not in evidence_links:
             evidence_links.append(repo["url"])
+    for result in public_web_results[:2]:
+        if result["url"] not in evidence_links:
+            evidence_links.append(result["url"])
+    evidence_records = list(item.get("evidence_records", []))
+    profile_text = " ".join(part for part in (full_name, username, bio, company, location, profile_meta, email) if part)
+    evidence_records.append(
+        _make_evidence_record(
+            "profile",
+            item["url"],
+            "GitHub profile",
+            " | ".join(part for part in (bio, company, location) if part),
+            profile_text,
+        )
+    )
+    if website_text:
+        evidence_records.append(
+            _make_evidence_record(
+                "website",
+                website,
+                "Linked website",
+                website_text[:220],
+                website_text,
+            )
+        )
+    evidence_records.extend(repo["evidence_record"] for repo in pinned_repos[:3] if repo.get("evidence_record"))
+    evidence_records.extend(repo["evidence_record"] for repo in listed_repos[:3] if repo.get("evidence_record"))
+    evidence_records.extend(
+        _make_evidence_record("web", result["url"], result["label"], result["snippet"], result["text"])
+        for result in public_web_results[:2]
+    )
     enriched_item["evidence_links"] = evidence_links
+    enriched_item["found_via"] = sorted({*(item.get("found_via") or []), *(["Linked website"] if website else []), *(["Public web"] if public_web_results else [])})
+    enriched_item["evidence_records"] = evidence_records
     enriched_item["profile_name"] = display_name
     enriched_item["profile_location"] = location
     enriched_item["public_email"] = email
@@ -333,6 +461,7 @@ def enrich_github_result(item: dict) -> dict:
         "profile": " ".join(part for part in (full_name, username, bio, company, location, profile_meta) if part),
         "repo": " ".join(repo["text"] for repo in [*pinned_repos, *listed_repos]),
         "website": website_text,
+        "web": " ".join(result["text"] for result in public_web_results),
     }
     return enriched_item
 
@@ -413,6 +542,38 @@ def _extract_email_from_github_repo_pages(repo_urls: Iterable[str], limit: int =
     return _choose_preferred_email(emails)
 
 
+def _search_public_web_context(name: str, username: str, limit: int = 2) -> list[dict[str, str]]:
+    if not (name or username):
+        return []
+    query = " ".join(part for part in (name, username, "engineer") if part)
+    html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    results: list[dict[str, str]] = []
+    for href, title, snippet in re.findall(
+        r'<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>.*?<a[^>]+class="result__snippet"[^>]*>(.*?)</a>',
+        html,
+        flags=re.S,
+    ):
+        target = _unwrap_duckduckgo_url(unescape(href))
+        if not target or "github.com" in urlparse(target).netloc.lower():
+            continue
+        clean_title = _strip_tags(unescape(title))
+        clean_snippet = _strip_tags(unescape(snippet))
+        combined = normalize_text(" ".join(part for part in (clean_title, clean_snippet) if part))
+        if username and normalize_text(username) not in combined and name and normalize_text(name).split(" ")[0] not in combined:
+            continue
+        results.append(
+            {
+                "url": target,
+                "label": "Public web result",
+                "snippet": clean_snippet,
+                "text": " ".join(part for part in (clean_title, clean_snippet) if part),
+            }
+        )
+        if len(results) >= limit:
+            break
+    return results
+
+
 def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
     results: list[dict] = []
     owner = urlparse(profile_url).path.strip("/")
@@ -424,12 +585,20 @@ def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
         repo_url = f"https://github.com{href}"
         description = _strip_tags(_first_match(r'<p class="pinned-item-desc[^"]*"[^>]*>(.*?)</p>', body))
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
-        repo_text_parts = [name, description, language, owner]
+        readme_summary = _extract_repo_page_summary(repo_url)
+        repo_text_parts = [name, description, language, owner, readme_summary]
         results.append(
             {
                 "url": repo_url,
                 "name": name,
                 "text": " ".join(part for part in repo_text_parts if part),
+                "evidence_record": _make_evidence_record(
+                    "repo",
+                    repo_url,
+                    f"Repo: {name}",
+                    " | ".join(part for part in (description, language, readme_summary[:140]) if part),
+                    " ".join(part for part in repo_text_parts if part),
+                ),
             }
         )
     return results
@@ -465,15 +634,33 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
         topics = re.findall(r'class="topic-tag[^"]*"[^>]*>\s*(.*?)\s*</a>', body, flags=re.S)
         topic_text = " ".join(_strip_tags(topic) for topic in topics)
-        repo_text_parts = [name, description, language, topic_text, owner]
+        readme_summary = _extract_repo_page_summary(repo_url)
+        repo_text_parts = [name, description, language, topic_text, owner, readme_summary]
         results.append(
             {
                 "url": repo_url,
                 "name": name,
                 "text": " ".join(part for part in repo_text_parts if part),
+                "evidence_record": _make_evidence_record(
+                    "repo",
+                    repo_url,
+                    f"Repo: {name}",
+                    " | ".join(part for part in (description, language, readme_summary[:140]) if part),
+                    " ".join(part for part in repo_text_parts if part),
+                ),
             }
         )
     return results
+
+
+def _extract_repo_page_summary(repo_url: str) -> str:
+    try:
+        html = _fetch_html(repo_url)
+    except Exception:
+        return ""
+    meta_description = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
+    readme = _strip_tags(_first_match(r'<article class="markdown-body[^"]*"[^>]*>(.*?)</article>', html))
+    return " ".join(part for part in (meta_description, readme[:800]) if part)
 
 
 def extract_name(title: str) -> str:
@@ -519,6 +706,28 @@ def _match_source_strength(source_texts: dict[str, str], keyword: str) -> tuple[
     return best_score, best_source
 
 
+def _match_requirement_from_records(
+    evidence_records: list[dict[str, Any]],
+    keyword: str,
+) -> tuple[float, str, str]:
+    best_score = 0.0
+    best_source = ""
+    best_snippet = ""
+    for record in evidence_records:
+        text = record.get("text", "")
+        if not text:
+            continue
+        normalized_text = normalize_text(text)
+        if not _has_positive_signal(normalized_text, keyword):
+            continue
+        strength = float(record.get("strength", SOURCE_STRENGTHS.get(record.get("source_type", ""), 0.0)))
+        if strength > best_score:
+            best_score = strength
+            best_source = SOURCE_LABELS.get(record.get("source_type", ""), record.get("source_type", ""))
+            best_snippet = record.get("snippet", "")[:220]
+    return best_score, best_source, best_snippet
+
+
 def _weighted_score(
     requirements: Iterable[str],
     weights: dict[str, float],
@@ -542,26 +751,70 @@ def _weighted_score(
     return hits, round(weighted_sum / total_weight, 3), scores, sources
 
 
-def score_candidate_with_evidence(role_brief: dict, source_texts: dict[str, str]) -> tuple[list[str], list[str], float, float, float, float, dict[str, float], dict[str, str]]:
+def _weighted_score_from_records(
+    requirements: Iterable[str],
+    weights: dict[str, float],
+    evidence_records: list[dict[str, Any]],
+) -> tuple[list[str], float, dict[str, float], dict[str, str], dict[str, str]]:
+    hits: list[str] = []
+    scores: dict[str, float] = {}
+    sources: dict[str, str] = {}
+    evidence_snippets: dict[str, str] = {}
+    requirements = list(requirements)
+    total_weight = sum(weights.get(item, 1.0) for item in requirements) or 1.0
+    weighted_sum = 0.0
+
+    for requirement in requirements:
+        score, source, snippet = _match_requirement_from_records(evidence_records, requirement)
+        scores[requirement] = round(score, 3)
+        sources[requirement] = source
+        evidence_snippets[requirement] = snippet
+        weighted_sum += weights.get(requirement, 1.0) * score
+        if score > 0:
+            hits.append(requirement)
+
+    return hits, round(weighted_sum / total_weight, 3), scores, sources, evidence_snippets
+
+
+def score_candidate_with_evidence(
+    role_brief: dict,
+    source_texts: dict[str, str],
+    evidence_records: list[dict[str, Any]] | None = None,
+) -> tuple[list[str], list[str], float, float, float, float, dict[str, float], dict[str, str], dict[str, str]]:
     must_weights = role_brief.get("must_have_weights", {})
     nice_weights = role_brief.get("nice_to_have_weights", {})
-    must_hits, must_score, must_requirement_scores, must_sources = _weighted_score(
-        role_brief["must_haves"],
-        must_weights,
-        source_texts,
-    )
-    nice_hits, nice_score, nice_requirement_scores, nice_sources = _weighted_score(
-        role_brief["nice_to_haves"],
-        nice_weights,
-        source_texts,
-    )
+    if evidence_records:
+        must_hits, must_score, must_requirement_scores, must_sources, must_evidence = _weighted_score_from_records(
+            role_brief["must_haves"],
+            must_weights,
+            evidence_records,
+        )
+        nice_hits, nice_score, nice_requirement_scores, nice_sources, nice_evidence = _weighted_score_from_records(
+            role_brief["nice_to_haves"],
+            nice_weights,
+            evidence_records,
+        )
+    else:
+        must_hits, must_score, must_requirement_scores, must_sources = _weighted_score(
+            role_brief["must_haves"],
+            must_weights,
+            source_texts,
+        )
+        nice_hits, nice_score, nice_requirement_scores, nice_sources = _weighted_score(
+            role_brief["nice_to_haves"],
+            nice_weights,
+            source_texts,
+        )
+        must_evidence = {requirement: "" for requirement in role_brief["must_haves"]}
+        nice_evidence = {requirement: "" for requirement in role_brief["nice_to_haves"]}
     fit_weight_must = float(role_brief.get("must_have_category_weight", DEFAULT_MUST_CATEGORY_WEIGHT))
     fit_weight_nice = float(role_brief.get("nice_to_have_category_weight", DEFAULT_NICE_CATEGORY_WEIGHT))
     fit_score = round((fit_weight_must * must_score) + (fit_weight_nice * nice_score), 3)
     requirement_scores = {**must_requirement_scores, **nice_requirement_scores}
     requirement_sources = {**must_sources, **nice_sources}
+    requirement_evidence = {**must_evidence, **nice_evidence}
     confidence = compute_confidence(source_texts, requirement_scores)
-    return must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources
+    return must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence
 
 
 def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
@@ -596,13 +849,35 @@ def compute_confidence(source_texts: dict[str, str], requirement_scores: dict[st
     return round(min(confidence, 1.0), 3)
 
 
-def generate_outreach(candidate_name: str, role_brief: dict, must_hits: list[str], nice_hits: list[str], source_url: str) -> str:
-    strongest = must_hits[:2] + nice_hits[:1]
-    proof = ", ".join(strongest) if strongest else "your background"
+def evidence_density_label(evidence_records: list[dict[str, Any]]) -> str:
+    count = len(evidence_records)
+    if count >= 7:
+        return "high"
+    if count >= 4:
+        return "medium"
+    return "low"
+
+
+def generate_outreach(
+    candidate_name: str,
+    role_brief: dict,
+    must_hits: list[str],
+    nice_hits: list[str],
+    source_url: str,
+    requirement_evidence: dict[str, str],
+    location_hits: list[str],
+) -> str:
+    strongest = must_hits[:2]
+    supporting = nice_hits[:1]
+    proof = ", ".join(strongest + supporting) if (strongest or supporting) else "your background"
+    evidence_line = next((requirement_evidence.get(item, "") for item in strongest + supporting if requirement_evidence.get(item)), "")
+    location_line = f" and your {', '.join(location_hits)} location" if location_hits else ""
     return (
         f"Hi {candidate_name},\n\n"
         f"I came across your profile while sourcing for {role_brief['company']}'s {role_brief['role_name']} role. "
-        f"Your experience with {proof} looked highly relevant, especially based on what I saw here: {source_url}.\n\n"
+        f"Your public work suggests a strong match on {proof}{location_line}.\n\n"
+        f"What stood out was the evidence around {proof}: {evidence_line or source_url}.\n\n"
+        f"If you're open to it, I'd be glad to share why this role could be a particularly strong fit at {role_brief['company']}.\n\n"
         "If you're open to a brief intro conversation, I'd love to share more context on the role and team.\n\n"
         "Best,\nHASH Recruiting Team"
     )
@@ -628,15 +903,18 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
     location_targets = role_brief.get("location_targets", [])
     for item in results:
         enriched_item = enrich_github_result(item) if enrich_profiles else dict(item)
+        evidence_records = list(enriched_item.get("evidence_records", []))
         source_texts = enriched_item.get("source_texts") or {
             "search": enriched_item.get("search_text", enriched_item.get("snippet", "")),
             "profile": f"{enriched_item['title']} {enriched_item.get('snippet', '')}",
             "repo": "",
             "website": "",
+            "web": "",
         }
-        must_hits, nice_hits, score, must_score, nice_score, confidence, requirement_scores, requirement_sources = score_candidate_with_evidence(
+        must_hits, nice_hits, score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence = score_candidate_with_evidence(
             role_brief,
             source_texts,
+            evidence_records=evidence_records,
         )
         text_blob = " ".join(part for part in source_texts.values() if part)
         location_hits = score_location(text_blob, location_targets)
@@ -653,6 +931,10 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             for item in role_brief["nice_to_haves"]
             if requirement_scores.get(item, 0) > 0
         ) or "none"
+        strongest_evidence = [
+            record for record in evidence_records
+            if record.get("snippet")
+        ][:3]
         eligibility_reason = (
             f"Eligible: public evidence aligns with {', '.join(location_hits)}."
             if location_eligible
@@ -664,7 +946,8 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             f"must-have score: {must_score:.3f}; "
             f"nice-to-have score: {nice_score:.3f}; "
             f"confidence: {confidence:.3f}; "
-            f"location: {location_hits if location_hits else 'no London/Berlin evidence'}."
+            f"location: {location_hits if location_hits else 'no London/Berlin evidence'}; "
+            f"top evidence: {' | '.join(record.get('snippet', '') for record in strongest_evidence) if strongest_evidence else 'limited public evidence'}."
         )
         candidate = CandidateCard(
             id=identity,
@@ -672,7 +955,11 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             headline=enriched_item.get("headline_override") or enriched_item["title"],
             source_url=enriched_item["url"],
             email=enriched_item.get("public_email", ""),
+            found_via=enriched_item.get("found_via", ["GitHub user search"]),
             evidence_links=enriched_item.get("evidence_links", [enriched_item["url"]]),
+            evidence_records=evidence_records,
+            evidence_count=len(evidence_records),
+            evidence_density=evidence_density_label(evidence_records),
             must_have_hits=must_hits,
             nice_to_have_hits=nice_hits,
             fit_score=score,
@@ -686,9 +973,32 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             eligibility_reason=eligibility_reason,
             requirement_scores=requirement_scores,
             requirement_sources=requirement_sources,
-            outreach_draft=generate_outreach(name, role_brief, must_hits, nice_hits, enriched_item["url"]),
+            requirement_evidence=requirement_evidence,
+            outreach_draft=generate_outreach(
+                name,
+                role_brief,
+                must_hits,
+                nice_hits,
+                enriched_item["url"],
+                requirement_evidence,
+                location_hits,
+            ),
         )
-        if identity not in dedup or dedup[identity].fit_score < candidate.fit_score:
+        existing = dedup.get(identity)
+        if existing:
+            existing.found_via = sorted({*existing.found_via, *candidate.found_via})
+            existing.evidence_links = list(dict.fromkeys([*existing.evidence_links, *candidate.evidence_links]))
+            existing.evidence_records = [*existing.evidence_records, *candidate.evidence_records]
+            existing.evidence_count = len(existing.evidence_records)
+            existing.evidence_density = evidence_density_label(existing.evidence_records)
+            if candidate.fit_score > existing.fit_score:
+                dedup[identity] = candidate
+                dedup[identity].found_via = existing.found_via
+                dedup[identity].evidence_links = existing.evidence_links
+                dedup[identity].evidence_records = existing.evidence_records
+                dedup[identity].evidence_count = existing.evidence_count
+                dedup[identity].evidence_density = existing.evidence_density
+        else:
             dedup[identity] = candidate
     return sorted(dedup.values(), key=lambda c: c.fit_score, reverse=True)
 
@@ -701,6 +1011,7 @@ def build_candidates(role_brief: dict, max_results_per_query: int = 20, seed_res
     merged_results: list[dict] = []
     for query in role_brief["queries"]:
         merged_results.extend(github_user_search(query, max_results=max_results_per_query))
+        merged_results.extend(duckduckgo_profile_search(query, max_results=max(3, max_results_per_query // 2)))
     return _cards_from_results(role_brief, merged_results, enrich_profiles=True)
 
 
@@ -716,8 +1027,12 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized = dict(row)
         normalized.setdefault("evidence_links", [normalized.get("source_url", "")] if normalized.get("source_url") else [])
         normalized.setdefault("email", "")
+        normalized.setdefault("found_via", ["GitHub user search"])
         normalized.setdefault("must_have_hits", [])
         normalized.setdefault("nice_to_have_hits", [])
+        normalized.setdefault("evidence_records", [])
+        normalized.setdefault("evidence_count", len(normalized.get("evidence_records", [])))
+        normalized.setdefault("evidence_density", evidence_density_label(normalized.get("evidence_records", [])))
         normalized.setdefault("must_have_score", 0.0)
         normalized.setdefault("nice_to_have_score", 0.0)
         normalized.setdefault("confidence_score", 0.0)
@@ -726,6 +1041,7 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized.setdefault("eligibility_reason", "")
         normalized.setdefault("requirement_scores", {})
         normalized.setdefault("requirement_sources", {})
+        normalized.setdefault("requirement_evidence", {})
         cards.append(CandidateCard(**normalized))
     return cards
 
@@ -740,6 +1056,9 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "headline",
             "source_url",
             "email",
+            "found_via",
+            "evidence_count",
+            "evidence_density",
             "must_have_hits",
             "nice_to_have_hits",
             "must_have_score",
@@ -757,12 +1076,15 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
     writer.writeheader()
     for card in cards:
         row = asdict(card)
+        row["found_via"] = "; ".join(card.found_via)
         row["must_have_hits"] = "; ".join(card.must_have_hits)
         row["nice_to_have_hits"] = "; ".join(card.nice_to_have_hits)
         row["location_hits"] = "; ".join(card.location_hits)
         row.pop("evidence_links", None)
+        row.pop("evidence_records", None)
         row.pop("requirement_scores", None)
         row.pop("requirement_sources", None)
+        row.pop("requirement_evidence", None)
         writer.writerow(row)
     return buffer.getvalue()
 

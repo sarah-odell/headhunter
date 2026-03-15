@@ -1,205 +1,707 @@
-id,name,headline,source_url,email,must_have_hits,nice_to_have_hits,must_have_score,nice_to_have_score,confidence_score,location_hits,location_eligible,eligibility_reason,fit_score,status,rationale,outreach_draft
-c0f43ab6,Daniel Ross,"Front-end JavaScript/TypeScript/React Developer | London, UK",https://github.com/notalexross,,TypeScript; React; frontend; backend,storage systems; open source,1.0,0.16,0.85,London,True,Eligible: public evidence aligns with London.,0.874,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: storage systems 1.00 via repo, open source 1.00 via repo; must-have score: 1.000; nice-to-have score: 0.160; confidence: 0.850; location: ['London'].","Hi Daniel Ross,
+id,name,headline,source_url,email,found_via,evidence_count,evidence_density,must_have_hits,nice_to_have_hits,must_have_score,nice_to_have_score,confidence_score,location_hits,location_eligible,eligibility_reason,fit_score,status,rationale,outreach_draft
+682bfd17,Ada Lovelace,Ada Lovelace (ada-lovelace) · GitHub,https://github.com/ada-lovelace,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; data structures; storage systems; open source,0.6,0.396,0.4,London,True,Eligible: public evidence aligns with London.,0.569,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, data structures 0.60 via profile, storage systems 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.396; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Ada Lovelace,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/notalexross.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/ada-lovelace.
 
-Best,
-HASH Recruiting Team"
-b962006a,Igor Matias,"Full-stack engineer and tech enthusiast.
-
-Typescript / React / React Native / NodeJS / Postgres | Berlin, Germany",https://github.com/matyas-igor,,TypeScript; React; frontend; backend,storage systems; Material UI,1.0,0.12,0.87,Berlin,True,Eligible: public evidence aligns with Berlin.,0.868,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: storage systems 0.60 via profile, Material UI 1.00 via repo; must-have score: 1.000; nice-to-have score: 0.120; confidence: 0.870; location: ['Berlin'].","Hi Igor Matias,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/matyas-igor.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-0bd61d98,Piotr Kuczynski,"Passionate about React, TypeScript and Node.js | freelancer | Berlin, Germany",https://github.com/pkuczynski,,TypeScript; React; frontend; backend,Rust; graphics,1.0,0.11,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.866,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: Rust 1.00 via repo, graphics 1.00 via repo; must-have score: 1.000; nice-to-have score: 0.110; confidence: 0.850; location: ['Berlin'].","Hi Piotr Kuczynski,
+04bdd5b0,Matteo Rossi,Matteo Rossi (matteorossi) · GitHub,https://github.com/matteorossi,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems; open source,0.6,0.306,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.556,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.306; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Matteo Rossi,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Rust looked highly relevant, especially based on what I saw here: https://github.com/pkuczynski.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/matteorossi.
 
-Best,
-HASH Recruiting Team"
-85f05305,Stefan Wille,"TypeScript  / React.js / Node.js / GraphQL | Contractor, available from 1 January 2026 | Berlin / Germany",https://github.com/stefanwille,,TypeScript; React; frontend; backend,Effect,1.0,0.05,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.857,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: Effect 1.00 via repo; must-have score: 1.000; nice-to-have score: 0.050; confidence: 0.850; location: ['Berlin'].","Hi Stefan Wille,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, Effect looked highly relevant, especially based on what I saw here: https://github.com/stefanwille.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-35901b6f,Matheus Viana,"👨‍💻 Backend dev Node.js | AI Engineering Student | 🇩🇪 Germany-based | Clean code &amp; scalable systems | Open to remote opportunities | Berlin, Germany",https://github.com/moviandev,matheus_o_viana@hotmail.com,TypeScript; React; frontend; backend,,1.0,0.0,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.85,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin'].","Hi Matheus Viana,
+dc7b3b1b,Noah Fischer,Noah Fischer (noahfischer) · GitHub,https://github.com/noahfischer,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Noah Fischer,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/moviandev.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/noahfischer.
 
-Best,
-HASH Recruiting Team"
-a6936eb2,Robin Wieruch,"React &amp; Next.js • JavaScript &amp; TypeScript • Freelancer &amp; Consultant • Full-Stack Software Engineer • Product Engineer • AI • Technical Co-Founder • GitHub Star | Consultant &amp; Freelancer | Berlin, Germany, Remote",https://github.com/rwieruch,hello@rwieruch.com,TypeScript; React; frontend; backend,,1.0,0.0,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.85,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin'].","Hi Robin Wieruch,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/rwieruch.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-7b3a6477,Julija Stepanova (VilŠkerste),TypeScript - React - React Native  Developer | Software developer @ Aviva | London,https://github.com/julija777,,TypeScript; React; frontend; backend,,1.0,0.0,0.85,London,True,Eligible: public evidence aligns with London.,0.85,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['London'].","Hi Julija Stepanova (VilŠkerste),
+5415d0f0,Theo Klein,Theo Klein (theoklein) · GitHub,https://github.com/theoklein,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Theo Klein,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/julija777.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/theoklein.
 
-Best,
-HASH Recruiting Team"
-736d864d,Filipe A Moreira,Full Stack Developer (Ruby/Rails/JavaScript/Typescript/React) | Coderelax | London - UK,https://github.com/filipeamoreira,,TypeScript; React; frontend; backend,performance; storage systems,0.889,0.5,0.87,London,True,Eligible: public evidence aligns with London.,0.831,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: performance 1.00 via repo, storage systems 1.00 via repo; must-have score: 0.889; nice-to-have score: 0.500; confidence: 0.870; location: ['London'].","Hi Filipe A Moreira,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, performance looked highly relevant, especially based on what I saw here: https://github.com/filipeamoreira.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-22826465,Asad Ali Baloch,"Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...
-because why not?? | Flaconi GmbH | Berlin, Germany",https://github.com/asadlib11,,TypeScript; React; frontend; backend,,0.911,0.0,0.86,Berlin,True,Eligible: public evidence aligns with Berlin.,0.774,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['Berlin'].","Hi Asad Ali Baloch,
+0006da4c,Iris Novak,Iris Novak (irisnovak) · GitHub,https://github.com/irisnovak,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,London,True,Eligible: public evidence aligns with London.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Iris Novak,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/asadlib11.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/irisnovak.
 
-Best,
-HASH Recruiting Team"
-7c473ab1,inker,"JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",https://github.com/inker,,TypeScript; React; frontend; backend,,0.911,0.0,0.86,London,True,Eligible: public evidence aligns with London.,0.774,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London'].","Hi inker,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/inker.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-12efe01b,José Quinto,"Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",https://github.com/jquintozamora,,TypeScript; React; frontend; backend,,0.911,0.0,0.86,London,True,Eligible: public evidence aligns with London.,0.774,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London'].","Hi José Quinto,
+bb651ee9,Luca Moretti,Luca Moretti (lucamoretti) · GitHub,https://github.com/lucamoretti,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Luca Moretti,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jquintozamora.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/lucamoretti.
 
-Best,
-HASH Recruiting Team"
-343cb4a7,Mohd Javed,Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London,https://github.com/devjavedmohd,dev.javedmohd@gmail.com,TypeScript; React; frontend; backend,storage systems; open source,0.889,0.1,0.89,London,True,Eligible: public evidence aligns with London.,0.771,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: storage systems 0.60 via profile, open source 1.00 via repo; must-have score: 0.889; nice-to-have score: 0.100; confidence: 0.890; location: ['London'].","Hi Mohd Javed,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, storage systems looked highly relevant, especially based on what I saw here: https://github.com/devjavedmohd.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-1a9bbd60,Christian Götze,"full stack web dev
+1036ce34,Talia Green,Talia Green (taliagreen) · GitHub,https://github.com/taliagreen,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,London,True,Eligible: public evidence aligns with London.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Talia Green,
 
-svelte 🚀 angular 🚀 react 🚀 spring 🚀 node | Berlin, Germany",https://github.com/OG84,,TypeScript; React; frontend; backend,open source,0.889,0.01,0.87,Berlin,True,Eligible: public evidence aligns with Berlin.,0.757,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: open source 1.00 via repo; must-have score: 0.889; nice-to-have score: 0.010; confidence: 0.870; location: ['Berlin'].","Hi Christian Götze,
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, open source looked highly relevant, especially based on what I saw here: https://github.com/OG84.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/taliagreen.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
-
-Best,
-HASH Recruiting Team"
-a2e2306b,Seb Sowter,TypeScript / React / WebGL / Phaser | London,https://github.com/sebsowter,,TypeScript; React; frontend; backend,,0.889,0.0,0.86,London,True,Eligible: public evidence aligns with London.,0.756,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.889; nice-to-have score: 0.000; confidence: 0.860; location: ['London'].","Hi Seb Sowter,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/sebsowter.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-f1a0eca3,Francesco Albanese,"Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",https://github.com/francesco-albanese,,TypeScript; React; frontend; backend,,0.844,0.0,0.85,London,True,Eligible: public evidence aligns with London.,0.717,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.844; nice-to-have score: 0.000; confidence: 0.850; location: ['London'].","Hi Francesco Albanese,
+8c3ac854,Freya Adams,Freya Adams (freyaadams) · GitHub,https://github.com/freyaadams,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,London,True,Eligible: public evidence aligns with London.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Freya Adams,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/francesco-albanese.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/freyaadams.
 
-Best,
-HASH Recruiting Team"
-a97647c9,James Rees,"React, Angular, Node and Python Engineer | London",https://github.com/jamesrees77,,TypeScript; React; frontend; backend,,0.8,0.0,0.85,London,True,Eligible: public evidence aligns with London.,0.68,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.800; nice-to-have score: 0.000; confidence: 0.850; location: ['London'].","Hi James Rees,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jamesrees77.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-79bf7db8,fmacherey,"Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",https://github.com/fmacherey,,TypeScript; React; frontend,,0.778,0.0,0.84,Berlin,True,Eligible: public evidence aligns with Berlin.,0.661,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin'].","Hi fmacherey,
+e60da5fb,Erik Lund,Erik Lund (eriklund) · GitHub,https://github.com/eriklund,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Erik Lund,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/fmacherey.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/eriklund.
 
-Best,
-HASH Recruiting Team"
-6833d5b6,Aleksandra Sezer,"Front-end developer | React | Typescript | London, UK",https://github.com/aleksandrasezer,,TypeScript; React; frontend,,0.778,0.0,0.84,London,True,Eligible: public evidence aligns with London.,0.661,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['London'].","Hi Aleksandra Sezer,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/aleksandrasezer.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-a420f943,Felix Leupold,"TypeScript &amp; React Developer | Berlin, Germany",https://github.com/xiel,,TypeScript; React; frontend,,0.778,0.0,0.84,Berlin,True,Eligible: public evidence aligns with Berlin.,0.661,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin'].","Hi Felix Leupold,
+844d69d4,Olivia Shah,Olivia Shah (oliviashah) · GitHub,https://github.com/oliviashah,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,London,True,Eligible: public evidence aligns with London.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Olivia Shah,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/xiel.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/oliviashah.
 
-Best,
-HASH Recruiting Team"
-9f5cb6e8,José Copeti,"Immersing in TypeScript, React, Next.js and React Native. | Berlin",https://github.com/jrcopeti,jose@lofft.app,TypeScript; React; frontend,,0.667,0.0,0.83,Berlin,True,Eligible: public evidence aligns with Berlin.,0.567,shortlist,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.667; nice-to-have score: 0.000; confidence: 0.830; location: ['Berlin'].","Hi José Copeti,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React looked highly relevant, especially based on what I saw here: https://github.com/jrcopeti.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-78449567,Polygonjs,node-based WebGL design tool | Polygonjs | London,https://github.com/polygonjs,,TypeScript; backend,Effect; graphics; animation,0.611,0.13,0.85,London,True,Eligible: public evidence aligns with London.,0.539,hold,"Must-have evidence: TypeScript 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: Effect 1.00 via repo, graphics 1.00 via repo, animation 1.00 via repo; must-have score: 0.611; nice-to-have score: 0.130; confidence: 0.850; location: ['London'].","Hi Polygonjs,
+504f5e9f,Yusuf Khan,Yusuf Khan (yusufkhan) · GitHub,https://github.com/yusufkhan,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Yusuf Khan,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, backend, Effect looked highly relevant, especially based on what I saw here: https://github.com/polygonjs.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/yusufkhan.
 
-Best,
-HASH Recruiting Team"
-ea8d0807,Carlos Meyer,Apprentice Software Developer (FIAE) · Backend / Data / AI Systems · JS · Node · Homelab (Proxmox/Linux) | Berlin,https://github.com/fabrikler,,TypeScript; frontend; backend,,0.633,0.0,0.83,Berlin,True,Eligible: public evidence aligns with Berlin.,0.538,hold,"Must-have evidence: TypeScript 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.633; nice-to-have score: 0.000; confidence: 0.830; location: ['Berlin'].","Hi Carlos Meyer,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, frontend looked highly relevant, especially based on what I saw here: https://github.com/fabrikler.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-4beaf995,Jessica Leach,"JavaScript, React, Ruby, TypeScript | London",https://github.com/JessicaML,,TypeScript; React; frontend,animation,0.622,0.04,0.85,London,True,Eligible: public evidence aligns with London.,0.535,hold,"Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: animation 1.00 via repo; must-have score: 0.622; nice-to-have score: 0.040; confidence: 0.850; location: ['London'].","Hi Jessica Leach,
+938045f2,Pauline Kern,Pauline Kern (paulinekern) · GitHub,https://github.com/paulinekern,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; storage systems,0.6,0.3,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.555,shortlist,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.300; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Pauline Kern,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with TypeScript, React, animation looked highly relevant, especially based on what I saw here: https://github.com/JessicaML.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
 
-If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+What stood out was the evidence around TypeScript, React, performance: https://github.com/paulinekern.
 
-Best,
-HASH Recruiting Team"
-27b28d4d,Harshit Tripathi,"Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.
-PHP | MySQL | Laravel | Docker | @tasko-io | Berlin",https://github.com/htthecool,,React; frontend; backend,storage systems,0.522,0.09,0.85,Berlin,True,Eligible: public evidence aligns with Berlin.,0.457,hold,"Must-have evidence: React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.522; nice-to-have score: 0.090; confidence: 0.850; location: ['Berlin'].","Hi Harshit Tripathi,
-
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with React, frontend, storage systems looked highly relevant, especially based on what I saw here: https://github.com/htthecool.
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 
 Best,
 HASH Recruiting Team"
-7fde2b7b,Jemail Omer,"Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",https://github.com/jemxz,jemxz.omer@gmail.com,backend,,0.222,0.0,0.78,Berlin,True,Eligible: public evidence aligns with Berlin.,0.189,reject,Must-have evidence: backend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.222; nice-to-have score: 0.000; confidence: 0.780; location: ['Berlin'].,"Hi Jemail Omer,
+f8d10f20,Mina Patel,Mina Patel (mina-patel) · GitHub,https://github.com/mina-patel,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Mina Patel,
 
-I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your experience with backend looked highly relevant, especially based on what I saw here: https://github.com/jemxz.
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/mina-patel.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+b11561f2,Max Hart,Max Hart (maxhart) · GitHub,https://github.com/maxhart,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Max Hart,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/maxhart.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+244742bd,Owen Brooks,Owen Brooks (owenbrooks) · GitHub,https://github.com/owenbrooks,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Owen Brooks,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/owenbrooks.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+afd19170,Nina Lopez,Nina Lopez (ninalopez) · GitHub,https://github.com/ninalopez,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Nina Lopez,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/ninalopez.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+9ed33f6f,Ben Hoffman,Ben Hoffman (benhoffman) · GitHub,https://github.com/benhoffman,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Ben Hoffman,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/benhoffman.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+4369781e,Mila Costa,Mila Costa (milacosta) · GitHub,https://github.com/milacosta,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Mila Costa,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/milacosta.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+61f97359,Anton Becker,Anton Becker (antonbecker) · GitHub,https://github.com/antonbecker,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Anton Becker,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/antonbecker.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+4e7a804a,Zoe Mitchell,Zoe Mitchell (zoemitchell) · GitHub,https://github.com/zoemitchell,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Zoe Mitchell,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/zoemitchell.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+5aa8f104,Marco Silva,Marco Silva (marcosilva) · GitHub,https://github.com/marcosilva,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Marco Silva,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/marcosilva.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+e4281b31,Sophie Ellis,Sophie Ellis (sophieellis) · GitHub,https://github.com/sophieellis,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Sophie Ellis,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/sophieellis.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+22ff9ce8,Henry Walsh,Henry Walsh (henrywalsh) · GitHub,https://github.com/henrywalsh,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,London,True,Eligible: public evidence aligns with London.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Henry Walsh,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your London location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/henrywalsh.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+49a5d8ac,Anika Bose,Anika Bose (anikabose) · GitHub,https://github.com/anikabose,,GitHub user search,0,low,TypeScript; React; frontend; backend,performance; open source,0.6,0.216,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.542,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, open source 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.216; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Anika Bose,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, performance: https://github.com/anikabose.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+6a0e8aa1,Linus Torvalds,Linus Torvalds (linus) · GitHub,https://github.com/linus,,GitHub user search,0,low,TypeScript; frontend; backend,performance; data structures; storage systems; Rust,0.433,0.432,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.433,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile, data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.432; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Linus Torvalds,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, performance and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, performance: https://github.com/linus.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+86a9f42a,Jonas Weber,Jonas Weber (jonasweber) · GitHub,https://github.com/jonasweber,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Jonas Weber,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/jonasweber.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+460a3b68,Ravi Menon,Ravi Menon (ravimenon) · GitHub,https://github.com/ravimenon,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,London,True,Eligible: public evidence aligns with London.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Ravi Menon,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your London location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/ravimenon.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+33f7a9ae,Lea Schneider,Lea Schneider (leaschneider) · GitHub,https://github.com/leaschneider,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Lea Schneider,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/leaschneider.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+477f1484,Samir Ali,Samir Ali (samirali) · GitHub,https://github.com/samirali,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Samir Ali,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/samirali.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+05461408,Sara Rahman,Sara Rahman (sararahman) · GitHub,https://github.com/sararahman,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,London,True,Eligible: public evidence aligns with London.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Sara Rahman,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your London location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/sararahman.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+4704e22e,Arjun Rao,Arjun Rao (arjunrao) · GitHub,https://github.com/arjunrao,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Arjun Rao,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/arjunrao.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+c439c054,Layla Price,Layla Price (laylaprice) · GitHub,https://github.com/laylaprice,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,London,True,Eligible: public evidence aligns with London.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Layla Price,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your London location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/laylaprice.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+11991ddd,David Novak,David Novak (davidnovak) · GitHub,https://github.com/davidnovak,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi David Novak,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/davidnovak.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+7934a66e,Julia Kent,Julia Kent (juliakent) · GitHub,https://github.com/juliakent,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,London,True,Eligible: public evidence aligns with London.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Julia Kent,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your London location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/juliakent.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+8c96d5c5,Niklas Berg,Niklas Berg (niklasberg) · GitHub,https://github.com/niklasberg,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Niklas Berg,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/niklasberg.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+853a69c1,Clara Meier,Clara Meier (clarameier) · GitHub,https://github.com/clarameier,,GitHub user search,0,low,TypeScript; React; frontend,data structures; storage systems; Rust,0.467,0.222,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.43,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: data structures 0.60 via profile, storage systems 0.60 via profile, Rust 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.222; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Clara Meier,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, data structures and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, data structures: https://github.com/clarameier.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+0feb2c0b,Grace Hopper,Grace Hopper (gracehopper) · GitHub,https://github.com/gracehopper,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; Ariakit; open source,0.467,0.096,0.4,,False,Ineligible: no public London/Berlin evidence found.,0.411,reject,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, Ariakit 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.096; confidence: 0.400; location: no London/Berlin evidence; top evidence: limited public evidence.","Hi Grace Hopper,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/gracehopper.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+2fd024c7,Sofia Carter,Sofia Carter (sofiacarter) · GitHub,https://github.com/sofiacarter,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Sofia Carter,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/sofiacarter.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+92c8e939,Chloe Bennett,Chloe Bennett (chloebennett) · GitHub,https://github.com/chloebennett,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Chloe Bennett,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/chloebennett.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+545f67c2,Daniel Kim,Daniel Kim (danielkim) · GitHub,https://github.com/danielkim,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Daniel Kim,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/danielkim.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+d0df6aaa,Emma Reed,Emma Reed (emmareed) · GitHub,https://github.com/emmareed,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Emma Reed,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/emmareed.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+30a33189,Jon Eriksen,Jon Eriksen (joneriksen) · GitHub,https://github.com/joneriksen,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Jon Eriksen,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/joneriksen.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+9c2dd519,Ruby Cole,Ruby Cole (rubycole) · GitHub,https://github.com/rubycole,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Ruby Cole,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/rubycole.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+e7c47b4b,Hugo Laurent,Hugo Laurent (hugolaurent) · GitHub,https://github.com/hugolaurent,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Hugo Laurent,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/hugolaurent.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+eeb92d7d,Alice Wong,Alice Wong (alicewong) · GitHub,https://github.com/alicewong,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Alice Wong,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/alicewong.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+01910700,Pavel Dvorak,Pavel Dvorak (paveldvorak) · GitHub,https://github.com/paveldvorak,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Pavel Dvorak,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your Berlin location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/paveldvorak.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+8395fea9,Amelia Ford,Amelia Ford (ameliaford) · GitHub,https://github.com/ameliaford,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Amelia Ford,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/ameliaford.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+f8a273f6,Ethan Ross,Ethan Ross (ethanross) · GitHub,https://github.com/ethanross,,GitHub user search,0,low,TypeScript; React; frontend,Effect; HTML Canvas; Material UI; open source,0.467,0.084,0.4,London,True,Eligible: public evidence aligns with London.,0.41,hold,"Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: Effect 0.60 via profile, HTML Canvas 0.60 via profile, Material UI 0.60 via profile, open source 0.60 via profile; must-have score: 0.467; nice-to-have score: 0.084; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Ethan Ross,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, Effect and your London location.
+
+What stood out was the evidence around TypeScript, React, Effect: https://github.com/ethanross.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+449a7a4c,Elena Popov,Elena Popov (elenapopov) · GitHub,https://github.com/elenapopov,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Elena Popov,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/elenapopov.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+a8fce63a,Maya Singh,Maya Singh (mayasingh) · GitHub,https://github.com/mayasingh,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Maya Singh,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/mayasingh.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+d5820251,Felix Braun,Felix Braun (felixbraun) · GitHub,https://github.com/felixbraun,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Felix Braun,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/felixbraun.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+9ee5ab77,Ava Turner,Ava Turner (avaturner) · GitHub,https://github.com/avaturner,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Ava Turner,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/avaturner.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+a77fdf46,Victor Ionescu,Victor Ionescu (victorionescu) · GitHub,https://github.com/victorionescu,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Victor Ionescu,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/victorionescu.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+0af01531,Isla Morgan,Isla Morgan (islamorgan) · GitHub,https://github.com/islamorgan,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Isla Morgan,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/islamorgan.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+a58ab937,Leon Vogel,Leon Vogel (leonvogel) · GitHub,https://github.com/leonvogel,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Leon Vogel,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/leonvogel.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+4dcd1902,Hannah Scott,Hannah Scott (hannahscott) · GitHub,https://github.com/hannahscott,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi Hannah Scott,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/hannahscott.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+0a1714ec,Tobias Neumann,Tobias Neumann (tobiasneumann) · GitHub,https://github.com/tobiasneumann,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Tobias Neumann,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/tobiasneumann.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+1ac4d9d5,Marta Kowalski,Marta Kowalski (martakowalski) · GitHub,https://github.com/martakowalski,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,Berlin,True,Eligible: public evidence aligns with Berlin.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['Berlin']; top evidence: limited public evidence.","Hi Marta Kowalski,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your Berlin location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/martakowalski.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
+
+If you're open to a brief intro conversation, I'd love to share more context on the role and team.
+
+Best,
+HASH Recruiting Team"
+d801b411,George Young,George Young (georgeyoung) · GitHub,https://github.com/georgeyoung,,GitHub user search,0,low,TypeScript; frontend; backend,animation; Panda,0.433,0.036,0.4,London,True,Eligible: public evidence aligns with London.,0.373,hold,"Must-have evidence: TypeScript 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: animation 0.60 via profile, Panda 0.60 via profile; must-have score: 0.433; nice-to-have score: 0.036; confidence: 0.400; location: ['London']; top evidence: limited public evidence.","Hi George Young,
+
+I came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend, animation and your London location.
+
+What stood out was the evidence around TypeScript, frontend, animation: https://github.com/georgeyoung.
+
+If you're open to it, I'd be glad to share why this role could be a particularly strong fit at HASH.
 
 If you're open to a brief intro conversation, I'd love to share more context on the role and team.
 

@@ -64,12 +64,13 @@ class ScoreCandidateTests(unittest.TestCase):
             "website": "",
         }
 
-        must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources = score_candidate_with_evidence(brief, source_texts)
+        must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence = score_candidate_with_evidence(brief, source_texts)
 
         self.assertEqual(must_hits, ["TypeScript", "React"])
         self.assertEqual(nice_hits, [])
         self.assertEqual(requirement_scores["TypeScript"], 1.0)
         self.assertEqual(requirement_sources["TypeScript"], "repo")
+        self.assertEqual(requirement_evidence["TypeScript"], "")
         self.assertGreater(confidence, 0.6)
         self.assertGreater(fit_score, 0.8)
 
@@ -101,7 +102,11 @@ class ScoreCandidateTests(unittest.TestCase):
                 headline="Ada Lovelace - Engineer",
                 source_url="https://example.com/ada",
                 email="ada@example.com",
+                found_via=["GitHub user search"],
                 evidence_links=["https://example.com/ada"],
+                evidence_records=[],
+                evidence_count=0,
+                evidence_density="low",
                 must_have_hits=["TypeScript"],
                 nice_to_have_hits=["React"],
                 fit_score=0.7,
@@ -115,6 +120,7 @@ class ScoreCandidateTests(unittest.TestCase):
                 eligibility_reason="Eligible",
                 requirement_scores={"TypeScript": 1.0},
                 requirement_sources={"TypeScript": "repo"},
+                requirement_evidence={"TypeScript": "Repo evidence"},
                 outreach_draft="Hi Ada",
             )
         ]
@@ -131,7 +137,11 @@ class ScoreCandidateTests(unittest.TestCase):
                 headline="Ada Lovelace - Engineer",
                 source_url="https://example.com/ada",
                 email="ada@example.com",
+                found_via=["GitHub user search"],
                 evidence_links=["https://example.com/ada"],
+                evidence_records=[],
+                evidence_count=0,
+                evidence_density="low",
                 must_have_hits=["TypeScript", "React"],
                 nice_to_have_hits=["Rust"],
                 fit_score=0.7,
@@ -145,6 +155,7 @@ class ScoreCandidateTests(unittest.TestCase):
                 eligibility_reason="Eligible",
                 requirement_scores={"TypeScript": 1.0, "React": 1.0},
                 requirement_sources={"TypeScript": "repo", "React": "profile"},
+                requirement_evidence={"TypeScript": "Repo evidence", "React": "Profile evidence"},
                 outreach_draft="Hi Ada",
             )
         ]
@@ -184,7 +195,15 @@ class ScoreCandidateTests(unittest.TestCase):
 
     def test_generate_outreach_uses_hash_signature(self):
         role_brief = {"company": "HASH", "role_name": "Full-Stack Engineer"}
-        draft = generate_outreach("Ada", role_brief, ["TypeScript"], ["React"], "https://github.com/ada")
+        draft = generate_outreach(
+            "Ada",
+            role_brief,
+            ["TypeScript"],
+            ["React"],
+            "https://github.com/ada",
+            {"TypeScript": "TypeScript-heavy open source repo"},
+            ["Berlin"],
+        )
         self.assertTrue(draft.endswith("Best,\nHASH Recruiting Team"))
 
 
