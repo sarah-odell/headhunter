@@ -9,6 +9,7 @@ import hashlib
 import json
 import re
 import ssl
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from io import StringIO
 from dataclasses import asdict, dataclass
 from html import unescape
@@ -281,7 +282,10 @@ def github_user_search(query: str, max_results: int = 20) -> list[dict]:
 
 
 def duckduckgo_profile_search(query: str, max_results: int = 10) -> list[dict]:
-    html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    try:
+        html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    except Exception:
+        return []
     results: list[dict] = []
     for href, title, snippet in re.findall(
         r'<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>.*?<a[^>]+class="result__url"[^>]*>.*?</a>.*?<a[^>]+class="result__snippet"[^>]*>(.*?)</a>',
@@ -382,8 +386,8 @@ def enrich_github_result(item: dict) -> dict:
         website = api_blog
     profile_meta = unescape(_first_match(r'<meta name="description" content="([^"]+)"', html))
     pinned_repos = _extract_pinned_repos(html, item["url"])
-    listed_repos = _extract_repository_list(item["url"], limit=8)
-    public_web_results = _search_public_web_context(full_name or username or item.get("profile_name", ""), github_username)
+    listed_repos = _extract_repository_list(item["url"], limit=4)
+    public_web_results: list[dict[str, str]] = []
     website_text = ""
 
     display_name = full_name or username or item["title"]
@@ -461,7 +465,7 @@ def enrich_github_result(item: dict) -> dict:
         "profile": " ".join(part for part in (full_name, username, bio, company, location, profile_meta) if part),
         "repo": " ".join(repo["text"] for repo in [*pinned_repos, *listed_repos]),
         "website": website_text,
-        "web": " ".join(result["text"] for result in public_web_results),
+        "web": "",
     }
     return enriched_item
 
@@ -546,7 +550,10 @@ def _search_public_web_context(name: str, username: str, limit: int = 2) -> list
     if not (name or username):
         return []
     query = " ".join(part for part in (name, username, "engineer") if part)
-    html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    try:
+        html = _fetch_html(f"https://html.duckduckgo.com/html/?q={quote_plus(query)}")
+    except Exception:
+        return []
     results: list[dict[str, str]] = []
     for href, title, snippet in re.findall(
         r'<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>.*?<a[^>]+class="result__snippet"[^>]*>(.*?)</a>',
@@ -577,15 +584,15 @@ def _search_public_web_context(name: str, username: str, limit: int = 2) -> list
 def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
     results: list[dict] = []
     owner = urlparse(profile_url).path.strip("/")
-    for href, name, body in re.findall(
+    for index, (href, name, body) in enumerate(re.findall(
         r'class="Link mr-1 text-bold wb-break-word"[^>]*href="(/[^"]+)"[^>]*><span class="repo">(.*?)</span></a>(.*?)</article>',
         html,
         flags=re.S,
-    ):
+    )):
         repo_url = f"https://github.com{href}"
         description = _strip_tags(_first_match(r'<p class="pinned-item-desc[^"]*"[^>]*>(.*?)</p>', body))
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
-        readme_summary = _extract_repo_page_summary(repo_url)
+        readme_summary = _extract_repo_page_summary(repo_url) if index == 0 else ""
         repo_text_parts = [name, description, language, owner, readme_summary]
         results.append(
             {
@@ -624,7 +631,7 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
             flags=re.S,
         )
 
-    for body in entries[:limit]:
+    for index, body in enumerate(entries[:limit]):
         href = _first_match(r'<a href="(/[^"]+)" itemprop="name codeRepository"', body)
         name = _strip_tags(_first_match(r'itemprop="name codeRepository"[^>]*>\s*(.*?)</a>', body))
         if not href or not name:
@@ -634,7 +641,7 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
         language = _strip_tags(_first_match(r'<span itemprop="programmingLanguage">(.*?)</span>', body))
         topics = re.findall(r'class="topic-tag[^"]*"[^>]*>\s*(.*?)\s*</a>', body, flags=re.S)
         topic_text = " ".join(_strip_tags(topic) for topic in topics)
-        readme_summary = _extract_repo_page_summary(repo_url)
+        readme_summary = ""
         repo_text_parts = [name, description, language, topic_text, owner, readme_summary]
         results.append(
             {
@@ -901,8 +908,20 @@ def to_status(score: float, location_eligible: bool = True) -> str:
 def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: bool = True) -> list[CandidateCard]:
     dedup: dict[str, CandidateCard] = {}
     location_targets = role_brief.get("location_targets", [])
-    for item in results:
-        enriched_item = enrich_github_result(item) if enrich_profiles else dict(item)
+    if enrich_profiles:
+        enriched_results: list[dict] = []
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            future_map = {executor.submit(enrich_github_result, item): item for item in results}
+            for future in as_completed(future_map):
+                original = future_map[future]
+                try:
+                    enriched_results.append(future.result())
+                except Exception:
+                    enriched_results.append(dict(original))
+    else:
+        enriched_results = [dict(item) for item in results]
+
+    for enriched_item in enriched_results:
         evidence_records = list(enriched_item.get("evidence_records", []))
         source_texts = enriched_item.get("source_texts") or {
             "search": enriched_item.get("search_text", enriched_item.get("snippet", "")),
@@ -1012,7 +1031,15 @@ def build_candidates(role_brief: dict, max_results_per_query: int = 20, seed_res
     for query in role_brief["queries"]:
         merged_results.extend(github_user_search(query, max_results=max_results_per_query))
         merged_results.extend(duckduckgo_profile_search(query, max_results=max(3, max_results_per_query // 2)))
-    return _cards_from_results(role_brief, merged_results, enrich_profiles=True)
+    deduped_results: list[dict] = []
+    seen_urls: set[str] = set()
+    for item in merged_results:
+        url = item.get("url", "")
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        deduped_results.append(item)
+    return _cards_from_results(role_brief, deduped_results, enrich_profiles=True)
 
 
 def save_cards(cards: list[CandidateCard], output: Path) -> None:

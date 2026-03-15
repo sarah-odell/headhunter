@@ -53,9 +53,7 @@
     "location:Berlin language:TypeScript react",
     "location:London language:TypeScript react",
     "location:Berlin language:TypeScript node",
-    "location:London language:TypeScript node",
-    "location:Berlin react typescript",
-    "location:London react typescript"
+    "location:London language:TypeScript node"
   ],
   "outreach_context": "Founder's Associate Challenge sourcing for engineering talent"
 }

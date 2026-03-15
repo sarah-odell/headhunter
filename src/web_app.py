@@ -85,8 +85,9 @@ def render_page(
     role_options = []
     for option in available_briefs():
         selected = " selected" if option == brief_path else ""
+        option_brief = load_role_brief(option)
         role_options.append(
-            f'<option value="{escape(str(option.relative_to(ROOT)))}"{selected}>{escape(option.stem.replace("_", " ").title())}</option>'
+            f'<option value="{escape(str(option.relative_to(ROOT)))}"{selected}>{escape(option_brief["role_name"])}</option>'
         )
 
     summary_cards = "".join(
@@ -244,7 +245,7 @@ def render_page(
     cards_view_html = (
         ''.join(candidate_cards)
         if candidate_cards
-        else f'<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates in the {escape(filter_label.lower())} view yet.</p></div>'
+        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates loaded yet. Run live GitHub sourcing or enable seed data to populate the pipeline.</p></div>'
     )
     table_view_html = (
         f"""
@@ -279,7 +280,7 @@ def render_page(
         </section>
         """
         if candidate_rows
-        else f'<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates available for the {escape(filter_label.lower())} table view yet.</p></div>'
+        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates loaded yet. Run live GitHub sourcing or enable seed data to populate the pipeline.</p></div>'
     )
 
     return f"""<!doctype html>
@@ -1173,7 +1174,7 @@ def render_page(
     </section>
 
     <section class="hero">
-      <form class="control-panel spotlight-card" method="post" action="/run">
+      <form class="control-panel spotlight-card" method="post" action="/run" id="run-form">
         <div class="section-head">
           <div>
             <p class="eyebrow">Run sourcing</p>
@@ -1193,7 +1194,8 @@ def render_page(
             GitHub profiles per search
             <input type="number" name="max_results" min="1" max="25" value="{max_results}">
           </label>
-          <p class="field-note">The tool runs multiple searches for the role, so total raw results will be higher than this number. Start with 5 for about 25 raw results.</p>
+          <p class="field-note">The tool runs multiple searches for the role, so total raw results will be higher than this number. Start with 5 for about 20 raw results.</p>
+          <p class="field-note">Live sourcing can take 10-20 seconds while public profiles and repos are enriched.</p>
           <label class="checkbox">
             <input type="checkbox" name="use_seed"{seed_checked}>
             Use local seed results for deterministic demo data
@@ -1203,7 +1205,7 @@ def render_page(
             <input type="text" name="seed" value="{seed_value}" placeholder="data/sample_search_results.json">
           </label>
           <div class="button-row">
-            <button class="primary" type="submit">Run GitHub sourcing</button>
+            <button class="primary" type="submit" id="run-button">Run GitHub sourcing</button>
             <a class="secondary" href="/export?{urlencode({'output': str(output_path.relative_to(ROOT)), 'csv': str(csv_path.relative_to(ROOT))})}">Export current CSV</a>
           </div>
         </div>
@@ -1279,6 +1281,8 @@ def render_page(
     }}
 
     const hero = document.getElementById('hero');
+    const runForm = document.getElementById('run-form');
+    const runButton = document.getElementById('run-button');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (hero && !prefersReducedMotion) {{
       const updateHero = () => {{
@@ -1288,6 +1292,13 @@ def render_page(
       }};
       updateHero();
       window.addEventListener('scroll', updateHero, {{ passive: true }});
+    }}
+
+    if (runForm && runButton) {{
+      runForm.addEventListener('submit', () => {{
+        runButton.disabled = true;
+        runButton.textContent = 'Running...';
+      }});
     }}
   </script>
 </body>
@@ -1328,7 +1339,8 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         max_results = int(query.get("max_results", [str(DEFAULT_MAX_RESULTS)])[-1])
         view_mode = query.get("view", ["cards"])[-1]
         status_filter = normalize_status_filter(query.get("status", ["all"])[-1])
-        cards = load_cards(output_path) if output_path.exists() else []
+        should_load_cards = query.get("load", [""])[-1] == "1"
+        cards = load_cards(output_path) if should_load_cards and output_path.exists() else []
         page = render_page(
             brief_path=brief_path,
             output_path=output_path,
@@ -1365,6 +1377,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                 "brief": str(brief_path.relative_to(ROOT)),
                 "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                 "max_results": str(max_results),
+                "load": "1",
                 "view": view_mode,
                 "status": status_filter,
                 "message": f"Generated {len(cards)} candidate cards.",
@@ -1377,6 +1390,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": str(max_results),
+                    "load": "1",
                     "view": view_mode,
                     "status": status_filter,
                     "error": str(exc),
@@ -1400,6 +1414,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
+                    "load": "1",
                     "view": view_mode,
                     "status": status_filter,
                     "message": f"Updated {form['candidate_id']} to {form['status']}.",
@@ -1412,6 +1427,7 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "brief": str(brief_path.relative_to(ROOT)),
                     "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
                     "max_results": max_results,
+                    "load": "1",
                     "view": view_mode,
                     "status": status_filter,
                     "error": str(exc),
