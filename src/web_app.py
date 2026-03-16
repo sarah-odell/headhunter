@@ -1544,15 +1544,17 @@ def render_page(
             </div>
             <p class="toolbar-note">Showing {escape(filter_label.lower())}</p>
           </div>
-          <div class="toolbar-filters">
-            <span class="toolbar-label">Filters</span>
-            <a class="pill {'active' if evidence_filter == 'all' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'all'})}">All evidence</a>
-            <a class="pill {'active' if evidence_filter == 'full' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'full'})}">Full enrichment</a>
-            <a class="pill {'active' if evidence_filter == 'partial' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'partial'})}">Partial enrichment</a>
-            <a class="pill {'active' if location_filter == 'confirmed' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'confirmed'})}">Confirmed location</a>
-            <a class="pill {'active' if location_filter == 'inferred' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'inferred'})}">Inferred location</a>
-            <a class="pill {'active' if requirement_filter == 'backend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'backend'})}">Backend evidence</a>
-            <a class="pill {'active' if requirement_filter == 'frontend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'frontend'})}">Frontend evidence</a>
+          <div class="toolbar-group">
+            <p class="toolbar-label">Filters</p>
+            <div class="toolbar-filters">
+              <a class="pill {'active' if evidence_filter == 'all' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'all'})}">All evidence</a>
+              <a class="pill {'active' if evidence_filter == 'full' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'full'})}">Full enrichment</a>
+              <a class="pill {'active' if evidence_filter == 'partial' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'partial'})}">Partial enrichment</a>
+              <a class="pill {'active' if location_filter == 'confirmed' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'confirmed'})}">Confirmed location</a>
+              <a class="pill {'active' if location_filter == 'inferred' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'inferred'})}">Inferred location</a>
+              <a class="pill {'active' if requirement_filter == 'backend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'backend'})}">Backend evidence</a>
+              <a class="pill {'active' if requirement_filter == 'frontend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'frontend'})}">Frontend evidence</a>
+            </div>
           </div>
           {cards_view_html if view_mode == "cards" else table_view_html if view_mode == "table" else queue_view_html}
         </section>
