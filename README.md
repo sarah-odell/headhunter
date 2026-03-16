@@ -72,7 +72,7 @@ The UI also surfaces an evidence-base state:
 - `Partial evidence base`
 - `Insufficient public evidence`
 
-For this role, London or Berlin is a hard eligibility gate. Candidates without public location evidence for either city are rejected automatically.
+For this role, London or Berlin is a hard eligibility gate. Candidates without any public location evidence for either city are rejected automatically. Confirmed and inferred public location evidence are both currently allowed.
 
 ## UI output
 
@@ -99,6 +99,12 @@ The table view is optimized for quick comparison and shows:
 - one-line candidate summary
 
 There is also a one-by-one review queue view for stepping through candidates sequentially and setting `shortlist` / `hold` / `reject`, similar to a Wellfound-style review flow.
+
+The toolbar supports filters for:
+
+- evidence / enrichment quality
+- confirmed vs inferred location
+- frontend/backend evidence
 
 ## Demo mode vs live mode
 
