@@ -787,7 +787,7 @@ def render_page(
     }}
     .candidate-head h3 {{
       font-size: clamp(1.35rem, 2vw, 1.7rem);
-      margin-top: 12px;
+      margin-top: 16px;
       margin-bottom: 10px;
     }}
     .score-stack {{
