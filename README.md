@@ -28,6 +28,7 @@ Then open [http://localhost:8001](http://localhost:8001).
 - Enriches candidates with profile evidence, pinned repos, repository listings, repo page summaries, linked websites, and public email when available.
 - Caches public fetches locally under `data/.cache` to improve repeat-run speed and reduce rate-limit pressure.
 - Builds structured candidate cards with evidence links, evidence snippets, source attribution, ranked fit scores, outreach drafts, and workflow status.
+- Adds recruiter-facing summaries like `why this candidate`, per-requirement judgments, review tags, and contact provenance.
 - Shows candidates in both card and table views for quick comparison.
 - Exports the current pipeline to CSV.
 
@@ -82,6 +83,7 @@ Scoring is heuristic and evidence-weighted.
   - `ready`
   - `needs_review`
   - `insufficient_evidence`
+- Each requirement is also labeled as `confirmed`, `partial`, or `unknown` from explicit public evidence.
 - Candidates are ranked by fit score, then must-have score, nice-to-have score, and confidence.
 
 For this role, London or Berlin is a hard eligibility gate. Candidates without public location evidence for either city are automatically rejected.
@@ -93,6 +95,15 @@ Automatic workflow thresholds:
 - `reject` otherwise
 
 The UI displays these scores as percentages, shows evidence snippets and source labels, and allows manual status changes. Outreach drafts now cite one especially concrete public artifact rather than relying only on generic skill mentions.
+
+The table view is intended for fast recruiter triage. It now surfaces:
+
+- rank
+- evidence-base state
+- fit score
+- requirement judgments for `TypeScript`, `React`, `frontend`, and `backend`
+- location state
+- a one-line `why this candidate` summary
 
 ## Validation and limitations
 
@@ -155,4 +166,5 @@ Export CSV:
 - This is a local-only tool intended to run on one machine.
 - It uses only public data.
 - Candidate scoring is evidence-weighted and heuristic rather than model-generated.
+- Missing evidence is treated as `unknown`, not as proof a candidate lacks a skill.
 - GitHub may temporarily rate-limit repeated live runs; if so, wait a few minutes and rerun with a smaller per-search count.

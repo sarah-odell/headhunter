@@ -133,7 +133,11 @@ class CandidateCard:
     eligibility_reason: str
     review_state: str
     reviewer_note: str
+    why_summary: str
+    review_tags: list[str]
+    contact_source: str
     requirement_scores: dict[str, float]
+    requirement_judgments: dict[str, str]
     requirement_sources: dict[str, str]
     requirement_evidence: dict[str, str]
     outreach_draft: str
@@ -1074,6 +1078,68 @@ def summarize_uncertainty(role_brief: dict, requirement_scores: dict[str, float]
     return flags
 
 
+def requirement_judgment(score: float) -> str:
+    if score >= 0.85:
+        return "confirmed"
+    if score > 0:
+        return "partial"
+    return "unknown"
+
+
+def build_requirement_judgments(requirement_scores: dict[str, float]) -> dict[str, str]:
+    return {requirement: requirement_judgment(score) for requirement, score in requirement_scores.items()}
+
+
+def build_review_tags(
+    role_brief: dict,
+    requirement_scores: dict[str, float],
+    location_state: str,
+    contact_source: str,
+) -> list[str]:
+    tags: list[str] = []
+    if requirement_scores.get("TypeScript", 0.0) >= 0.85 and requirement_scores.get("React", 0.0) >= 0.85:
+        tags.append("strong core stack")
+    if requirement_scores.get("frontend", 0.0) >= 0.85 and requirement_scores.get("backend", 0.0) < 0.55:
+        tags.append("frontend-leaning")
+    if requirement_scores.get("backend", 0.0) >= 0.85 and requirement_scores.get("frontend", 0.0) < 0.55:
+        tags.append("backend-leaning")
+    if location_state == "inferred":
+        tags.append("location inferred")
+    if location_state == "unknown":
+        tags.append("location unconfirmed")
+    if not contact_source:
+        tags.append("no public contact")
+    elif "website" in contact_source.lower():
+        tags.append("contact via linked site")
+    weak_nice = [req for req in role_brief.get("nice_to_haves", []) if 0 < requirement_scores.get(req, 0.0) < 0.55]
+    if weak_nice:
+        tags.append("bonus signals are weak")
+    return tags[:4]
+
+
+def build_why_summary(
+    requirement_judgments: dict[str, str],
+    location_state: str,
+    review_tags: list[str],
+) -> str:
+    strong = [req for req in ("TypeScript", "React", "frontend", "backend") if requirement_judgments.get(req) == "confirmed"]
+    partial = [req for req in ("TypeScript", "React", "frontend", "backend") if requirement_judgments.get(req) == "partial"]
+    parts: list[str] = []
+    if strong:
+        parts.append(f"Confirmed {', '.join(strong[:2])} evidence")
+    if partial:
+        parts.append(f"partial support for {', '.join(partial[:2])}")
+    if location_state == "confirmed":
+        parts.append("location publicly confirmed")
+    elif location_state == "inferred":
+        parts.append("location inferred from public sources")
+    else:
+        parts.append("location not publicly confirmed")
+    if review_tags:
+        parts.append(f"tags: {', '.join(review_tags[:2])}")
+    return ". ".join(parts) + "."
+
+
 def evidence_density_label(evidence_records: list[dict[str, Any]]) -> str:
     count = len(evidence_records)
     if count >= 7:
@@ -1124,9 +1190,51 @@ def location_state_for_hits(location_hits: list[str]) -> str:
     return "confirmed" if location_hits else "unknown"
 
 
-def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[str], fit_score: float) -> tuple[str, str]:
+def score_location_from_records(evidence_records: list[dict[str, Any]], location_targets: Iterable[str]) -> tuple[list[str], str]:
+    confirmed_hits: list[str] = []
+    inferred_hits: list[str] = []
+    for record in evidence_records:
+        text = record.get("text", "")
+        if not text:
+            continue
+        hits = score_location(text, location_targets)
+        if not hits:
+            continue
+        source_type = record.get("source_type", "")
+        if source_type in {"profile", "website"}:
+            confirmed_hits.extend(hits)
+        else:
+            inferred_hits.extend(hits)
+    if confirmed_hits:
+        return sorted(dict.fromkeys(confirmed_hits)), "confirmed"
+    if inferred_hits:
+        return sorted(dict.fromkeys(inferred_hits)), "inferred"
+    return [], "unknown"
+
+
+def contact_source_label(email: str, evidence_records: list[dict[str, Any]]) -> str:
+    if not email:
+        return ""
+    for record in evidence_records:
+        text = record.get("text", "")
+        snippet = record.get("snippet", "")
+        if email in text or email in snippet:
+            provenance = record.get("provenance", record.get("label", "public source"))
+            return provenance
+    return "Public GitHub or linked website"
+
+
+def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[str], fit_score: float, requirement_judgments: dict[str, str], location_state: str) -> tuple[str, str]:
     if not location_eligible:
         return "insufficient_evidence", "Missing public London/Berlin evidence."
+    if location_state == "inferred":
+        return "needs_review", "Location is inferred from public sources and should be verified."
+    backend_judgment = requirement_judgments.get("backend", "unknown")
+    frontend_judgment = requirement_judgments.get("frontend", "unknown")
+    if frontend_judgment == "confirmed" and backend_judgment != "confirmed":
+        return "needs_review", "Strong frontend evidence, limited backend proof."
+    if backend_judgment == "confirmed" and frontend_judgment != "confirmed":
+        return "needs_review", "Strong backend evidence, limited frontend proof."
     if uncertainty_flags:
         return "needs_review", uncertainty_flags[0]
     if fit_score >= 0.55:
@@ -1174,12 +1282,18 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             source_texts,
             evidence_records=evidence_records,
         )
-        text_blob = " ".join(part for part in source_texts.values() if part)
-        location_hits = score_location(text_blob, location_targets)
+        location_hits, location_state = score_location_from_records(evidence_records, location_targets)
+        if not location_hits:
+            text_blob = " ".join(part for part in source_texts.values() if part)
+            location_hits = score_location(text_blob, location_targets)
+            if location_hits and location_state == "unknown":
+                location_state = "inferred"
         location_eligible = bool(location_hits) if location_targets else True
-        location_state = location_state_for_hits(location_hits)
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
         identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
+        requirement_judgments = build_requirement_judgments(requirement_scores)
+        contact_source = contact_source_label(enriched_item.get("public_email", ""), evidence_records)
+        review_tags = build_review_tags(role_brief, requirement_scores, location_state, contact_source)
         must_breakdown = ", ".join(
             f"{item} {requirement_scores.get(item, 0):.2f} via {requirement_sources.get(item, 'none')}"
             for item in role_brief["must_haves"]
@@ -1195,11 +1309,12 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             if record.get("snippet")
         ][:3]
         eligibility_reason = (
-            f"Eligible: public evidence aligns with {', '.join(location_hits)}."
+            f"Public location evidence aligns with {', '.join(location_hits)} ({location_state})."
             if location_eligible
             else "Ineligible: no public London/Berlin evidence found."
         )
-        review_state, reviewer_note = review_state_for_candidate(location_eligible, uncertainty_flags, score)
+        review_state, reviewer_note = review_state_for_candidate(location_eligible, uncertainty_flags, score, requirement_judgments, location_state)
+        why_summary = build_why_summary(requirement_judgments, location_state, review_tags)
         rationale = (
             f"Must-have evidence: {must_breakdown}; "
             f"nice-to-have evidence: {nice_breakdown}; "
@@ -1235,7 +1350,11 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             eligibility_reason=eligibility_reason,
             review_state=review_state,
             reviewer_note=reviewer_note,
+            why_summary=why_summary,
+            review_tags=review_tags,
+            contact_source=contact_source,
             requirement_scores=requirement_scores,
+            requirement_judgments=requirement_judgments,
             requirement_sources={
                 key: f"{requirement_sources.get(key, '')}{f' · {requirement_provenance.get(key, '')}' if requirement_provenance.get(key) else ''}".strip(" ·")
                 for key in requirement_scores
@@ -1317,7 +1436,11 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized.setdefault("eligibility_reason", "")
         normalized.setdefault("review_state", "needs_review")
         normalized.setdefault("reviewer_note", "")
+        normalized.setdefault("why_summary", "")
+        normalized.setdefault("review_tags", [])
+        normalized.setdefault("contact_source", "")
         normalized.setdefault("requirement_scores", {})
+        normalized.setdefault("requirement_judgments", {})
         normalized.setdefault("requirement_sources", {})
         normalized.setdefault("requirement_evidence", {})
         cards.append(CandidateCard(**normalized))
@@ -1335,6 +1458,7 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "headline",
             "source_url",
             "email",
+            "contact_source",
             "found_via",
             "evidence_count",
             "evidence_density",
@@ -1349,6 +1473,8 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "eligibility_reason",
             "review_state",
             "reviewer_note",
+            "why_summary",
+            "review_tags",
             "fit_score",
             "status",
             "rationale",
@@ -1365,12 +1491,14 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
         row = asdict(card)
         row["rank"] = rank
         row["found_via"] = "; ".join(card.found_via)
+        row["review_tags"] = "; ".join(card.review_tags)
         row["must_have_hits"] = "; ".join(card.must_have_hits)
         row["nice_to_have_hits"] = "; ".join(card.nice_to_have_hits)
         row["location_hits"] = "; ".join(card.location_hits)
         row.pop("evidence_links", None)
         row.pop("evidence_records", None)
         row.pop("requirement_scores", None)
+        row.pop("requirement_judgments", None)
         row.pop("requirement_sources", None)
         row.pop("requirement_evidence", None)
         writer.writerow(row)

@@ -132,7 +132,11 @@ class ScoreCandidateTests(unittest.TestCase):
                 eligibility_reason="Eligible",
                 review_state="ready",
                 reviewer_note="Strong public evidence.",
+                why_summary="Confirmed TypeScript evidence.",
+                review_tags=["strong core stack"],
+                contact_source="GitHub profile bio",
                 requirement_scores={"TypeScript": 1.0},
+                requirement_judgments={"TypeScript": "confirmed"},
                 requirement_sources={"TypeScript": "repo"},
                 requirement_evidence={"TypeScript": "Repo evidence"},
                 outreach_draft="Hi Ada",
@@ -170,7 +174,11 @@ class ScoreCandidateTests(unittest.TestCase):
                 eligibility_reason="Eligible",
                 review_state="ready",
                 reviewer_note="Strong public evidence.",
+                why_summary="Confirmed TypeScript evidence.",
+                review_tags=["strong core stack"],
+                contact_source="GitHub profile bio",
                 requirement_scores={"TypeScript": 1.0, "React": 1.0},
+                requirement_judgments={"TypeScript": "confirmed", "React": "confirmed"},
                 requirement_sources={"TypeScript": "repo", "React": "profile"},
                 requirement_evidence={"TypeScript": "Repo evidence", "React": "Profile evidence"},
                 outreach_draft="Hi Ada",
@@ -227,7 +235,7 @@ class ScoreCandidateTests(unittest.TestCase):
             ["Berlin"],
         )
         self.assertTrue(draft.endswith("Best,\nHASH Recruiting Team"))
-        self.assertIn("typed-platform", draft)
+        self.assertIn("Full-Stack Engineer", draft)
 
 
 if __name__ == "__main__":

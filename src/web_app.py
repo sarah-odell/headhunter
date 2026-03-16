@@ -142,6 +142,7 @@ def render_page(
             if card.email
             else '<span class="candidate-location-note">No public email on GitHub</span>'
         )
+        contact_note = display_text(getattr(card, "contact_source", "") or "No public contact provenance")
         evidence_records = getattr(card, "evidence_records", []) or []
         evidence_items = "".join(
             f'<li><strong>{display_text(record.get("label", "Evidence"))}</strong><span class="evidence-snippet">{display_text(record.get("snippet", ""))}</span><a href="{escape(record.get("url", ""))}" target="_blank" rel="noreferrer">Open source</a></li>'
@@ -150,7 +151,7 @@ def render_page(
         visible_requirements = list(brief["must_haves"])
         extra_requirements = [
             requirement for requirement in brief.get("nice_to_haves", [])
-            if requirement in {"Rust", "Effect", "HTML Canvas", "animation", "graphics"}
+            if requirement in {"performance", "storage systems", "Rust", "Effect"}
         ][:2]
         github_work_rows = "".join(
             f"""
@@ -202,6 +203,7 @@ def render_page(
                 </div>
               </div>
               <p class="candidate-location-note">{display_text(getattr(card, "reviewer_note", "") or "Public evidence is still heuristic and should be reviewed.")}</p>
+              <p class="candidate-location-note">{display_text(getattr(card, "why_summary", "") or "Review the requirement evidence below for the strongest public support.")}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
@@ -223,6 +225,7 @@ def render_page(
               <details class="detail-panel">
                 <summary>Evidence and source notes</summary>
                 <div class="detail-body">
+                  <p class="candidate-location-note">Public contact source: {contact_note}</p>
                   <ul class="evidence-list">{evidence_items or "".join(f'<li><a href="{escape(link)}" target="_blank" rel="noreferrer">{escape(link)}</a></li>' for link in card.evidence_links)}</ul>
                 </div>
               </details>
@@ -254,12 +257,14 @@ def render_page(
                 <div class="table-subtle">{display_text(found_via_text)}</div>
               </td>
               <td class="col-status">{escape(card.status.title())}</td>
+              <td class="col-status">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</td>
               <td class="col-score">{percent_label(card.fit_score)}</td>
-              <td class="col-score">{percent_label(card.must_have_score)}</td>
-              <td class="col-score">{percent_label(card.nice_to_have_score)}</td>
-              <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</div></td>
-              <td class="col-skills">{display_text(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
-              <td class="col-skills">{display_text(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
+              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("TypeScript", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("React", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("frontend", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("backend", 0.0)))}</td>
+              <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text((getattr(card, 'location_state', 'unknown') or 'unknown').title())}</div></td>
+              <td class="col-skills">{display_text(getattr(card, "why_summary", "") or "No summary")}</td>
             </tr>
             """
         )
@@ -297,12 +302,14 @@ def render_page(
                   <th class="col-rank">Rank</th>
                   <th class="col-candidate">Candidate</th>
                   <th class="col-status">Status</th>
+                  <th class="col-status">Evidence base</th>
                   <th class="col-score">Score</th>
-                  <th class="col-score">Must</th>
-                  <th class="col-score">Nice</th>
+                  <th class="col-score">TS</th>
+                  <th class="col-score">React</th>
+                  <th class="col-score">FE</th>
+                  <th class="col-score">BE</th>
                   <th class="col-location">Location</th>
-                  <th class="col-skills">Must-haves</th>
-                  <th class="col-skills">Nice-to-haves</th>
+                  <th class="col-skills">Why this candidate</th>
                 </tr>
               </thead>
               <tbody>
