@@ -783,7 +783,7 @@ def render_page(
       grid-template-columns: minmax(0, 1fr) 156px;
       gap: 18px;
       align-items: start;
-      margin-bottom: 14px;
+      margin-bottom: 6px;
     }}
     .candidate-head h3 {{
       font-size: clamp(1.35rem, 2vw, 1.7rem);
@@ -820,7 +820,7 @@ def render_page(
     .candidate-topline {{
       display: grid;
       gap: 12px;
-      margin: 2px 0 16px;
+      margin: 0 0 16px;
     }}
     .candidate-link-row {{
       display: flex;
