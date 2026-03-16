@@ -277,7 +277,7 @@ def render_page(
                   <pre>{display_text(card.outreach_draft)}</pre>
                 </div>
               </details>
-              <form method="post" action="/review" class="review-form">
+              <form method="post" action="/review" class="review-form {'queue-hidden' if view_mode == 'queue' else ''}">
                 <input type="hidden" name="candidate_id" value="{escape(card.id)}">
                 <input type="hidden" name="brief" value="{escape(str(brief_path.relative_to(ROOT)))}">
                 <input type="hidden" name="seed" value="{escape(str(seed_path.relative_to(ROOT))) if seed_path else ''}">
@@ -840,6 +840,8 @@ def render_page(
     }}
     .queue-nav {{
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 12px;
       margin: 0;
       flex-wrap: wrap;
@@ -1292,6 +1294,9 @@ def render_page(
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 18px;
+    }}
+    .queue-hidden {{
+      display: none;
     }}
     .status-button {{
       background: rgba(255,255,255,0.04);
