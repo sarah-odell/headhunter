@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nidhi Kumari Portfolio</title>
+  <link rel="icon" type="image/jpeg"
+    href="Logo Lifestyle Success, Lifestyle, Logo, Success PNG and Vector with Transparent Background for Free Download.jpeg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+      <div class="d-flex w-100 align-items-center">
+        <a class="navbar-brand me-4" href="#">
+          <img
+            src="Logo Lifestyle Success, Lifestyle, Logo, Success PNG and Vector with Transparent Background for Free Download.jpeg"
+            alt="Logo" style="height: 40px; width: auto; object-fit: contain;">
+        </a>
+        <div class="collapse navbar-collapse show" id="navbarNav" style="flex-grow:1;">
+          <ul class="navbar-nav d-flex flex-row gap-3">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#my-journey">MyJourney</a></li>
+            <li class="nav-item"><a class="nav-link" href="#my-skills">MySkills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#my-projects">MyProjects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#my-strength">MyStrength</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Social Sidebar -->
+  <div class="social-sidebar">
+    <a href="https://www.linkedin.com/in/nidhi-kumari-419125236/" target="_blank" aria-label="LinkedIn"
+      title="LinkedIn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="4" fill="#0077B5" />
+        <path
+          d="M7.75 17H5.5V9.75H7.75V17ZM6.625 8.75C5.95 8.75 5.5 8.275 5.5 7.7C5.5 7.125 5.95 6.65 6.625 6.65C7.3 6.65 7.75 7.125 7.75 7.7C7.75 8.275 7.3 8.75 6.625 8.75ZM18.5 17H16.25V13.25C16.25 12.25 15.75 11.75 15 11.75C14.25 11.75 13.75 12.25 13.75 13.25V17H11.5V9.75H13.75V10.75C14.25 10.25 15 9.75 16.25 9.75C18 9.75 18.5 10.75 18.5 12.25V17Z"
+          fill="white" />
+      </svg>
+    </a>
+    <a href="https://github.com/nidhi-webdev" target="_blank" aria-label="GitHub" title="GitHub">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="4" fill="#181717" />
+        <path
+          d="M12 2C6.48 2 2 6.58 2 12.26C2 16.62 4.87 20.26 8.84 21.5C9.34 21.59 9.52 21.29 9.52 21.04C9.52 20.82 9.51 20.18 9.51 19.41C7 19.91 6.34 18.36 6.34 18.36C5.86 17.22 5.16 16.92 5.16 16.92C4.18 16.27 5.23 16.29 5.23 16.29C6.31 16.38 6.85 17.5 6.85 17.5C7.81 19.18 9.36 18.7 10.01 18.45C10.1 17.77 10.36 17.32 10.65 17.07C8.7 16.82 6.64 16.04 6.64 12.77C6.64 11.81 7 11.06 7.59 10.48C7.5 10.23 7.18 9.27 7.68 7.97C7.68 7.97 8.38 7.7 9.51 8.6C10.17 8.42 10.87 8.33 11.57 8.33C12.27 8.33 12.97 8.42 13.63 8.6C14.76 7.7 15.46 7.97 15.46 7.97C15.96 9.27 15.64 10.23 15.55 10.48C16.14 11.06 16.5 11.81 16.5 12.77C16.5 16.05 14.43 16.81 12.48 17.06C12.87 17.39 13.22 18.04 13.22 19.01C13.22 20.32 13.21 21.29 13.21 21.04C13.21 21.29 13.39 21.59 13.89 21.5C17.86 20.26 20.73 16.62 20.73 12.26C20.73 6.58 16.25 2 12 2Z"
+          fill="white" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 hero-text">
+          <h1 class="hero-title">Hi. I'm Nidhi <br> Kumari</h1>
+          <div class="hero-desc-container">
+            <div class="hero-desc-line color-transition-text fancy-hero-desc">
+
+              Driven by a passion for frontend development, I transform ideas into <span
+                class="fancy-keyword">responsive</span>, <span class="fancy-keyword">accessible</span>, and <span
+                class="fancy-keyword">user-focused</span> web applications.
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center hero-image">
+          <img src="Learn Javascript Now!.jpeg" alt="Frontend Development Concept" class="hero-img"
+            style="max-width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fixed Download Resume Button -->
+  <a href="Nidhi  Kumari_CV.pdf" class="btn btn-primary btn-lg fixed-resume-btn" download>
+    <i class="fas fa-download me-2"></i>Download Resume
+  </a>
+
+  <!-- Profile Card Section -->
+  <section class="profile-section d-flex justify-content-center align-items-center"
+    style="min-height: 60vh; background: #f8fbff;">
+    <div class="profile-card shadow-lg rounded-4 p-4 d-flex flex-column flex-md-row align-items-center"
+      style="background: #fff; max-width: 700px; width: 100%;">
+      <div class="avatar-wrapper me-md-4 mb-3 mb-md-0 text-center">
+        <img src="ChatGPT Image Aug 6, 2025, 12_47_50 PM-min.png" alt="Profile Avatar" class="profile-avatar mb-3"
+          style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 6px solid #f4f8fb; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+      </div>
+      <div class="flex-grow-1 text-center text-md-start">
+        <h2 class="fw-bold mb-1">Nidhi Kumari</h2>
+        <div class="text-muted mb-2">@nidhi-webdev</div>
+        <p class="mb-3">Crafting seamless digital journeys with Angular, JavaScript, React and a strong eye for UI. Based in
+          Germany, passionate about turning ideas into clean, responsive, and meaningful web experiences.
+
+        </p>
+        <div class="d-flex justify-content-center justify-content-md-start align-items-center mb-3 gap-4">
+          <div>
+            <span class="fw-bold fs-4">12</span><br>
+            <span class="text-muted">Repositories</span>
+          </div>
+          <div>
+            <span class="fw-bold fs-4">Berlin (Germany)</span><br>
+            <span class="text-muted">Location</span>
+          </div>
+        </div>
+        <a href="https://github.com/nidhi-webdev" target="_blank" class="btn btn-dark btn-lg rounded-pill px-4">View
+          GitHub Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Journey Section -->
+  <section id="my-journey" class="py-5" style="background: #fff;">
+    <div class="container">
+      <h2 class="text-center mb-5" style="font-family: 'Georgia', serif; font-size: 2.5rem; font-weight: bold;">
+        <span style="border-bottom: 2px solid #eee; padding-bottom: 0.2em;">My Journey</span>
+      </h2>
+      <div class="row justify-content-center journey-cards-row">
+        <div class="col-lg-10 mb-4">
+          <div class="card journey-card shadow-lg rounded-4 p-4 border-0 d-flex flex-row align-items-center gap-4 position-relative overflow-hidden">
+            <div class="journey-logo-wrapper d-flex align-items-center justify-content-center" style="min-width:110px;">
+              <img src="extreme_networks_logo.jpeg" alt="Extreme Networks"
+                class="journey-logo"
+                style="width:90px; height:90px; object-fit:contain; border-radius:16px; box-shadow:0 4px 24px rgba(74,144,226,0.18); background:#fff; padding:10px; transition:transform 0.3s;">
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="mb-1 fw-bold" style="font-family:'Georgia',serif; color:#4a90e2;">Extreme Networks</h4>
+              <div class="text-muted mb-2" style="font-size:1.08rem; font-style:italic; letter-spacing:0.5px;">07/2022 – today</div>
+              <p class="mb-0" style="font-size:1.07rem; line-height:1.7; color:#222;">Built UI modules for network monitoring and analytics using <span style="color:#e34c26;font-weight:500;">Angular</span> and <span style="color:#61dafb;font-weight:500;">React</span>. Enhanced performance and usability through real-time bug fixes and collaboration with cross-functional teams. Ensured responsive, accessible, and cross-browser compatible design.</p>
+            </div>
+            <span class="journey-card-accent" style="position:absolute;right:-40px;top:-40px;width:120px;height:120px;background:linear-gradient(135deg,#4a90e2 60%,#fff 100%);border-radius:50%;opacity:0.12;"></span>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-4">
+          <div class="card journey-card shadow-lg rounded-4 p-4 border-0 d-flex flex-row align-items-center gap-4 position-relative overflow-hidden">
+            <div class="journey-logo-wrapper d-flex align-items-center justify-content-center" style="min-width:110px;">
+              <img src="concentrix-logo.png" alt="Concentrix"
+                class="journey-logo"
+                style="width:90px; height:90px; object-fit:contain; border-radius:16px; box-shadow:0 4px 24px rgba(74,144,226,0.18); background:#fff; padding:10px; transition:transform 0.3s;">
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="mb-1 fw-bold" style="font-family:'Georgia',serif; color:#f9a825;">Concentrix</h4>
+              <div class="text-muted mb-2" style="font-size:1.08rem; font-style:italic; letter-spacing:0.5px;">08/2019 – 06/2022</div>
+              <p class="mb-0" style="font-size:1.07rem; line-height:1.7; color:#222;">Delivered an accessible <span style="color:#e34c26;font-weight:500;">Angular</span> platform for NRS and TRS, enabling emergency communication for deaf and speech-impaired users. Developed reusable UI components, integrated secure authentication and real-time messaging, and ensured <span style="color:#4a90e2;font-weight:500;">WCAG</span> compliance. Collaborated with designers and Agile teams to deliver an inclusive, scalable solution.</p>
+            </div>
+            <span class="journey-card-accent" style="position:absolute;left:-40px;bottom:-40px;width:120px;height:120px;background:linear-gradient(135deg,#f9a825 60%,#fff 100%);border-radius:50%;opacity:0.12;"></span>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-4">
+          <div class="card journey-card shadow-lg rounded-4 p-4 border-0 d-flex flex-row align-items-center gap-4 position-relative overflow-hidden">
+            <div class="journey-logo-wrapper d-flex align-items-center justify-content-center" style="min-width:110px;">
+              <img src="ernst-young-ey-logo.png" alt="EY Logo"
+                class="journey-logo"
+                style="width:90px; height:90px; object-fit:contain; border-radius:16px; box-shadow:0 4px 24px rgba(74,144,226,0.18); background:#fff; padding:10px; transition:transform 0.3s;">
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="mb-1 fw-bold" style="font-family:'Georgia',serif; color:#ffc107;">EY (Ernst & Young)</h4>
+              <div class="text-muted mb-2" style="font-size:1.08rem; font-style:italic; letter-spacing:0.5px;">01/2019 – 08/2019</div>
+              <p class="mb-0" style="font-size:1.07rem; line-height:1.7; color:#222;">Created frontend modules for GST filing and e-invoicing using <span style="color:#e34c26;font-weight:500;">Angular</span> and REST APIs. Built reusable UI components, optimized performance, and developed responsive dashboards. Enabled invoice validation and submission, ensuring cross-browser compatibility and seamless backend integration.</p>
+            </div>
+            <span class="journey-card-accent" style="position:absolute;right:-40px;bottom:-40px;width:120px;height:120px;background:linear-gradient(135deg,#ffc107 60%,#fff 100%);border-radius:50%;opacity:0.12;"></span>
+          </div>
+        </div>
+        <!-- Only Extreme Networks, Concentrix, and EY project cards remain -->
+      </div>
+    </div>
+  </section>
+
+  <!-- My Skills Section -->
+  <section id="my-skills" class="py-5" style="background: #f4f8fb;">
+    <div class="container">
+      <h2 class="text-center mb-5" style="font-family: 'Georgia', serif; font-size: 2.5rem; font-weight: bold;">
+        <span style="border-bottom: 2px solid #eee; padding-bottom: 0.2em;">My Skills</span>
+      </h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Skill Cards -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">JavaScript</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+              alt="TypeScript" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">TypeScript</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Angular</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">React</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">HTML5</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">CSS3</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="SCSS"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">SCSS</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+              alt="Bootstrap" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Bootstrap</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
+              alt="Angular Material" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Angular Material</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="primeng-logo.webp" alt="PrimeNG"
+              style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">PrimeNG</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://raw.githubusercontent.com/ngrx/platform/main/projects/ngrx.io/src/assets/images/badge.svg"
+              alt="NgRx" style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">NgRx</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="jQuery"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">jQuery</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Redux</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rxjs/rxjs-original.svg" alt="RxJS"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">RxJS</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Git</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">GitLab</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg"
+              alt="Bitbucket" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Bitbucket</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="Jira"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Jira</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Docker</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Jenkins</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="NPM"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">NPM</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" alt="Yarn"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Yarn</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg" alt="Webpack"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Webpack</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg"
+              alt="Storybook" style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Storybook</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest"
+              style="height:60px; margin-bottom: 1rem;">
+            <h5 class="fw-bold">Jest</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"
+              style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">Figma</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" alt="Swagger"
+              style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">Swagger</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman"
+              style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">Postman</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card skill-card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg"
+              alt="CI/CD" style="width:60px; height:60px; object-fit:contain; margin-bottom: 1rem; display:block;">
+            <h5 class="fw-bold">CI/CD</h5>
+          </div>
+        </div>
+        <!-- Add more skills as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- My Projects Detail Section -->
+  <section id="my-projects-detail" class="py-5" style="background: #fff;">
+    <div class="container">
+      <h2 class="text-center mb-5" style="font-family: 'Georgia', serif; font-size: 2.5rem; font-weight: bold;">
+        <span style="border-bottom: 2px solid #eee; padding-bottom: 0.2em;">My Projects Detail</span>
+      </h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 mb-4">
+          <div class="card shadow-sm rounded-4 p-4 border-0 d-flex flex-row align-items-start gap-4"
+            style="background: #f8fbff;">
+            <img src="extreme_networks_logo.jpeg" alt="Extreme Networks"
+              style="width:90px; height:90px; object-fit:contain; border-radius:12px; box-shadow:0 2px 12px rgba(74,144,226,0.15); background:#fff; padding:8px;">
+            <div>
+              <h3 class="mb-2" style="font-family: 'Georgia', serif;">About Extreme Networks</h3>
+              <p style="font-size:1.1rem;">Extreme Networks is a global leader in cloud-driven networking solutions,
+                providing advanced network infrastructure and management for enterprises, data centers, and service
+                providers. Known for innovation in network visibility, automation, and security, Extreme Networks
+                empowers organizations to optimize performance and deliver seamless digital experiences.</p>
+              <a href="https://en.wikipedia.org/wiki/Extreme_Networks" target="_blank"
+                style="font-size:1rem; color:#4a90e2; text-decoration:underline;">Wikilink</a>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Project Description</h4>
+              <p style="font-size:1.05rem;">
+                Extreme Cloud IQ is an advanced cloud-driven network management platform from Extreme Networks. It
+                enables organizations to monitor, manage, and optimize wired and wireless networks from a single
+                interface. With AI-powered analytics, automated troubleshooting, and real-time visibility, Extreme Cloud
+                IQ helps enterprises improve network performance, security, and scalability. The platform supports
+                seamless device onboarding, policy enforcement, and proactive issue resolution for global deployments.
+              </p>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Role And Responsibilities</h4>
+              <h5 class="mb-2" style="font-family: 'Georgia', serif; color:#888;">Role: Frontend Developer</h5>
+              <ul style="font-size:1.05rem;">
+                <li>Designed and implemented UI components for network monitoring and analytics dashboards using Angular
+                  and React.</li>
+                <li>Collaborated with backend teams to integrate REST APIs and real-time data streams.</li>
+                <li>Optimized dashboard performance and responsiveness for large-scale network data.</li>
+                <li>Resolved bugs and enhanced user experience through continuous UI improvements.</li>
+                <li>Worked closely with product managers and QA to deliver high-quality releases.</li>
+                <li>Partnered with clients and onsite stakeholders to gather requirements and align deliverables with
+                  business goals, ensuring satisfaction with the end product.</li>
+                <li>Actively participated in daily Scrum meetings to share progress, raise blockers, and engage in
+                  collaborative problem-solving with the development team.</li>
+                <li>Maintained cross-browser and cross-device compatibility, ensuring the application delivered a
+                  consistent and responsive user experience.</li>
+                <li>Developed reusable UI components to accelerate development and maintain consistency across modules.
+                </li>
+                <li>Implemented accessibility best practices to ensure inclusivity for all users.</li>
+                <li>Documented technical solutions and provided knowledge transfer to team members.</li>
+                <li>Monitored application performance and proactively addressed bottlenecks.</li>
+                <li>Contributed to building and maintaining UI modules for network visibility, device monitoring, and
+                  traffic analytics using Angular and React.</li>
+                <li>Helped deliver scalable dashboards, interactive visualizations, and real-time troubleshooting tools,
+                  improving customer satisfaction and reducing issue resolution time for global enterprise clients.</li>
+              </ul>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Technologies</h4>
+              <div class="tech-tags mb-3">
+                <span class="tech-tag html5">HTML5</span>
+                <span class="tech-tag react">React</span>
+                <span class="tech-tag angular">Angular</span>
+                <span class="tech-tag js">JavaScript</span>
+                <span class="tech-tag css">CSS3</span>
+                <span class="tech-tag bootstrap">Bootstrap</span>
+                <span class="tech-tag sass">Sass</span>
+                <span class="tech-tag rest">REST API</span>
+                <span class="tech-tag json">JSON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-4">
+          <div class="card shadow-sm rounded-4 p-4 border-0 d-flex flex-row align-items-start gap-4"
+            style="background: #f8fbff;">
+            <img src="concentrix-logo.png" alt="Concentrix"
+              style="width:90px; height:90px; object-fit:contain; border-radius:12px; box-shadow:0 2px 12px rgba(74,144,226,0.15); background:#fff; padding:8px;">
+            <div>
+              <h3 class="mb-2" style="font-family: 'Georgia', serif;">About Concentrix</h3>
+              <p style="font-size:1.1rem;">Concentrix is a leading global technology and services firm powering the
+                world’s top brands. Human‑centered, tech‑powered, and intelligence‑fueled, we design, build, and operate
+                end‑to‑end enterprise solutions at speed and scale. Serving over 2,000 clients across 70+ countries, we
+                blend data-driven innovation, AI, and human insights to transform customer experiences. With
+                industry-leading platforms like iX Hello™, AI-powered conversational assistants, and comprehensive
+                services from CX strategy to digital operations, we help businesses reimagine interactions and achieve
+                seamless enterprise transformation.</p>
+              <a href="https://en.wikipedia.org/wiki/Concentrix" target="_blank"
+                style="font-size:1rem; color:#4a90e2; text-decoration:underline;">Wikilink</a>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Project Description</h4>
+              <p style="font-size:1.05rem;">
+                The project involved developing an accessible web platform for the National Relay Service (NRS) in
+                Australia and TRS in the Netherlands, empowering deaf, hard-of-hearing, or speech-impaired users to
+                contact emergency services. The solution featured secure authentication, real-time communication, and
+                intuitive UI components to ensure seamless access for all users. By prioritizing accessibility and
+                reliability, the platform helped bridge communication gaps and deliver critical support to thousands of
+                individuals.
+              </p>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Role And Responsibilities</h4>
+              <h5 class="mb-2" style="font-family: 'Georgia', serif; color:#888;">Role: Frontend Developer</h5>
+              <ul style="font-size:1.05rem;">
+                <li>Registered and logged in securely to access relay services when needed.</li>
+                <li>Communicated with emergency services via a trained Relay Officer who relayed messages in real time.
+                </li>
+                <li>Developed seamless, cross-browser performance and accessibility through reusable UI components built
+                  with Angular Material and PrimeNG.</li>
+                <li>Enabled real-time data exchange and scalability using REST APIs, supporting thousands of users
+                  nationwide.</li>
+                <li>Designed a user-friendly interface for inclusivity and smooth operation, ensuring equal access to
+                  public services.</li>
+                <li>Delivered an enhanced user experience with a focus on accessibility, reliability, and ease of use,
+                  ensuring everyone can access emergency services equally.</li>
+                <li>Collaborated with UX/UI designers to enhance user experience and interface design.</li>
+                <li>Participated in code reviews, providing and receiving constructive feedback to improve code quality.
+                </li>
+                <li>Worked in an Agile environment, participating in sprint planning, daily stand-ups, and
+                  retrospectives.</li>
+                <li>Documented development processes, code changes, and technical specifications for reference and
+                  training.</li>
+                <li>Ensured cross-browser compatibility and mobile responsiveness of applications.</li>
+                <li>Conducted unit testing and integration testing to ensure software quality and reliability.</li>
+                <li>Provided technical support and troubleshooting assistance for frontend-related issues.</li>
+                <li>Kept up-to-date with emerging trends and technologies in frontend development and actively
+                  contributed to knowledge sharing within the team.</li>
+              </ul>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Technologies</h4>
+              <div class="tech-tags mb-3">
+                <span class="tech-tag html5">HTML5</span>
+                <span class="tech-tag js">JavaScript</span>
+                <span class="tech-tag css">CSS3</span>
+                <span class="tech-tag rest">REST API</span>
+                <span class="tech-tag angular">Angular</span>
+                <span class="tech-tag angular-material">Angular Material</span>
+                <span class="tech-tag primeng">PrimeNG</span>
+                <span class="tech-tag bootstrap">Bootstrap</span>
+                <span class="tech-tag rxjs">RxJS</span>
+                <span class="tech-tag typescript">TypeScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-4">
+          <div class="card shadow-sm rounded-4 p-4 border-0 d-flex flex-row align-items-start gap-4"
+            style="background: #f8fbff;">
+            <img src="ernst-young-ey-logo.png" alt="EY Logo"
+              style="width:90px; height:90px; object-fit:contain; border-radius:12px; box-shadow:0 2px 12px rgba(74,144,226,0.15); background:#fff; padding:8px;">
+            <div>
+              <h3 class="mb-2" style="font-family: 'Georgia', serif;">About EY (Ernst & Young)</h3>
+              <p style="font-size:1.1rem;">
+                EY is building a better working world by creating new value for clients, people, society, and the
+                planet, while building trust in the capital markets. Enabled by data, AI, and advanced technology, EY
+                teams help clients shape the future with confidence and develop answers for the most pressing issues of
+                today and tomorrow. EY teams in more than 150 countries work across a full spectrum of services in
+                assurance, consulting, tax, strategy, and transactions, strengthened by sector experience and diverse
+                ecosystem partners.
+              </p>
+              <a href="https://en.wikipedia.org/wiki/Ernst_%26_Young" target="_blank"
+                style="font-size:1rem; color:#4a90e2; text-decoration:underline;">Wikilink</a>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Project Description</h4>
+              <p style="font-size:1.05rem;">
+                DigiGST® is EY's flagship GST compliance platform, designed to help enterprises manage complex indirect
+                tax processes in India. The solution automates GST return filing, reconciliation, and reporting,
+                ensuring accuracy and regulatory compliance for large-scale organizations. DigiGST® leverages advanced
+                data validation, secure integrations, and real-time dashboards to simplify tax workflows and reduce
+                manual effort.
+              </p>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Role And Responsibilities</h4>
+              <h5 class="mb-2" style="font-family: 'Georgia', serif; color:#888;">Role: Frontend Developer</h5>
+              <ul style="font-size:1.05rem;">
+                <li>Developed frontend modules for return filing, e-invoicing, and data reconciliation using Angular and
+                  REST APIs.</li>
+                <li>Created reusable UI components with Angular Material, PrimeNG, and Bootstrap for consistent and
+                  accessible user interfaces.</li>
+                <li>Implemented virtual scrolling to optimize invoice loading speed, improving performance by 25% for
+                  large datasets.</li>
+                <li>Built dashboards to process and visualize high-volume tax data, ensuring fast and responsive user
+                  experience.</li>
+                <li>Integrated RxJS and TypeScript for efficient state management and reactive programming.</li>
+                <li>Enabled businesses to file GST returns (GSTR-1, GSTR-3B), auto-fetch, edit, validate, and submit
+                  invoices to government portals.</li>
+                <li>Developed e-invoicing features for generating and registering invoices with the Invoice Registration
+                  Portal (IRP).</li>
+                <li>Designed reconciliation dashboards to compare buyer and supplier data, highlight mismatches, and
+                  support corrective actions.</li>
+                <li>Ensured accessibility, cross-browser compatibility, and mobile responsiveness across all modules.
+                </li>
+                <li>Collaborated with backend teams for seamless REST API integration and real-time data processing.
+                </li>
+              </ul>
+              <h4 class="mt-4 mb-2" style="font-family: 'Georgia', serif;">Technologies</h4>
+              <div class="tech-tags mb-3">
+                <span class="tech-tag html5">HTML5</span>
+                <span class="tech-tag js">JavaScript</span>
+                <span class="tech-tag css">CSS3</span>
+                <span class="tech-tag rest">REST API</span>
+                <span class="tech-tag angular">Angular</span>
+                <span class="tech-tag angular-material">Angular Material</span>
+                <span class="tech-tag primeng">PrimeNG</span>
+                <span class="tech-tag bootstrap">Bootstrap</span>
+                <span class="tech-tag rxjs">RxJS</span>
+                <span class="tech-tag typescript">TypeScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Only Extreme Networks, Concentrix, and EY project cards remain -->
+      </div>
+    </div>
+  </section>
+
+  <!-- My Strength Section -->
+  <section id="my-strength" class="py-5" style="background: #f4f8fb;">
+    <div class="container">
+      <h2 class="text-center mb-5 strength-title"
+        style="font-family: 'Georgia', serif; font-size: 2.5rem; font-weight: bold;">
+        <span style="padding-bottom: 0.2em;">The Tools Of My Goals</span>
+      </h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4">
+          <div
+            class="card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center strength-card"
+            style="background: #fff; position: relative;">
+            <img src="https://img.icons8.com/color/96/000000/easel.png" alt="Learn & Improve" class="strength-icon"
+              style="width:96px; height:96px; object-fit:contain; margin-bottom: 1rem;">
+            <h5 class="fw-bold" style="font-family: 'Georgia', serif;">Learn & Improve</h5>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div
+            class="card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center strength-card"
+            style="background: #fff; position: relative;">
+            <img src="https://img.icons8.com/color/96/000000/stopwatch.png" alt="Time Management" class="strength-icon"
+              style="width:96px; height:96px; object-fit:contain; margin-bottom: 1rem;">
+            <h5 class="fw-bold" style="font-family: 'Georgia', serif;">Time Management</h5>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div
+            class="card text-center p-4 h-100 shadow-sm border-0 rounded-4 d-flex flex-column align-items-center justify-content-center strength-card"
+            style="background: #fff; position: relative;">
+            <img src="https://img.icons8.com/ios-filled/100/000000/barbell.png" alt="Stay Motivated"
+              class="strength-icon" style="width:96px; height:96px; object-fit:contain; margin-bottom: 1rem;">
+            <h5 class="fw-bold" style="font-family: 'Georgia', serif;">Stay Motivated</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impressive Footer -->
+  <footer>
+    <div style="font-size: 1.3rem; font-family: 'Georgia', serif; margin-bottom: 0.5rem;">
+      Made with <span style="color: #ff4b5c; animation: pulseHeart 1.2s infinite alternate;">&#10084;&#65039;</span> by
+      <strong>Nidhi Kumari</strong>
+    </div>
+    <div style="margin-bottom: 0.5rem;">
+      <a href="mailto:nidhikumariace0501@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/nidhi-kumari-419125236/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/nidhi-webdev" target="_blank">GitHub</a>
+    </div>
+    <div style="font-size: 1rem; opacity: 0.8;">&copy; 2025 Nidhi Kumari. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

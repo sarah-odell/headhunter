@@ -1,0 +1,1 @@
+{"languages": "TypeScript CSS PLpgSQL JavaScript HTML", "dependency_names": "@types/node prettier prettier-plugin-tailwindcss turbo typescript", "artifact_markers": "TypeScript project with typed build configuration | Build/test scripts present", "depth_score": "0.4"}

@@ -1137,7 +1137,8 @@ def build_why_summary(
         parts.append("location not publicly confirmed")
     if review_tags:
         parts.append(f"tags: {', '.join(review_tags[:2])}")
-    return ". ".join(parts) + "."
+    normalized_parts = [part[:1].upper() + part[1:] if part else part for part in parts]
+    return ". ".join(normalized_parts) + "."
 
 
 def evidence_density_label(evidence_records: list[dict[str, Any]]) -> str:
@@ -1227,8 +1228,6 @@ def contact_source_label(email: str, evidence_records: list[dict[str, Any]]) -> 
 def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[str], fit_score: float, requirement_judgments: dict[str, str], location_state: str) -> tuple[str, str]:
     if not location_eligible:
         return "insufficient_evidence", "Missing public London/Berlin evidence."
-    if location_state == "inferred":
-        return "needs_review", "Location is inferred from public sources and should be verified."
     backend_judgment = requirement_judgments.get("backend", "unknown")
     frontend_judgment = requirement_judgments.get("frontend", "unknown")
     if frontend_judgment == "confirmed" and backend_judgment != "confirmed":
@@ -1242,6 +1241,18 @@ def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[
     return "needs_review", "Some public evidence exists, but the profile needs manual review."
 
 
+def meets_live_quality_bar(evidence_records: list[dict[str, Any]], source_texts: dict[str, str], location_state: str, location_targets: list[str]) -> bool:
+    source_types = {record.get("source_type", "") for record in evidence_records}
+    has_profile_or_repo = bool({"profile", "repo", "website"} & source_types)
+    if not has_profile_or_repo:
+        return False
+    if location_targets and location_state == "unknown":
+        return False
+    if not source_texts.get("profile") and not source_texts.get("repo"):
+        return False
+    return True
+
+
 def to_status(score: float, location_eligible: bool = True) -> str:
     if not location_eligible:
         return "reject"
@@ -1250,6 +1261,19 @@ def to_status(score: float, location_eligible: bool = True) -> str:
     if score >= 0.25:
         return "hold"
     return "reject"
+
+
+def workflow_status_for_candidate(
+    score: float,
+    location_eligible: bool,
+    requirement_judgments: dict[str, str],
+) -> str:
+    status = to_status(score, location_eligible=location_eligible)
+    frontend_judgment = requirement_judgments.get("frontend", "unknown")
+    backend_judgment = requirement_judgments.get("backend", "unknown")
+    if status == "shortlist" and frontend_judgment == "confirmed" and backend_judgment != "confirmed":
+        return "hold"
+    return status
 
 
 def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: bool = True) -> list[CandidateCard]:
@@ -1289,6 +1313,8 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             if location_hits and location_state == "unknown":
                 location_state = "inferred"
         location_eligible = bool(location_hits) if location_targets else True
+        if enrich_profiles and not meets_live_quality_bar(evidence_records, source_texts, location_state, location_targets):
+            continue
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
         identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
         requirement_judgments = build_requirement_judgments(requirement_scores)
@@ -1343,7 +1369,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             nice_to_have_score=nice_score,
             confidence_score=confidence,
             rationale=rationale,
-            status=to_status(score, location_eligible=location_eligible),
+            status=workflow_status_for_candidate(score, location_eligible=location_eligible, requirement_judgments=requirement_judgments),
             location_hits=location_hits,
             location_eligible=location_eligible,
             location_state=location_state,

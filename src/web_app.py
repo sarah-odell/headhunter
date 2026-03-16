@@ -26,7 +26,7 @@ DEFAULT_BRIEF = ROOT / "role_briefs" / "hash_full_stack_engineer.json"
 DEFAULT_OUTPUT = ROOT / "data" / "candidates.json"
 DEFAULT_CSV = ROOT / "data" / "candidates.csv"
 DEFAULT_SEED = ROOT / "data" / "sample_search_results.json"
-DEFAULT_MAX_RESULTS = 5
+DEFAULT_MAX_RESULTS = 20
 STATUS_OPTIONS = ("shortlist", "hold", "reject")
 
 
@@ -1334,7 +1334,7 @@ def render_page(
             GitHub profiles per search
             <input type="number" name="max_results" min="1" max="25" value="{max_results}">
           </label>
-          <p class="field-note">The tool runs multiple searches for the role, so total raw results will be higher than this number. Start with 5 for about 20 raw results.</p>
+          <p class="field-note">The tool runs multiple searches for the role, so total raw results will be higher than this number. Start with 20 for about 60 raw results.</p>
           <p class="field-note">Live sourcing can take 10-20 seconds while public profiles and repos are enriched.</p>
           <label class="checkbox">
             <input type="checkbox" name="use_seed"{seed_checked}>

@@ -1,0 +1,1 @@
+{"languages": "TypeScript", "dependency_names": "node-binance-api @babel/core @babel/preset-env @babel/preset-typescript @types/express @types/node @typescript-eslint/parser eslint prettier ts-node typescript", "artifact_markers": "TypeScript project with typed build configuration | Build/test scripts present", "depth_score": "0.4"}

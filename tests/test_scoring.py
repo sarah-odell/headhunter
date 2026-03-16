@@ -1,6 +1,6 @@
 import unittest
 
-from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_candidate_with_evidence, score_location, to_status, update_card_status
+from src.recruiting_tool import CandidateCard, cards_to_csv_text, score_candidate, score_candidate_with_evidence, score_location, to_status, update_card_status, workflow_status_for_candidate
 from src.recruiting_tool import _choose_preferred_email, _extract_github_search_payload, _extract_public_email, _normalize_email, generate_outreach, is_github_profile_url
 
 
@@ -89,6 +89,17 @@ class ScoreCandidateTests(unittest.TestCase):
         self.assertEqual(to_status(0.9, location_eligible=False), "reject")
         self.assertEqual(to_status(0.56, location_eligible=True), "shortlist")
         self.assertEqual(to_status(0.3, location_eligible=True), "hold")
+
+    def test_frontend_heavy_candidate_defaults_to_hold_without_confirmed_backend(self):
+        status = workflow_status_for_candidate(
+            0.8,
+            location_eligible=True,
+            requirement_judgments={
+                "frontend": "confirmed",
+                "backend": "partial",
+            },
+        )
+        self.assertEqual(status, "hold")
 
     def test_is_github_profile_url_accepts_profile_and_rejects_repo(self):
         self.assertTrue(is_github_profile_url("https://github.com/yyx990803"))
