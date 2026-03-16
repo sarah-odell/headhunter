@@ -135,10 +135,10 @@ def render_page(
     candidate_cards = []
     candidate_rows = []
     for rank, card in enumerate(ranked_cards, start=1):
-        location_text = ", ".join(card.location_hits) if card.location_hits else "No London/Berlin evidence"
+        location_pill = ", ".join(card.location_hits) if card.location_hits else "Location unknown"
         found_via_text = ", ".join(card.found_via) if getattr(card, "found_via", None) else "GitHub user search"
         email_html = (
-            f'<a class="ghost-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
+            f'<a class="ghost-link meta-link" href="mailto:{escape(card.email)}">{escape(card.email)}</a>'
             if card.email
             else '<span class="candidate-location-note">No public email on GitHub</span>'
         )
@@ -190,6 +190,7 @@ def render_page(
                     <span class="pill">#{rank}</span>
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</span>
+                    <span class="pill">{display_text(location_pill)}</span>
                   </div>
                   <h3>{display_text(card.name)}</h3>
                   <p class="headline">{display_text(card.headline)}</p>
@@ -200,14 +201,14 @@ def render_page(
                 </div>
               </div>
               <div class="candidate-topline">
-                <a class="ghost-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
-                <div class="candidate-inline-meta">
+                <div class="candidate-link-row">
+                  <a class="ghost-link meta-link" href="{escape(card.source_url)}" target="_blank" rel="noreferrer">Open GitHub profile</a>
                   {email_html}
+                </div>
+                <div class="candidate-inline-meta">
                   <span class="candidate-location-note">Found via {display_text(found_via_text)}</span>
-                  <span class="candidate-location-note">{display_text(location_text)}</span>
                 </div>
               </div>
-              <p class="candidate-location-note">{display_text(card.eligibility_reason)}</p>
               <p class="candidate-location-note">{display_text(getattr(card, "reviewer_note", "") or "Public evidence is still heuristic and should be reviewed.")}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
@@ -808,8 +809,9 @@ def render_page(
       margin-bottom: 10px;
     }}
     .score-stack {{
-      display: grid;
-      justify-items: end;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       gap: 8px;
     }}
     .score-pill {{
@@ -824,23 +826,35 @@ def render_page(
       box-shadow: var(--shadow-accent);
     }}
     .candidate-topline {{
+      display: grid;
+      gap: 12px;
+      margin: 16px 0;
+    }}
+    .candidate-link-row {{
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 10px;
       flex-wrap: wrap;
     }}
     .candidate-inline-meta {{
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0;
       flex-wrap: wrap;
-      justify-content: flex-end;
+    }}
+    .candidate-inline-meta > * + *::before {{
+      content: "|";
+      margin: 0 10px;
+      color: var(--foreground-subtle);
     }}
     .candidate-location-note {{
       color: var(--foreground-muted);
       font-size: 14px;
+    }}
+    .meta-link {{
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
     }}
     .score-breakdown {{
       display: grid;
