@@ -72,6 +72,14 @@ def review_state_label(value: str) -> str:
     return labels.get(value or "needs_review", "Partial evidence base")
 
 
+def requirement_judgment(value: float) -> str:
+    if value >= 0.85:
+        return "Confirmed"
+    if value > 0:
+        return "Partial"
+    return "Unknown"
+
+
 def render_page(
     brief_path: Path,
     output_path: Path,
@@ -147,18 +155,23 @@ def render_page(
             f'<span class="match-badge subdued">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
             for hit in card.nice_to_have_hits
         ) or '<span class="match-empty">No supporting evidence</span>'
+        visible_requirements = list(brief["must_haves"])
+        extra_requirements = [
+            requirement for requirement in brief.get("nice_to_haves", [])
+            if requirement in {"Rust", "Effect", "HTML Canvas", "animation", "graphics"}
+        ][:2]
         github_work_rows = "".join(
             f"""
             <div class="signal-row">
               <div class="signal-head">
-                <span class="signal-label">{label}</span>
-                <span class="signal-chip">{evidence_level(card.requirement_scores.get(key, 0.0))}</span>
+                <span class="signal-label">{display_text(key)}</span>
+                <span class="signal-chip">{requirement_judgment(card.requirement_scores.get(key, 0.0))}</span>
               </div>
-              <div class="signal-meta">{display_text(card.requirement_sources.get(key, "no evidence") or "no evidence")}</div>
-              <div class="signal-evidence">{display_text(card.requirement_evidence.get(key, "") or "No concrete public repo evidence found.")}</div>
+              <div class="signal-meta">{display_text(card.requirement_sources.get(key, "") or "No explicit source evidence")}</div>
+              <div class="signal-evidence">{display_text(card.requirement_evidence.get(key, "") or "No explicit public evidence found.")}</div>
             </div>
             """
-            for key, label in (("TypeScript", "TypeScript evidence"), ("React", "React evidence"))
+            for key in [*visible_requirements, *extra_requirements]
         )
         status_form = "".join(
             f"""
@@ -221,7 +234,7 @@ def render_page(
                 </section>
               </div>
               <section class="signal-panel">
-                <h4>GitHub work signals</h4>
+                <h4>Requirement evidence</h4>
                 <div class="signal-grid">{github_work_rows}</div>
               </section>
               <details class="detail-panel">

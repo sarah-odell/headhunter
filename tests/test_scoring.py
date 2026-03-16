@@ -194,6 +194,10 @@ class ScoreCandidateTests(unittest.TestCase):
         html = "<div>Contact: ada@example.com</div>"
         self.assertEqual(_extract_public_email(html), "ada@example.com")
 
+    def test_extract_public_email_reads_profile_email_selectors(self):
+        html = '<li itemprop="email"><a class="u-email" href="mailto:ada%40example.com">ada@example.com</a></li>'
+        self.assertEqual(_extract_public_email(html), "ada@example.com")
+
     def test_choose_preferred_email_avoids_noreply_when_possible(self):
         chosen = _choose_preferred_email([
             "12345+ada@users.noreply.github.com",

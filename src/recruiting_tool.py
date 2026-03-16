@@ -552,12 +552,20 @@ def enrich_github_result(item: dict) -> dict:
 
 
 def _extract_public_email(html: str) -> str:
-    mailto = _first_match(r'href="mailto:([^"]+)"', html)
-    if mailto:
-        return _normalize_email(unquote(mailto))
-    text_match = _first_match(r'aria-label="Email:\s*([^"]+)"', html)
-    if text_match:
-        return _normalize_email(unquote(text_match))
+    candidate_patterns = [
+        r'href="mailto:([^"]+)"',
+        r'itemprop="email"[^>]*href="mailto:([^"]+)"',
+        r'itemprop="email"[^>]*>\s*([^<@\s]+@[^<\s]+)\s*<',
+        r'class="[^"]*\bu-email\b[^"]*"[^>]*>\s*([^<@\s]+@[^<\s]+)\s*<',
+        r'data-test-selector="profile-email"[^>]*>\s*([^<@\s]+@[^<\s]+)\s*<',
+        r'aria-label="Email:\s*([^"]+)"',
+    ]
+    for pattern in candidate_patterns:
+        match = _first_match(pattern, html)
+        if match:
+            normalized = _normalize_email(unquote(match))
+            if normalized:
+                return normalized
     visible_match = EMAIL_RE.search(_strip_tags(html))
     return _normalize_email(visible_match.group(0) if visible_match else "")
 
