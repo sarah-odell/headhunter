@@ -63,6 +63,15 @@ def evidence_level(value: float) -> str:
     return "No evidence"
 
 
+def review_state_label(value: str) -> str:
+    labels = {
+        "ready": "Strong evidence base",
+        "needs_review": "Partial evidence base",
+        "insufficient_evidence": "Insufficient public evidence",
+    }
+    return labels.get(value or "needs_review", "Partial evidence base")
+
+
 def render_page(
     brief_path: Path,
     output_path: Path,
@@ -159,8 +168,6 @@ def render_page(
             """
             for status in STATUS_OPTIONS
         )
-        location_state = "Eligible" if card.location_eligible else "Outside target locations"
-        location_class = "eligible" if card.location_eligible else "ineligible"
         candidate_cards.append(
             f"""
             <article class="candidate-card spotlight-card reveal">
@@ -169,8 +176,8 @@ def render_page(
                   <div class="candidate-meta">
                     <span class="pill">#{rank}</span>
                     <span class="pill pill-status">{escape(card.status.title())}</span>
-                    <span class="pill pill-location {location_class}">{escape(location_state)}</span>
                     <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
+                    <span class="pill">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</span>
                   </div>
                   <h3>{display_text(card.name)}</h3>
                   <p class="headline">{display_text(card.headline)}</p>
@@ -189,6 +196,7 @@ def render_page(
                 </div>
               </div>
               <p class="candidate-location-note">{display_text(card.eligibility_reason)}</p>
+              <p class="candidate-location-note">{display_text(getattr(card, "reviewer_note", "") or "Public evidence is still heuristic and should be reviewed.")}</p>
               <div class="score-breakdown">
                 <div class="breakdown-item">
                   <span class="eyebrow-label">Must-haves</span>
@@ -254,7 +262,7 @@ def render_page(
               <td class="col-score">{percent_label(card.fit_score)}</td>
               <td class="col-score">{percent_label(card.must_have_score)}</td>
               <td class="col-score">{percent_label(card.nice_to_have_score)}</td>
-              <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text(card.evidence_density.title())} evidence</div></td>
+              <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</div></td>
               <td class="col-skills">{display_text(", ".join(card.must_have_hits) if card.must_have_hits else "None")}</td>
               <td class="col-skills">{display_text(", ".join(card.nice_to_have_hits) if card.nice_to_have_hits else "None")}</td>
             </tr>

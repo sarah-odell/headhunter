@@ -64,20 +64,25 @@ For each candidate, it gathers public evidence from:
 Scoring is heuristic and evidence-weighted.
 
 - Each requirement in [role_briefs/hash_full_stack_engineer.json](/Users/sarahodell/Projects/headhunter/role_briefs/hash_full_stack_engineer.json) is checked against the candidate’s public evidence.
+- Matching is token-aware rather than raw substring-based. Ambiguous aliases like `ts`, `ui`, and `api` are intentionally excluded to reduce false positives.
 - Stronger evidence sources carry more weight:
   - `repo` is strongest
   - `profile` is medium
   - `linked site` is medium
   - `public web` is weaker
   - `search` is weakest
+- Requirement evidence shown in the UI is an actual matched excerpt, not just a generic repo snippet. Source labels also include provenance such as `repo · Pinned repository summary` or `profile · GitHub profile bio`.
 - Repo-level evidence is not limited to repo titles. The tool also pulls repo page summaries and technical markers that strengthen signals around `TypeScript`, `React`, backend work, performance, and open-source activity.
 - The tool computes:
   - `must_have_score`
   - `nice_to_have_score`
   - `fit_score`
   - `confidence_score`
+- The tool also produces reviewer-facing uncertainty states:
+  - `ready`
+  - `needs_review`
+  - `insufficient_evidence`
 - Candidates are ranked by fit score, then must-have score, nice-to-have score, and confidence.
-- Each candidate also gets an evidence density signal (`low`, `medium`, `high`) based on how much public support was collected.
 
 For this role, London or Berlin is a hard eligibility gate. Candidates without public location evidence for either city are automatically rejected.
 
@@ -88,6 +93,12 @@ Automatic workflow thresholds:
 - `reject` otherwise
 
 The UI displays these scores as percentages, shows evidence snippets and source labels, and allows manual status changes. Outreach drafts now cite one especially concrete public artifact rather than relying only on generic skill mentions.
+
+## Validation and limitations
+
+- A small manual validation fixture lives at [tests/fixtures/validation_profiles.json](/Users/sarahodell/Projects/headhunter/tests/fixtures/validation_profiles.json) to document expected classes of outcomes.
+- Missing evidence is treated as `unknown`, not as proof that a candidate lacks a skill.
+- This remains a heuristic screening tool. Sparse public profiles, GitHub rate limits, and missing repo metadata can still produce `needs_review` candidates that require human judgment.
 
 ## Current role brief
 

@@ -64,15 +64,26 @@ class ScoreCandidateTests(unittest.TestCase):
             "website": "",
         }
 
-        must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence = score_candidate_with_evidence(brief, source_texts)
+        must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence, requirement_provenance, uncertainty_flags = score_candidate_with_evidence(brief, source_texts)
 
         self.assertEqual(must_hits, ["TypeScript", "React"])
         self.assertEqual(nice_hits, [])
         self.assertEqual(requirement_scores["TypeScript"], 1.0)
         self.assertEqual(requirement_sources["TypeScript"], "repo")
         self.assertEqual(requirement_evidence["TypeScript"], "")
+        self.assertEqual(requirement_provenance["TypeScript"], "")
+        self.assertEqual(uncertainty_flags, [])
         self.assertGreater(confidence, 0.6)
         self.assertGreater(fit_score, 0.8)
+
+    def test_score_candidate_avoids_false_positive_substrings(self):
+        must_haves = ["TypeScript", "backend"]
+        nice = []
+        text = "Strong testing discipline and API-first product thinking."
+
+        must_hits, _, _, _, _ = score_candidate(text, must_haves, nice)
+
+        self.assertEqual(must_hits, [])
 
     def test_to_status_rejects_without_location_eligibility(self):
         self.assertEqual(to_status(0.9, location_eligible=False), "reject")
@@ -117,7 +128,10 @@ class ScoreCandidateTests(unittest.TestCase):
                 status="hold",
                 location_hits=["London"],
                 location_eligible=True,
+                location_state="confirmed",
                 eligibility_reason="Eligible",
+                review_state="ready",
+                reviewer_note="Strong public evidence.",
                 requirement_scores={"TypeScript": 1.0},
                 requirement_sources={"TypeScript": "repo"},
                 requirement_evidence={"TypeScript": "Repo evidence"},
@@ -152,7 +166,10 @@ class ScoreCandidateTests(unittest.TestCase):
                 status="shortlist",
                 location_hits=["London"],
                 location_eligible=True,
+                location_state="confirmed",
                 eligibility_reason="Eligible",
+                review_state="ready",
+                reviewer_note="Strong public evidence.",
                 requirement_scores={"TypeScript": 1.0, "React": 1.0},
                 requirement_sources={"TypeScript": "repo", "React": "profile"},
                 requirement_evidence={"TypeScript": "Repo evidence", "React": "Profile evidence"},
@@ -167,6 +184,7 @@ class ScoreCandidateTests(unittest.TestCase):
         self.assertIn("Rust", csv_text)
         self.assertIn("shortlist", csv_text)
         self.assertIn("0.8", csv_text)
+        self.assertIn("ready", csv_text)
 
     def test_extract_public_email_prefers_mailto(self):
         html = '<a href="mailto:ada%40example.com">ada@example.com</a>'
@@ -201,10 +219,11 @@ class ScoreCandidateTests(unittest.TestCase):
             ["TypeScript"],
             ["React"],
             "https://github.com/ada",
-            {"TypeScript": "TypeScript-heavy open source repo"},
+            {"TypeScript": "the TypeScript-heavy open source repo typed-platform"},
             ["Berlin"],
         )
         self.assertTrue(draft.endswith("Best,\nHASH Recruiting Team"))
+        self.assertIn("typed-platform", draft)
 
 
 if __name__ == "__main__":

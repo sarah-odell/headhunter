@@ -1,0 +1,17 @@
+[
+  {
+    "label": "strong_full_stack_match",
+    "expectation": "shortlist",
+    "notes": "Repo-backed TypeScript and React evidence with Berlin location."
+  },
+  {
+    "label": "needs_review_sparse_frontend",
+    "expectation": "needs_review",
+    "notes": "Some full-stack evidence but weak frontend proof."
+  },
+  {
+    "label": "insufficient_location_evidence",
+    "expectation": "insufficient_evidence",
+    "notes": "Good technical signals but no public London/Berlin confirmation."
+  }
+]

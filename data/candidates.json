@@ -23,6 +23,7 @@
         "label": "GitHub user search",
         "snippet": "\ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | 152 public repos | 37 followers",
         "text": "Matheus Viana moviandev \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities Berlin, Germany \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities Berlin, Germany 152 public repos 37 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -32,6 +33,7 @@
         "label": "GitHub profile",
         "snippet": "\ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany",
         "text": "Matheus Viana moviandev \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities Berlin, Germany \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities - moviandev matheus_o_viana@hotmail.com",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -41,6 +43,7 @@
         "label": "Repo: moviandev",
         "snippet": "",
         "text": "moviandev moviandev",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -50,6 +53,7 @@
         "label": "Repo: HornetSecurityChallenge",
         "snippet": "C#",
         "text": "HornetSecurityChallenge C# moviandev C#",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -59,6 +63,7 @@
         "label": "Repo: gardener-ai",
         "snippet": "A fullstack AI Agent designed to assist with plant care using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. | TypeScript",
         "text": "gardener-ai A fullstack AI Agent designed to assist with plant care using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-project moviandev TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -76,13 +81,16 @@
     "must_have_score": 1.0,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.85,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin']; top evidence: \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | 152 public repos | 37 followers | \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | C#.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: none; must-have score: 1.000; nice-to-have score: 0.000; confidence: 0.850; location: ['Berlin']; top evidence: \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | 152 public repos | 37 followers | \ud83d\udc68\u200d\ud83d\udcbb Backend dev Node.js | AI Engineering Student | \ud83c\udde9\ud83c\uddea Germany-based | Clean code & scalable systems | Open to remote opportunities | Berlin, Germany | C#; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 1.0,
@@ -103,10 +111,10 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "repo",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
+      "backend": "repo \u00b7 Repository list summary",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -122,10 +130,10 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "C#",
-      "React": "A fullstack AI Agent designed to assist with plant care using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. | TypeScript",
-      "frontend": "A fullstack AI Agent designed to assist with plant care using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. | TypeScript",
-      "backend": "A fullstack AI Agent designed to assist with plant care using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. | TypeScript",
+      "TypeScript": "ing) and Computer Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-project moviandev TypeScript",
+      "React": "using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-",
+      "frontend": "using RAG (YouTube learning) and Computer Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-",
+      "backend": "Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-project moviandev TypeScript",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -140,7 +148,7 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Matheus Viana,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Matheus Viana,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your Berlin location.\n\nI was particularly interested in your work on ing) and Computer Vision, built with Python (FastAPI), React, and React Native. TypeScript react nodejs python react-native ai openai final-project moviandev TypeScript. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "b962006a",
@@ -164,6 +172,7 @@
         "label": "GitHub user search",
         "snippet": "Full-stack engineer and tech enthusiast.\r\n\r\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany | 18 public repos | 16 followers",
         "text": "Igor Matias matyas-igor Full-stack engineer and tech enthusiast.\r\n\r\nTypescript / React / React\u00a0Native / NodeJS / Postgres Berlin, Germany Full-stack engineer and tech enthusiast.\r\n\r\nTypescript / React / React\u00a0Native / NodeJS / Postgres Berlin, Germany 18 public repos 16 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -173,6 +182,7 @@
         "label": "GitHub profile",
         "snippet": "Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany",
         "text": "Igor Matias matyas-igor Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres Berlin, Germany Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres - matyas-igor",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -182,6 +192,7 @@
         "label": "Repo: pr-number-action",
         "snippet": "Replaces [#PR] with an actual PR number in a description body | JavaScript",
         "text": "pr-number-action Replaces [#PR] with an actual PR number in a description body JavaScript github pr number action matyas-igor",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -191,6 +202,7 @@
         "label": "Repo: material-ui",
         "snippet": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript",
         "text": "material-ui MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. JavaScript matyas-igor JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -200,6 +212,7 @@
         "label": "Repo: blood-donation-app",
         "snippet": "\ud83d\udc89 Blood donation management system | TypeScript",
         "text": "blood-donation-app \ud83d\udc89 Blood donation management system TypeScript gulp bootstrap express rxjs angular2 socketio esri matyas-igor TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -220,13 +233,16 @@
     "must_have_score": 0.911,
     "nice_to_have_score": 0.12,
     "confidence_score": 0.89,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile, Material UI 1.00 via repo; must-have score: 0.911; nice-to-have score: 0.120; confidence: 0.890; location: ['Berlin']; top evidence: Full-stack engineer and tech enthusiast.\r\n\r\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany | 18 public repos | 16 followers | Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany | Replaces [#PR] with an actual PR number in a description body | JavaScript.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile, Material UI 1.00 via repo; must-have score: 0.911; nice-to-have score: 0.120; confidence: 0.890; location: ['Berlin']; top evidence: Full-stack engineer and tech enthusiast.\r\n\r\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany | 18 public repos | 16 followers | Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany | Replaces [#PR] with an actual PR number in a description body | JavaScript; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 1.0,
@@ -247,185 +263,44 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "profile",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
-      "storage systems": "profile",
+      "storage systems": "profile \u00b7 GitHub profile bio",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
       "graphics": "",
       "animation": "",
-      "Material UI": "repo",
+      "Material UI": "repo \u00b7 Repository list summary",
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript",
-      "React": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript",
-      "frontend": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript",
-      "backend": "Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany",
+      "TypeScript": "blood-donation-app \ud83d\udc89 Blood donation management system TypeScript gulp bootstrap express rxjs angular2 socketio esri matyas-igor TypeScript",
+      "React": "material-ui MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Ma",
+      "frontend": "material-ui MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Ma",
+      "backend": "r Full-stack engineer and tech enthusiast. Typescript / React / React Native / NodeJS / Postgres Berlin, Germany Full-stack engineer and tech enthusiast. Typescript",
       "performance": "",
       "data structures": "",
-      "storage systems": "Full-stack engineer and tech enthusiast.\n\nTypescript / React / React\u00a0Native / NodeJS / Postgres | Berlin, Germany",
+      "storage systems": "ack engineer and tech enthusiast. Typescript / React / React Native / NodeJS / Postgres Berlin, Germany Full-stack engineer and tech enthusiast. Typescript / React /",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
       "graphics": "",
       "animation": "",
-      "Material UI": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. | JavaScript",
+      "Material UI": "MUI Core: Ready-to-use foundational React components, free forever. It includes Material UI, which implements Google's Material Design. JavaScript matyas-igor JavaScript",
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "7c473ab1",
-    "name": "inker",
-    "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-    "source_url": "https://github.com/inker",
-    "email": "",
-    "found_via": [
-      "GitHub user search"
-    ],
-    "evidence_links": [
-      "https://github.com/inker",
-      "https://github.com/inker/metro",
-      "https://github.com/inker/draw",
-      "https://github.com/inker/snake.ts"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+react&type=users&p=1",
-        "label": "GitHub user search",
-        "snippet": "JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers",
-        "text": "inker inker JavaScript, TypeScript, React, Node.js London JavaScript, TypeScript, React, Node.js London 40 public repos 80 followers",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/inker",
-        "label": "GitHub profile",
-        "snippet": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-        "text": "inker JavaScript, TypeScript, React, Node.js @Mimica-Automation London JavaScript, TypeScript, React, Node.js. inker has 40 repositories available. Follow their code on GitHub.",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/metro",
-        "label": "Repo: metro",
-        "snippet": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
-        "text": "metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/draw",
-        "label": "Repo: draw",
-        "snippet": "\u26bd Champions League draw simulator | TypeScript",
-        "text": "draw \u26bd Champions League draw simulator TypeScript typescript tournament soccer draw seeding football champions-league inker TypeScript",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/inker/snake.ts",
-        "label": "Repo: snake.ts",
-        "snippet": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-        "text": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 5,
-    "evidence_density": "medium",
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.774,
-    "must_have_score": 0.911,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.86,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London']; top evidence: JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers | JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London | \ud83d\ude87 a proposal for the St Petersburg underground | TypeScript.",
-    "status": "shortlist",
-    "location_hits": [
-      "London"
-    ],
-    "location_eligible": true,
-    "eligibility_reason": "Eligible: public evidence aligns with London.",
-    "requirement_scores": {
-      "TypeScript": 1.0,
-      "React": 1.0,
-      "frontend": 1.0,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "profile",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
-      "React": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-      "frontend": "\ud83d\udc0d Yet another snake implementation | TypeScript",
-      "backend": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Igor Matias,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React, storage systems and your Berlin location.\n\nI was particularly interested in your work on blood-donation-app \ud83d\udc89 Blood donation management system TypeScript gulp bootstrap express rxjs angular2 socketio esri matyas-igor TypeScript. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "12efe01b",
@@ -451,6 +326,7 @@
         "label": "GitHub user search",
         "snippet": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | 26 public repos | 166 followers",
         "text": "Jos\u00e9 Quinto jquintozamora Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. London Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. London 26 public repos 166 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -460,6 +336,7 @@
         "label": "GitHub profile",
         "snippet": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",
         "text": "Jos\u00e9 Quinto jquintozamora Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. London Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. - jquintozamora",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -469,6 +346,7 @@
         "label": "Linked website",
         "snippet": "Software Engineer | Jos\u00e9 Quinto I am a software engineer focused on web development and open-source contributor. Software Engineer | Jos\u00e9 Quintovar GLOBAL = { root: '/', algolia: {\"appId\":\"C7MOFESP3V\",\"apiKey\":\"cdc4a9b7a",
         "text": "Software Engineer | Jos\u00e9 Quinto I am a software engineer focused on web development and open-source contributor. Software Engineer | Jos\u00e9 Quintovar GLOBAL = { root: '/', algolia: {\"appId\":\"C7MOFESP3V\",\"apiKey\":\"cdc4a9b7af864c710f2d3da5caf59eec\",\"indexName\":\"dev_JQBLOG\",\"hits\":{\"per_page\":10},\"labels\":{\"input_placeholder\":\"Search for Posts\",\"hits_empty\":\"We didn't find any results for the search: ${query}\",\"hits_stats\":\"${hits} results found in ${time} ms\"}}, copy: { success: 'Copy successfully', error: 'Copy error', noSupport: 'The browser does not support' } } Jos\u00e9 QuintoSearch posts:AboutHello, I'm Jos\u00e9Software Engineer Git: sync your fork with the original repo 2020-04-04GitSync Fork My experience as Oxford Artificial Intelligence Programme 2019 student 2019-07-24AIMachine LearningDeep Learning Alexa, certify me on Skill Building 2019-04-18AWSCertificationAlexa Wrapping up 2018 2019-02-24ReactNodeJSGraphQLAlexaBFFRedux Configuring permissions to request email access for use in your Alexa Skill 2018-08-06Voice AppAlexa SkillEnvironmentDevelopment Pipeline How to architecture and implement Integration Tests for GraphQL BFF API using docker 2018-07-18NodeJSBFF LayerGraphQL Configuring linter, git hooks and auto-format to improve our development workflow 2018-06-14Alexa SkillEnvironmentGitLinter Creating a Development Pipeline for Alexa Skill on a multideveloper environment 2018-06-11Voice AppAlexa SkillEnvironmentDevelopment Pipeline Deploying Alexa Skill using an already created lambda function and role 2018-04-25Voice AppAWS LambdaAlexa SkillAlexa Skill Deployment Building my first Voice App for Amazon Echo (Alexa) Skill with NodeJS 2018-04-23Voice AppAlexa SKillAWS Lambda Changing my Blogging Platform to GitHub Pages 2018-02-08Github PagesHexoPUGResponsive DesignNetlifyStatic Site Generator How to configure webpack for replacing your API module path by a Mock API Path 2017-07-10webpackTypeScriptwebpack 2apimock12\u20267\u00a92013 - 2020 By Jos\u00e9 Quintowindow.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date; ga('create', 'UA-44570510-1', 'auto'); ga('send', 'pageview');",
+        "provenance": "Linked personal website",
         "matched_requirements": [],
         "strength": 0.55
       },
@@ -478,6 +356,7 @@
         "label": "Repo: react-d3-treemap",
         "snippet": "Treemap based on d3.treemap built using React | TypeScript",
         "text": "react-d3-treemap Treemap based on d3.treemap built using React TypeScript react d3 typescript jquintozamora",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -487,6 +366,7 @@
         "label": "Repo: react-d3-calendar-heatmap",
         "snippet": "Calendar HeatMap based on https://observablehq.com/@d3/calendar-view | TypeScript",
         "text": "react-d3-calendar-heatmap Calendar HeatMap based on https://observablehq.com/@d3/calendar-view TypeScript react d3 jquintozamora TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -496,6 +376,7 @@
         "label": "Repo: react-d3-treemap-consume-typescript",
         "snippet": "TypeScript",
         "text": "react-d3-treemap-consume-typescript TypeScript jquintozamora TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -513,13 +394,16 @@
     "must_have_score": 0.911,
     "nice_to_have_score": 0.0,
     "confidence_score": 1.0,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 1.000; location: ['London']; top evidence: Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | 26 public repos | 166 followers | Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | Software Engineer | Jos\u00e9 Quinto I am a software engineer focused on web development and open-source contributor. Software Engineer | Jos\u00e9 Quintovar GLOBAL = { root: '/', algolia: {\"appId\":\"C7MOFESP3V\",\"apiKey\":\"cdc4a9b7a.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 1.000; location: ['London']; top evidence: Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | 26 public repos | 166 followers | Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London | Software Engineer | Jos\u00e9 Quinto I am a software engineer focused on web development and open-source contributor. Software Engineer | Jos\u00e9 Quintovar GLOBAL = { root: '/', algolia: {\"appId\":\"C7MOFESP3V\",\"apiKey\":\"cdc4a9b7a; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 1.0,
@@ -540,10 +424,10 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "profile",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -559,10 +443,10 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "Treemap based on d3.treemap built using React | TypeScript",
-      "React": "Treemap based on d3.treemap built using React | TypeScript",
-      "frontend": "Treemap based on d3.treemap built using React | TypeScript",
-      "backend": "Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. | London",
+      "TypeScript": "react-d3-treemap Treemap based on d3.treemap built using React TypeScript react d3 typescript jquintozamora",
+      "React": "react-d3-treemap Treemap based on d3.treemap built using React TypeScript react d3 ty",
+      "frontend": "react-d3-treemap Treemap based on d3.treemap built using React TypeScript react d3 ty",
+      "backend": "ozamora Senior Software Engineer working with JavaScript, TypeScript, React and NodeJS. London Senior Software Engineer working with JavaScript, TypeScript, React and",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -577,68 +461,71 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Jos\u00e9 Quinto,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nI was particularly interested in your work on react-d3-treemap Treemap based on d3.treemap built using React TypeScript react d3 typescript jquintozamora. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
-    "id": "343cb4a7",
-    "name": "Mohd Javed",
-    "headline": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
-    "source_url": "https://github.com/devjavedmohd",
-    "email": "dev.javedmohd@gmail.com",
+    "id": "7c473ab1",
+    "name": "inker",
+    "headline": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+    "source_url": "https://github.com/inker",
+    "email": "",
     "found_via": [
-      "GitHub user search",
-      "Linked website"
+      "GitHub user search"
     ],
     "evidence_links": [
-      "https://github.com/devjavedmohd",
-      "javedwedmsi.github.io",
-      "https://github.com/devjavedmohd/data-engineer-handbook",
-      "https://github.com/devjavedmohd/data-engineering-zoomcamp",
-      "https://github.com/devjavedmohd/interview_questions"
+      "https://github.com/inker",
+      "https://github.com/inker/metro",
+      "https://github.com/inker/draw",
+      "https://github.com/inker/snake.ts"
     ],
     "evidence_records": [
       {
         "source_type": "search",
         "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+react&type=users&p=1",
         "label": "GitHub user search",
-        "snippet": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers",
-        "text": "Mohd Javed devjavedmohd Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript London Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript London 235 public repos 17 followers",
+        "snippet": "JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers",
+        "text": "inker inker JavaScript, TypeScript, React, Node.js London JavaScript, TypeScript, React, Node.js London 40 public repos 80 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
       {
         "source_type": "profile",
-        "url": "https://github.com/devjavedmohd",
+        "url": "https://github.com/inker",
         "label": "GitHub profile",
-        "snippet": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
-        "text": "Mohd Javed devjavedmohd Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript - devjavedmohd dev.javedmohd@gmail.com",
+        "snippet": "JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London",
+        "text": "inker JavaScript, TypeScript, React, Node.js @Mimica-Automation London JavaScript, TypeScript, React, Node.js. inker has 40 repositories available. Follow their code on GitHub.",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
       {
         "source_type": "repo",
-        "url": "https://github.com/devjavedmohd/data-engineer-handbook",
-        "label": "Repo: data-engineer-handbook",
-        "snippet": "This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook",
-        "text": "data-engineer-handbook This is a repo with links to everything you'd ever want to learn about data engineering Jupyter Notebook devjavedmohd",
+        "url": "https://github.com/inker/metro",
+        "label": "Repo: metro",
+        "snippet": "\ud83d\ude87 a proposal for the St Petersburg underground | TypeScript",
+        "text": "metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
       {
         "source_type": "repo",
-        "url": "https://github.com/devjavedmohd/data-engineering-zoomcamp",
-        "label": "Repo: data-engineering-zoomcamp",
-        "snippet": "Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc | Jupyter Notebook",
-        "text": "data-engineering-zoomcamp Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc Jupyter Notebook devjavedmohd Jupyter Notebook",
+        "url": "https://github.com/inker/draw",
+        "label": "Repo: draw",
+        "snippet": "\u26bd Champions League draw simulator | TypeScript",
+        "text": "draw \u26bd Champions League draw simulator TypeScript typescript tournament soccer draw seeding football champions-league inker TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
       {
         "source_type": "repo",
-        "url": "https://github.com/devjavedmohd/interview_questions",
-        "label": "Repo: interview_questions",
-        "snippet": "A curated collection of high-quality interview questions and answers for AI-related roles. This repository helps candidates understand how interviews differ across roles, not just memorize answers.",
-        "text": "interview_questions A curated collection of high-quality interview questions and answers for AI-related roles. This repository helps candidates understand how interviews differ across roles, not just memorize answers. devjavedmohd",
+        "url": "https://github.com/inker/snake.ts",
+        "label": "Repo: snake.ts",
+        "snippet": "\ud83d\udc0d Yet another snake implementation | TypeScript",
+        "text": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -651,29 +538,29 @@
       "frontend",
       "backend"
     ],
-    "nice_to_have_hits": [
-      "storage systems",
-      "open source"
-    ],
-    "fit_score": 0.695,
-    "must_have_score": 0.8,
-    "nice_to_have_score": 0.1,
-    "confidence_score": 0.9,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile, open source 1.00 via repo; must-have score: 0.800; nice-to-have score: 0.100; confidence: 0.900; location: ['London']; top evidence: Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers | Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London | This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook.",
+    "nice_to_have_hits": [],
+    "fit_score": 0.774,
+    "must_have_score": 0.911,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.86,
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.911; nice-to-have score: 0.000; confidence: 0.860; location: ['London']; top evidence: JavaScript, TypeScript, React, Node.js | London | 40 public repos | 80 followers | JavaScript, TypeScript, React, Node.js | @Mimica-Automation | London | \ud83d\ude87 a proposal for the St Petersburg underground | TypeScript; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
-      "React": 0.6,
+      "React": 1.0,
       "frontend": 1.0,
       "backend": 0.6,
       "performance": 0.0,
       "data structures": 0.0,
-      "storage systems": 0.6,
+      "storage systems": 0.0,
       "Rust": 0.0,
       "Effect": 0.0,
       "HTML Canvas": 0.0,
@@ -683,16 +570,16 @@
       "Base UI": 0.0,
       "Ariakit": 0.0,
       "Panda": 0.0,
-      "open source": 1.0
+      "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "repo",
-      "backend": "profile",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
-      "storage systems": "profile",
+      "storage systems": "",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -702,16 +589,16 @@
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
-      "open source": "repo"
+      "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc | Jupyter Notebook",
-      "React": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
-      "frontend": "Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc | Jupyter Notebook",
-      "backend": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
+      "TypeScript": "metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker",
+      "React": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
+      "frontend": "snake.ts \ud83d\udc0d Yet another snake implementation TypeScript react typescript snake snake-game inker TypeScript",
+      "backend": "inker JavaScript, TypeScript, React, Node.js @Mimica-Automation London JavaScript, TypeScript, React, Node.js. inker has",
       "performance": "",
       "data structures": "",
-      "storage systems": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
+      "storage systems": "",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -721,9 +608,9 @@
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
-      "open source": "A curated collection of high-quality interview questions and answers for AI-related roles. This repository helps candidates understand how interviews differ across roles, not just memorize answers."
+      "open source": ""
     },
-    "outreach_draft": "Hi Mohd Javed,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi inker,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nI was particularly interested in your work on metro \ud83d\ude87 a proposal for the St Petersburg underground TypeScript map typescript leaflet metro transport underground subway inker. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "c0f43ab6",
@@ -749,6 +636,7 @@
         "label": "GitHub user search",
         "snippet": "Front-end JavaScript/TypeScript/React Developer | London, UK | 8 public repos | 10 followers",
         "text": "Daniel Ross notalexross Front-end JavaScript/TypeScript/React Developer London, UK Front-end JavaScript/TypeScript/React Developer London, UK 8 public repos 10 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -758,6 +646,7 @@
         "label": "GitHub profile",
         "snippet": "Front-end JavaScript/TypeScript/React Developer | London, UK",
         "text": "Daniel Ross notalexross Front-end JavaScript/TypeScript/React Developer London, UK Front-end JavaScript/TypeScript/React Developer. notalexross has 8 repositories available. Follow their code on GitHub.",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -767,6 +656,7 @@
         "label": "Linked website",
         "snippet": "HTML5 icon Daniel Ross is a London (UK) based web developer, problem solver, and jack-of-all-trades. /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adj",
         "text": "HTML5 icon Daniel Ross is a London (UK) based web developer, problem solver, and jack-of-all-trades. /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}Home | Daniel Ross - Developer.dVuANd{position:relative;font-size:1.2rem;}/*!sc*/ data-styled.g14[id=\"styles__Container-sc-1gkk6dv-0\"]{content:\"dVuANd,\"}/*!sc*/ .cchwJD{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/ data-styled.g15[id=\"styles__Form-sc-1gkk6dv-1\"]{content:\"cchwJD,\"}/*!sc*/ .buxEqm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-",
+        "provenance": "Linked personal website",
         "matched_requirements": [],
         "strength": 0.55
       },
@@ -776,6 +666,7 @@
         "label": "Repo: cicd-github",
         "snippet": "Shell",
         "text": "cicd-github Shell notalexross",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -785,6 +676,7 @@
         "label": "Repo: portfolio",
         "snippet": "A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. | JavaScript",
         "text": "portfolio A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. JavaScript notalexross JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -794,6 +686,7 @@
         "label": "Repo: social-media-app",
         "snippet": "A social media application, powered by Firebase, with Firebase Authentication, Cloud Firestore NoSQL database, and Cloud Storage. Apart from Firebase, the app consists of 100% client-side code, bui\u2026 | TypeScript",
         "text": "social-media-app A social media application, powered by Firebase, with Firebase Authentication, Cloud Firestore NoSQL database, and Cloud Storage. Apart from Firebase, the app consists of 100% client-side code, bui\u2026 TypeScript notalexross TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -806,20 +699,22 @@
       "frontend"
     ],
     "nice_to_have_hits": [
-      "storage systems",
-      "open source"
+      "storage systems"
     ],
-    "fit_score": 0.685,
+    "fit_score": 0.684,
     "must_have_score": 0.778,
-    "nice_to_have_score": 0.16,
+    "nice_to_have_score": 0.15,
     "confidence_score": 1.0,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: storage systems 1.00 via repo, open source 1.00 via repo; must-have score: 0.778; nice-to-have score: 0.160; confidence: 1.000; location: ['London']; top evidence: Front-end JavaScript/TypeScript/React Developer | London, UK | 8 public repos | 10 followers | Front-end JavaScript/TypeScript/React Developer | London, UK | HTML5 icon Daniel Ross is a London (UK) based web developer, problem solver, and jack-of-all-trades. /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adj.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: storage systems 1.00 via repo; must-have score: 0.778; nice-to-have score: 0.150; confidence: 1.000; location: ['London']; top evidence: Front-end JavaScript/TypeScript/React Developer | London, UK | 8 public repos | 10 followers | Front-end JavaScript/TypeScript/React Developer | London, UK | HTML5 icon Daniel Ross is a London (UK) based web developer, problem solver, and jack-of-all-trades. /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adj; uncertainty: No public evidence for: backend.",
     "status": "shortlist",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: backend",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 1.0,
@@ -837,16 +732,16 @@
       "Base UI": 0.0,
       "Ariakit": 0.0,
       "Panda": 0.0,
-      "open source": 1.0
+      "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
       "backend": "",
       "performance": "",
       "data structures": "",
-      "storage systems": "repo",
+      "storage systems": "repo \u00b7 Repository list summary",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -856,16 +751,16 @@
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
-      "open source": "repo"
+      "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. | JavaScript",
-      "React": "A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. | JavaScript",
-      "frontend": "A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my various projects. | JavaScript",
+      "TypeScript": "d Storage. Apart from Firebase, the app consists of 100% client-side code, bui\u2026 TypeScript notalexross TypeScript",
+      "React": "portfolio A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my va",
+      "frontend": "portfolio A portfolio site built with Gatsby and React, coupled with Sanity for content management, created in order to showcase my va",
       "backend": "",
       "performance": "",
       "data structures": "",
-      "storage systems": "A social media application, powered by Firebase, with Firebase Authentication, Cloud Firestore NoSQL database, and Cloud Storage. Apart from Firebase, the app consists of 100% client-side code, bui\u2026 | TypeScript",
+      "storage systems": "ation, powered by Firebase, with Firebase Authentication, Cloud Firestore NoSQL database, and Cloud Storage. Apart from Firebase, the app consists of 100% client-side c",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -875,163 +770,9 @@
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
-      "open source": "Shell"
+      "open source": ""
     },
-    "outreach_draft": "Hi Daniel Ross,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, storage systems and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "1a9bbd60",
-    "name": "Christian G\u00f6tze",
-    "headline": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
-    "source_url": "https://github.com/OG84",
-    "email": "",
-    "found_via": [
-      "GitHub user search",
-      "Linked website"
-    ],
-    "evidence_links": [
-      "https://github.com/OG84",
-      "https://www.cgoetze.de",
-      "https://github.com/OG84/svelte",
-      "https://github.com/OG84/attractions",
-      "https://github.com/OG84/esbuild"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+react&type=users&p=1",
-        "label": "GitHub user search",
-        "snippet": "full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | 17 public repos | 9 followers",
-        "text": "Christian G\u00f6tze OG84 full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany 17 public repos 9 followers",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/OG84",
-        "label": "GitHub profile",
-        "snippet": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
-        "text": "Christian G\u00f6tze OG84 full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node - OG84",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "website",
-        "url": "https://www.cgoetze.de",
-        "label": "Linked website",
-        "snippet": "Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web",
-        "text": "Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web DevelopmentChristian G\u00f6tzeFullstack Web DevelopmentOpen main menuHomeFrontendWeb DevelopmentnextjsreacttypescriptsvelteangularBackendWeb DevelopmentnodejsjavaawsgcpCreativeWeb Developmentcreative cloudContactImprintPrivacy PolicyGitHubLinkedInXing\u00a9 2026 Christian G\u00f6tzemade with nextjs, tailwindENDE(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[61870,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"default\\\"]\\n3:I[20278,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"default\\\"]\\n6:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"OutletBoundary\\\"]\\n7:\\\"$Sreact.suspense\\\"\\n9:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"ViewportBoundary\\\"]\\nb:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"MetadataBoundary\\\"]\\nd:I[65844,[\\\"/_next/static/chunks/59a5d2eb18555480.js\\\"],\\\"default\\\"]\\ne:I[10118,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"Image\\\"]\\n11:I[18358,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"default\\\"]\\n12:I[37203,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"Header\\\"]\\n17:I[39480,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"SocialLinks\\\"]\\n18:I[56580,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"LocaleToggle\\\"]\\n19:I[4251,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"default\\\"]\\n1a:I[99195,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"IconMark\\\"]\\n:HL[\\\"/_next/static/chunks/9c88b0c306562350.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n\"])self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"zMcs5u2u7cTsPGOcXDR7V\\\",\\\"c\\\":[\\\"\\\",\\\"en\\\"],\\\"q\\\":\\\"\\",
-        "matched_requirements": [],
-        "strength": 0.55
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/OG84/svelte",
-        "label": "Repo: svelte",
-        "snippet": "Cybernetically enhanced web apps | TypeScript",
-        "text": "svelte Cybernetically enhanced web apps TypeScript OG84",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/OG84/attractions",
-        "label": "Repo: attractions",
-        "snippet": "A pretty cool UI kit for Svelte | Svelte",
-        "text": "attractions A pretty cool UI kit for Svelte Svelte OG84 Svelte",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/OG84/esbuild",
-        "label": "Repo: esbuild",
-        "snippet": "An extremely fast JavaScript bundler and minifier | Go",
-        "text": "esbuild An extremely fast JavaScript bundler and minifier Go OG84 Go",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 6,
-    "evidence_density": "medium",
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [
-      "open source"
-    ],
-    "fit_score": 0.681,
-    "must_have_score": 0.8,
-    "nice_to_have_score": 0.006,
-    "confidence_score": 1.0,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: open source 0.55 via linked site; must-have score: 0.800; nice-to-have score: 0.006; confidence: 1.000; location: ['Berlin']; top evidence: full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | 17 public repos | 9 followers | full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web.",
-    "status": "shortlist",
-    "location_hits": [
-      "Berlin"
-    ],
-    "location_eligible": true,
-    "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
-    "requirement_scores": {
-      "TypeScript": 1.0,
-      "React": 0.6,
-      "frontend": 1.0,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.55
-    },
-    "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "repo",
-      "backend": "profile",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": "linked site"
-    },
-    "requirement_evidence": {
-      "TypeScript": "Cybernetically enhanced web apps | TypeScript",
-      "React": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
-      "frontend": "A pretty cool UI kit for Svelte | Svelte",
-      "backend": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": "Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web"
-    },
-    "outreach_draft": "Hi Christian G\u00f6tze,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React, open source and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Daniel Ross,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React, storage systems and your London location.\n\nI was particularly interested in your work on d Storage. Apart from Firebase, the app consists of 100% client-side code, bui\u2026 TypeScript notalexross TypeScript. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "79bf7db8",
@@ -1057,6 +798,7 @@
         "label": "GitHub user search",
         "snippet": "Frontend-Dev with React, NextJS, TypeScript, Jest. | Berlin | 12 public repos | 2 followers",
         "text": "fmacherey fmacherey Frontend-Dev with React, NextJS, TypeScript, Jest. Berlin Frontend-Dev with React, NextJS, TypeScript, Jest. Berlin 12 public repos 2 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -1066,6 +808,7 @@
         "label": "GitHub profile",
         "snippet": "Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin",
         "text": "fmacherey Frontend-Dev with React, NextJS, TypeScript, Jest. avocadostore.de Berlin Frontend-Dev with React, NextJS, TypeScript, Jest. - fmacherey",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -1075,6 +818,7 @@
         "label": "Repo: next.js",
         "snippet": "The React Framework | JavaScript",
         "text": "next.js The React Framework JavaScript fmacherey",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1084,6 +828,7 @@
         "label": "Repo: config-files",
         "snippet": "collection of dot files and other configurations | Shell",
         "text": "config-files collection of dot files and other configurations Shell fmacherey Shell",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1093,6 +838,7 @@
         "label": "Repo: DefinitelyTyped",
         "snippet": "The repository for high quality TypeScript type definitions. | TypeScript",
         "text": "DefinitelyTyped The repository for high quality TypeScript type definitions. TypeScript fmacherey TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -1109,13 +855,16 @@
     "must_have_score": 0.778,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.84,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Frontend-Dev with React, NextJS, TypeScript, Jest. | Berlin | 12 public repos | 2 followers | Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin | The React Framework | JavaScript.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 1.00 via repo, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.778; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Frontend-Dev with React, NextJS, TypeScript, Jest. | Berlin | 12 public repos | 2 followers | Frontend-Dev with React, NextJS, TypeScript, Jest. | avocadostore.de | Berlin | The React Framework | JavaScript; uncertainty: No public evidence for: backend.",
     "status": "shortlist",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: backend",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 1.0,
@@ -1136,9 +885,9 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "repo",
-      "frontend": "repo",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
       "backend": "",
       "performance": "",
       "data structures": "",
@@ -1155,9 +904,9 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "The repository for high quality TypeScript type definitions. | TypeScript",
-      "React": "The React Framework | JavaScript",
-      "frontend": "The React Framework | JavaScript",
+      "TypeScript": "DefinitelyTyped The repository for high quality TypeScript type definitions. TypeScript fmacherey TypeScript",
+      "React": "next.js The React Framework JavaScript fmacherey",
+      "frontend": "next.js The React Framework JavaScript fmacherey",
       "backend": "",
       "performance": "",
       "data structures": "",
@@ -1173,7 +922,168 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi fmacherey,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi fmacherey,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your Berlin location.\n\nI was particularly interested in your work on DefinitelyTyped The repository for high quality TypeScript type definitions. TypeScript fmacherey TypeScript. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
+    "id": "1a9bbd60",
+    "name": "Christian G\u00f6tze",
+    "headline": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
+    "source_url": "https://github.com/OG84",
+    "email": "",
+    "found_via": [
+      "GitHub user search",
+      "Linked website"
+    ],
+    "evidence_links": [
+      "https://github.com/OG84",
+      "https://www.cgoetze.de",
+      "https://github.com/OG84/svelte",
+      "https://github.com/OG84/attractions",
+      "https://github.com/OG84/esbuild"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+react&type=users&p=1",
+        "label": "GitHub user search",
+        "snippet": "full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | 17 public repos | 9 followers",
+        "text": "Christian G\u00f6tze OG84 full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany 17 public repos 9 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/OG84",
+        "label": "GitHub profile",
+        "snippet": "full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany",
+        "text": "Christian G\u00f6tze OG84 full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node - OG84",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "website",
+        "url": "https://www.cgoetze.de",
+        "label": "Linked website",
+        "snippet": "Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web",
+        "text": "Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web DevelopmentChristian G\u00f6tzeFullstack Web DevelopmentOpen main menuHomeFrontendWeb DevelopmentnextjsreacttypescriptsvelteangularBackendWeb DevelopmentnodejsjavaawsgcpCreativeWeb Developmentcreative cloudContactImprintPrivacy PolicyGitHubLinkedInXing\u00a9 2026 Christian G\u00f6tzemade with nextjs, tailwindENDE(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[61870,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"default\\\"]\\n3:I[20278,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"default\\\"]\\n6:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"OutletBoundary\\\"]\\n7:\\\"$Sreact.suspense\\\"\\n9:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"ViewportBoundary\\\"]\\nb:I[23491,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"MetadataBoundary\\\"]\\nd:I[65844,[\\\"/_next/static/chunks/59a5d2eb18555480.js\\\"],\\\"default\\\"]\\ne:I[10118,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"Image\\\"]\\n11:I[18358,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"default\\\"]\\n12:I[37203,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"Header\\\"]\\n17:I[39480,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"SocialLinks\\\"]\\n18:I[56580,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"LocaleToggle\\\"]\\n19:I[4251,[\\\"/_next/static/chunks/7d0bddbfd16527df.js\\\",\\\"/_next/static/chunks/1d3f4d87fbfbb379.js\\\",\\\"/_next/static/chunks/c9b3e2fe6d52796b.js\\\"],\\\"default\\\"]\\n1a:I[99195,[\\\"/_next/static/chunks/2caa33a942c5f527.js\\\",\\\"/_next/static/chunks/59983278a34fd25c.js\\\"],\\\"IconMark\\\"]\\n:HL[\\\"/_next/static/chunks/9c88b0c306562350.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n\"])self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"zMcs5u2u7cTsPGOcXDR7V\\\",\\\"c\\\":[\\\"\\\",\\\"en\\\"],\\\"q\\\":\\\"\\",
+        "provenance": "Linked personal website",
+        "matched_requirements": [],
+        "strength": 0.55
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/OG84/svelte",
+        "label": "Repo: svelte",
+        "snippet": "Cybernetically enhanced web apps | TypeScript",
+        "text": "svelte Cybernetically enhanced web apps TypeScript OG84",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/OG84/attractions",
+        "label": "Repo: attractions",
+        "snippet": "A pretty cool UI kit for Svelte | Svelte",
+        "text": "attractions A pretty cool UI kit for Svelte Svelte OG84 Svelte",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/OG84/esbuild",
+        "label": "Repo: esbuild",
+        "snippet": "An extremely fast JavaScript bundler and minifier | Go",
+        "text": "esbuild An extremely fast JavaScript bundler and minifier Go OG84 Go",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 6,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.643,
+    "must_have_score": 0.756,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.99,
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.990; location: ['Berlin']; top evidence: full stack web dev\r\n\r\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | 17 public repos | 9 followers | full stack web dev\n\nsvelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node | Berlin, Germany | Christian G\u00f6tze - Fullstack Web Development I can support and contribute to your next web development project. I have many years of experience in various frontend and backend technologies. Christian G\u00f6tze - Fullstack Web; uncertainty: none.",
+    "status": "shortlist",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
+    "requirement_scores": {
+      "TypeScript": 1.0,
+      "React": 0.6,
+      "frontend": 0.6,
+      "backend": 0.6,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_sources": {
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "svelte Cybernetically enhanced web apps TypeScript OG84",
+      "React": "Christian G\u00f6tze OG84 full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80",
+      "frontend": "Christian G\u00f6tze OG84 full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80",
+      "backend": "Christian G\u00f6tze OG84 full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node Berlin, Germany full stack web dev svelte \ud83d\ude80 angular \ud83d\ude80 react \ud83d\ude80 spring \ud83d\ude80 node -",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Christian G\u00f6tze,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your Berlin location.\n\nI was particularly interested in your work on svelte Cybernetically enhanced web apps TypeScript OG84. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "22826465",
@@ -1197,6 +1107,7 @@
         "label": "GitHub user search",
         "snippet": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\r\nbecause why not??  | Berlin, Germany | 33 public repos | 7 followers",
         "text": "Asad Ali Baloch asadlib11 Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\r\nbecause why not??  Berlin, Germany Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\r\nbecause why not??  Berlin, Germany 33 public repos 7 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -1206,6 +1117,7 @@
         "label": "GitHub profile",
         "snippet": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
         "text": "Asad Ali Baloch asadlib11 Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? Flaconi GmbH Berlin, Germany Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not??  - asadlib11",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -1215,6 +1127,7 @@
         "label": "Repo: Konvo",
         "snippet": "TypeScript",
         "text": "Konvo TypeScript asadlib11",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1224,6 +1137,7 @@
         "label": "Repo: enpal-appointment-booking",
         "snippet": "TypeScript",
         "text": "enpal-appointment-booking TypeScript asadlib11 TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1233,6 +1147,7 @@
         "label": "Repo: arbolitics-dashboard",
         "snippet": "TypeScript",
         "text": "arbolitics-dashboard TypeScript asadlib11 TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -1250,13 +1165,16 @@
     "must_have_score": 0.756,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.84,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\r\nbecause why not??  | Berlin, Germany | 33 public repos | 7 followers | Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany | TypeScript.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['Berlin']; top evidence: Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\r\nbecause why not??  | Berlin, Germany | 33 public repos | 7 followers | Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany | TypeScript; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 0.6,
@@ -1277,10 +1195,10 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "profile",
-      "backend": "profile",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -1296,10 +1214,10 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "TypeScript",
-      "React": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
-      "frontend": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
-      "backend": "Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills...\nbecause why not?? | Flaconi GmbH | Berlin, Germany",
+      "TypeScript": "Konvo TypeScript asadlib11",
+      "React": "adlib11 Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills... because why not?? Flaconi GmbH Berlin,",
+      "frontend": "adlib11 Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills... because why not?? Flaconi GmbH Berlin,",
+      "backend": "Asad Ali Baloch asadlib11 Full-Stack Software engineer with experience in java, Node js, Angular, React js, Docker, AWS and many other skills... because why not?? F",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -1314,7 +1232,7 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Asad Ali Baloch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Asad Ali Baloch,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your Berlin location.\n\nI was particularly interested in your work on Konvo TypeScript asadlib11. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "a97647c9",
@@ -1338,6 +1256,7 @@
         "label": "GitHub user search",
         "snippet": "React, Angular, Node and Python Engineer | London | 8 public repos | 5 followers",
         "text": "James Rees jamesrees77 React, Angular, Node and Python Engineer London React, Angular, Node and Python Engineer London 8 public repos 5 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -1347,6 +1266,7 @@
         "label": "GitHub profile",
         "snippet": "React, Angular, Node and Python Engineer | London",
         "text": "James Rees jamesrees77 React, Angular, Node and Python Engineer London React, Angular, Node and Python Engineer. jamesrees77 has 9 repositories available. Follow their code on GitHub.",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -1356,6 +1276,7 @@
         "label": "Repo: freya",
         "snippet": "TypeScript",
         "text": "freya TypeScript jamesrees77",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1365,6 +1286,7 @@
         "label": "Repo: billing-extensions-sdk",
         "snippet": "TypeScript",
         "text": "billing-extensions-sdk TypeScript jamesrees77 TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1374,6 +1296,7 @@
         "label": "Repo: linkrescue-docs",
         "snippet": "",
         "text": "linkrescue-docs jamesrees77",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -1391,13 +1314,16 @@
     "must_have_score": 0.756,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.84,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['London']; top evidence: React, Angular, Node and Python Engineer | London | 8 public repos | 5 followers | React, Angular, Node and Python Engineer | London | TypeScript.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['London']; top evidence: React, Angular, Node and Python Engineer | London | 8 public repos | 5 followers | React, Angular, Node and Python Engineer | London | TypeScript; uncertainty: none.",
     "status": "shortlist",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "ready",
+    "reviewer_note": "Strong public evidence across the core role requirements.",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 0.6,
@@ -1418,10 +1344,10 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "profile",
-      "backend": "profile",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -1437,10 +1363,10 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "TypeScript",
-      "React": "React, Angular, Node and Python Engineer | London",
-      "frontend": "React, Angular, Node and Python Engineer | London",
-      "backend": "React, Angular, Node and Python Engineer | London",
+      "TypeScript": "freya TypeScript jamesrees77",
+      "React": "James Rees jamesrees77 React, Angular, Node and Python Engineer London React, Angular, Node and Python Engin",
+      "frontend": "James Rees jamesrees77 React, Angular, Node and Python Engineer London React, Angular, Node and Python Engin",
+      "backend": "James Rees jamesrees77 React, Angular, Node and Python Engineer London React, Angular, Node and Python Engineer. jamesrees7",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -1455,150 +1381,7 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi James Rees,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "f1a0eca3",
-    "name": "Francesco Albanese",
-    "headline": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
-    "source_url": "https://github.com/francesco-albanese",
-    "email": "",
-    "found_via": [
-      "GitHub user search",
-      "Linked website"
-    ],
-    "evidence_links": [
-      "https://github.com/francesco-albanese",
-      "https://www.linkedin.com/in/albanesefrancesco/",
-      "https://github.com/francesco-albanese/python-token-generator",
-      "https://github.com/francesco-albanese/aws-multi-account",
-      "https://github.com/francesco-albanese/claude-code-config"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+node&type=users&p=1",
-        "label": "GitHub user search",
-        "snippet": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers",
-        "text": "Francesco Albanese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) London, United Kingdom Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) London, United Kingdom 7 public repos 12 followers",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/francesco-albanese",
-        "label": "GitHub profile",
-        "snippet": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
-        "text": "Francesco Albanese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) - francesco-albanese",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/francesco-albanese/python-token-generator",
-        "label": "Repo: python-token-generator",
-        "snippet": "Python JWT and JWK generator | Python",
-        "text": "python-token-generator Python JWT and JWK generator Python francesco-albanese",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/francesco-albanese/aws-multi-account",
-        "label": "Repo: aws-multi-account",
-        "snippet": "HCL",
-        "text": "aws-multi-account HCL francesco-albanese HCL",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/francesco-albanese/claude-code-config",
-        "label": "Repo: claude-code-config",
-        "snippet": "Claude Code configuration: rules, agents, commands, skills | Python",
-        "text": "claude-code-config Claude Code configuration: rules, agents, commands, skills Python francesco-albanese Python",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 5,
-    "evidence_density": "medium",
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.643,
-    "must_have_score": 0.756,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.84,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.756; nice-to-have score: 0.000; confidence: 0.840; location: ['London']; top evidence: Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers | Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom | Python JWT and JWK generator | Python.",
-    "status": "shortlist",
-    "location_hits": [
-      "London"
-    ],
-    "location_eligible": true,
-    "eligibility_reason": "Eligible: public evidence aligns with London.",
-    "requirement_scores": {
-      "TypeScript": 1.0,
-      "React": 0.6,
-      "frontend": 0.6,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "profile",
-      "backend": "profile",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "Claude Code configuration: rules, agents, commands, skills | Python",
-      "React": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
-      "frontend": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
-      "backend": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi James Rees,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nI was particularly interested in your work on freya TypeScript jamesrees77. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "6833d5b6",
@@ -1622,6 +1405,7 @@
         "label": "GitHub user search",
         "snippet": "Front-end developer | React | Typescript | London, UK | 14 public repos | 8 followers",
         "text": "Aleksandra Sezer aleksandrasezer Front-end developer | React | Typescript London, UK Front-end developer | React | Typescript London, UK 14 public repos 8 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -1631,6 +1415,7 @@
         "label": "GitHub profile",
         "snippet": "Front-end developer | React | Typescript | London, UK",
         "text": "Aleksandra Sezer aleksandrasezer Front-end developer | React | Typescript London, UK Front-end developer | React | Typescript. aleksandrasezer has 14 repositories available. Follow their code on GitHub.",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -1640,6 +1425,7 @@
         "label": "Repo: mc-frontend-tech-test",
         "snippet": "Description is in README | TypeScript",
         "text": "mc-frontend-tech-test Description is in README TypeScript aleksandrasezer",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1649,6 +1435,7 @@
         "label": "Repo: top-movies",
         "snippet": "Next.js project | TypeScript",
         "text": "top-movies Next.js project TypeScript aleksandrasezer TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1658,6 +1445,7 @@
         "label": "Repo: Social_network",
         "snippet": "TypeScript",
         "text": "Social_network TypeScript aleksandrasezer TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -1674,13 +1462,16 @@
     "must_have_score": 0.667,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.83,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.667; nice-to-have score: 0.000; confidence: 0.830; location: ['London']; top evidence: Front-end developer | React | Typescript | London, UK | 14 public repos | 8 followers | Front-end developer | React | Typescript | London, UK | Description is in README | TypeScript.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, React 0.60 via profile, frontend 1.00 via repo; nice-to-have evidence: none; must-have score: 0.667; nice-to-have score: 0.000; confidence: 0.830; location: ['London']; top evidence: Front-end developer | React | Typescript | London, UK | 14 public repos | 8 followers | Front-end developer | React | Typescript | London, UK | Description is in README | TypeScript; uncertainty: No public evidence for: backend.",
     "status": "shortlist",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: backend",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 0.6,
@@ -1701,9 +1492,9 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "profile",
-      "frontend": "repo",
+      "TypeScript": "repo \u00b7 Repository list summary",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "repo \u00b7 Repository list summary",
       "backend": "",
       "performance": "",
       "data structures": "",
@@ -1720,9 +1511,9 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "Description is in README | TypeScript",
-      "React": "Front-end developer | React | Typescript | London, UK",
-      "frontend": "Description is in README | TypeScript",
+      "TypeScript": "mc-frontend-tech-test Description is in README TypeScript aleksandrasezer",
+      "React": "Aleksandra Sezer aleksandrasezer Front-end developer | React | Typescript London, UK Front-end developer | React | Typescript. aleksandrasez",
+      "frontend": "mc-frontend-tech-test Description is in README TypeScript aleksandrasezer",
       "backend": "",
       "performance": "",
       "data structures": "",
@@ -1738,137 +1529,7 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Aleksandra Sezer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, React and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "ea8d0807",
-    "name": "Carlos Meyer",
-    "headline": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
-    "source_url": "https://github.com/fabrikler",
-    "email": "",
-    "found_via": [
-      "GitHub user search"
-    ],
-    "evidence_links": [
-      "https://github.com/fabrikler",
-      "https://github.com/fabrikler/fabrikler",
-      "https://github.com/fabrikler/fabrikler.github.io"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+node&type=users&p=1",
-        "label": "GitHub user search",
-        "snippet": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | 2 public repos | 10 followers",
-        "text": "Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin 2 public repos 10 followers",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/fabrikler",
-        "label": "GitHub profile",
-        "snippet": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
-        "text": "Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) - fabrikler",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/fabrikler/fabrikler",
-        "label": "Repo: fabrikler",
-        "snippet": "",
-        "text": "fabrikler fabrikler",
-        "matched_requirements": [],
-        "strength": 1.0
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/fabrikler/fabrikler.github.io",
-        "label": "Repo: fabrikler.github.io",
-        "snippet": "A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML",
-        "text": "fabrikler.github.io A Hugo-based website built as my production log, showcasing projects, progress, and insights. HTML fabrikler HTML",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 4,
-    "evidence_density": "medium",
-    "must_have_hits": [
-      "TypeScript",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.538,
-    "must_have_score": 0.633,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.83,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.633; nice-to-have score: 0.000; confidence: 0.830; location: ['Berlin']; top evidence: Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | 2 public repos | 10 followers | Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML.",
-    "status": "hold",
-    "location_hits": [
-      "Berlin"
-    ],
-    "location_eligible": true,
-    "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
-    "requirement_scores": {
-      "TypeScript": 1.0,
-      "React": 0.0,
-      "frontend": 1.0,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_sources": {
-      "TypeScript": "repo",
-      "React": "",
-      "frontend": "repo",
-      "backend": "profile",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML",
-      "React": "",
-      "frontend": "A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML",
-      "backend": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi Carlos Meyer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, frontend and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Aleksandra Sezer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nI was particularly interested in your work on mc-frontend-tech-test Description is in README TypeScript aleksandrasezer. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "78449567",
@@ -1894,6 +1555,7 @@
         "label": "GitHub user search",
         "snippet": "node-based WebGL design tool | London | 45 public repos | 107 followers",
         "text": "Polygonjs polygonjs node-based WebGL design tool London node-based WebGL design tool London 45 public repos 107 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -1903,6 +1565,7 @@
         "label": "GitHub profile",
         "snippet": "node-based WebGL design tool | Polygonjs | London",
         "text": "Polygonjs polygonjs node-based WebGL design tool Polygonjs London node-based WebGL design tool. polygonjs has 45 repositories available. Follow their code on GitHub.",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -1912,6 +1575,7 @@
         "label": "Linked website",
         "snippet": "Polygonjs: WebGL Design & Animation Tool Polygonjs: WebGL Design & Animation Tool var sc_project=12032089; var sc_invisible=1; var sc_security=\"8b0bc8e1\"; var sc_https=1; -->",
         "text": "Polygonjs: WebGL Design & Animation Tool Polygonjs: WebGL Design & Animation Tool var sc_project=12032089; var sc_invisible=1; var sc_security=\"8b0bc8e1\"; var sc_https=1; -->",
+        "provenance": "Linked personal website",
         "matched_requirements": [],
         "strength": 0.55
       },
@@ -1921,6 +1585,7 @@
         "label": "Repo: polygon-next-server",
         "snippet": "Jai",
         "text": "polygon-next-server Jai polygonjs",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1930,6 +1595,7 @@
         "label": "Repo: plugins_tutorials",
         "snippet": "Short examples on how to create plugins for Polygonjs | JavaScript",
         "text": "plugins_tutorials Short examples on how to create plugins for Polygonjs JavaScript polygonjs JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -1939,6 +1605,7 @@
         "label": "Repo: polygonjs",
         "snippet": "node-based WebGL design tool | TypeScript",
         "text": "polygonjs node-based WebGL design tool TypeScript javascript webgl threejs creative-coding procedural-generation animation rendering polygonjs TypeScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -1957,13 +1624,16 @@
     "must_have_score": 0.611,
     "nice_to_have_score": 0.08,
     "confidence_score": 1.0,
-    "rationale": "Must-have evidence: TypeScript 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: graphics 1.00 via repo, animation 1.00 via repo; must-have score: 0.611; nice-to-have score: 0.080; confidence: 1.000; location: ['London']; top evidence: node-based WebGL design tool | London | 45 public repos | 107 followers | node-based WebGL design tool | Polygonjs | London | Polygonjs: WebGL Design & Animation Tool Polygonjs: WebGL Design & Animation Tool var sc_project=12032089; var sc_invisible=1; var sc_security=\"8b0bc8e1\"; var sc_https=1; -->.",
+    "rationale": "Must-have evidence: TypeScript 1.00 via repo, backend 1.00 via repo; nice-to-have evidence: graphics 1.00 via repo, animation 1.00 via repo; must-have score: 0.611; nice-to-have score: 0.080; confidence: 1.000; location: ['London']; top evidence: node-based WebGL design tool | London | 45 public repos | 107 followers | node-based WebGL design tool | Polygonjs | London | Polygonjs: WebGL Design & Animation Tool Polygonjs: WebGL Design & Animation Tool var sc_project=12032089; var sc_invisible=1; var sc_security=\"8b0bc8e1\"; var sc_https=1; -->; uncertainty: No public evidence for: React, frontend.",
     "status": "hold",
     "location_hits": [
       "London"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: React, frontend",
     "requirement_scores": {
       "TypeScript": 1.0,
       "React": 0.0,
@@ -1984,18 +1654,18 @@
       "open source": 0.0
     },
     "requirement_sources": {
-      "TypeScript": "repo",
+      "TypeScript": "repo \u00b7 Repository list summary",
       "React": "",
       "frontend": "",
-      "backend": "repo",
+      "backend": "repo \u00b7 Repository list summary",
       "performance": "",
       "data structures": "",
       "storage systems": "",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
-      "graphics": "repo",
-      "animation": "repo",
+      "graphics": "repo \u00b7 Repository list summary",
+      "animation": "repo \u00b7 Repository list summary",
       "Material UI": "",
       "Base UI": "",
       "Ariakit": "",
@@ -2003,25 +1673,339 @@
       "open source": ""
     },
     "requirement_evidence": {
-      "TypeScript": "node-based WebGL design tool | TypeScript",
+      "TypeScript": "polygonjs node-based WebGL design tool TypeScript javascript webgl threejs creative-coding procedural-generation animation render",
       "React": "",
       "frontend": "",
-      "backend": "Jai",
+      "backend": "polygon-next-server Jai polygonjs",
       "performance": "",
       "data structures": "",
       "storage systems": "",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
-      "graphics": "node-based WebGL design tool | TypeScript",
-      "animation": "node-based WebGL design tool | TypeScript",
+      "graphics": "Script javascript webgl threejs creative-coding procedural-generation animation rendering polygonjs TypeScript",
+      "animation": "tool TypeScript javascript webgl threejs creative-coding procedural-generation animation rendering polygonjs TypeScript",
       "Material UI": "",
       "Base UI": "",
       "Ariakit": "",
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Polygonjs,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on TypeScript, backend, graphics and your London location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Polygonjs,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, backend, graphics and your London location.\n\nI was particularly interested in your work on polygonjs node-based WebGL design tool TypeScript javascript webgl threejs creative-coding procedural-generation animation render. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
+    "id": "343cb4a7",
+    "name": "Mohd Javed",
+    "headline": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
+    "source_url": "https://github.com/devjavedmohd",
+    "email": "dev.javedmohd@gmail.com",
+    "found_via": [
+      "GitHub user search",
+      "Linked website"
+    ],
+    "evidence_links": [
+      "https://github.com/devjavedmohd",
+      "javedwedmsi.github.io",
+      "https://github.com/devjavedmohd/data-engineer-handbook",
+      "https://github.com/devjavedmohd/data-engineering-zoomcamp",
+      "https://github.com/devjavedmohd/interview_questions"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+react&type=users&p=1",
+        "label": "GitHub user search",
+        "snippet": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers",
+        "text": "Mohd Javed devjavedmohd Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript London Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript London 235 public repos 17 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/devjavedmohd",
+        "label": "GitHub profile",
+        "snippet": "Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London",
+        "text": "Mohd Javed devjavedmohd Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript - devjavedmohd dev.javedmohd@gmail.com",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/devjavedmohd/data-engineer-handbook",
+        "label": "Repo: data-engineer-handbook",
+        "snippet": "This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook",
+        "text": "data-engineer-handbook This is a repo with links to everything you'd ever want to learn about data engineering Jupyter Notebook devjavedmohd",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/devjavedmohd/data-engineering-zoomcamp",
+        "label": "Repo: data-engineering-zoomcamp",
+        "snippet": "Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc | Jupyter Notebook",
+        "text": "data-engineering-zoomcamp Data Engineering Zoomcamp is a free 9-week course on building production-ready data pipelines. The next cohort starts in January 2026. Join the course here \ud83d\udc47\ud83c\udffc Jupyter Notebook devjavedmohd Jupyter Notebook",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/devjavedmohd/interview_questions",
+        "label": "Repo: interview_questions",
+        "snippet": "A curated collection of high-quality interview questions and answers for AI-related roles. This repository helps candidates understand how interviews differ across roles, not just memorize answers.",
+        "text": "interview_questions A curated collection of high-quality interview questions and answers for AI-related roles. This repository helps candidates understand how interviews differ across roles, not just memorize answers. devjavedmohd",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 5,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [
+      "storage systems"
+    ],
+    "fit_score": 0.523,
+    "must_have_score": 0.6,
+    "nice_to_have_score": 0.09,
+    "confidence_score": 0.85,
+    "rationale": "Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.600; nice-to-have score: 0.090; confidence: 0.850; location: ['London']; top evidence: Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | London | 235 public repos | 17 followers | Full-Stack Developer | Data Science and Analytics |  Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript | Rare Carat Inc. | London | This is a repo with links to everything you'd ever want to learn about data engineering | Jupyter Notebook; uncertainty: none.",
+    "status": "hold",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "needs_review",
+    "reviewer_note": "Some public evidence exists, but the profile needs manual review.",
+    "requirement_scores": {
+      "TypeScript": 0.6,
+      "React": 0.6,
+      "frontend": 0.6,
+      "backend": 0.6,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.6,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_sources": {
+      "TypeScript": "profile \u00b7 GitHub profile bio",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "profile \u00b7 GitHub profile bio",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Science and Analytics | Pyt",
+      "React": "evjavedmohd Full-Stack Developer | Data Science and Analytics | Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Ra",
+      "frontend": "evjavedmohd Full-Stack Developer | Data Science and Analytics | Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Ra",
+      "backend": "Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Science and",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "nd Analytics | Python | SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Scien",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Mohd Javed,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React, storage systems and your London location.\n\nI was particularly interested in your work on SQL | React | Next.js | Vue.js | JavaScript | Django | Postgresql | Node.js | TypeScript Rare Carat Inc. London Full-Stack Developer | Data Science and Analytics | Pyt. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
+    "id": "f1a0eca3",
+    "name": "Francesco Albanese",
+    "headline": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
+    "source_url": "https://github.com/francesco-albanese",
+    "email": "",
+    "found_via": [
+      "GitHub user search",
+      "Linked website"
+    ],
+    "evidence_links": [
+      "https://github.com/francesco-albanese",
+      "https://www.linkedin.com/in/albanesefrancesco/",
+      "https://github.com/francesco-albanese/python-token-generator",
+      "https://github.com/francesco-albanese/aws-multi-account",
+      "https://github.com/francesco-albanese/claude-code-config"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+node&type=users&p=1",
+        "label": "GitHub user search",
+        "snippet": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers",
+        "text": "Francesco Albanese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) London, United Kingdom Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) London, United Kingdom 7 public repos 12 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/francesco-albanese",
+        "label": "GitHub profile",
+        "snippet": "Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom",
+        "text": "Francesco Albanese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) - francesco-albanese",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "website",
+        "url": "https://www.linkedin.com/in/albanesefrancesco/",
+        "label": "Linked website",
+        "snippet": "Francesco Albanese - Pirum | LinkedIn Senior Staff Engineer with 10+ years of experience specializing in full-stack TypeScript\u2026 \u00b7 Experience: Pirum \u00b7 Education: Universit\u00e0 degli Studi di Messina \u00b7 Location: London \u00b7 500+",
+        "text": "Francesco Albanese - Pirum | LinkedIn Senior Staff Engineer with 10+ years of experience specializing in full-stack TypeScript\u2026 \u00b7 Experience: Pirum \u00b7 Education: Universit\u00e0 degli Studi di Messina \u00b7 Location: London \u00b7 500+ connections on LinkedIn. View Francesco Albanese\u2019s profile on LinkedIn, a professional community of 1 billion members. function getDfd() {let yFn,nFn;const p=new Promise(function(y, n){yFn=y;nFn=n;});p.resolve=yFn;p.reject=nFn;return p;} window.lazyloader = getDfd(); window.tracking = getDfd(); window.impressionTracking = getDfd(); window.ingraphTracking = getDfd(); window.appDetection = getDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Francesco Albanese - Pirum | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"reviewedBy\":{\"@type\":\"Person\",\"name\":\"Francesco Albanese\"},\"url\":\"https://uk.linkedin.com/in/albanesefrancesco\"},{\"@context\":\"http://schema.org\",\"@type\":\"Person\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"GB\",\"addressLocality\":\"London, England, United Kingdom\"},\"alumniOf\":[{\"@type\":\"EducationalOrganization\",\"name\":\"Universit\u00e0 degli Studi di Messina\",\"url\":\"https://it.linkedin.com/school/universityuof-messina/\",\"member\":{\"@type\":\"OrganizationRole\",\"description\":\"Business Economics, Accounting, Marketing, Business Plan, Financial Maths\",\"startDate\":2009,\"endDate\":2012}}],\"awards\":[],\"disambiguatingDescription\":\"\",\"image\":{\"@type\":\"ImageObject\",\"contentUrl\":\"https://media.licdn.com/dms/image/v2/C4D03AQGcEv4-RgShkw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1549403942376?e=2147483647&v=beta&t=c0dBZ3SH997pBwTjt5c9iAhn3h65k9PZU93WWKAYdyU\"},\"jobTitle\":[\"**** ** ********\",\"****** ***** ********\",\"***** ********\",\"****** ******** *********\",\"****** ******** ********\",\"******** ********\",\"******** *** *********\",\"******** ******** *********\",\"***** *** *** *********\",\"***** *** *** *********\",\"***** *** *** *********\",\"*** ***** *** ******** * ***** *** *** *********\",\"******** *********\",\"****** *********\",\"******** ******* ************** * **** ****** **********\",\"*********** ** **** ********** **********\"],\"knowsLanguage\":[{\"@type\":\"Language\",\"name\":\"English\"},{\"@type\":\"Language\",\"name\":\"Italian\"}],\"memberOf\":[],\"name\":\"Francesco Albanese\",\"sameAs\":\"https://uk.linkedin.com/in/albanesefrancesco\",\"url\":\"https://uk.linkedin.com/in/albanesefrancesco\",\"worksFor\":[{\"@type\":\"Organization\",\"name\":\"Pirum\",\"url\":\"https://uk.linkedin.com/company/pirum-systems-ltd\",\"location\":\"London Area, United Kingdom\",\"member\":{\"@type\":\"OrganizationRole\",\"description\":\"******** ********* ** *** ************* ******* ** ******* ******** ******* *** ***** **************** ********** ** ******* **** **** ** *** *** *** ********* ***** ******** **** ********************* ****** ********* **** ******** *****",
+        "provenance": "Linked personal website",
+        "matched_requirements": [],
+        "strength": 0.55
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/francesco-albanese/python-token-generator",
+        "label": "Repo: python-token-generator",
+        "snippet": "Python JWT and JWK generator | Python",
+        "text": "python-token-generator Python JWT and JWK generator Python francesco-albanese",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/francesco-albanese/aws-multi-account",
+        "label": "Repo: aws-multi-account",
+        "snippet": "HCL",
+        "text": "aws-multi-account HCL francesco-albanese HCL",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/francesco-albanese/claude-code-config",
+        "label": "Repo: claude-code-config",
+        "snippet": "Claude Code configuration: rules, agents, commands, skills | Python",
+        "text": "claude-code-config Claude Code configuration: rules, agents, commands, skills Python francesco-albanese Python",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 6,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.51,
+    "must_have_score": 0.6,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.98,
+    "rationale": "Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.600; nice-to-have score: 0.000; confidence: 0.980; location: ['London']; top evidence: Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | London, United Kingdom | 7 public repos | 12 followers | Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) | Pirum Systems Ltd | London, United Kingdom | Francesco Albanese - Pirum | LinkedIn Senior Staff Engineer with 10+ years of experience specializing in full-stack TypeScript\u2026 \u00b7 Experience: Pirum \u00b7 Education: Universit\u00e0 degli Studi di Messina \u00b7 Location: London \u00b7 500+; uncertainty: none.",
+    "status": "hold",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Eligible: public evidence aligns with London.",
+    "review_state": "needs_review",
+    "reviewer_note": "Some public evidence exists, but the profile needs manual review.",
+    "requirement_scores": {
+      "TypeScript": 0.6,
+      "React": 0.6,
+      "frontend": 0.6,
+      "backend": 0.6,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_sources": {
+      "TypeScript": "profile \u00b7 GitHub profile bio",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "anese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Se",
+      "React": "ese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Senior Full-stack",
+      "frontend": "ese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Senior Full-stack",
+      "backend": "sco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Senior F",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nI was particularly interested in your work on anese francesco-albanese Lead AI engineer | Senior Full-stack engineer (Python, TypeScript, Node.js, React) Pirum Systems Ltd London, United Kingdom Lead AI engineer | Se. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "27b28d4d",
@@ -2047,6 +2031,7 @@
         "label": "GitHub user search",
         "snippet": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\r\nPHP | MySQL | Laravel | Docker | Berlin | 19 public repos | 3 followers",
         "text": "Harshit Tripathi htthecool Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\r\nPHP | MySQL | Laravel | Docker Berlin Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\r\nPHP | MySQL | Laravel | Docker Berlin 19 public repos 3 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -2056,6 +2041,7 @@
         "label": "GitHub profile",
         "snippet": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin",
         "text": "Harshit Tripathi htthecool Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker @tasko-io Berlin Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker - htthecool",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -2065,6 +2051,7 @@
         "label": "Repo: accountRecovery",
         "snippet": "React Native App with Web3 to recover ETH account from mnemonic | JavaScript",
         "text": "accountRecovery React Native App with Web3 to recover ETH account from mnemonic JavaScript htthecool",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -2074,6 +2061,7 @@
         "label": "Repo: cbh-take-home-project",
         "snippet": "JavaScript",
         "text": "cbh-take-home-project JavaScript htthecool JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -2083,6 +2071,7 @@
         "label": "Repo: liveTrackingMap",
         "snippet": "Java",
         "text": "liveTrackingMap Java htthecool Java",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -2101,13 +2090,16 @@
     "must_have_score": 0.522,
     "nice_to_have_score": 0.09,
     "confidence_score": 0.85,
-    "rationale": "Must-have evidence: React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.522; nice-to-have score: 0.090; confidence: 0.850; location: ['Berlin']; top evidence: Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\r\nPHP | MySQL | Laravel | Docker | Berlin | 19 public repos | 3 followers | Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin | React Native App with Web3 to recover ETH account from mnemonic | JavaScript.",
+    "rationale": "Must-have evidence: React 1.00 via repo, frontend 1.00 via repo, backend 0.60 via profile; nice-to-have evidence: storage systems 0.60 via profile; must-have score: 0.522; nice-to-have score: 0.090; confidence: 0.850; location: ['Berlin']; top evidence: Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\r\nPHP | MySQL | Laravel | Docker | Berlin | 19 public repos | 3 followers | Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin | React Native App with Web3 to recover ETH account from mnemonic | JavaScript; uncertainty: No public evidence for: TypeScript.",
     "status": "hold",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: TypeScript",
     "requirement_scores": {
       "TypeScript": 0.0,
       "React": 1.0,
@@ -2129,12 +2121,12 @@
     },
     "requirement_sources": {
       "TypeScript": "",
-      "React": "repo",
-      "frontend": "repo",
-      "backend": "profile",
+      "React": "repo \u00b7 Repository list summary",
+      "frontend": "repo \u00b7 Repository list summary",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
-      "storage systems": "profile",
+      "storage systems": "profile \u00b7 GitHub profile bio",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -2148,12 +2140,12 @@
     },
     "requirement_evidence": {
       "TypeScript": "",
-      "React": "React Native App with Web3 to recover ETH account from mnemonic | JavaScript",
-      "frontend": "React Native App with Web3 to recover ETH account from mnemonic | JavaScript",
-      "backend": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin",
+      "React": "accountRecovery React Native App with Web3 to recover ETH account from mnemonic JavaScript htthecool",
+      "frontend": "accountRecovery React Native App with Web3 to recover ETH account from mnemonic JavaScript htthecool",
+      "backend": "Harshit Tripathi htthecool Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and Android applications. PHP | MySQL | Lara",
       "performance": "",
       "data structures": "",
-      "storage systems": "Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and  Android applications.\nPHP | MySQL | Laravel | Docker | @tasko-io | Berlin",
+      "storage systems": "t Tripathi htthecool Computer Engineer working on Javascript, React, Node, RoR, Postgres, React-native, iOS and Android applications. PHP | MySQL | Laravel | Docker @t",
       "Rust": "",
       "Effect": "",
       "HTML Canvas": "",
@@ -2165,7 +2157,7 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Harshit Tripathi,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on React, frontend, storage systems and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Harshit Tripathi,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend, storage systems and your Berlin location.\n\nI was particularly interested in your work on accountRecovery React Native App with Web3 to recover ETH account from mnemonic JavaScript htthecool. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "7fde2b7b",
@@ -2191,6 +2183,7 @@
         "label": "GitHub user search",
         "snippet": "Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | Berlin | 48 public repos | 9 followers",
         "text": "Jemail Omer jemxz Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js Berlin Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js Berlin 48 public repos 9 followers",
+        "provenance": "GitHub user search result",
         "matched_requirements": [],
         "strength": 0.3
       },
@@ -2200,6 +2193,7 @@
         "label": "GitHub profile",
         "snippet": "Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",
         "text": "Jemail Omer jemxz Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js INSA Berlin Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js - jemxz jemxz.omer@gmail.com",
+        "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
       },
@@ -2209,6 +2203,7 @@
         "label": "Linked website",
         "snippet": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1]",
         "text": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1],p=r[2],c=0,s=[];c",
+        "provenance": "Linked personal website",
         "matched_requirements": [],
         "strength": 0.55
       },
@@ -2218,6 +2213,7 @@
         "label": "Repo: article-scraper",
         "snippet": "JavaScript",
         "text": "article-scraper JavaScript jemxz",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -2227,6 +2223,7 @@
         "label": "Repo: Addis-core",
         "snippet": "JavaScript",
         "text": "Addis-core JavaScript jemxz JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       },
@@ -2236,6 +2233,7 @@
         "label": "Repo: UKP",
         "snippet": "JavaScript",
         "text": "UKP JavaScript jemxz JavaScript",
+        "provenance": "Repository list summary",
         "matched_requirements": [],
         "strength": 1.0
       }
@@ -2252,13 +2250,16 @@
     "must_have_score": 0.347,
     "nice_to_have_score": 0.0,
     "confidence_score": 0.96,
-    "rationale": "Must-have evidence: React 0.55 via linked site, frontend 0.55 via linked site, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.347; nice-to-have score: 0.000; confidence: 0.960; location: ['Berlin']; top evidence: Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | Berlin | 48 public repos | 9 followers | Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin | Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1].",
+    "rationale": "Must-have evidence: React 0.55 via linked site, frontend 0.55 via linked site, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.347; nice-to-have score: 0.000; confidence: 0.960; location: ['Berlin']; top evidence: Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | Berlin | 48 public repos | 9 followers | Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin | Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1]; uncertainty: No public evidence for: TypeScript.",
     "status": "hold",
     "location_hits": [
       "Berlin"
     ],
     "location_eligible": true,
+    "location_state": "confirmed",
     "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: TypeScript",
     "requirement_scores": {
       "TypeScript": 0.0,
       "React": 0.55,
@@ -2280,9 +2281,9 @@
     },
     "requirement_sources": {
       "TypeScript": "",
-      "React": "linked site",
-      "frontend": "linked site",
-      "backend": "profile",
+      "React": "linked site \u00b7 Linked personal website",
+      "frontend": "linked site \u00b7 Linked personal website",
+      "backend": "profile \u00b7 GitHub profile bio",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -2299,9 +2300,9 @@
     },
     "requirement_evidence": {
       "TypeScript": "",
-      "React": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1]",
-      "frontend": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou need to enable JavaScript to run this app.!function(e){function r(r){for(var n,l,f=r[0],i=r[1]",
-      "backend": "Currently employed at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js | INSA | Berlin",
+      "React": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou n",
+      "frontend": "Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou n",
+      "backend": "d at INSA as a software engineer. working mostly on web scrapers, puppeteer and Node js INSA Berlin Currently employed at INSA as a software engineer. working mostl",
       "performance": "",
       "data structures": "",
       "storage systems": "",
@@ -2316,6 +2317,141 @@
       "Panda": "",
       "open source": ""
     },
-    "outreach_draft": "Hi Jemail Omer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work suggests a strong match on React, frontend and your Berlin location.\n\nThe role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+    "outreach_draft": "Hi Jemail Omer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend and your Berlin location.\n\nI was particularly interested in your work on Jemail Omer Web site created using create-react-app *{font-family:Roboto,sans-serif;margin:0;overflow-x:hidden}Jemail OmerYou n. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
+    "id": "ea8d0807",
+    "name": "Carlos Meyer",
+    "headline": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
+    "source_url": "https://github.com/fabrikler",
+    "email": "",
+    "found_via": [
+      "GitHub user search"
+    ],
+    "evidence_links": [
+      "https://github.com/fabrikler",
+      "https://github.com/fabrikler/fabrikler",
+      "https://github.com/fabrikler/fabrikler.github.io"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+node&type=users&p=1",
+        "label": "GitHub user search",
+        "snippet": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | 2 public repos | 10 followers",
+        "text": "Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin 2 public repos 10 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/fabrikler",
+        "label": "GitHub profile",
+        "snippet": "Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin",
+        "text": "Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) - fabrikler",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/fabrikler/fabrikler",
+        "label": "Repo: fabrikler",
+        "snippet": "",
+        "text": "fabrikler fabrikler",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/fabrikler/fabrikler.github.io",
+        "label": "Repo: fabrikler.github.io",
+        "snippet": "A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML",
+        "text": "fabrikler.github.io A Hugo-based website built as my production log, showcasing projects, progress, and insights. HTML fabrikler HTML",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 4,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "backend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.113,
+    "must_have_score": 0.133,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.77,
+    "rationale": "Must-have evidence: backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.133; nice-to-have score: 0.000; confidence: 0.770; location: ['Berlin']; top evidence: Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | 2 public repos | 10 followers | Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) | Berlin | A Hugo-based website built as my production log, showcasing projects, progress, and insights. | HTML; uncertainty: No public evidence for: TypeScript, React, frontend.",
+    "status": "reject",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Eligible: public evidence aligns with Berlin.",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: TypeScript, React, frontend",
+    "requirement_scores": {
+      "TypeScript": 0.0,
+      "React": 0.0,
+      "frontend": 0.0,
+      "backend": 0.6,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_sources": {
+      "TypeScript": "",
+      "React": "",
+      "frontend": "",
+      "backend": "profile \u00b7 GitHub profile bio",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "",
+      "React": "",
+      "frontend": "",
+      "backend": "Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Sof",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Carlos Meyer,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of backend and your Berlin location.\n\nI was particularly interested in your work on Carlos Meyer fabrikler Apprentice Software Developer (FIAE) \u00b7 Backend / Data / AI Systems \u00b7 JS \u00b7 Node \u00b7 Homelab (Proxmox/Linux) Berlin Apprentice Sof. At HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   }
 ]

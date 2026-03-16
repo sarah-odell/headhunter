@@ -32,10 +32,10 @@ NEGATION_PREFIXES = (
     "lack of",
 )
 SKILL_ALIASES = {
-    "typescript": ["typescript", "ts"],
+    "typescript": ["typescript"],
     "react": ["react", "reactjs", "react.js"],
-    "frontend": ["frontend", "front-end", "ui", "react", "nextjs", "next.js", "tailwind", "html canvas"],
-    "backend": ["backend", "back-end", "node", "nodejs", "node.js", "api", "server", "postgres", "postgresql"],
+    "frontend": ["frontend", "front-end", "react", "nextjs", "next.js", "tailwind", "html canvas"],
+    "backend": ["backend", "back-end", "node", "nodejs", "node.js", "server", "postgres", "postgresql"],
     "performance": ["performance", "performant", "optimization", "optimiz", "scalability", "scale"],
     "data structures": ["data structures", "algorithms"],
     "storage systems": ["storage systems", "databases", "database", "postgres", "postgresql", "redis"],
@@ -129,7 +129,10 @@ class CandidateCard:
     status: str
     location_hits: list[str]
     location_eligible: bool
+    location_state: str
     eligibility_reason: str
+    review_state: str
+    reviewer_note: str
     requirement_scores: dict[str, float]
     requirement_sources: dict[str, str]
     requirement_evidence: dict[str, str]
@@ -249,6 +252,7 @@ def _make_evidence_record(
     label: str,
     snippet: str,
     text: str,
+    provenance: str = "",
     matched_requirements: list[str] | None = None,
 ) -> dict[str, Any]:
     return {
@@ -257,6 +261,7 @@ def _make_evidence_record(
         "label": label,
         "snippet": snippet.strip(),
         "text": text.strip(),
+        "provenance": provenance or label,
         "matched_requirements": matched_requirements or [],
         "strength": SOURCE_STRENGTHS.get(source_type, 0.0),
     }
@@ -301,13 +306,14 @@ def github_user_search(query: str, max_results: int = 20) -> list[dict]:
                     "evidence_links": [profile_url, search_url],
                     "found_via": ["GitHub user search"],
                     "evidence_records": [
-                        _make_evidence_record(
-                            "search",
-                            search_url,
-                            "GitHub user search",
-                            " | ".join(part for part in snippet_parts if part),
-                            " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
-                        )
+                    _make_evidence_record(
+                        "search",
+                        search_url,
+                        "GitHub user search",
+                        " | ".join(part for part in snippet_parts if part),
+                        " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
+                        provenance="GitHub user search result",
+                    )
                     ],
                     "search_text": " ".join(part for part in (name, login, bio, location, " ".join(snippet_parts)) if part),
                 }
@@ -355,6 +361,7 @@ def duckduckgo_profile_search(query: str, max_results: int = 10) -> list[dict]:
                         "DuckDuckGo public web search",
                         clean_snippet,
                         " ".join(part for part in (clean_title, clean_snippet) if part),
+                        provenance="DuckDuckGo result snippet",
                     )
                 ],
                 "search_text": " ".join(part for part in (clean_title, clean_snippet) if part),
@@ -387,6 +394,37 @@ def _extract_github_search_payload(html: str) -> dict:
 
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", unescape(value).lower()).strip()
+
+
+def _term_patterns(term: str) -> list[re.Pattern[str]]:
+    normalized = normalize_text(term)
+    escaped = re.escape(normalized)
+    escaped = escaped.replace(r"\ ", r"\s+")
+    escaped = escaped.replace(r"\-", r"[-\s]?")
+    return [re.compile(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", flags=re.I)]
+
+
+def _has_negation(normalized_text: str, start_index: int) -> bool:
+    prefix = normalized_text[max(0, start_index - 32):start_index].strip()
+    return any(prefix.endswith(negation) for negation in NEGATION_PREFIXES)
+
+
+def _find_positive_excerpt(text: str, keyword: str) -> tuple[bool, str]:
+    normalized_text = normalize_text(text)
+    for term in SKILL_ALIASES.get(normalize_text(keyword), [keyword]):
+        for pattern in _term_patterns(term):
+            for match in pattern.finditer(normalized_text):
+                if _has_negation(normalized_text, match.start()):
+                    continue
+                original_match = re.search(pattern.pattern, text, flags=re.I)
+                if original_match:
+                    start = max(0, original_match.start() - 80)
+                    end = min(len(text), original_match.end() + 80)
+                    return True, re.sub(r"\s+", " ", text[start:end]).strip(" |")
+                start = max(0, match.start() - 80)
+                end = min(len(normalized_text), match.end() + 80)
+                return True, normalized_text[start:end].strip(" |")
+    return False, ""
 
 
 def _first_match(pattern: str, text: str) -> str:
@@ -475,6 +513,7 @@ def enrich_github_result(item: dict) -> dict:
             "GitHub profile",
             " | ".join(part for part in (bio, company, location) if part),
             profile_text,
+            provenance="GitHub profile bio",
         )
     )
     if website_text:
@@ -485,12 +524,13 @@ def enrich_github_result(item: dict) -> dict:
                 "Linked website",
                 website_text[:220],
                 website_text,
+                provenance="Linked personal website",
             )
         )
     evidence_records.extend(repo["evidence_record"] for repo in pinned_repos[:3] if repo.get("evidence_record"))
     evidence_records.extend(repo["evidence_record"] for repo in listed_repos[:3] if repo.get("evidence_record"))
     evidence_records.extend(
-        _make_evidence_record("web", result["url"], result["label"], result["snippet"], result["text"])
+        _make_evidence_record("web", result["url"], result["label"], result["snippet"], result["text"], provenance="Public web result")
         for result in public_web_results[:2]
     )
     enriched_item["evidence_links"] = evidence_links
@@ -745,6 +785,7 @@ def _extract_pinned_repos(html: str, profile_url: str) -> list[dict]:
                     f"Repo: {name}",
                     " | ".join(part for part in (description, language, artifact_signals.get("artifact_markers", ""), readme_summary[:140]) if part),
                     " ".join(part for part in repo_text_parts if part),
+                    provenance="Pinned repository summary",
                 ),
             }
         )
@@ -795,6 +836,7 @@ def _extract_repository_list(profile_url: str, limit: int = 8) -> list[dict]:
                     f"Repo: {name}",
                     " | ".join(part for part in (description, language, artifact_signals.get("artifact_markers", ""), readme_summary[:140]) if part),
                     " ".join(part for part in repo_text_parts if part),
+                    provenance="Repository list summary",
                 ),
             }
         )
@@ -868,23 +910,25 @@ def _match_source_strength(source_texts: dict[str, str], keyword: str) -> tuple[
 def _match_requirement_from_records(
     evidence_records: list[dict[str, Any]],
     keyword: str,
-) -> tuple[float, str, str]:
+) -> tuple[float, str, str, str]:
     best_score = 0.0
     best_source = ""
-    best_snippet = ""
+    best_excerpt = ""
+    best_provenance = ""
     for record in evidence_records:
         text = record.get("text", "")
         if not text:
             continue
-        normalized_text = normalize_text(text)
-        if not _has_positive_signal(normalized_text, keyword):
+        matched, excerpt = _find_positive_excerpt(text, keyword)
+        if not matched:
             continue
         strength = float(record.get("strength", SOURCE_STRENGTHS.get(record.get("source_type", ""), 0.0)))
         if strength > best_score:
             best_score = strength
             best_source = SOURCE_LABELS.get(record.get("source_type", ""), record.get("source_type", ""))
-            best_snippet = record.get("snippet", "")[:220]
-    return best_score, best_source, best_snippet
+            best_excerpt = excerpt[:220]
+            best_provenance = record.get("provenance", record.get("label", ""))
+    return best_score, best_source, best_excerpt, best_provenance
 
 
 def _weighted_score(
@@ -914,41 +958,43 @@ def _weighted_score_from_records(
     requirements: Iterable[str],
     weights: dict[str, float],
     evidence_records: list[dict[str, Any]],
-) -> tuple[list[str], float, dict[str, float], dict[str, str], dict[str, str]]:
+) -> tuple[list[str], float, dict[str, float], dict[str, str], dict[str, str], dict[str, str]]:
     hits: list[str] = []
     scores: dict[str, float] = {}
     sources: dict[str, str] = {}
     evidence_snippets: dict[str, str] = {}
+    evidence_provenance: dict[str, str] = {}
     requirements = list(requirements)
     total_weight = sum(weights.get(item, 1.0) for item in requirements) or 1.0
     weighted_sum = 0.0
 
     for requirement in requirements:
-        score, source, snippet = _match_requirement_from_records(evidence_records, requirement)
+        score, source, excerpt, provenance = _match_requirement_from_records(evidence_records, requirement)
         scores[requirement] = round(score, 3)
         sources[requirement] = source
-        evidence_snippets[requirement] = snippet
+        evidence_snippets[requirement] = excerpt
+        evidence_provenance[requirement] = provenance
         weighted_sum += weights.get(requirement, 1.0) * score
         if score > 0:
             hits.append(requirement)
 
-    return hits, round(weighted_sum / total_weight, 3), scores, sources, evidence_snippets
+    return hits, round(weighted_sum / total_weight, 3), scores, sources, evidence_snippets, evidence_provenance
 
 
 def score_candidate_with_evidence(
     role_brief: dict,
     source_texts: dict[str, str],
     evidence_records: list[dict[str, Any]] | None = None,
-) -> tuple[list[str], list[str], float, float, float, float, dict[str, float], dict[str, str], dict[str, str]]:
+) -> tuple[list[str], list[str], float, float, float, float, dict[str, float], dict[str, str], dict[str, str], dict[str, str], list[str]]:
     must_weights = role_brief.get("must_have_weights", {})
     nice_weights = role_brief.get("nice_to_have_weights", {})
     if evidence_records:
-        must_hits, must_score, must_requirement_scores, must_sources, must_evidence = _weighted_score_from_records(
+        must_hits, must_score, must_requirement_scores, must_sources, must_evidence, must_provenance = _weighted_score_from_records(
             role_brief["must_haves"],
             must_weights,
             evidence_records,
         )
-        nice_hits, nice_score, nice_requirement_scores, nice_sources, nice_evidence = _weighted_score_from_records(
+        nice_hits, nice_score, nice_requirement_scores, nice_sources, nice_evidence, nice_provenance = _weighted_score_from_records(
             role_brief["nice_to_haves"],
             nice_weights,
             evidence_records,
@@ -966,28 +1012,27 @@ def score_candidate_with_evidence(
         )
         must_evidence = {requirement: "" for requirement in role_brief["must_haves"]}
         nice_evidence = {requirement: "" for requirement in role_brief["nice_to_haves"]}
+        must_provenance = {requirement: "" for requirement in role_brief["must_haves"]}
+        nice_provenance = {requirement: "" for requirement in role_brief["nice_to_haves"]}
     fit_weight_must = float(role_brief.get("must_have_category_weight", DEFAULT_MUST_CATEGORY_WEIGHT))
     fit_weight_nice = float(role_brief.get("nice_to_have_category_weight", DEFAULT_NICE_CATEGORY_WEIGHT))
     fit_score = round((fit_weight_must * must_score) + (fit_weight_nice * nice_score), 3)
     requirement_scores = {**must_requirement_scores, **nice_requirement_scores}
     requirement_sources = {**must_sources, **nice_sources}
     requirement_evidence = {**must_evidence, **nice_evidence}
+    requirement_provenance = {**must_provenance, **nice_provenance}
     confidence = compute_confidence(source_texts, requirement_scores)
-    return must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence
+    uncertainty_flags = summarize_uncertainty(role_brief, requirement_scores, source_texts)
+    return must_hits, nice_hits, fit_score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence, requirement_provenance, uncertainty_flags
 
 
 def _has_positive_signal(normalized_text: str, keyword: str) -> bool:
-    alias_terms = SKILL_ALIASES.get(normalize_text(keyword), [keyword])
-    for term in alias_terms:
-        normalized_keyword = normalize_text(term)
-        if normalized_keyword not in normalized_text:
-            continue
-
-        for match in re.finditer(re.escape(normalized_keyword), normalized_text):
-            prefix = normalized_text[max(0, match.start() - 24):match.start()].strip()
-            if any(prefix.endswith(negation) for negation in NEGATION_PREFIXES):
-                continue
-            return True
+    for term in SKILL_ALIASES.get(normalize_text(keyword), [keyword]):
+        for pattern in _term_patterns(term):
+            for match in pattern.finditer(normalized_text):
+                if _has_negation(normalized_text, match.start()):
+                    continue
+                return True
     return False
 
 
@@ -1006,6 +1051,19 @@ def compute_confidence(source_texts: dict[str, str], requirement_scores: dict[st
     confidence += min(0.1, strong_matches * 0.03)
     confidence += min(0.1, medium_matches * 0.02)
     return round(min(confidence, 1.0), 3)
+
+
+def summarize_uncertainty(role_brief: dict, requirement_scores: dict[str, float], source_texts: dict[str, str]) -> list[str]:
+    flags: list[str] = []
+    missing_core = [req for req in role_brief.get("must_haves", []) if requirement_scores.get(req, 0.0) <= 0]
+    weak_core = [req for req in role_brief.get("must_haves", []) if 0 < requirement_scores.get(req, 0.0) < 0.55]
+    if missing_core:
+        flags.append(f"No public evidence for: {', '.join(missing_core[:3])}")
+    if weak_core:
+        flags.append(f"Weak support for: {', '.join(weak_core[:3])}")
+    if not source_texts.get("repo"):
+        flags.append("No repo-backed evidence collected")
+    return flags
 
 
 def evidence_density_label(evidence_records: list[dict[str, Any]]) -> str:
@@ -1029,19 +1087,26 @@ def generate_outreach(
     strongest = must_hits[:2]
     supporting = nice_hits[:1]
     proof = ", ".join(strongest + supporting) if (strongest or supporting) else "your background"
+    proof_requirement = strongest[0] if strongest else (supporting[0] if supporting else "")
+    proof_excerpt = requirement_evidence.get(proof_requirement, "")
     location_line = f" and your {', '.join(location_hits)} location" if location_hits else ""
     role_summary = (
         "At HASH, full-stack engineers build most user-facing features across both frontend and backend, "
         "ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around "
         "knowledge graphs, simulation, and automation."
     )
+    concrete_line = (
+        f"I was particularly interested in your work on {proof_excerpt}."
+        if proof_excerpt
+        else f"I was particularly interested in the way your public work lines up with {proof}."
+    )
     return (
         f"Hi {candidate_name},\n\n"
         f"I came across your profile while sourcing for {role_brief['company']}'s {role_brief['role_name']} role. "
-        f"Your public work suggests a strong match on {proof}{location_line}.\n\n"
-        f"The role itself is a strong fit for engineers who want to build user-facing features across frontend and backend, "
-        f"move quickly in TypeScript and React, and work on an open-source platform focused on knowledge graphs, simulation, "
-        f"and automation. {role_summary}\n\n"
+        f"Your public work looks relevant for the team because of {proof}{location_line}.\n\n"
+        f"{concrete_line} At HASH, this role focuses on building user-facing features across frontend and backend, "
+        f"moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, "
+        f"simulation, and automation. {role_summary}\n\n"
         f"If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at {role_brief['company']}.\n\n"
         "Best,\nHASH Recruiting Team"
     )
@@ -1050,6 +1115,20 @@ def generate_outreach(
 def score_location(text: str, location_targets: Iterable[str]) -> list[str]:
     normalized = normalize_text(text)
     return [target for target in location_targets if _has_positive_signal(normalized, target)]
+
+
+def location_state_for_hits(location_hits: list[str]) -> str:
+    return "confirmed" if location_hits else "unknown"
+
+
+def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[str], fit_score: float) -> tuple[str, str]:
+    if not location_eligible:
+        return "insufficient_evidence", "Missing public London/Berlin evidence."
+    if uncertainty_flags:
+        return "needs_review", uncertainty_flags[0]
+    if fit_score >= 0.55:
+        return "ready", "Strong public evidence across the core role requirements."
+    return "needs_review", "Some public evidence exists, but the profile needs manual review."
 
 
 def to_status(score: float, location_eligible: bool = True) -> str:
@@ -1087,7 +1166,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             "website": "",
             "web": "",
         }
-        must_hits, nice_hits, score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence = score_candidate_with_evidence(
+        must_hits, nice_hits, score, must_score, nice_score, confidence, requirement_scores, requirement_sources, requirement_evidence, requirement_provenance, uncertainty_flags = score_candidate_with_evidence(
             role_brief,
             source_texts,
             evidence_records=evidence_records,
@@ -1095,6 +1174,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
         text_blob = " ".join(part for part in source_texts.values() if part)
         location_hits = score_location(text_blob, location_targets)
         location_eligible = bool(location_hits) if location_targets else True
+        location_state = location_state_for_hits(location_hits)
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
         identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
         must_breakdown = ", ".join(
@@ -1116,6 +1196,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             if location_eligible
             else "Ineligible: no public London/Berlin evidence found."
         )
+        review_state, reviewer_note = review_state_for_candidate(location_eligible, uncertainty_flags, score)
         rationale = (
             f"Must-have evidence: {must_breakdown}; "
             f"nice-to-have evidence: {nice_breakdown}; "
@@ -1123,7 +1204,8 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             f"nice-to-have score: {nice_score:.3f}; "
             f"confidence: {confidence:.3f}; "
             f"location: {location_hits if location_hits else 'no London/Berlin evidence'}; "
-            f"top evidence: {' | '.join(record.get('snippet', '') for record in strongest_evidence) if strongest_evidence else 'limited public evidence'}."
+            f"top evidence: {' | '.join(record.get('snippet', '') for record in strongest_evidence) if strongest_evidence else 'limited public evidence'}; "
+            f"uncertainty: {' | '.join(uncertainty_flags) if uncertainty_flags else 'none'}."
         )
         candidate = CandidateCard(
             id=identity,
@@ -1146,9 +1228,15 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             status=to_status(score, location_eligible=location_eligible),
             location_hits=location_hits,
             location_eligible=location_eligible,
+            location_state=location_state,
             eligibility_reason=eligibility_reason,
+            review_state=review_state,
+            reviewer_note=reviewer_note,
             requirement_scores=requirement_scores,
-            requirement_sources=requirement_sources,
+            requirement_sources={
+                key: f"{requirement_sources.get(key, '')}{f' · {requirement_provenance.get(key, '')}' if requirement_provenance.get(key) else ''}".strip(" ·")
+                for key in requirement_scores
+            },
             requirement_evidence=requirement_evidence,
             outreach_draft=generate_outreach(
                 name,
@@ -1222,7 +1310,10 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized.setdefault("confidence_score", 0.0)
         normalized.setdefault("location_hits", [])
         normalized.setdefault("location_eligible", True)
+        normalized.setdefault("location_state", "unknown")
         normalized.setdefault("eligibility_reason", "")
+        normalized.setdefault("review_state", "needs_review")
+        normalized.setdefault("reviewer_note", "")
         normalized.setdefault("requirement_scores", {})
         normalized.setdefault("requirement_sources", {})
         normalized.setdefault("requirement_evidence", {})
@@ -1250,7 +1341,10 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "confidence_score",
             "location_hits",
             "location_eligible",
+            "location_state",
             "eligibility_reason",
+            "review_state",
+            "reviewer_note",
             "fit_score",
             "status",
             "rationale",
