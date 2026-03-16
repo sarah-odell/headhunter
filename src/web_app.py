@@ -28,6 +28,9 @@ DEFAULT_CSV = ROOT / "data" / "candidates.csv"
 DEFAULT_SEED = ROOT / "data" / "sample_search_results.json"
 DEFAULT_MAX_RESULTS = 20
 STATUS_OPTIONS = ("shortlist", "hold", "reject")
+EVIDENCE_FILTERS = {"all", "full", "partial", "degraded"}
+LOCATION_FILTERS = {"all", "confirmed", "inferred", "unknown"}
+REQUIREMENT_FILTERS = {"all", "typescript", "react", "frontend", "backend"}
 
 
 def available_briefs() -> list[Path]:
@@ -43,6 +46,18 @@ def status_counts(cards: list) -> dict[str, int]:
 
 def normalize_status_filter(raw_value: str) -> str:
     return raw_value if raw_value in {"all", *STATUS_OPTIONS} else "all"
+
+
+def normalize_evidence_filter(raw_value: str) -> str:
+    return raw_value if raw_value in EVIDENCE_FILTERS else "all"
+
+
+def normalize_location_filter(raw_value: str) -> str:
+    return raw_value if raw_value in LOCATION_FILTERS else "all"
+
+
+def normalize_requirement_filter(raw_value: str) -> str:
+    return raw_value if raw_value in REQUIREMENT_FILTERS else "all"
 
 
 def percent_label(value: float) -> str:
@@ -80,6 +95,19 @@ def requirement_judgment(value: float) -> str:
     return "Unknown"
 
 
+def requirement_checkmark(value: float) -> str:
+    return "✓" if value >= 0.85 else ""
+
+
+def enrichment_state_label(value: str) -> str:
+    labels = {
+        "full": "Full enrichment",
+        "partial": "Partial enrichment",
+        "degraded": "Degraded enrichment",
+    }
+    return labels.get(value or "full", "Full enrichment")
+
+
 def render_page(
     brief_path: Path,
     output_path: Path,
@@ -89,12 +117,25 @@ def render_page(
     cards: list,
     view_mode: str = "cards",
     status_filter: str = "all",
+    evidence_filter: str = "all",
+    location_filter: str = "all",
+    requirement_filter: str = "all",
+    queue_index: int = 0,
     message: str = "",
     error: str = "",
 ) -> str:
     brief = load_role_brief(brief_path)
     counts = status_counts(cards)
-    filtered_cards = [card for card in cards if status_filter == "all" or card.status == status_filter]
+    filtered_cards = [
+        card for card in cards
+        if (status_filter == "all" or card.status == status_filter)
+        and (evidence_filter == "all" or getattr(card, "enrichment_state", "full") == evidence_filter)
+        and (location_filter == "all" or getattr(card, "location_state", "unknown") == location_filter)
+        and (
+            requirement_filter == "all"
+            or getattr(card, "requirement_judgments", {}).get(requirement_filter.title() if requirement_filter in {"typescript", "react"} else requirement_filter, "unknown") != "unknown"
+        )
+    ]
     ranked_cards = sorted(
         filtered_cards,
         key=lambda card: (card.fit_score, card.must_have_score, card.nice_to_have_score, card.confidence_score),
@@ -112,6 +153,10 @@ def render_page(
         "brief": str(brief_path.relative_to(ROOT)),
         "seed": str(seed_path.relative_to(ROOT)) if seed_path else "",
         "max_results": str(max_results),
+        "evidence": evidence_filter,
+        "location": location_filter,
+        "requirement": requirement_filter,
+        "load": "1" if cards else "",
     }
     role_options = []
     for option in available_briefs():
@@ -164,7 +209,7 @@ def render_page(
         )
         status_form = "".join(
             f"""
-            <button type="submit" name="status" value="{status}" class="status-button {'active' if card.status == status else ''}">
+            <button type="submit" name="status" value="{status}" class="status-button status-{status} {'active' if card.status == status else ''}">
               {status.title()}
             </button>
             """
@@ -179,6 +224,7 @@ def render_page(
                     <span class="pill">#{rank}</span>
                     <span class="pill pill-status">{escape(card.status.title())}</span>
                     <span class="pill">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</span>
+                    <span class="pill">{display_text(enrichment_state_label(getattr(card, "enrichment_state", "full") or "full"))}</span>
                     <span class="pill">{display_text(location_pill)}</span>
                   </div>
                   <h3>{display_text(card.name)}</h3>
@@ -238,6 +284,10 @@ def render_page(
                 <input type="hidden" name="max_results" value="{max_results}">
                 <input type="hidden" name="view" value="{escape(view_mode)}">
                 <input type="hidden" name="status_filter" value="{escape(status_filter)}">
+                <input type="hidden" name="evidence_filter" value="{escape(evidence_filter)}">
+                <input type="hidden" name="location_filter" value="{escape(location_filter)}">
+                <input type="hidden" name="requirement_filter" value="{escape(requirement_filter)}">
+                <input type="hidden" name="queue_index" value="{queue_index}">
                 {status_form}
               </form>
             </article>
@@ -253,12 +303,12 @@ def render_page(
                 <div class="table-subtle">{display_text(found_via_text)}</div>
               </td>
               <td class="col-status">{escape(card.status.title())}</td>
-              <td class="col-status">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</td>
+              <td class="col-status">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}<div class="table-subtle">{display_text(enrichment_state_label(getattr(card, "enrichment_state", "full") or "full"))}</div></td>
               <td class="col-score">{percent_label(card.fit_score)}</td>
-              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("TypeScript", 0.0)))}</td>
-              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("React", 0.0)))}</td>
-              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("frontend", 0.0)))}</td>
-              <td class="col-score">{display_text(requirement_judgment(card.requirement_scores.get("backend", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_checkmark(card.requirement_scores.get("TypeScript", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_checkmark(card.requirement_scores.get("React", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_checkmark(card.requirement_scores.get("frontend", 0.0)))}</td>
+              <td class="col-score">{display_text(requirement_checkmark(card.requirement_scores.get("backend", 0.0)))}</td>
               <td class="col-location">{display_text(", ".join(card.location_hits) if card.location_hits else "No match")}<div class="table-subtle">{display_text((getattr(card, 'location_state', 'unknown') or 'unknown').title())}</div></td>
               <td class="col-skills">{display_text(getattr(card, "why_summary", "") or "No summary")}</td>
             </tr>
@@ -274,8 +324,58 @@ def render_page(
     location_label = " / ".join(location_targets) if location_targets else "No location gate"
     cards_tab_class = "active" if view_mode == "cards" else ""
     table_tab_class = "active" if view_mode == "table" else ""
+    queue_tab_class = "active" if view_mode == "queue" else ""
     filter_label = "All candidates" if status_filter == "all" else f"{status_filter.title()} only"
     view_query = urlencode(base_query | {"status": status_filter})
+    queue_index = max(0, min(queue_index, max(len(ranked_cards) - 1, 0)))
+    queue_card = ranked_cards[queue_index] if ranked_cards else None
+    queue_status_form = (
+        "".join(
+            f"""
+            <button type="submit" name="status" value="{status}" class="status-button status-{status} {'active' if queue_card and queue_card.status == status else ''}">
+              {status.title()}
+            </button>
+            """
+            for status in STATUS_OPTIONS
+        )
+        if queue_card
+        else ""
+    )
+    queue_view_html = (
+        f"""
+        <section class="table-shell spotlight-card reveal queue-shell">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Review queue</p>
+              <h3>{display_text(queue_card.name)}</h3>
+            </div>
+            <span class="pill">{queue_index + 1} / {len(ranked_cards)}</span>
+          </div>
+          <div class="queue-controls">
+            <div class="queue-nav">
+              <a class="secondary queue-nav-button" href="/?{urlencode(base_query | {'status': status_filter, 'view': 'queue', 'queue': str(max(queue_index - 1, 0))})}">Previous</a>
+              <a class="secondary queue-nav-button" href="/?{urlencode(base_query | {'status': status_filter, 'view': 'queue', 'queue': str(min(queue_index + 1, max(len(ranked_cards) - 1, 0)))})}">Next</a>
+            </div>
+            <form method="post" action="/review" class="review-form queue-review-form">
+              <input type="hidden" name="candidate_id" value="{escape(queue_card.id) if queue_card else ''}">
+              <input type="hidden" name="brief" value="{escape(str(brief_path.relative_to(ROOT)))}">
+              <input type="hidden" name="seed" value="{escape(str(seed_path.relative_to(ROOT))) if seed_path else ''}">
+              <input type="hidden" name="max_results" value="{max_results}">
+              <input type="hidden" name="view" value="queue">
+              <input type="hidden" name="status_filter" value="{escape(status_filter)}">
+              <input type="hidden" name="evidence_filter" value="{escape(evidence_filter)}">
+              <input type="hidden" name="location_filter" value="{escape(location_filter)}">
+              <input type="hidden" name="requirement_filter" value="{escape(requirement_filter)}">
+              <input type="hidden" name="queue_index" value="{queue_index}">
+              {queue_status_form}
+            </form>
+          </div>
+          <div class="queue-card">{candidate_cards[queue_index] if queue_card else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates loaded yet. Run live GitHub sourcing or enable seed data to populate the pipeline.</p></div>'}</div>
+        </section>
+        """
+        if ranked_cards
+        else '<div class="candidate-card empty-state spotlight-card"><p class="lede">No candidates loaded yet. Run live GitHub sourcing or enable seed data to populate the pipeline.</p></div>'
+    )
     cards_view_html = (
         ''.join(candidate_cards)
         if candidate_cards
@@ -685,6 +785,11 @@ def render_page(
       color: #c2f0e3;
       border-color: rgba(31, 107, 93, 0.3);
     }}
+    .pill.active {{
+      color: var(--foreground);
+      border-color: var(--border-accent);
+      background: rgba(94,106,210,0.12);
+    }}
     .pill-location.eligible {{
       color: #d2e8ff;
       border-color: rgba(105, 161, 255, 0.25);
@@ -726,6 +831,17 @@ def render_page(
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+    }}
+    .toolbar-filters {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 16px;
+    }}
+    .queue-nav {{
+      display: flex;
+      gap: 12px;
+      margin: 0 0 18px;
     }}
     .workspace-grid {{
       display: grid;
@@ -1321,6 +1437,10 @@ def render_page(
         <div class="form-grid">
           <input type="hidden" name="view" value="{escape(view_mode)}">
           <input type="hidden" name="status_filter" value="{escape(status_filter)}">
+          <input type="hidden" name="evidence_filter" value="{escape(evidence_filter)}">
+          <input type="hidden" name="location_filter" value="{escape(location_filter)}">
+          <input type="hidden" name="requirement_filter" value="{escape(requirement_filter)}">
+          <input type="hidden" name="queue" value="{queue_index}">
           <label>
             Role brief
             <select name="brief">{''.join(role_options)}</select>
@@ -1373,9 +1493,19 @@ def render_page(
             <nav class="view-switcher" aria-label="Candidate views">
               <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
               <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
+              <a class="view-tab {queue_tab_class}" href="/?{view_query}&view=queue">Queue</a>
             </nav>
           </div>
-          {cards_view_html if view_mode == "cards" else table_view_html}
+          <div class="toolbar-filters">
+            <a class="pill {'active' if evidence_filter == 'all' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'all'})}">All evidence</a>
+            <a class="pill {'active' if evidence_filter == 'full' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'full'})}">Full enrichment</a>
+            <a class="pill {'active' if evidence_filter == 'partial' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'partial'})}">Partial enrichment</a>
+            <a class="pill {'active' if location_filter == 'confirmed' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'confirmed'})}">Confirmed location</a>
+            <a class="pill {'active' if location_filter == 'inferred' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'location': 'inferred'})}">Inferred location</a>
+            <a class="pill {'active' if requirement_filter == 'backend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'backend'})}">Backend evidence</a>
+            <a class="pill {'active' if requirement_filter == 'frontend' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'requirement': 'frontend'})}">Frontend evidence</a>
+          </div>
+          {cards_view_html if view_mode == "cards" else table_view_html if view_mode == "table" else queue_view_html}
         </section>
 
         <aside class="brief-card spotlight-card">
@@ -1475,6 +1605,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         max_results = int(query.get("max_results", [str(DEFAULT_MAX_RESULTS)])[-1])
         view_mode = query.get("view", ["cards"])[-1]
         status_filter = normalize_status_filter(query.get("status", ["all"])[-1])
+        evidence_filter = normalize_evidence_filter(query.get("evidence", ["all"])[-1])
+        location_filter = normalize_location_filter(query.get("location", ["all"])[-1])
+        requirement_filter = normalize_requirement_filter(query.get("requirement", ["all"])[-1])
+        queue_index = int(query.get("queue", ["0"])[-1] or "0")
         should_load_cards = query.get("load", [""])[-1] == "1"
         cards = load_cards(output_path) if should_load_cards and output_path.exists() else []
         page = render_page(
@@ -1484,8 +1618,12 @@ class RecruitingHandler(BaseHTTPRequestHandler):
             seed_path=seed_path,
             max_results=max_results,
             cards=cards,
-            view_mode=view_mode if view_mode in {"cards", "table"} else "cards",
+            view_mode=view_mode if view_mode in {"cards", "table", "queue"} else "cards",
             status_filter=status_filter,
+            evidence_filter=evidence_filter,
+            location_filter=location_filter,
+            requirement_filter=requirement_filter,
+            queue_index=queue_index,
             message=query.get("message", [""])[-1],
             error=query.get("error", [""])[-1],
         )
@@ -1503,6 +1641,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         max_results = int(form.get("max_results", str(DEFAULT_MAX_RESULTS)))
         view_mode = form.get("view", "cards")
         status_filter = normalize_status_filter(form.get("status_filter", "all"))
+        evidence_filter = normalize_evidence_filter(form.get("evidence_filter", "all"))
+        location_filter = normalize_location_filter(form.get("location_filter", "all"))
+        requirement_filter = normalize_requirement_filter(form.get("requirement_filter", "all"))
+        queue_index = form.get("queue", "0")
 
         try:
             brief = load_role_brief(brief_path)
@@ -1516,6 +1658,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                 "load": "1",
                 "view": view_mode,
                 "status": status_filter,
+                "evidence": evidence_filter,
+                "location": location_filter,
+                "requirement": requirement_filter,
+                "queue": queue_index,
                 "message": f"Generated {len(cards)} candidate cards.",
             }
             self.redirect("/", params)
@@ -1529,6 +1675,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "load": "1",
                     "view": view_mode,
                     "status": status_filter,
+                    "evidence": evidence_filter,
+                    "location": location_filter,
+                    "requirement": requirement_filter,
+                    "queue": queue_index,
                     "error": str(exc),
                 },
             )
@@ -1539,6 +1689,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
         max_results = form.get("max_results", str(DEFAULT_MAX_RESULTS))
         view_mode = form.get("view", "cards")
         status_filter = normalize_status_filter(form.get("status_filter", "all"))
+        evidence_filter = normalize_evidence_filter(form.get("evidence_filter", "all"))
+        location_filter = normalize_location_filter(form.get("location_filter", "all"))
+        requirement_filter = normalize_requirement_filter(form.get("requirement_filter", "all"))
+        queue_index = int(form.get("queue_index", "0"))
         try:
             cards = load_cards(DEFAULT_OUTPUT)
             update_card_status(cards, form["candidate_id"], form["status"])
@@ -1553,6 +1707,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "load": "1",
                     "view": view_mode,
                     "status": status_filter,
+                    "evidence": evidence_filter,
+                    "location": location_filter,
+                    "requirement": requirement_filter,
+                    "queue": str(queue_index + 1 if view_mode == "queue" else queue_index),
                     "message": f"Updated {form['candidate_id']} to {form['status']}.",
                 },
             )
@@ -1566,6 +1724,10 @@ class RecruitingHandler(BaseHTTPRequestHandler):
                     "load": "1",
                     "view": view_mode,
                     "status": status_filter,
+                    "evidence": evidence_filter,
+                    "location": location_filter,
+                    "requirement": requirement_filter,
+                    "queue": str(queue_index),
                     "error": str(exc),
                 },
             )

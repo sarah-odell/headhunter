@@ -44,9 +44,8 @@ Public evidence can come from:
 - public repository listings
 - repository page summaries
 - linked personal websites
-- supporting public web results when they reinforce the candidate identity
 
-`GitHub profiles per search` controls search depth per query, not final candidate count. Starting with `5` usually yields about `25` raw results before deduplication.
+`GitHub profiles per search` controls search depth per query, not final candidate count. Starting with `20` usually yields about `60` raw results before deduplication.
 
 ## Scoring and uncertainty
 
@@ -57,6 +56,9 @@ Scoring is deterministic and evidence-weighted.
 - stronger evidence sources score higher than weaker ones
 - repo-backed evidence is preferred over profile text
 - missing evidence is treated as `unknown`, not as proof a candidate lacks a skill
+- live candidates are dropped unless they clear a minimum evidence bar
+- frontend-heavy candidates default to `hold` unless backend evidence is confirmed
+- live sourcing uses staged discovery first, then deep enrichment for the strongest slice
 
 Each important requirement is labeled as:
 
@@ -79,9 +81,10 @@ Each candidate card includes:
 - rank
 - fit score
 - evidence-base state
+- enrichment state
 - location state
 - `why this candidate` summary
-- per-requirement evidence with source provenance
+- per-requirement evidence with source provenance for the core must-haves
 - outreach draft
 
 The table view is optimized for quick comparison and shows:
@@ -89,10 +92,13 @@ The table view is optimized for quick comparison and shows:
 - rank
 - status
 - evidence-base state
+- enrichment state
 - fit score
 - `TypeScript`, `React`, `frontend`, and `backend` judgments
 - location state
 - one-line candidate summary
+
+There is also a one-by-one review queue view for stepping through candidates sequentially and setting `shortlist` / `hold` / `reject`, similar to a Wellfound-style review flow.
 
 ## Demo mode vs live mode
 
@@ -109,6 +115,7 @@ CSV export includes:
 - candidate name
 - contact provenance
 - evidence-base state
+- enrichment state
 - location state
 - `why this candidate`
 - review tags
@@ -147,6 +154,7 @@ Export CSV:
 - this is still a heuristic screening tool, not a production recruiting system
 - sparse public profiles can produce only partial evidence
 - GitHub may rate-limit repeated live runs
+- inferred location can still satisfy the London/Berlin gate
 - public email is only shown when it is explicitly exposed on GitHub or a linked public site
 
 ## Project files

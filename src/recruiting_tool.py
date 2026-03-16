@@ -136,6 +136,7 @@ class CandidateCard:
     why_summary: str
     review_tags: list[str]
     contact_source: str
+    enrichment_state: str
     requirement_scores: dict[str, float]
     requirement_judgments: dict[str, str]
     requirement_sources: dict[str, str]
@@ -488,15 +489,16 @@ def enrich_github_result(item: dict) -> dict:
     evidence_links = [item["url"]]
     if website and website not in evidence_links:
         evidence_links.append(website)
-    if not email:
-        email = _choose_preferred_email(
-            [
-                email,
-                api_email,
-                _extract_email_from_github_repo_pages([repo["url"] for repo in [*pinned_repos, *listed_repos]]),
-                _extract_email_from_url(website) if website else "",
-            ]
-        )
+    repo_email = _extract_email_from_github_repo_pages([repo["url"] for repo in [*pinned_repos, *listed_repos]])
+    website_email = _extract_email_from_url(website) if website else ""
+    email, email_source = _choose_preferred_email_with_source(
+        [
+            (email, "GitHub profile"),
+            (api_email, "GitHub profile API"),
+            (repo_email, "GitHub repository page"),
+            (website_email, "Linked website"),
+        ]
+    )
     if website:
         website_text = _extract_website_text(website)
     for repo in pinned_repos[:3]:
@@ -543,6 +545,7 @@ def enrich_github_result(item: dict) -> dict:
     enriched_item["profile_name"] = display_name
     enriched_item["profile_location"] = location
     enriched_item["public_email"] = email
+    enriched_item["public_email_source"] = email_source
     enriched_item["pinned_repos"] = pinned_repos
     enriched_item["listed_repos"] = listed_repos
     enriched_item["source_texts"] = {
@@ -594,6 +597,18 @@ def _choose_preferred_email(candidates: Iterable[str]) -> str:
     normalized = [_normalize_email(candidate) for candidate in candidates if candidate]
     preferred = next((email for email in normalized if email and not _is_noreply_email(email)), "")
     return preferred or next((email for email in normalized if email), "")
+
+
+def _choose_preferred_email_with_source(candidates: Iterable[tuple[str, str]]) -> tuple[str, str]:
+    normalized: list[tuple[str, str]] = []
+    for candidate, source in candidates:
+        email = _normalize_email(candidate)
+        if email:
+            normalized.append((email, source))
+    preferred = next(((email, source) for email, source in normalized if not _is_noreply_email(email)), ("", ""))
+    if preferred[0]:
+        return preferred
+    return next(iter(normalized), ("", ""))
 
 
 def _fetch_github_user_profile(username: str) -> dict:
@@ -1225,6 +1240,29 @@ def contact_source_label(email: str, evidence_records: list[dict[str, Any]]) -> 
     return "Public GitHub or linked website"
 
 
+def enrichment_state_for_candidate(evidence_records: list[dict[str, Any]]) -> str:
+    source_types = {record.get("source_type", "") for record in evidence_records}
+    if "repo" in source_types and "profile" in source_types:
+        return "full"
+    if {"profile", "website"} & source_types:
+        return "partial"
+    return "degraded"
+
+
+def discovery_priority(item: dict, role_brief: dict, location_targets: list[str]) -> tuple[float, int]:
+    text = " ".join(
+        part for part in (
+            item.get("search_text", ""),
+            item.get("snippet", ""),
+            item.get("profile_name", ""),
+            item.get("profile_location", ""),
+        ) if part
+    )
+    must_hits, nice_hits, fit_score, _, _ = score_candidate(text, role_brief.get("must_haves", []), role_brief.get("nice_to_haves", []))
+    location_hint = 1 if score_location(text, location_targets) else 0
+    return (fit_score, len(must_hits) + len(nice_hits) + location_hint)
+
+
 def review_state_for_candidate(location_eligible: bool, uncertainty_flags: list[str], fit_score: float, requirement_judgments: dict[str, str], location_state: str) -> tuple[str, str]:
     if not location_eligible:
         return "insufficient_evidence", "Missing public London/Berlin evidence."
@@ -1318,8 +1356,9 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
         name = enriched_item.get("profile_name") or extract_name(enriched_item["title"])
         identity = hashlib.sha1(f"{name}|{enriched_item['url']}".encode()).hexdigest()[:8]
         requirement_judgments = build_requirement_judgments(requirement_scores)
-        contact_source = contact_source_label(enriched_item.get("public_email", ""), evidence_records)
+        contact_source = enriched_item.get("public_email_source", "") or contact_source_label(enriched_item.get("public_email", ""), evidence_records)
         review_tags = build_review_tags(role_brief, requirement_scores, location_state, contact_source)
+        enrichment_state = enrichment_state_for_candidate(evidence_records)
         must_breakdown = ", ".join(
             f"{item} {requirement_scores.get(item, 0):.2f} via {requirement_sources.get(item, 'none')}"
             for item in role_brief["must_haves"]
@@ -1379,6 +1418,7 @@ def _cards_from_results(role_brief: dict, results: list[dict], enrich_profiles: 
             why_summary=why_summary,
             review_tags=review_tags,
             contact_source=contact_source,
+            enrichment_state=enrichment_state,
             requirement_scores=requirement_scores,
             requirement_judgments=requirement_judgments,
             requirement_sources={
@@ -1421,6 +1461,7 @@ def build_candidates(role_brief: dict, max_results_per_query: int = 20, seed_res
         return _cards_from_results(role_brief, raw, enrich_profiles=False)
 
     merged_results: list[dict] = []
+    location_targets = role_brief.get("location_targets", [])
     for query in role_brief["queries"]:
         merged_results.extend(github_user_search(query, max_results=max_results_per_query))
         merged_results.extend(duckduckgo_profile_search(query, max_results=max(3, max_results_per_query // 2)))
@@ -1432,7 +1473,13 @@ def build_candidates(role_brief: dict, max_results_per_query: int = 20, seed_res
             continue
         seen_urls.add(url)
         deduped_results.append(item)
-    return _cards_from_results(role_brief, deduped_results, enrich_profiles=True)
+    prioritized_results = sorted(
+        deduped_results,
+        key=lambda item: discovery_priority(item, role_brief, location_targets),
+        reverse=True,
+    )
+    enrich_limit = min(len(prioritized_results), max(40, min(100, max_results_per_query * 3)))
+    return _cards_from_results(role_brief, prioritized_results[:enrich_limit], enrich_profiles=True)
 
 
 def save_cards(cards: list[CandidateCard], output: Path) -> None:
@@ -1465,6 +1512,7 @@ def load_cards(path: Path) -> list[CandidateCard]:
         normalized.setdefault("why_summary", "")
         normalized.setdefault("review_tags", [])
         normalized.setdefault("contact_source", "")
+        normalized.setdefault("enrichment_state", "full")
         normalized.setdefault("requirement_scores", {})
         normalized.setdefault("requirement_judgments", {})
         normalized.setdefault("requirement_sources", {})
@@ -1485,6 +1533,7 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
             "source_url",
             "email",
             "contact_source",
+            "enrichment_state",
             "found_via",
             "evidence_count",
             "evidence_density",
