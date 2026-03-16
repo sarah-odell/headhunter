@@ -147,14 +147,6 @@ def render_page(
             f'<li><strong>{display_text(record.get("label", "Evidence"))}</strong><span class="evidence-snippet">{display_text(record.get("snippet", ""))}</span><a href="{escape(record.get("url", ""))}" target="_blank" rel="noreferrer">Open source</a></li>'
             for record in evidence_records[:5]
         )
-        must_badges = "".join(
-            f'<span class="match-badge">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
-            for hit in card.must_have_hits
-        ) or '<span class="match-empty">No must-have evidence</span>'
-        nice_badges = "".join(
-            f'<span class="match-badge subdued">{escape(hit)} <small>{escape(card.requirement_sources.get(hit, ""))}</small></span>'
-            for hit in card.nice_to_have_hits
-        ) or '<span class="match-empty">No supporting evidence</span>'
         visible_requirements = list(brief["must_haves"])
         extra_requirements = [
             requirement for requirement in brief.get("nice_to_haves", [])
@@ -223,16 +215,6 @@ def render_page(
                   <span class="eyebrow-label">Weighted total</span>
                   <strong>{percent_label(card.fit_score)}</strong>
                 </div>
-              </div>
-              <div class="match-grid">
-                <section class="match-panel">
-                  <h4>Must-have matches</h4>
-                  <div class="match-list">{must_badges}</div>
-                </section>
-                <section class="match-panel">
-                  <h4>Nice-to-have signals</h4>
-                  <div class="match-list">{nice_badges}</div>
-                </section>
               </div>
               <section class="signal-panel">
                 <h4>Requirement evidence</h4>
@@ -797,8 +779,8 @@ def render_page(
       padding: 24px;
     }}
     .candidate-head {{
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 156px;
       gap: 18px;
       align-items: start;
       margin-bottom: 14px;
@@ -813,9 +795,14 @@ def render_page(
       align-items: center;
       justify-content: flex-end;
       gap: 8px;
+      width: 156px;
+      min-width: 156px;
+      justify-self: end;
     }}
     .score-pill {{
       min-width: 84px;
+      height: 56px;
+      box-sizing: border-box;
       padding: 14px 16px;
       border-radius: 14px;
       text-align: center;
@@ -825,10 +812,15 @@ def render_page(
       font-weight: 700;
       box-shadow: var(--shadow-accent);
     }}
+    .score-stack .eyebrow-label {{
+      white-space: nowrap;
+      line-height: 1;
+      margin: 0;
+    }}
     .candidate-topline {{
       display: grid;
       gap: 12px;
-      margin: 16px 0;
+      margin: 2px 0 16px;
     }}
     .candidate-link-row {{
       display: flex;
@@ -951,6 +943,11 @@ def render_page(
       color: var(--foreground-muted);
       font-size: 13px;
       line-height: 1.5;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }}
     .match-list {{
       display: flex;
@@ -962,11 +959,11 @@ def render_page(
       display: inline-flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 4px;
       min-height: 44px;
       max-width: min(100%, 280px);
-      padding: 8px 12px;
+      padding: 9px 12px 7px;
       border-radius: 12px;
       background: rgba(94,106,210,0.12);
       border: 1px solid rgba(94,106,210,0.22);
