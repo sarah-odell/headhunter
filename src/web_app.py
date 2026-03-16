@@ -1524,11 +1524,11 @@ def render_page(
             <span class="summary-caption">All candidates</span>
           </a>
         </div>
-        <a class="summary-card spotlight-card" href="/?{urlencode(base_query | {'view': view_mode, 'status': status_filter})}">
+        <div class="summary-card spotlight-card">
           <span class="eyebrow-label">Top score</span>
           <strong>{percent_label(max((card.fit_score for card in filtered_cards), default=0))}</strong>
           <span class="summary-caption">Showing {escape(filter_label.lower())}</span>
-        </a>
+        </div>
       </section>
 
       <section class="workspace-grid">
