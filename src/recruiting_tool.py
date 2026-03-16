@@ -1181,7 +1181,7 @@ def generate_outreach(
     proof_excerpt = requirement_evidence.get(proof_requirement, "")
     location_line = f" and your {', '.join(location_hits)} location" if location_hits else ""
     role_summary = (
-        "At HASH, full-stack engineers build most user-facing features across both frontend and backend, "
+        "Full-stack engineers build most user-facing features across both frontend and backend, "
         "ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around "
         "knowledge graphs, simulation, and automation."
     )
