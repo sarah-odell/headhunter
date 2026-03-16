@@ -176,7 +176,6 @@ def render_page(
                   <div class="candidate-meta">
                     <span class="pill">#{rank}</span>
                     <span class="pill pill-status">{escape(card.status.title())}</span>
-                    <span class="pill">Confidence {percent_label(card.confidence_score)}</span>
                     <span class="pill">{display_text(review_state_label(getattr(card, "review_state", "needs_review") or "needs_review"))}</span>
                   </div>
                   <h3>{display_text(card.name)}</h3>
@@ -934,15 +933,21 @@ def render_page(
     .match-badge,
     .match-empty {{
       display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 30px;
-      padding: 0 10px;
-      border-radius: 999px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4px;
+      min-height: 44px;
+      max-width: min(100%, 280px);
+      padding: 8px 12px;
+      border-radius: 12px;
       background: rgba(94,106,210,0.12);
       border: 1px solid rgba(94,106,210,0.22);
       color: var(--foreground);
       font-size: 13px;
+      line-height: 1.2;
+      text-align: left;
+      box-sizing: border-box;
     }}
     .match-badge.subdued {{
       background: rgba(255,255,255,0.05);
@@ -954,6 +959,7 @@ def render_page(
       color: var(--foreground-subtle);
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      text-align: left;
     }}
     .match-empty {{
       background: rgba(255,255,255,0.03);
