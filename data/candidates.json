@@ -184,10 +184,12 @@
     "source_url": "https://github.com/Cedarche",
     "email": "",
     "found_via": [
-      "GitHub user search"
+      "GitHub user search",
+      "Linked website"
     ],
     "evidence_links": [
       "https://github.com/Cedarche",
+      "https://tomcarruthers.com",
       "https://github.com/Cedarche/Portfolio-2025",
       "https://github.com/Cedarche/Leetcode",
       "https://github.com/Cedarche/Portfolio-2024"
@@ -2852,10 +2854,12 @@
     "source_url": "https://github.com/Moshe-Victor",
     "email": "moshevictor@yahoo.co.uk",
     "found_via": [
-      "GitHub user search"
+      "GitHub user search",
+      "Linked website"
     ],
     "evidence_links": [
       "https://github.com/Moshe-Victor",
+      "email:moshevictor@yahoo.co.uk",
       "https://github.com/Moshe-Victor/jsmasterypro_devflow",
       "https://github.com/Moshe-Victor/the-wild-oasis-app-website",
       "https://github.com/Moshe-Victor/nextjs_demo"
@@ -5648,6 +5652,170 @@
     "outreach_draft": "Hi Prateek Gogia,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React, storage systems and your Berlin location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
+    "id": "91f9e88d",
+    "name": "Karthik Mano",
+    "headline": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London",
+    "source_url": "https://github.com/karthikmano",
+    "email": "karthikmano1111@gmail.com",
+    "found_via": [
+      "GitHub user search",
+      "Linked website"
+    ],
+    "evidence_links": [
+      "https://github.com/karthikmano",
+      "https://karthik-mano-1111.vercel.app/",
+      "https://github.com/karthikmano/karthikmano"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+node&type=users&p=2",
+        "label": "GitHub user search",
+        "snippet": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | London | 1 public repos | 1 followers",
+        "text": "Karthik Mano karthikmano AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex London AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex London 1 public repos 1 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/karthikmano",
+        "label": "GitHub profile",
+        "snippet": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London",
+        "text": "Karthik Mano karthikmano AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex - karthikmano karthikmano1111@gmail.com",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      },
+      {
+        "source_type": "website",
+        "url": "https://karthik-mano-1111.vercel.app/",
+        "label": "Linked website",
+        "snippet": "Karthikeyan Manoharan | Senior Full Stack Developer Senior Full Stack Developer with 9+ years experience in React, Next.js, React Native, and Node.js. Building scalable web and mobile applications for enterprise clients.",
+        "text": "Karthikeyan Manoharan | Senior Full Stack Developer Senior Full Stack Developer with 9+ years experience in React, Next.js, React Native, and Node.js. Building scalable web and mobile applications for enterprise clients. Karthikeyan Manoharan | Senior Full Stack Developer @keyframes floatA { 0% { transform: translateY(0px); } 33% { transform: translateY(-16px); } 66% { transform: translateY(7px); } 100% { transform: translateY(0px); } } @keyframes floatB { 0% { transform: translateY(0px); } 40% { transform: translateY(13px); } 80% { transform: translateY(-11px); } 100% { transform: translateY(0px); } } @keyframes floatC { 0% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } 100% { transform: translateY(0px) scale(1); } } @keyframes breathe { 0%, 100% { opacity: 0.07; } 50% { opacity: 0.14; } } .tb-outer { position: absolute; will-change: transform; } .tb-inner { animation: breathe var(--bdur) ease-in-out var(--bdelay) infinite; } .tb-float { animation: var(--fanim) var(--fdur) ease-in-out var(--fdelay) infinite; } TS</>Node>_NTS</>\u03bbKM.AboutSkillsExperienceProjectsEducationContactHire MeAvailable for new opportunitiesHi, I'm Karthikeyan|9+ years delivering scalable web & mobile applications. Expert in React, Next.js, React Native, and Node.js ecosystems with a passion for clean code and modern DevOps practices.London, UKkarthikmano1111@gmail.comView My WorkGet In TouchLinkedInScroll9:41KM MobileReact Native AppsK12+Apps50KDownloads4.9\u2605RatingRecent ProjectsFFleet ManageriOS \u00b7 AndroidPPatient PortalReact NativeEE-Commerce AppExpo EASLLogistics TrackeriOS \u00b7 AndroidReact Native\ud83d\udcf1iOS & AndroidExpo EASGet to know meAbout MeI'm a Senior Full Stack Developer with over 9 years of experience building scalable web and mobile applications. Based in London, UK, I specialise in the React ecosystem \u2014 from responsive web apps with Next.js to cross-platform mobile apps with React Native.At Anya Consultancy Services, I've led development of high-traffic applications serving 50,000+ users, architected CI/CD pipelines, and championed TypeScript-first development standards. I'm passionate about developer experience and leverage AI-assisted tools (Claude in VS Code) to accelerate feature delivery.Beyond writing code, I mentor junior developers and drive engineering best practices \u2014 reducing production bugs by 40% and deployment times by 60% through automation and strong tooling.React.jsNext.jsReact NativeTypeScriptNode.jsMongoDBAzureGraphQL0+Years Experience0K+Users Served0+Projects Delivered0Junior Devs MentoredWhat I work withTechnical SkillsA decade of hands-on experience across the full stack \u2014 from pixel-perfect UIs to robust server infrastructure.Fro",
+        "provenance": "Linked personal website",
+        "matched_requirements": [],
+        "strength": 0.55
+      },
+      {
+        "source_type": "repo",
+        "url": "https://github.com/karthikmano/karthikmano",
+        "label": "Repo: karthikmano",
+        "snippet": "Config files for my GitHub profile.",
+        "text": "karthikmano Config files for my GitHub profile. config github-config karthikmano",
+        "provenance": "Repository list summary",
+        "matched_requirements": [],
+        "strength": 1.0
+      }
+    ],
+    "evidence_count": 4,
+    "evidence_density": "medium",
+    "must_have_hits": [
+      "TypeScript",
+      "React",
+      "frontend",
+      "backend"
+    ],
+    "nice_to_have_hits": [
+      "performance",
+      "animation"
+    ],
+    "fit_score": 0.542,
+    "must_have_score": 0.6,
+    "nice_to_have_score": 0.214,
+    "confidence_score": 1.0,
+    "rationale": "Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: performance 0.55 via linked site, animation 0.55 via linked site; must-have score: 0.600; nice-to-have score: 0.214; confidence: 1.000; location: ['London']; top evidence: AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | London | 1 public repos | 1 followers | AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London | Karthikeyan Manoharan | Senior Full Stack Developer Senior Full Stack Developer with 9+ years experience in React, Next.js, React Native, and Node.js. Building scalable web and mobile applications for enterprise clients.; uncertainty: none.",
+    "status": "hold",
+    "location_hits": [
+      "London"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Public location evidence aligns with London (confirmed).",
+    "review_state": "needs_review",
+    "reviewer_note": "Some public evidence exists, but the profile needs manual review.",
+    "why_summary": "Partial support for TypeScript, React. Location publicly confirmed.",
+    "review_tags": [],
+    "contact_source": "GitHub profile bio",
+    "requirement_scores": {
+      "TypeScript": 0.6,
+      "React": 0.6,
+      "frontend": 0.6,
+      "backend": 0.6,
+      "performance": 0.55,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.55,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_judgments": {
+      "TypeScript": "partial",
+      "React": "partial",
+      "frontend": "partial",
+      "backend": "partial",
+      "performance": "partial",
+      "data structures": "unknown",
+      "storage systems": "unknown",
+      "Rust": "unknown",
+      "Effect": "unknown",
+      "HTML Canvas": "unknown",
+      "graphics": "unknown",
+      "animation": "partial",
+      "Material UI": "unknown",
+      "Base UI": "unknown",
+      "Ariakit": "unknown",
+      "Panda": "unknown",
+      "open source": "unknown"
+    },
+    "requirement_sources": {
+      "TypeScript": "profile \u00b7 GitHub profile bio",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "profile \u00b7 GitHub profile bio",
+      "performance": "linked site \u00b7 Linked personal website",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "linked site \u00b7 Linked personal website",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Ful",
+      "React": "with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focuse",
+      "frontend": "with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focuse",
+      "backend": "lding scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Full Stack Engineer w",
+      "performance": "sform: translateY(0px); } } @keyframes floatC { 0% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } 100% { transform: trans",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "0.14; } } .tb-outer { position: absolute; will-change: transform; } .tb-inner { animation: breathe var(--bdur) ease-in-out var(--bdelay) infinite; } .tb-float { animatio",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Karthik Mano,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React, performance and your London location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
     "id": "78449567",
     "name": "Polygonjs",
     "headline": "node-based WebGL design tool | Polygonjs | London",
@@ -6342,157 +6510,6 @@
       "open source": ""
     },
     "outreach_draft": "Hi Francesco Albanese,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
-    "id": "91f9e88d",
-    "name": "Karthik Mano",
-    "headline": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London",
-    "source_url": "https://github.com/karthikmano",
-    "email": "",
-    "found_via": [
-      "GitHub user search"
-    ],
-    "evidence_links": [
-      "https://github.com/karthikmano",
-      "https://github.com/karthikmano/karthikmano"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ALondon+language%3ATypeScript+node&type=users&p=2",
-        "label": "GitHub user search",
-        "snippet": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | London | 1 public repos | 1 followers",
-        "text": "Karthik Mano karthikmano AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex London AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex London 1 public repos 1 followers",
-        "provenance": "GitHub user search result",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/karthikmano",
-        "label": "GitHub profile",
-        "snippet": "AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London",
-        "text": "Karthik Mano karthikmano AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex - karthikmano",
-        "provenance": "GitHub profile bio",
-        "matched_requirements": [],
-        "strength": 0.6
-      },
-      {
-        "source_type": "repo",
-        "url": "https://github.com/karthikmano/karthikmano",
-        "label": "Repo: karthikmano",
-        "snippet": "Config files for my GitHub profile.",
-        "text": "karthikmano Config files for my GitHub profile. config github-config karthikmano",
-        "provenance": "Repository list summary",
-        "matched_requirements": [],
-        "strength": 1.0
-      }
-    ],
-    "evidence_count": 3,
-    "evidence_density": "low",
-    "must_have_hits": [
-      "TypeScript",
-      "React",
-      "frontend",
-      "backend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.51,
-    "must_have_score": 0.6,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.83,
-    "rationale": "Must-have evidence: TypeScript 0.60 via profile, React 0.60 via profile, frontend 0.60 via profile, backend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.600; nice-to-have score: 0.000; confidence: 0.830; location: ['London']; top evidence: AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | London | 1 public repos | 1 followers | AI-focused Senior Full Stack Engineer with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex | Anya consultancy Services | London | Config files for my GitHub profile.; uncertainty: none.",
-    "status": "hold",
-    "location_hits": [
-      "London"
-    ],
-    "location_eligible": true,
-    "location_state": "confirmed",
-    "eligibility_reason": "Public location evidence aligns with London (confirmed).",
-    "review_state": "needs_review",
-    "reviewer_note": "Some public evidence exists, but the profile needs manual review.",
-    "why_summary": "Partial support for TypeScript, React. Location publicly confirmed. Tags: no public contact.",
-    "review_tags": [
-      "no public contact"
-    ],
-    "contact_source": "",
-    "requirement_scores": {
-      "TypeScript": 0.6,
-      "React": 0.6,
-      "frontend": 0.6,
-      "backend": 0.6,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_judgments": {
-      "TypeScript": "partial",
-      "React": "partial",
-      "frontend": "partial",
-      "backend": "partial",
-      "performance": "unknown",
-      "data structures": "unknown",
-      "storage systems": "unknown",
-      "Rust": "unknown",
-      "Effect": "unknown",
-      "HTML Canvas": "unknown",
-      "graphics": "unknown",
-      "animation": "unknown",
-      "Material UI": "unknown",
-      "Base UI": "unknown",
-      "Ariakit": "unknown",
-      "Panda": "unknown",
-      "open source": "unknown"
-    },
-    "requirement_sources": {
-      "TypeScript": "profile \u00b7 GitHub profile bio",
-      "React": "profile \u00b7 GitHub profile bio",
-      "frontend": "profile \u00b7 GitHub profile bio",
-      "backend": "profile \u00b7 GitHub profile bio",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Ful",
-      "React": "with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focuse",
-      "frontend": "with 9+ years of experience building scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focuse",
-      "backend": "lding scalable web and mobile applications using React, TypeScript, Python, and Node.js. Ex Anya consultancy Services London AI-focused Senior Full Stack Engineer w",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi Karthik Mano,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of TypeScript, React and your London location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "27b28d4d",
@@ -8827,10 +8844,12 @@
     "source_url": "https://github.com/ildikototh",
     "email": "",
     "found_via": [
-      "GitHub user search"
+      "GitHub user search",
+      "Linked website"
     ],
     "evidence_links": [
       "https://github.com/ildikototh",
+      "https://and.digital/about/people/club/ildiko-toth/",
       "https://github.com/ildikototh/slim3-rest",
       "https://github.com/ildikototh/todo",
       "https://github.com/ildikototh/elso"
@@ -8998,10 +9017,12 @@
     "source_url": "https://github.com/SerhatSoruklu",
     "email": "",
     "found_via": [
-      "GitHub user search"
+      "GitHub user search",
+      "Linked website"
     ],
     "evidence_links": [
-      "https://github.com/SerhatSoruklu"
+      "https://github.com/SerhatSoruklu",
+      "https://coupyn.com"
     ],
     "evidence_records": [
       {
@@ -9023,9 +9044,19 @@
         "provenance": "GitHub profile bio",
         "matched_requirements": [],
         "strength": 0.6
+      },
+      {
+        "source_type": "website",
+        "url": "https://coupyn.com",
+        "label": "Linked website",
+        "snippet": "Coupyn | Coupons, Referral Codes & Deals from 900k+ Stores Discover verified coupons, referral codes and deals from 900k+ stores. Track real success rates, share your offers, and see what\u2019s trending live on Coupyn. { \"@c",
+        "text": "Coupyn | Coupons, Referral Codes & Deals from 900k+ Stores Discover verified coupons, referral codes and deals from 900k+ stores. Track real success rates, share your offers, and see what\u2019s trending live on Coupyn. { \"@context\": \"https://schema.org\", \"@type\": \"WebSite\", \"name\": \"Coupyn\", \"url\": \"https://coupyn.com/\", \"description\": \"Discover verified coupons, referral codes and deals from 900k+ stores. Track real success rates, share your offers, and see what\u2019s trending live on Coupyn.\", \"potentialAction\": { \"@type\": \"SearchAction\", \"target\": { \"@type\": \"EntryPoint\", \"urlTemplate\": \"https://coupyn.com/deals?q={search_term_string}\" }, \"query-input\": \"required name=search_term_string\" } } { \"@context\": \"https://schema.org\", \"@type\": \"WebApplication\", \"name\": \"Coupyn\", \"url\": \"https://coupyn.com/\", \"description\": \"Discover verified coupons, referral codes and deals from 900k+ stores. Track real success rates, share your offers, and see what\u2019s trending live on Coupyn.\", \"applicationCategory\": \"Shopping\", \"operatingSystem\": \"Web browser\", \"softwareRequirements\": \"Built with Angular v21, Node.js/Express.js, MongoDB (MEAN stack)\", \"offers\": { \"@type\": \"Offer\", \"price\": \"0\", \"priceCurrency\": \"USD\", \"category\": \"Subscription\", \"description\": \"Free access to Coupyn\u2019s coupon and referral code platform.\" } } (function () { const stopStyle = \"color:#fff;background:#d32f2f;font-size:32px;font-weight:700;padding:12px 60px;border-radius:10px;display:inline-block;text-align:center;\"; const warnStyle = \"color:#b71c1c;font-size:14px;line-height:1.6;\"; const brandStyle = \"color:#0d47a1;background:#e3f2fd;font-size:14px;padding:6px 10px;border-radius:6px;\"; const linkStyle = \"color:#1565c0;font-weight:600;text-decoration:underline;\"; console.log(\"%c STOP \", stopStyle); console.warn( \"%cThis console is for developers. If anyone asked you to paste code here, do not do it.\\n\" + \"Pasting scripts can expose your account, cookies, or data.\", warnStyle ); console.log( \"%cCoupyn is hand built. Coffee assisted.%c https://coupyn.com\", brandStyle, linkStyle ); console.groupCollapsed(\"What is this?\"); console.info( \"Developers use this console to debug. If you are not expecting to be here, simply close it.\" ); console.groupEnd(); })(); (function () { var GA_ID = 'G-FF5ZW6NVH5'; function getCookie(name) { var value = '; ' + document.cookie; var parts = value.split('; ' + name + '='); if (parts.length === 2) return parts.pop().split(';').shift(); return null; } function loadAnalytics() { if (window['ga-disable-' + GA_ID]) return; if (window.__coupynAnalyticsLoaded) return; window.__coupynAnalyticsLoaded = true; window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } w",
+        "provenance": "Linked personal website",
+        "matched_requirements": [],
+        "strength": 0.55
       }
     ],
-    "evidence_count": 2,
+    "evidence_count": 3,
     "evidence_density": "low",
     "must_have_hits": [
       "backend"
@@ -9036,8 +9067,8 @@
     "fit_score": 0.145,
     "must_have_score": 0.133,
     "nice_to_have_score": 0.21,
-    "confidence_score": 0.34,
-    "rationale": "Must-have evidence: backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile; must-have score: 0.133; nice-to-have score: 0.210; confidence: 0.340; location: ['London']; top evidence: Founder & full-stack developer of Coupyn, a large-scale MEAN stack platform built from scratch. Passionate about Angular, Node.js, and MongoDB. | London | 0 public repos | 0 followers | Founder & full-stack developer of Coupyn, a large-scale MEAN stack platform built from scratch. Passionate about Angular, Node.js, and MongoDB. | Coupyn | London; uncertainty: No public evidence for: TypeScript, React, frontend | No repo-backed evidence collected.",
+    "confidence_score": 0.49,
+    "rationale": "Must-have evidence: backend 0.60 via profile; nice-to-have evidence: performance 0.60 via profile; must-have score: 0.133; nice-to-have score: 0.210; confidence: 0.490; location: ['London']; top evidence: Founder & full-stack developer of Coupyn, a large-scale MEAN stack platform built from scratch. Passionate about Angular, Node.js, and MongoDB. | London | 0 public repos | 0 followers | Founder & full-stack developer of Coupyn, a large-scale MEAN stack platform built from scratch. Passionate about Angular, Node.js, and MongoDB. | Coupyn | London | Coupyn | Coupons, Referral Codes & Deals from 900k+ Stores Discover verified coupons, referral codes and deals from 900k+ stores. Track real success rates, share your offers, and see what\u2019s trending live on Coupyn. { \"@c; uncertainty: No public evidence for: TypeScript, React, frontend | No repo-backed evidence collected.",
     "status": "reject",
     "location_hits": [
       "London"
@@ -9309,10 +9340,12 @@
     "source_url": "https://github.com/cwoodza",
     "email": "",
     "found_via": [
-      "GitHub user search"
+      "GitHub user search",
+      "Linked website"
     ],
     "evidence_links": [
       "https://github.com/cwoodza",
+      "https://tielab.dev",
       "https://github.com/cwoodza/pltc",
       "https://github.com/cwoodza/pldf"
     ],

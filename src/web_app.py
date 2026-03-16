@@ -149,10 +149,6 @@ def render_page(
             for record in evidence_records[:5]
         )
         visible_requirements = list(brief["must_haves"])
-        extra_requirements = [
-            requirement for requirement in brief.get("nice_to_haves", [])
-            if requirement in {"performance", "storage systems", "Rust", "Effect"}
-        ][:2]
         github_work_rows = "".join(
             f"""
             <div class="signal-row">
@@ -161,10 +157,10 @@ def render_page(
                 <span class="signal-chip">{requirement_judgment(card.requirement_scores.get(key, 0.0))}</span>
               </div>
               <div class="signal-meta">{display_text(card.requirement_sources.get(key, "") or "No explicit source evidence")}</div>
-              <div class="signal-evidence">{display_text(card.requirement_evidence.get(key, "") or "No explicit public evidence found.")}</div>
+            <div class="signal-evidence">{display_text(card.requirement_evidence.get(key, "") or "No explicit public evidence found.")}</div>
             </div>
             """
-            for key in [*visible_requirements, *extra_requirements]
+            for key in visible_requirements
         )
         status_form = "".join(
             f"""
