@@ -841,7 +841,24 @@ def render_page(
     .queue-nav {{
       display: flex;
       gap: 12px;
-      margin: 0 0 18px;
+      margin: 0;
+      flex-wrap: wrap;
+    }}
+    .queue-controls {{
+      display: grid;
+      gap: 16px;
+      margin: 8px 0 26px;
+      padding: 18px;
+      border-radius: 14px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border-default);
+      box-shadow: var(--shadow-card);
+    }}
+    .queue-review-form {{
+      margin: 0;
+    }}
+    .queue-nav-button {{
+      min-width: 132px;
     }}
     .workspace-grid {{
       display: grid;
@@ -1280,11 +1297,39 @@ def render_page(
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--border-default);
       box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.08);
+      min-height: 48px;
+      min-width: 124px;
+      justify-content: center;
+      font-weight: 700;
     }}
     .status-button.active {{
       background: var(--accent);
       color: #fff;
       box-shadow: var(--shadow-accent);
+    }}
+    .queue-review-form .status-button {{
+      flex: 1 1 0;
+      min-width: 140px;
+      min-height: 54px;
+      border-radius: 14px;
+      font-size: 15px;
+      transition: transform 180ms var(--ease-out-expo), border-color 180ms var(--ease-out-expo), background 180ms var(--ease-out-expo);
+    }}
+    .queue-review-form .status-button:hover,
+    .queue-nav-button:hover {{
+      transform: translateY(-1px);
+    }}
+    .queue-review-form .status-shortlist {{
+      border-color: rgba(55, 195, 129, 0.28);
+      background: rgba(55, 195, 129, 0.09);
+    }}
+    .queue-review-form .status-hold {{
+      border-color: rgba(255, 196, 87, 0.28);
+      background: rgba(255, 196, 87, 0.08);
+    }}
+    .queue-review-form .status-reject {{
+      border-color: rgba(255, 107, 107, 0.24);
+      background: rgba(255, 107, 107, 0.08);
     }}
     .banner {{
       margin-bottom: 16px;
@@ -1489,14 +1534,18 @@ def render_page(
       <section class="workspace-grid">
         <section class="candidate-list">
           <div class="candidate-toolbar">
-            <p class="toolbar-note">Current view: {escape(filter_label)}</p>
-            <nav class="view-switcher" aria-label="Candidate views">
-              <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
-              <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
-              <a class="view-tab {queue_tab_class}" href="/?{view_query}&view=queue">Queue</a>
-            </nav>
+            <div class="toolbar-group">
+              <p class="toolbar-label">View</p>
+              <nav class="view-switcher" aria-label="Candidate views">
+                <a class="view-tab {cards_tab_class}" href="/?{view_query}&view=cards">Cards</a>
+                <a class="view-tab {table_tab_class}" href="/?{view_query}&view=table">Table</a>
+                <a class="view-tab {queue_tab_class}" href="/?{view_query}&view=queue">Queue</a>
+              </nav>
+            </div>
+            <p class="toolbar-note">Showing {escape(filter_label.lower())}</p>
           </div>
           <div class="toolbar-filters">
+            <span class="toolbar-label">Filters</span>
             <a class="pill {'active' if evidence_filter == 'all' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'all'})}">All evidence</a>
             <a class="pill {'active' if evidence_filter == 'full' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'full'})}">Full enrichment</a>
             <a class="pill {'active' if evidence_filter == 'partial' else ''}" href="/?{urlencode(base_query | {'status': status_filter, 'view': view_mode, 'evidence': 'partial'})}">Partial enrichment</a>

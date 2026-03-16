@@ -8414,145 +8414,6 @@
     "outreach_draft": "Hi Vashchuk Maksim,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend and your Berlin location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
-    "id": "52fa695c",
-    "name": "Lateef Mushtaq",
-    "headline": "UI/UX Designer Learning React | Berlin",
-    "source_url": "https://github.com/lateefMushtaq4",
-    "email": "",
-    "found_via": [
-      "GitHub user search"
-    ],
-    "evidence_links": [
-      "https://github.com/lateefMushtaq4"
-    ],
-    "evidence_records": [
-      {
-        "source_type": "search",
-        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+react&type=users&p=2",
-        "label": "GitHub user search",
-        "snippet": "UI/UX Designer Learning React | Berlin | 0 public repos | 0 followers",
-        "text": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React Berlin 0 public repos 0 followers",
-        "provenance": "GitHub user search result",
-        "matched_requirements": [],
-        "strength": 0.3
-      },
-      {
-        "source_type": "profile",
-        "url": "https://github.com/lateefMushtaq4",
-        "label": "GitHub profile",
-        "snippet": "UI/UX Designer Learning React | Berlin",
-        "text": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds software.",
-        "provenance": "GitHub profile bio",
-        "matched_requirements": [],
-        "strength": 0.6
-      }
-    ],
-    "evidence_count": 2,
-    "evidence_density": "low",
-    "must_have_hits": [
-      "React",
-      "frontend"
-    ],
-    "nice_to_have_hits": [],
-    "fit_score": 0.198,
-    "must_have_score": 0.233,
-    "nice_to_have_score": 0.0,
-    "confidence_score": 0.34,
-    "rationale": "Must-have evidence: React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.233; nice-to-have score: 0.000; confidence: 0.340; location: ['Berlin']; top evidence: UI/UX Designer Learning React | Berlin | 0 public repos | 0 followers | UI/UX Designer Learning React | Berlin; uncertainty: No public evidence for: TypeScript, backend | No repo-backed evidence collected.",
-    "status": "reject",
-    "location_hits": [
-      "Berlin"
-    ],
-    "location_eligible": true,
-    "location_state": "confirmed",
-    "eligibility_reason": "Public location evidence aligns with Berlin (confirmed).",
-    "review_state": "needs_review",
-    "reviewer_note": "No public evidence for: TypeScript, backend",
-    "why_summary": "Partial support for React, frontend. Location publicly confirmed. Tags: no public contact.",
-    "review_tags": [
-      "no public contact"
-    ],
-    "contact_source": "",
-    "enrichment_state": "partial",
-    "requirement_scores": {
-      "TypeScript": 0.0,
-      "React": 0.6,
-      "frontend": 0.6,
-      "backend": 0.0,
-      "performance": 0.0,
-      "data structures": 0.0,
-      "storage systems": 0.0,
-      "Rust": 0.0,
-      "Effect": 0.0,
-      "HTML Canvas": 0.0,
-      "graphics": 0.0,
-      "animation": 0.0,
-      "Material UI": 0.0,
-      "Base UI": 0.0,
-      "Ariakit": 0.0,
-      "Panda": 0.0,
-      "open source": 0.0
-    },
-    "requirement_judgments": {
-      "TypeScript": "unknown",
-      "React": "partial",
-      "frontend": "partial",
-      "backend": "unknown",
-      "performance": "unknown",
-      "data structures": "unknown",
-      "storage systems": "unknown",
-      "Rust": "unknown",
-      "Effect": "unknown",
-      "HTML Canvas": "unknown",
-      "graphics": "unknown",
-      "animation": "unknown",
-      "Material UI": "unknown",
-      "Base UI": "unknown",
-      "Ariakit": "unknown",
-      "Panda": "unknown",
-      "open source": "unknown"
-    },
-    "requirement_sources": {
-      "TypeScript": "",
-      "React": "profile \u00b7 GitHub profile bio",
-      "frontend": "profile \u00b7 GitHub profile bio",
-      "backend": "",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "requirement_evidence": {
-      "TypeScript": "",
-      "React": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds sof",
-      "frontend": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds sof",
-      "backend": "",
-      "performance": "",
-      "data structures": "",
-      "storage systems": "",
-      "Rust": "",
-      "Effect": "",
-      "HTML Canvas": "",
-      "graphics": "",
-      "animation": "",
-      "Material UI": "",
-      "Base UI": "",
-      "Ariakit": "",
-      "Panda": "",
-      "open source": ""
-    },
-    "outreach_draft": "Hi Lateef Mushtaq,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend and your Berlin location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
-  },
-  {
     "id": "e1f73abe",
     "name": "Muhammad Abdullah",
     "headline": "Software Programmer, Specialist in C#, Python, MVC, Web API, MVC Core, MS SQL, Oracle, Angular, VueJs, React Js, Kendo UI, Dev Express, SAP & SSIS Reporting | Berlin, Germany",
@@ -8721,6 +8582,145 @@
       "open source": ""
     },
     "outreach_draft": "Hi Muhammad Abdullah,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend and your Berlin location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
+  },
+  {
+    "id": "52fa695c",
+    "name": "Lateef Mushtaq",
+    "headline": "UI/UX Designer Learning React | Berlin",
+    "source_url": "https://github.com/lateefMushtaq4",
+    "email": "",
+    "found_via": [
+      "GitHub user search"
+    ],
+    "evidence_links": [
+      "https://github.com/lateefMushtaq4"
+    ],
+    "evidence_records": [
+      {
+        "source_type": "search",
+        "url": "https://github.com/search?q=location%3ABerlin+language%3ATypeScript+react&type=users&p=2",
+        "label": "GitHub user search",
+        "snippet": "UI/UX Designer Learning React | Berlin | 0 public repos | 0 followers",
+        "text": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React Berlin 0 public repos 0 followers",
+        "provenance": "GitHub user search result",
+        "matched_requirements": [],
+        "strength": 0.3
+      },
+      {
+        "source_type": "profile",
+        "url": "https://github.com/lateefMushtaq4",
+        "label": "GitHub profile",
+        "snippet": "UI/UX Designer Learning React | Berlin",
+        "text": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds software.",
+        "provenance": "GitHub profile bio",
+        "matched_requirements": [],
+        "strength": 0.6
+      }
+    ],
+    "evidence_count": 2,
+    "evidence_density": "low",
+    "must_have_hits": [
+      "React",
+      "frontend"
+    ],
+    "nice_to_have_hits": [],
+    "fit_score": 0.198,
+    "must_have_score": 0.233,
+    "nice_to_have_score": 0.0,
+    "confidence_score": 0.34,
+    "rationale": "Must-have evidence: React 0.60 via profile, frontend 0.60 via profile; nice-to-have evidence: none; must-have score: 0.233; nice-to-have score: 0.000; confidence: 0.340; location: ['Berlin']; top evidence: UI/UX Designer Learning React | Berlin | 0 public repos | 0 followers | UI/UX Designer Learning React | Berlin; uncertainty: No public evidence for: TypeScript, backend | No repo-backed evidence collected.",
+    "status": "reject",
+    "location_hits": [
+      "Berlin"
+    ],
+    "location_eligible": true,
+    "location_state": "confirmed",
+    "eligibility_reason": "Public location evidence aligns with Berlin (confirmed).",
+    "review_state": "needs_review",
+    "reviewer_note": "No public evidence for: TypeScript, backend",
+    "why_summary": "Partial support for React, frontend. Location publicly confirmed. Tags: no public contact.",
+    "review_tags": [
+      "no public contact"
+    ],
+    "contact_source": "",
+    "enrichment_state": "partial",
+    "requirement_scores": {
+      "TypeScript": 0.0,
+      "React": 0.6,
+      "frontend": 0.6,
+      "backend": 0.0,
+      "performance": 0.0,
+      "data structures": 0.0,
+      "storage systems": 0.0,
+      "Rust": 0.0,
+      "Effect": 0.0,
+      "HTML Canvas": 0.0,
+      "graphics": 0.0,
+      "animation": 0.0,
+      "Material UI": 0.0,
+      "Base UI": 0.0,
+      "Ariakit": 0.0,
+      "Panda": 0.0,
+      "open source": 0.0
+    },
+    "requirement_judgments": {
+      "TypeScript": "unknown",
+      "React": "partial",
+      "frontend": "partial",
+      "backend": "unknown",
+      "performance": "unknown",
+      "data structures": "unknown",
+      "storage systems": "unknown",
+      "Rust": "unknown",
+      "Effect": "unknown",
+      "HTML Canvas": "unknown",
+      "graphics": "unknown",
+      "animation": "unknown",
+      "Material UI": "unknown",
+      "Base UI": "unknown",
+      "Ariakit": "unknown",
+      "Panda": "unknown",
+      "open source": "unknown"
+    },
+    "requirement_sources": {
+      "TypeScript": "",
+      "React": "profile \u00b7 GitHub profile bio",
+      "frontend": "profile \u00b7 GitHub profile bio",
+      "backend": "",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "requirement_evidence": {
+      "TypeScript": "",
+      "React": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds sof",
+      "frontend": "Lateef Mushtaq lateefMushtaq4 UI/UX Designer Learning React Berlin UI/UX Designer Learning React. GitHub is where lateefMushtaq4 builds sof",
+      "backend": "",
+      "performance": "",
+      "data structures": "",
+      "storage systems": "",
+      "Rust": "",
+      "Effect": "",
+      "HTML Canvas": "",
+      "graphics": "",
+      "animation": "",
+      "Material UI": "",
+      "Base UI": "",
+      "Ariakit": "",
+      "Panda": "",
+      "open source": ""
+    },
+    "outreach_draft": "Hi Lateef Mushtaq,\n\nI came across your profile while sourcing for HASH's Full-Stack Engineer role. Your public work looks relevant for the team because of React, frontend and your Berlin location.\n\nAt HASH, this role focuses on building user-facing features across frontend and backend, moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, simulation, and automation. At HASH, full-stack engineers build most user-facing features across both frontend and backend, ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around knowledge graphs, simulation, and automation.\n\nIf that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at HASH.\n\nBest,\nHASH Recruiting Team"
   },
   {
     "id": "15896d4c",
