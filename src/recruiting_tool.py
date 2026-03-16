@@ -1103,16 +1103,11 @@ def generate_outreach(
         "ship quickly, work heavily in TypeScript and React, and contribute to an open-source product around "
         "knowledge graphs, simulation, and automation."
     )
-    concrete_line = (
-        f"I was particularly interested in your work on {proof_excerpt}."
-        if proof_excerpt
-        else f"I was particularly interested in the way your public work lines up with {proof}."
-    )
     return (
         f"Hi {candidate_name},\n\n"
         f"I came across your profile while sourcing for {role_brief['company']}'s {role_brief['role_name']} role. "
         f"Your public work looks relevant for the team because of {proof}{location_line}.\n\n"
-        f"{concrete_line} At HASH, this role focuses on building user-facing features across frontend and backend, "
+        f"At HASH, this role focuses on building user-facing features across frontend and backend, "
         f"moving quickly in TypeScript and React, and contributing to an open-source platform for knowledge graphs, "
         f"simulation, and automation. {role_summary}\n\n"
         f"If that overlaps with the kind of full-stack work you want to do next, I'd be glad to share more about the role and team at {role_brief['company']}.\n\n"
@@ -1334,8 +1329,9 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
     writer = csv.DictWriter(
         buffer,
         fieldnames=[
-            "id",
+            "rank",
             "name",
+            "id",
             "headline",
             "source_url",
             "email",
@@ -1360,8 +1356,14 @@ def cards_to_csv_text(cards: list[CandidateCard]) -> str:
         ],
     )
     writer.writeheader()
-    for card in cards:
+    ranked_cards = sorted(
+        cards,
+        key=lambda card: (card.fit_score, card.must_have_score, card.nice_to_have_score, card.confidence_score),
+        reverse=True,
+    )
+    for rank, card in enumerate(ranked_cards, start=1):
         row = asdict(card)
+        row["rank"] = rank
         row["found_via"] = "; ".join(card.found_via)
         row["must_have_hits"] = "; ".join(card.must_have_hits)
         row["nice_to_have_hits"] = "; ".join(card.nice_to_have_hits)
